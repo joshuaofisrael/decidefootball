@@ -94,7 +94,7 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/` | Hub |
 | `/players/[player]/` | Player hub |
 | `/injuries/[player]/` | Status deep page (fixture) |
-| `/is-[player]-playing-today/` | Availability (real static file; `/is-playing/[player]/` is a static redirect) |
+| `/is-[player]-playing-today/` | Availability. Built from `/is-playing/[player]/` and copied into `out/` at export |
 | `/start-sit/[a]-vs-[b]/` | Canonical pair by ascending `player.id`; reverse order is a static redirect page |
 | `/add-drop/[a]-vs-[b]/` | Same pair rule |
 | `/week-[n]/[pos]-rankings/` | QB/RB/WR/TE (real static file) |
@@ -125,7 +125,7 @@ Merging this branch to `main` is what publishes. Do not buy hosting.
 
 ### Namecheap DNS (do not run from this repo)
 
-Apex `decidefootball.com` should use GitHub Pages IPs. Typical records:
+Point `decidefootball.com` at GitHub Pages, not Vercel:
 
 | Host | Type | Value |
 |------|------|--------|
@@ -133,15 +133,11 @@ Apex `decidefootball.com` should use GitHub Pages IPs. Typical records:
 | `@` | A | `185.199.109.153` |
 | `@` | A | `185.199.110.153` |
 | `@` | A | `185.199.111.153` |
-| `@` | AAAA | `2606:50c0:8000::153` |
-| `@` | AAAA | `2606:50c0:8001::153` |
-| `@` | AAAA | `2606:50c0:8002::153` |
-| `@` | AAAA | `2606:50c0:8003::153` |
 | `www` | CNAME | `joshuaofisrael.github.io` |
 
-If Namecheap offers ALIAS/ANAME for `@`, that can point at `joshuaofisrael.github.io` instead of the A/AAAA set. Confirm current IPs in [GitHub Pages custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) before changing anything.
+Optional IPv6 (same GitHub Pages anycast): `@` AAAA `2606:50c0:8000::153` through `2606:50c0:8003::153`.
 
-This repository does **not** change Namecheap DNS. After DNS is pointed, add `decidefootball.com` (and optionally `www`) as a custom domain on the Pages settings screen if GitHub has not already picked up the `CNAME` file.
+This repository does **not** change Namecheap DNS. After those records exist, add `decidefootball.com` (and optionally `www`) as a custom domain on the Pages settings screen if GitHub has not already picked up the `CNAME` file.
 
 No Vercel project. No Porkbun.
 

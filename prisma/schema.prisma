@@ -1,0 +1,340 @@
+// Logical model from C-database-schema.md.
+// Structured metrics are the source of truth. No logo / official-mark assets.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Position {
+  QB
+  RB
+  WR
+  TE
+}
+
+enum GameStatus {
+  scheduled
+  in_progress
+  final
+}
+
+enum InjuryStatusCode {
+  HEALTHY
+  QUESTIONABLE
+  DOUBTFUL
+  OUT
+  IR
+  INACTIVE
+}
+
+enum ScoringFormat {
+  ppr
+  half
+  std
+}
+
+enum ComparisonType {
+  start_sit
+  add_drop
+}
+
+enum Indexation {
+  index
+  noindex
+  blocked
+}
+
+enum QualityGateStatus {
+  pass
+  fail
+  pending
+}
+
+enum ComplianceGate {
+  RED
+  YELLOW
+  GREEN
+}
+
+enum RecType {
+  start
+  sit
+  add
+  drop
+  waiver_rank
+}
+
+enum RunStatus {
+  success
+  fail
+  partial
+}
+
+enum UncertaintyLabel {
+  low
+  med
+  high
+}
+
+enum SourceClass {
+  GREEN
+  YELLOW
+  RED
+  FIXTURE
+}
+
+model Team {
+  id              String   @id @db.Uuid
+  slug            String   @unique
+  displayNameText String   @map("display_name_text")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  players   Player[]
+  homeGames Game[]   @relation("HomeTeam")
+  awayGames Game[]   @relation("AwayTeam")
+
+  @@map("teams")
+}
+
+model Player {
+  id          String   @id @db.Uuid
+  slug        String   @unique
+  displayName String   @map("display_name")
+  position    Position
+  teamId      String?  @map("team_id") @db.Uuid
+  externalIds Json     @default("{}") @map("external_ids")
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  team                  Team?                  @relation(fields: [teamId], references: [id])
+  injuries         InjuryStatus[]
+  weeklyStats      PlayerStatsWeekly[]
+  usageMetrics     UsageMetric[]
+  projections      Projection[]
+  recommendations  Recommendation[]
+  comparisonsLeft  Comparison[]        @relation("ComparisonLeft")
+  comparisonsRight Comparison[]        @relation("ComparisonRight")
+  comparisonsWon   Comparison[]        @relation("ComparisonWinner")
+
+  @@index([teamId])
+  @@map("players")
+}
+
+model Game {
+  id           String     @id @db.Uuid
+  season       Int
+  week         Int
+  kickoffAt    DateTime   @map("kickoff_at")
+  homeTeamId   String     @map("home_team_id") @db.Uuid
+  awayTeamId   String     @map("away_team_id") @db.Uuid
+  status       GameStatus @default(scheduled)
+  externalIds  Json       @default("{}") @map("external_ids")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  homeTeam Team @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam Team @relation("AwayTeam", fields: [awayTeamId], references: [id])
+
+  @@index([season, week])
+  @@map("games")
+}
+
+model InjuryStatus {
+  id              String           @id @db.Uuid
+  playerId        String           @map("player_id") @db.Uuid
+  asOf            DateTime         @map("as_of")
+  statusCode      InjuryStatusCode @map("status_code")
+  bodyArea        String?          @map("body_area")
+  notesSourceText String?          @map("notes_source_text")
+  sourceRunId     String           @map("source_run_id") @db.Uuid
+  sourceClass     SourceClass      @default(FIXTURE) @map("source_class")
+  createdAt       DateTime         @default(now()) @map("created_at")
+
+  player    Player        @relation(fields: [playerId], references: [id])
+  sourceRun DataSourceRun @relation(fields: [sourceRunId], references: [id])
+
+  @@index([playerId, asOf(sort: Desc)])
+  @@map("injuries_status")
+}
+
+model PlayerStatsWeekly {
+  id          String   @id @db.Uuid
+  playerId    String   @map("player_id") @db.Uuid
+  season      Int
+  week        Int
+  stats       Json
+  sourceRunId String   @map("source_run_id") @db.Uuid
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  player    Player        @relation(fields: [playerId], references: [id])
+  sourceRun DataSourceRun @relation(fields: [sourceRunId], references: [id])
+
+  @@unique([playerId, season, week])
+  @@map("player_stats_weekly")
+}
+
+model UsageMetric {
+  id          String   @id @db.Uuid
+  playerId    String   @map("player_id") @db.Uuid
+  season      Int
+  week        Int
+  metrics     Json
+  derivedFrom Json     @default("[]") @map("derived_from")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  player Player @relation(fields: [playerId], references: [id])
+
+  @@unique([playerId, season, week])
+  @@map("usage_metrics")
+}
+
+model Projection {
+  id               String           @id @db.Uuid
+  playerId         String           @map("player_id") @db.Uuid
+  season           Int
+  week             Int
+  scoringFormat    ScoringFormat    @map("scoring_format")
+  pointsMean       Float            @map("points_mean")
+  pointsFloor      Float            @map("points_floor")
+  pointsCeiling    Float            @map("points_ceiling")
+  uncertaintyLabel UncertaintyLabel @map("uncertainty_label")
+  modelVersion     String           @map("model_version")
+  sourceRunId      String?          @map("source_run_id") @db.Uuid
+  computedAt       DateTime         @map("computed_at")
+  payload          Json             @default("{}")
+
+  player    Player         @relation(fields: [playerId], references: [id])
+  sourceRun DataSourceRun? @relation(fields: [sourceRunId], references: [id])
+
+  @@unique([playerId, season, week, scoringFormat])
+  @@index([playerId, season, week, scoringFormat])
+  @@map("projections")
+}
+
+model Comparison {
+  id             String         @id @db.Uuid
+  leftPlayerId   String         @map("left_player_id") @db.Uuid
+  rightPlayerId  String         @map("right_player_id") @db.Uuid
+  comparisonType ComparisonType @map("comparison_type")
+  season         Int
+  week           Int
+  winnerPlayerId String?        @map("winner_player_id") @db.Uuid
+  scoreDelta     Float          @map("score_delta")
+  payload        Json
+  modelVersion   String         @map("model_version")
+  computedAt     DateTime       @map("computed_at")
+
+  leftPlayer   Player  @relation("ComparisonLeft", fields: [leftPlayerId], references: [id])
+  rightPlayer  Player  @relation("ComparisonRight", fields: [rightPlayerId], references: [id])
+  winnerPlayer Player? @relation("ComparisonWinner", fields: [winnerPlayerId], references: [id])
+  pages        Page[]
+
+  @@unique([comparisonType, leftPlayerId, rightPlayerId, season, week])
+  @@map("comparisons")
+}
+
+model Page {
+  id                String            @id @db.Uuid
+  path              String            @unique
+  pageType          String            @map("page_type")
+  entityRefs        Json              @default("{}") @map("entity_refs")
+  indexation        Indexation        @default(noindex)
+  qualityGateStatus QualityGateStatus @default(pending) @map("quality_gate_status")
+  publishedAt       DateTime?         @map("published_at")
+  renderedAt        DateTime?         @map("rendered_at")
+  canonicalPath     String            @map("canonical_path")
+  comparisonId      String?           @map("comparison_id") @db.Uuid
+  recommendationId  String?           @map("recommendation_id") @db.Uuid
+
+  comparison     Comparison?     @relation(fields: [comparisonId], references: [id])
+  recommendation Recommendation? @relation(fields: [recommendationId], references: [id])
+
+  @@index([pageType, indexation])
+  @@index([publishedAt])
+  @@map("pages")
+}
+
+model DataSourceRun {
+  id             String         @id @db.Uuid
+  sourceKey      String         @map("source_key")
+  startedAt      DateTime       @map("started_at")
+  finishedAt     DateTime?      @map("finished_at")
+  status         RunStatus
+  complianceGate ComplianceGate @map("compliance_gate")
+  sourceClass    SourceClass    @default(FIXTURE) @map("source_class")
+  recordCounts   Json           @default("{}") @map("record_counts")
+  errorSummary   String?        @map("error_summary")
+  rawArtifactUri String?        @map("raw_artifact_uri")
+
+  injuries               InjuryStatus[]
+  weeklyStats            PlayerStatsWeekly[]
+  projections            Projection[]
+  verificationTimestamps VerificationTimestamp[]
+
+  @@map("data_source_runs")
+}
+
+model VerificationTimestamp {
+  id              String   @id @db.Uuid
+  factFamily      String   @map("fact_family")
+  entityType      String   @map("entity_type")
+  entityId        String   @map("entity_id")
+  lastVerifiedAt  DateTime @map("last_verified_at")
+  lastSourceRunId String   @map("last_source_run_id") @db.Uuid
+
+  lastSourceRun DataSourceRun @relation(fields: [lastSourceRunId], references: [id])
+
+  @@unique([factFamily, entityType, entityId])
+  @@map("verification_timestamps")
+}
+
+model Recommendation {
+  id               String         @id @db.Uuid
+  recType          RecType        @map("rec_type")
+  playerId         String?        @map("player_id") @db.Uuid
+  pairLeftId       String?        @map("pair_left_id") @db.Uuid
+  pairRightId      String?        @map("pair_right_id") @db.Uuid
+  season           Int
+  week             Int
+  scoringFormat    ScoringFormat  @map("scoring_format")
+  rank             Int?
+  score            Float
+  rationaleMetrics Json           @map("rationale_metrics")
+  explanationText  String?        @map("explanation_text")
+  modelVersion     String         @map("model_version")
+  computedAt       DateTime       @map("computed_at")
+
+  player Player? @relation(fields: [playerId], references: [id])
+  pages  Page[]
+
+  @@index([recType, season, week, scoringFormat, rank])
+  @@map("recommendations")
+}
+
+// Future auth — not used in Phase-1 anonymous MVP.
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+// Future billing — no gambling products.
+model Subscription {
+  id               String   @id @default(uuid()) @db.Uuid
+  userId           String   @map("user_id") @db.Uuid
+  plan             String
+  status           String
+  stripeCustomerId String?  @map("stripe_customer_id")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  @@map("subscriptions")
+}

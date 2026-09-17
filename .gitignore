@@ -1,0 +1,28 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next
+.next
+out
+next-env.d.ts
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# prisma
+prisma/*.db
+prisma/*.db-journal
+
+# debug / os
+npm-debug.log*
+.DS_Store
+*.pem
+.vercel
+
+# typescript
+*.tsbuildinfo

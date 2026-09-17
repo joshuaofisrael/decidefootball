@@ -1,0 +1,52 @@
+import type { Metadata } from "next";
+import { ConsentStub } from "@/components/ConsentStub";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
+import { getComplianceGate, INDEPENDENT_MICROCOPY } from "@/lib/compliance";
+import { decideIndexation } from "@/lib/indexation";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { getSiteUrl, SITE_NAME } from "@/lib/site";
+import "./globals.css";
+
+const defaultIndex = decideIndexation({ sourceClass: "FIXTURE" });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: `${SITE_NAME} — independent fantasy decisions`,
+    template: `%s · ${SITE_NAME}`,
+  },
+  description:
+    "Start/sit, is-playing, injuries, waivers, and rankings from structured estimates. Independent. Not NFL-affiliated. Not gambling.",
+  applicationName: SITE_NAME,
+  robots: defaultIndex.robots,
+  openGraph: {
+    siteName: SITE_NAME,
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const gate = getComplianceGate();
+
+  return (
+    <html lang="en">
+      <body>
+        <a className="skip-link" href="#content">
+          Skip to content
+        </a>
+        <Header />
+        <main id="content">{children}</main>
+        <Footer />
+        <ConsentStub />
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
+        <p className="visually-hidden">
+          {INDEPENDENT_MICROCOPY} Compliance gate {gate}.
+        </p>
+      </body>
+    </html>
+  );
+}

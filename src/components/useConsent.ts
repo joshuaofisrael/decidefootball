@@ -1,9 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { CONSENT_STORAGE_KEY, parseConsentChoice, type ConsentChoice } from "@/lib/consent";
 
-export function useConsent() {
+type ConsentContextValue = {
+  choice: ConsentChoice;
+  save: (next: Exclude<ConsentChoice, "unset">) => void;
+};
+
+const ConsentContext = createContext<ConsentContextValue | null>(null);
+
+export function ConsentProvider({ children }: { children: ReactNode }) {
   const [choice, setChoice] = useState<ConsentChoice>("unset");
 
   useEffect(() => {
@@ -15,5 +22,13 @@ export function useConsent() {
     setChoice(next);
   }
 
-  return { choice, save };
+  return <ConsentContext.Provider value={{ choice, save }}>{children}</ConsentContext.Provider>;
+}
+
+export function useConsent() {
+  const ctx = useContext(ConsentContext);
+  if (!ctx) {
+    throw new Error("useConsent must be used within ConsentProvider");
+  }
+  return ctx;
 }

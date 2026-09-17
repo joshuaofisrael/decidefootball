@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AdSlot } from "@/components/AdSlot";
 import { AdsenseLoader } from "@/components/AdsenseLoader";
 import { ConsentStub } from "@/components/ConsentStub";
+import { ConsentProvider } from "@/components/useConsent";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -38,36 +39,38 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <a className="skip-link" href="#content">
-          Skip to content
-        </a>
-        <Header />
-        {showAds ? (
-          <div className="ad-layout-wrap">
-            <AdSlot placement="layout" />
-          </div>
-        ) : null}
-        {showAds ? (
-          <div className="page-shell with-ads">
+        <ConsentProvider>
+          <a className="skip-link" href="#content">
+            Skip to content
+          </a>
+          <Header />
+          {showAds ? (
+            <div className="ad-layout-wrap">
+              <AdSlot placement="layout" />
+            </div>
+          ) : null}
+          {showAds ? (
+            <div className="page-shell with-ads">
+              <main id="content">{children}</main>
+              <AdSlot placement="sidebar" />
+            </div>
+          ) : (
             <main id="content">{children}</main>
-            <AdSlot placement="sidebar" />
-          </div>
-        ) : (
-          <main id="content">{children}</main>
-        )}
-        {showAds ? (
-          <div className="ad-layout-wrap">
-            <AdSlot placement="footer" />
-          </div>
-        ) : null}
-        <Footer />
-        <AdsenseLoader />
-        <ConsentStub />
-        <JsonLd data={organizationJsonLd()} />
-        <JsonLd data={websiteJsonLd()} />
-        <p className="visually-hidden">
-          {INDEPENDENT_MICROCOPY} Compliance gate {gate}.
-        </p>
+          )}
+          {showAds ? (
+            <div className="ad-layout-wrap">
+              <AdSlot placement="footer" />
+            </div>
+          ) : null}
+          <Footer />
+          <AdsenseLoader />
+          <ConsentStub />
+          <JsonLd data={organizationJsonLd()} />
+          <JsonLd data={websiteJsonLd()} />
+          <p className="visually-hidden">
+            {INDEPENDENT_MICROCOPY} Compliance gate {gate}.
+          </p>
+        </ConsentProvider>
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ import { fantasyPoints } from "@/lib/format";
 import { FIXTURE_WEEK } from "@/lib/fixtures";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { getDefaultFormat } from "@/lib/site";
-import { nowIso } from "@/lib/timestamps";
+import { formatTimestamp, nowIso } from "@/lib/timestamps";
 
 export const revalidate = 3600;
 
@@ -85,7 +85,7 @@ export default async function PlayerHubPage({
       </p>
       <p>
         Week {FIXTURE_WEEK} opponent text: {opponent?.displayNameText ?? "unlisted"}
-        {game ? ` · kickoff ${game.kickoffAt}` : ""}.
+        {game ? ` · kickoff ${formatTimestamp(game.kickoffAt)}` : ""}.
       </p>
       <p>
         <Link href={`/injuries/${player.slug}/`}>Injury / status page</Link>

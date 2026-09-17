@@ -9,7 +9,7 @@ import { getGameForTeam, getInjury, getOpponent, getPlayerBySlug, getPlayers, ge
 import { statusVerb } from "@/lib/format";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { absoluteUrl, getDisplayTimeZone } from "@/lib/site";
-import { nowIso } from "@/lib/timestamps";
+import { formatTimestamp, nowIso } from "@/lib/timestamps";
 
 export const revalidate = 3600;
 
@@ -78,7 +78,7 @@ export default async function IsPlayingPage({
         </p>
         <p>
           Opponent text: {opponent?.displayNameText ?? "unlisted"}
-          {game ? ` · scheduled kickoff ${game.kickoffAt}` : ""}.
+          {game ? ` · scheduled kickoff ${formatTimestamp(game.kickoffAt)}` : ""}.
         </p>
       </article>
       <p>

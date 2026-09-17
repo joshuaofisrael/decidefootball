@@ -1,0 +1,5 @@
+# Decide Football ads.txt template
+# Display ads are off unless NEXT_PUBLIC_ADS_ENABLED=true and
+# NEXT_PUBLIC_ADSENSE_CLIENT_ID is set at export time.
+# Do not invent a publisher ID. When configured, this file becomes:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

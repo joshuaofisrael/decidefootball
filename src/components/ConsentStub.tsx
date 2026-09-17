@@ -1,42 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-const KEY = "df_consent";
-
-type Choice = "unset" | "accept" | "reject";
+import { adsConfigured } from "@/lib/ads";
+import { useConsent } from "./useConsent";
 
 export function ConsentStub() {
-  const [choice, setChoice] = useState<Choice>("unset");
+  const { choice, save } = useConsent();
   const ga4 = process.env.NEXT_PUBLIC_GA4_ID;
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem(KEY);
-    if (stored === "accept" || stored === "reject") setChoice(stored);
-  }, []);
-
-  function save(next: Exclude<Choice, "unset">) {
-    window.localStorage.setItem(KEY, next);
-    setChoice(next);
-  }
-
+  const adsOn = adsConfigured();
   const loadGa = Boolean(ga4 && choice === "accept");
 
   return (
     <>
       {choice === "unset" ? (
-        <div className="consent" role="dialog" aria-label="Analytics consent">
+        <div className="consent" role="dialog" aria-label="Non-essential consent">
           <div className="consent-inner">
             <p>
-              Analytics are off until you choose. Vendor is not finalized{" "}
-              <span className="flag">NEED JOSHUA INPUT</span>. No advertising pixels.
+              {adsOn
+                ? "Analytics and advertising stay off until you choose. Ad scripts do not load without this consent."
+                : "Analytics are off until you choose. No advertising pixels are loaded in this build."}{" "}
+              Vendor list is not finalized <span className="flag">NEED JOSHUA INPUT</span>.
             </p>
             <div>
               <button type="button" className="btn" onClick={() => save("reject")}>
                 Reject
               </button>{" "}
               <button type="button" className="btn secondary" onClick={() => save("accept")}>
-                Accept analytics
+                {adsOn ? "Accept analytics and ads" : "Accept analytics"}
               </button>
             </div>
           </div>

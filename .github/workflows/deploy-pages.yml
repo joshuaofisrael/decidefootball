@@ -30,6 +30,12 @@ jobs:
           COMPLIANCE_GATE: GREEN
           NEXT_PUBLIC_SITE_URL: https://decidefootball.com
           AI_EXPLAIN_ENABLED: "false"
+          NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}
+          NEXT_PUBLIC_ADS_ENABLED: ${{ vars.NEXT_PUBLIC_ADS_ENABLED }}
+          NEXT_PUBLIC_ADSENSE_CLIENT_ID: ${{ vars.NEXT_PUBLIC_ADSENSE_CLIENT_ID }}
+          NEXT_PUBLIC_ADSENSE_SLOT_LAYOUT: ${{ vars.NEXT_PUBLIC_ADSENSE_SLOT_LAYOUT }}
+          NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR: ${{ vars.NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR }}
+          NEXT_PUBLIC_ADSENSE_SLOT_FOOTER: ${{ vars.NEXT_PUBLIC_ADSENSE_SLOT_FOOTER }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

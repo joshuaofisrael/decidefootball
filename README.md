@@ -6,20 +6,21 @@ Not a sports news blog. Not NFL-affiliated. Not gambling.
 
 **Consumer brand:** Decide Football  
 **Operator (footer only):** Joshua Israel Ventures LLC  
+**Host:** Free **GitHub Pages** + GitHub Actions only. No paid Vercel. No Porkbun.  
 **Phase:** Phase-1 GREEN-path scaffold. Fixture / sample data only.
 
 ## What this repo is
 
-A production-shaped Next.js App Router site that:
+A static-export Next.js App Router site that:
 
 - Renders high-intent decision URLs from **computed fixture metrics**
-- Ships Postgres schema + migration + seed (Prisma)
-- Enforces `COMPLIANCE_GATE=RED|YELLOW|GREEN` with a RED kill switch
+- Ships Postgres schema + migration + seed (Prisma) for later licensed ingest — **not required to build or publish**
+- Enforces `COMPLIANCE_GATE=RED|YELLOW|GREEN` at **build** time
 - **noindex**s fixture sports pages and draft legal shells
 - Stubs Redis, jobs, licensed ingest, and AI explain (off by default)
 - Does **not** call sports APIs, scrape, or buy anything
 
-Next operator step after review: **licensed data ingest, only after Joshua approves API spend.** Do not buy BALLDONTLIE (or any feed) from this scaffold. Never use Porkbun.
+Next operator step after review: **licensed data ingest, only after Joshua approves API spend.** Do not buy BALLDONTLIE (or any feed) from this scaffold.
 
 ## Run locally
 
@@ -34,19 +35,22 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-`npm run build` works **without** Postgres. Pages read first-party fixtures from `src/lib/fixtures.ts`.
+`npm run build` writes a static site to `out/` (no Postgres). Preview that export:
+
+```bash
+npm run build
+npm start
+```
 
 ### Optional Postgres seed
 
-Schema follows `C-database-schema.md`. Needed only when you want Prisma migrate/seed.
+Schema follows the C-database memo. Needed only when you want Prisma migrate/seed.
 
 ```bash
 # DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/decidefootball"
 npx prisma migrate deploy
 npm run db:seed
 ```
-
-The running app still defaults to fixtures until `USE_FIXTURES=false` and `USE_DATABASE=true` (not wired for production reads in this phase).
 
 ## Env vars
 
@@ -63,7 +67,7 @@ The running app still defaults to fixtures until `USE_FIXTURES=false` and `USE_D
 | `NEXT_PUBLIC_DISPLAY_TZ` | “Playing today” timezone — **NEED JOSHUA INPUT** | `America/New_York` |
 | `NEXT_PUBLIC_DEFAULT_FORMAT` | `ppr` / `half` / `std` — **NEED JOSHUA INPUT** | `ppr` |
 
-Copy `.env.example`. Never commit secrets.
+Copy `.env.example`. Never commit secrets. GitHub Actions sets `COMPLIANCE_GATE` and `NEXT_PUBLIC_SITE_URL` on build.
 
 ## Compliance gate
 
@@ -73,7 +77,7 @@ Copy `.env.example`. Never commit secrets.
 | **YELLOW** | Render with hold banner. Stay `noindex` unless Joshua + counsel accept residual risk. |
 | **GREEN** | First-party analysis may render. **Fixture sports pages still `noindex`** until licensed GREEN (or accepted YELLOW) data replaces them. |
 
-`last_verified` (data freshness) and `rendered` (this HTML) are always shown separately.
+`last_verified` (data freshness) and `rendered` (this HTML, baked at export) are always shown separately.
 
 ## Fixture vs future licensed ingest
 
@@ -90,27 +94,56 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/` | Hub |
 | `/players/[player]/` | Player hub |
 | `/injuries/[player]/` | Status deep page (fixture) |
-| `/is-[player]-playing-today/` | Availability; rewrite to `/is-playing/[player]/` |
-| `/start-sit/[a]-vs-[b]/` | Canonical pair by ascending `player.id`; reverse **301** |
+| `/is-[player]-playing-today/` | Availability (real static file; `/is-playing/[player]/` is a static redirect) |
+| `/start-sit/[a]-vs-[b]/` | Canonical pair by ascending `player.id`; reverse order is a static redirect page |
 | `/add-drop/[a]-vs-[b]/` | Same pair rule |
-| `/week-[n]/[pos]-rankings/` | QB/RB/WR/TE |
+| `/week-[n]/[pos]-rankings/` | QB/RB/WR/TE (real static file) |
 | `/waiver-wire/week-[n]/` | Fixture priority list |
 | `/methodology/` | v0 estimate methodology |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented) |
 | `/robots.txt` `/sitemap.xml` | Sitemap includes **indexable URLs only** (empty in this phase) |
-| `/health/` | Gate + fixture-mode JSON |
+| `/health.json` | Build-time health payload |
 
-## How to deploy later (not done here)
+GitHub Pages cannot emit HTTP 301. Reverse pairs and alias paths are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical` and `noindex`.
 
-Production Vercel deploy and DNS are **out of scope** for this PR.
+## Publish on GitHub Pages (free)
 
-When Joshua is ready (after legal + data spend):
+This repo is configured for **Actions-based GitHub Pages**. There is no `gh-pages` branch. A `CNAME` file ships as `public/CNAME` → `out/CNAME` (`decidefootball.com`). `.nojekyll` is written so Pages does not hide the `_next/` folder.
 
-1. Create a Vercel project from this GitHub repo (do not buy extra domains; `decidefootball.com` is already at Namecheap).
-2. Set env vars in the Vercel project (start with `COMPLIANCE_GATE=GREEN`, fixtures on, no API keys).
-3. Point Namecheap DNS at Vercel only when you intend to serve this app. This repo does not change DNS.
-4. Add Postgres (Neon/Supabase/RDS) and run `prisma migrate deploy` + seed **or** licensed ingest — not before.
-5. Keep pages `noindex` until licensed data and counsel-ready legal text replace drafts.
+### One-time GitHub settings (repo owner)
+
+1. Repo **Settings → Pages**
+2. **Source:** GitHub Actions (not “Deploy from a branch”)
+3. After the first successful deploy + DNS, enable **Enforce HTTPS**
+
+Workflows:
+
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — test + static export on PRs
+- [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) — build and `actions/deploy-pages` **from `main`** (and manual `workflow_dispatch`)
+
+Merging this branch to `main` is what publishes. Do not buy hosting.
+
+### Namecheap DNS (do not run from this repo)
+
+Apex `decidefootball.com` should use GitHub Pages IPs. Typical records:
+
+| Host | Type | Value |
+|------|------|--------|
+| `@` | A | `185.199.108.153` |
+| `@` | A | `185.199.109.153` |
+| `@` | A | `185.199.110.153` |
+| `@` | A | `185.199.111.153` |
+| `@` | AAAA | `2606:50c0:8000::153` |
+| `@` | AAAA | `2606:50c0:8001::153` |
+| `@` | AAAA | `2606:50c0:8002::153` |
+| `@` | AAAA | `2606:50c0:8003::153` |
+| `www` | CNAME | `joshuaofisrael.github.io` |
+
+If Namecheap offers ALIAS/ANAME for `@`, that can point at `joshuaofisrael.github.io` instead of the A/AAAA set. Confirm current IPs in [GitHub Pages custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) before changing anything.
+
+This repository does **not** change Namecheap DNS. After DNS is pointed, add `decidefootball.com` (and optionally `www`) as a custom domain on the Pages settings screen if GitHub has not already picked up the `CNAME` file.
+
+No Vercel project. No Porkbun.
 
 ## Product rules
 
@@ -123,8 +156,8 @@ When Joshua is ready (after legal + data spend):
 
 ```bash
 npm run dev
-npm run build
-npm start
+npm run build   # next export + CNAME / .nojekyll / health.json
+npm start       # serve the out/ folder
 npm test
 npm run db:seed
 ```

@@ -1,32 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, permanentRedirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { KillSwitchNotice } from "@/components/KillSwitchNotice";
 import { ProjectionCard } from "@/components/ProjectionCard";
+import { StaticRedirect } from "@/components/StaticRedirect";
 import { StatusLabel } from "@/components/StatusLabel";
 import { Timestamps } from "@/components/Timestamps";
 import { isAiExplainEnabled } from "@/lib/ai-explain";
-import { pairPath } from "@/lib/canonicalize";
 import {
   getInjury,
-  getStartSitPairs,
   getStartSitRecommendation,
   getVerification,
   resolvePair,
 } from "@/lib/data";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { startLabel } from "@/lib/recommendations";
+import { startSitStaticParams } from "@/lib/static-paths";
 import { nowIso } from "@/lib/timestamps";
 
-export const revalidate = 3600;
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getStartSitPairs().map(({ left, right }) => ({
-    pair: pairPath(left.slug, right.slug),
-  }));
+  return startSitStaticParams();
 }
 
 export async function generateMetadata({
@@ -37,10 +34,14 @@ export async function generateMetadata({
   const { pair } = await params;
   const resolved = resolvePair(pair);
   if (!resolved) return { title: "Start / sit" };
+  const canonical = `/start-sit/${resolved.left.slug}-vs-${resolved.right.slug}/`;
   return {
     title: `Start ${resolved.left.displayName} or ${resolved.right.displayName}?`,
     description: `Fixture start/sit comparison computed from structured estimates.`,
-    ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
+    alternates: { canonical },
+    ...robotsMeta(
+      decideIndexation({ sourceClass: "FIXTURE", thin: !resolved.isCanonical }),
+    ),
   };
 }
 
@@ -53,7 +54,7 @@ export default async function StartSitPage({
   const resolved = resolvePair(pair);
   if (!resolved) notFound();
   if (!resolved.isCanonical) {
-    permanentRedirect(`/start-sit/${resolved.left.slug}-vs-${resolved.right.slug}/`);
+    return <StaticRedirect to={`/start-sit/${resolved.left.slug}-vs-${resolved.right.slug}/`} />;
   }
 
   const rec = getStartSitRecommendation(resolved.left, resolved.right);

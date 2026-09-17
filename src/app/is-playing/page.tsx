@@ -11,8 +11,6 @@ import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { getDisplayTimeZone } from "@/lib/site";
 import { nowIso } from "@/lib/timestamps";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Is playing today",
   description: "Fixture availability answers. Status is not inferred by the projection model.",

@@ -6,8 +6,6 @@ import { StatusLabel } from "@/components/StatusLabel";
 import { getInjury, getPlayers, getProjection, getTeam } from "@/lib/data";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Players",
   description: "Fixture player hubs for Decide Football decision pages.",

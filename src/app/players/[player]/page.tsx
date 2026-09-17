@@ -14,7 +14,7 @@ import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { getDefaultFormat } from "@/lib/site";
 import { formatTimestamp, nowIso } from "@/lib/timestamps";
 
-export const revalidate = 3600;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getPlayers().map((player) => ({ player: player.slug }));

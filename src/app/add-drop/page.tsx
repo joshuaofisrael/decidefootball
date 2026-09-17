@@ -6,8 +6,6 @@ import { getAddDropPairs, getAddDropRecommendation } from "@/lib/data";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { addDropLabel } from "@/lib/recommendations";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Add / drop",
   description: "Fixture add/drop comparisons from the same estimate engine as start/sit.",

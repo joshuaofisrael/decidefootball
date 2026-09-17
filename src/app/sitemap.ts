@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { decideIndexation } from "@/lib/indexation";
 
+export const dynamic = "force-static";
+
 /**
  * Sitemap includes only indexable URLs.
  * Phase-1 fixture pages and draft legal shells are noindex, so this is empty

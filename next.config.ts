@@ -1,30 +1,30 @@
 import type { NextConfig } from "next";
 
+/**
+ * Static export for GitHub Pages on the apex custom domain decidefootball.com.
+ * No basePath / assetPrefix — those are only for project-site URLs like
+ * username.github.io/repo. Middleware, rewrites, and route handlers are not used.
+ */
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
+  output: "export",
   trailingSlash: true,
+  reactStrictMode: true,
   poweredByHeader: false,
-  async redirects() {
-    return [
-      {
-        source: "/is-playing/:player",
-        destination: "/is-:player-playing-today",
-        permanent: true,
-      },
-    ];
+  images: {
+    unoptimized: true,
   },
-  async rewrites() {
-    return [
-      {
-        source: "/is-:player-playing-today",
-        destination: "/is-playing/:player",
-      },
-      {
-        source: "/week-:week/:pos-rankings",
-        destination: "/rankings/:week/:pos",
-      },
-    ];
-  },
+  ...(process.env.NODE_ENV === "development"
+    ? {
+        async rewrites() {
+          return [
+            {
+              source: "/is-:player-playing-today",
+              destination: "/is-playing/:player",
+            },
+          ];
+        },
+      }
+    : {}),
 };
 
 export default nextConfig;

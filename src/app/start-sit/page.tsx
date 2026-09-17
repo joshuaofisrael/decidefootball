@@ -6,8 +6,6 @@ import { getStartSitPairs, getStartSitRecommendation } from "@/lib/data";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { startLabel } from "@/lib/recommendations";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Start / sit",
   description: "Fixture start/sit pairs computed from structured estimates.",

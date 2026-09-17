@@ -11,7 +11,7 @@ import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { formatLabel, getDefaultFormat } from "@/lib/site";
 import { nowIso } from "@/lib/timestamps";
 
-export const revalidate = 3600;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return [{ week: String(FIXTURE_WEEK) }];

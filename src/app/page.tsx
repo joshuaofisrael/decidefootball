@@ -16,8 +16,6 @@ import { getTeam } from "@/lib/data";
 import { nowIso } from "@/lib/timestamps";
 import type { Metadata } from "next";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Decide Football — start, sit, and availability",
   description:

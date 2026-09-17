@@ -20,3 +20,14 @@ jobs:
         env:
           COMPLIANCE_GATE: GREEN
           NEXT_PUBLIC_SITE_URL: https://decidefootball.com
+      - name: Assert GitHub Pages export
+        run: |
+          test -f out/index.html
+          test -f out/CNAME
+          test -f out/.nojekyll
+          test -f out/robots.txt
+          test -f out/sitemap.xml
+          test -f out/is-jordan-voss-playing-today/index.html
+          test -f out/week-3/rb-rankings/index.html
+          test -f out/start-sit/noah-crowe-vs-jordan-voss/index.html
+          grep -qx 'decidefootball.com' out/CNAME

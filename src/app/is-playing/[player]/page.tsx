@@ -5,13 +5,22 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { StatusLabel } from "@/components/StatusLabel";
 import { Timestamps } from "@/components/Timestamps";
-import { getGameForTeam, getInjury, getOpponent, getPlayerBySlug, getPlayers, getProjection, getVerification } from "@/lib/data";
+import {
+  getGameForTeam,
+  getInjury,
+  getOpponent,
+  getPlayerBySlug,
+  getPlayers,
+  getProjection,
+  getVerification,
+} from "@/lib/data";
 import { statusVerb } from "@/lib/format";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { playingTodaySegment } from "@/lib/static-paths";
 import { absoluteUrl, getDisplayTimeZone } from "@/lib/site";
 import { formatTimestamp, nowIso } from "@/lib/timestamps";
 
-export const revalidate = 3600;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getPlayers().map((player) => ({ player: player.slug }));
@@ -28,7 +37,7 @@ export async function generateMetadata({
   return {
     title: `Is ${player.displayName} playing today?`,
     description: `Fixture availability answer for ${player.displayName}. Not a live official report.`,
-    alternates: { canonical: absoluteUrl(`/is-${player.slug}-playing-today/`) },
+    alternates: { canonical: absoluteUrl(`/is-${playingTodaySegment(player.slug)}/`) },
     ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
   };
 }
@@ -48,6 +57,7 @@ export default async function IsPlayingPage({
   const opponent = getOpponent(player.teamId);
   const game = getGameForTeam(player.teamId);
   const projection = getProjection(player);
+  const pretty = `/is-${playingTodaySegment(player.slug)}/`;
 
   return (
     <div className="wrap">
@@ -55,7 +65,7 @@ export default async function IsPlayingPage({
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Is playing", path: "/is-playing/" },
-          { name: player.displayName, path: `/is-${player.slug}-playing-today/` },
+          { name: player.displayName, path: pretty },
         ]}
       />
       <FixtureBanner />

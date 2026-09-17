@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && node scripts/pages-postbuild.mjs",
+    "start": "npx --yes serve out",
     "lint": "next lint",
     "test": "tsx --test src/lib/**/*.test.ts",
     "prisma:generate": "prisma generate",

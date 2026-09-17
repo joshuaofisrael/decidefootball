@@ -40,7 +40,10 @@ export default function CookiesPage() {
           <code>df_consent</code>.
         </li>
         <li>
-          <strong>Marketing / advertising</strong> — out of MVP default.
+          <strong>Marketing / advertising</strong> — gated. AdSense scripts load only when{" "}
+          <code>NEXT_PUBLIC_ADS_ENABLED=true</code>, a client ID is present at export, and the
+          visitor accepts the consent stub. Slots are labeled “Advertisement” and are never
+          placed inside start/sit recommendation cards.
         </li>
       </ul>
       <h2>Vendors actually used</h2>

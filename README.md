@@ -62,7 +62,12 @@ npm run db:seed
 | `DATABASE_URL` | Postgres for migrate/seed only | unset |
 | `REDIS_URL` | Reserved; cache is in-memory / Redis stub | unset |
 | `AI_EXPLAIN_ENABLED` | Must stay `false` unless a later review turns it on | `false` |
-| `NEXT_PUBLIC_GA4_ID` | GA4 placeholder; script loads only after consent stub accept | unset |
+| `NEXT_PUBLIC_GA4_ID` | GA4 placeholder; script loads only after consent stub accept. Required for the daily traffic routine before ads. | unset |
+| `NEXT_PUBLIC_ADS_ENABLED` | Display ads. Must be the string `true` at export. Off otherwise. | unset / false |
+| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | AdSense `ca-pub-…` client. Required with the ads flag. | unset |
+| `NEXT_PUBLIC_ADSENSE_SLOT_LAYOUT` | Optional leaderboard slot under the header | unset |
+| `NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR` | Optional sidebar slot (layout chrome, not inside rec cards) | unset |
+| `NEXT_PUBLIC_ADSENSE_SLOT_FOOTER` | Optional slot above the legal footer | unset |
 | `NEXT_PUBLIC_SITE_URL` | Canonical host | `https://decidefootball.com` |
 | `NEXT_PUBLIC_DISPLAY_TZ` | “Playing today” timezone — **NEED JOSHUA INPUT** | `America/New_York` |
 | `NEXT_PUBLIC_DEFAULT_FORMAT` | `ppr` / `half` / `std` — **NEED JOSHUA INPUT** | `ppr` |
@@ -141,12 +146,41 @@ This repository does **not** change Namecheap DNS. After those records exist, ad
 
 No Vercel project. No Porkbun.
 
+## Display ads (off by default)
+
+Ads stay **off** unless the static export is built with `NEXT_PUBLIC_ADS_ENABLED=true` **and** `NEXT_PUBLIC_ADSENSE_CLIENT_ID` is set. GitHub Actions leaves those unset unless repo **Variables** are filled. Placeholder units sit in the layout chrome (under the header, a sidebar rail, above the footer). They are labeled **Advertisement**. They are never rendered inside start/sit recommendation cards.
+
+`public/ads.txt` is a comment template (no invented publisher ID). The export writes a real `google.com, pub-…, DIRECT, …` line only when ads are enabled and the client ID contains a `pub-` number.
+
+### Threshold policy
+
+Do **not** flip the flag until one of these is true:
+
+- GA4 shows **≥ 1,000 pageviews in the last 7 days**, or
+- the AdSense account is approved / ready to serve
+
+`NEXT_PUBLIC_GA4_ID` is required for the daily traffic routine that checks that 7-day count. Do not enable ads without a measurement ID you actually read.
+
+### How to flip the flag and redeploy GitHub Pages
+
+1. Confirm the threshold (or AdSense ready) and counsel/cookie approach as needed.
+2. Repo **Settings → Secrets and variables → Actions → Variables**:
+   - `NEXT_PUBLIC_ADS_ENABLED` = `true`
+   - `NEXT_PUBLIC_ADSENSE_CLIENT_ID` = `ca-pub-…`
+   - optional `NEXT_PUBLIC_ADSENSE_SLOT_LAYOUT` / `_SIDEBAR` / `_FOOTER`
+   - `NEXT_PUBLIC_GA4_ID` = the measurement ID used for the daily check
+3. Re-run **Deploy GitHub Pages** (`workflow_dispatch`) or push to `main`. The values are baked into the static export.
+4. To turn ads off, set `NEXT_PUBLIC_ADS_ENABLED` to `false` (or delete it) and redeploy.
+
+Ad scripts still wait for the consent stub (accept). Reject keeps the labeled reservation; it does not load AdSense.
+
 ## Product rules
 
 - Metrics-first recommendations; never invent numbers
 - No NFL/team logos, helmets, official photos, or “official” language
-- No gambling, ads, accounts, or fantasy-platform OAuth
+- No gambling, accounts, or fantasy-platform OAuth
 - Operator line lives in the **footer only**
+- Display ads stay **off** unless the export flag is on; when on, labeled chrome only — never inside recommendation cards
 
 ## Scripts
 

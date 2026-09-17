@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { AdSlot } from "@/components/AdSlot";
+import { AdsenseLoader } from "@/components/AdsenseLoader";
 import { ConsentStub } from "@/components/ConsentStub";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { adsConfigured } from "@/lib/ads";
 import { getComplianceGate, INDEPENDENT_MICROCOPY } from "@/lib/compliance";
 import { decideIndexation } from "@/lib/indexation";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -10,6 +13,7 @@ import { getSiteUrl, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
 const defaultIndex = decideIndexation({ sourceClass: "FIXTURE" });
+const showAds = adsConfigured();
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -38,8 +42,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <Header />
-        <main id="content">{children}</main>
+        {showAds ? (
+          <div className="ad-layout-wrap">
+            <AdSlot placement="layout" />
+          </div>
+        ) : null}
+        {showAds ? (
+          <div className="page-shell with-ads">
+            <main id="content">{children}</main>
+            <AdSlot placement="sidebar" />
+          </div>
+        ) : (
+          <main id="content">{children}</main>
+        )}
+        {showAds ? (
+          <div className="ad-layout-wrap">
+            <AdSlot placement="footer" />
+          </div>
+        ) : null}
         <Footer />
+        <AdsenseLoader />
         <ConsentStub />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />

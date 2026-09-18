@@ -14,7 +14,7 @@ export function ProjectionCard({
       <p className="kicker">Model projection · {formatLabel(projection.scoringFormat)}</p>
       <h2>{name}</h2>
       <p>
-        Estimated fantasy points — not official, not a promise of outcomes.
+        Estimated fantasy points. Not official. Not a promise of outcomes.
         {projection.availabilityGated
           ? " Availability gate forced this row to 0 from fixture status."
           : null}

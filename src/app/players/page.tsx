@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
+import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { StatusLabel } from "@/components/StatusLabel";
+import { WatchButton } from "@/components/WatchButton";
 import { getInjury, getPlayers, getProjection, getTeam } from "@/lib/data";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 
 export const metadata: Metadata = {
-  title: "Players",
-  description: "Fixture player hubs for Decide Football decision pages.",
+  title: "Fixture club",
+  description: "Fixture player hubs with illustrated marks, usage, and status. No NFL photos or logos.",
   ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
 };
 
@@ -22,38 +24,30 @@ export default function PlayersIndexPage() {
         ]}
       />
       <FixtureBanner />
-      <h1>Fixture players</h1>
-      <p>Text identifiers only. No logos, helmets, or official photos.</p>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Player</th>
-              <th>Pos</th>
-              <th>Team text</th>
-              <th>Fixture status</th>
-              <th>Est. mean</th>
-            </tr>
-          </thead>
-          <tbody>
-            {getPlayers().map((player) => {
-              const team = getTeam(player.teamId);
-              const injury = getInjury(player.id);
-              const proj = getProjection(player);
-              return (
-                <tr key={player.id}>
-                  <td>
-                    <Link href={`/players/${player.slug}/`}>{player.displayName}</Link>
-                  </td>
-                  <td>{player.position}</td>
-                  <td>{team?.displayNameText}</td>
-                  <td>{injury ? <StatusLabel code={injury.statusCode} /> : "—"}</td>
-                  <td>{proj.pointsMean.toFixed(1)}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <h1>Fixture club</h1>
+      <p>
+        Original illustrated marks. No scraped photos. No team logos. Text names only for the
+        clubs.
+      </p>
+      <div className="club-board">
+        {getPlayers().map((player) => {
+          const team = getTeam(player.teamId);
+          const injury = getInjury(player.id);
+          const proj = getProjection(player);
+          return (
+            <article className="card club-card" key={player.id}>
+              <PlayerAvatar slug={player.slug} name={player.displayName} position={player.position} />
+              <h2>
+                <Link href={`/players/${player.slug}/`}>{player.displayName}</Link>
+              </h2>
+              <p className="stamp">
+                {player.position} · {team?.displayNameText} · {proj.pointsMean.toFixed(1)}
+              </p>
+              {injury ? <StatusLabel code={injury.statusCode} /> : <span>n/a</span>}
+              <WatchButton slug={player.slug} name={player.displayName} />
+            </article>
+          );
+        })}
       </div>
     </div>
   );

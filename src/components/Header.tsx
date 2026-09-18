@@ -2,12 +2,12 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/site";
 
 const links = [
-  { href: "/start-sit/", label: "Start / sit" },
-  { href: "/is-playing/", label: "Is playing" },
-  { href: "/players/", label: "Players" },
-  { href: "/week-3/rb-rankings/", label: "Rankings" },
-  { href: "/waiver-wire/week-3/", label: "Waivers" },
-  { href: "/methodology/", label: "Methodology" },
+  { href: "/start-sit/", label: "Decide" },
+  { href: "/slate/", label: "Slate" },
+  { href: "/watchlist/", label: "Watch" },
+  { href: "/players/", label: "Club" },
+  { href: "/waiver-wire/week-3/", label: "Radar" },
+  { href: "/methodology/", label: "Method" },
   { href: "/about/", label: "About" },
 ];
 
@@ -17,7 +17,7 @@ export function Header() {
       <div className="header-inner">
         <Link className="wordmark" href="/">
           {SITE_NAME}
-          <span>Fantasy decisions, not news</span>
+          <span>The press box, not the recap</span>
         </Link>
         <nav className="desktop-nav" aria-label="Primary">
           {links.map((link) => (

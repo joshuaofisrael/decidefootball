@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { AdSlot } from "@/components/AdSlot";
 import { AdsenseLoader } from "@/components/AdsenseLoader";
+import { BottomNav } from "@/components/BottomNav";
 import { ConsentStub } from "@/components/ConsentStub";
 import { ConsentProvider } from "@/components/useConsent";
 import { Footer } from "@/components/Footer";
@@ -13,17 +15,35 @@ import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
+const display = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["500", "600", "700"],
+});
+
+const sans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "600"],
+});
+
 const defaultIndex = decideIndexation({ sourceClass: "FIXTURE" });
 const showAds = adsConfigured();
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: `${SITE_NAME} — independent fantasy decisions`,
+    default: `${SITE_NAME}: independent fantasy decisions`,
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "Start/sit, is-playing, injuries, waivers, and rankings from structured estimates. Independent. Not NFL-affiliated. Not gambling.",
+    "Start or sit. Is he playing. Waivers and rankings from structured estimates. Independent desk. Not NFL-affiliated. Not gambling.",
   applicationName: SITE_NAME,
   robots: defaultIndex.robots,
   openGraph: {
@@ -37,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const gate = getComplianceGate();
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>
         <ConsentProvider>
           <a className="skip-link" href="#content">
@@ -63,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           ) : null}
           <Footer />
+          <BottomNav />
           <AdsenseLoader />
           <ConsentStub />
           <JsonLd data={organizationJsonLd()} />

@@ -8,22 +8,28 @@ import {
   FIXTURE_WEEK,
   GAMES,
   INJURIES,
+  INJURY_EVENTS,
   MATCHUP_FACTORS,
+  PLAYER_NOTES,
   PLAYERS,
   START_SIT_PAIRS,
   TEAMS,
   USAGE,
   WAIVER_SLUGS,
   WEEKLY_STATS,
+  kickWindow,
   verificationFor,
 } from "./fixtures";
 import { computeProjection } from "./projections";
+import { waiverUrgency } from "./radar";
 import { rankPlayersByProjection, recommendAddDrop, recommendStartSit } from "./recommendations";
 import { getDefaultFormat, type ScoringFormat, type SkillPosition } from "./site";
 import type {
   AddDropRecommendation,
   Game,
+  InjuryEvent,
   InjuryStatus,
+  KickWindow,
   Player,
   PlayerStatsWeekly,
   ProjectionResult,
@@ -31,7 +37,7 @@ import type {
   Team,
   UsageMetric,
   VerificationStamp,
-  WaiverRank,
+  WaiverRadarRow,
 } from "./types";
 
 function notImplementedDb(): never {
@@ -63,7 +69,33 @@ export function getInjury(playerId: string): InjuryStatus | null {
 }
 
 export function getRecentStats(playerId: string): PlayerStatsWeekly[] {
-  return WEEKLY_STATS.filter((row) => row.playerId === playerId);
+  return WEEKLY_STATS.filter((row) => row.playerId === playerId).sort((a, b) => a.week - b.week);
+}
+
+export function getTrailingStats(playerId: string, beforeWeek = FIXTURE_WEEK): PlayerStatsWeekly[] {
+  return getRecentStats(playerId).filter((row) => row.week < beforeWeek);
+}
+
+export function getInjuryTimeline(playerId: string): InjuryEvent[] {
+  const events = INJURY_EVENTS.filter((row) => row.playerId === playerId).sort((a, b) =>
+    a.asOf.localeCompare(b.asOf),
+  );
+  if (events.length) return events;
+  const current = getInjury(playerId);
+  if (!current) return [];
+  return [
+    {
+      playerId,
+      asOf: current.asOf,
+      statusCode: current.statusCode,
+      bodyArea: current.bodyArea,
+      note: current.notesSourceText ?? "Fixture status row.",
+    },
+  ];
+}
+
+export function getPlayerNote(slug: string) {
+  return PLAYER_NOTES[slug] ?? { role: "Fixture roster spot", desk: "No desk note in this seed." };
 }
 
 export function getUsage(playerId: string, week: number): UsageMetric | null {
@@ -99,7 +131,7 @@ export function getProjection(
     season: FIXTURE_SEASON,
     week,
     scoringFormat: format,
-    recentStats: getRecentStats(player.id),
+    recentStats: getTrailingStats(player.id, week),
     usage: getUsage(player.id, week),
     priorUsage: getUsage(player.id, week - 1),
     injury: getInjury(player.id),
@@ -199,13 +231,46 @@ export function getRankings(
 export function getWaiverRanks(
   week = FIXTURE_WEEK,
   format: ScoringFormat = getDefaultFormat(),
-): WaiverRank[] {
+) {
   const rows = WAIVER_SLUGS.map((slug) => {
     const player = getPlayerBySlug(slug);
     if (!player) throw new Error(`Missing waiver player ${slug}`);
     return { player, projection: getProjection(player, week, format) };
   });
   return rankPlayersByProjection(rows);
+}
+
+export function getWaiverRadar(
+  week = FIXTURE_WEEK,
+  format: ScoringFormat = getDefaultFormat(),
+): WaiverRadarRow[] {
+  return getWaiverRanks(week, format).map((row) =>
+    waiverUrgency({
+      ...row,
+      usage: getUsage(row.player.id, week),
+      priorUsage: getUsage(row.player.id, week - 1),
+      injury: getInjury(row.player.id),
+    }),
+  );
+}
+
+export function getSlate(week = FIXTURE_WEEK) {
+  return GAMES.filter((game) => game.week === week)
+    .slice()
+    .sort((a, b) => a.kickoffAt.localeCompare(b.kickoffAt))
+    .map((game) => ({
+      game,
+      window: kickWindow(game.kickoffAt),
+      home: getTeam(game.homeTeamId),
+      away: getTeam(game.awayTeamId),
+      players: getPlayers().filter(
+        (p) => p.teamId === game.homeTeamId || p.teamId === game.awayTeamId,
+      ),
+    }));
+}
+
+export function isSundayWindow(window: KickWindow): boolean {
+  return window === "sunday-early" || window === "sunday-late";
 }
 
 export function comparisonsForPlayer(player: Player): StartSitRecommendation[] {

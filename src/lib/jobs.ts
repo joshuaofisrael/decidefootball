@@ -37,7 +37,7 @@ export class FixtureIngestAdapter implements IngestAdapter {
   }
 }
 
-/** Licensed adapter stub — must not call a vendor until Joshua approves spend. */
+/** Licensed adapter stub. Do not call a vendor until Joshua approves spend. */
 export class LicensedIngestStub implements IngestAdapter {
   readonly sourceKey = "licensed-pending";
   readonly mode = "licensed" as const;

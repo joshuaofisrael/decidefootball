@@ -4,10 +4,13 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { KillSwitchNotice } from "@/components/KillSwitchNotice";
+import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { Timestamps } from "@/components/Timestamps";
-import { getWaiverRanks } from "@/lib/data";
+import { WatchButton } from "@/components/WatchButton";
+import { getWaiverRadar } from "@/lib/data";
 import { FIXTURE_VERIFIED_AT, FIXTURE_WEEK } from "@/lib/fixtures";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { urgencyLabel } from "@/lib/radar";
 import { formatLabel, getDefaultFormat } from "@/lib/site";
 import { nowIso } from "@/lib/timestamps";
 
@@ -24,8 +27,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { week } = await params;
   return {
-    title: `Waiver wire week ${week}`,
-    description: `Fixture waiver priorities for week ${week}. Estimates only.`,
+    title: `Waiver radar, week ${week}`,
+    description: `Fixture waiver radar for week ${week}: hot, rising, stash, or fade. Estimates only.`,
     ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
   };
 }
@@ -40,7 +43,7 @@ export default async function WaiverWeekPage({
   if (!Number.isInteger(weekNum) || weekNum < 1 || weekNum > 18) notFound();
 
   const format = getDefaultFormat();
-  const ranks = getWaiverRanks(weekNum, format);
+  const ranks = getWaiverRadar(weekNum, format);
   const renderedAt = nowIso();
 
   return (
@@ -48,31 +51,55 @@ export default async function WaiverWeekPage({
       <Breadcrumbs
         crumbs={[
           { name: "Home", path: "/" },
-          { name: "Waiver wire", path: `/waiver-wire/week-${weekNum}/` },
+          { name: "Waiver radar", path: `/waiver-wire/week-${weekNum}/` },
         ]}
       />
       <FixtureBanner />
-      <h1>Waiver wire — week {weekNum}</h1>
+      <p className="kicker">Radar · {formatLabel(format)}</p>
+      <h1>Waiver radar, week {weekNum}</h1>
       <p>
-        Priority list from fixture estimates ({formatLabel(format)}). Not a claim about real
-        waiver wire availability on any platform. No platform OAuth.
+        Urgency from fixture estimates, usage change, and listed status. Not a claim that any
+        name is available on a host platform. No OAuth.
       </p>
       <Timestamps lastVerifiedAt={FIXTURE_VERIFIED_AT} renderedAt={renderedAt} />
       <KillSwitchNotice>
-        <ol>
+        <ol className="radar-list">
           {ranks.map((row) => (
-            <li key={row.player.id}>
-              <Link href={`/players/${row.player.slug}/`}>{row.player.displayName}</Link> — est.{" "}
-              {row.projection.pointsMean.toFixed(1)} mean / {row.projection.pointsCeiling.toFixed(1)}{" "}
-              ceiling
+            <li key={row.player.id} className={`radar-item is-${row.urgency}`}>
+              <PlayerAvatar
+                slug={row.player.slug}
+                name={row.player.displayName}
+                position={row.player.position}
+                size={48}
+              />
+              <div>
+                <p className="kicker">
+                  {urgencyLabel(row.urgency)} · score {row.urgencyScore}
+                </p>
+                <h2>
+                  <Link href={`/players/${row.player.slug}/`}>{row.player.displayName}</Link>
+                </h2>
+                <p>
+                  Est. {row.projection.pointsMean.toFixed(1)} mean /{" "}
+                  {row.projection.pointsCeiling.toFixed(1)} ceiling
+                </p>
+                <ul>
+                  {row.reasons.slice(0, 3).map((reason) => (
+                    <li key={reason}>{reason}</li>
+                  ))}
+                </ul>
+                <WatchButton slug={row.player.slug} name={row.player.displayName} />
+              </div>
             </li>
           ))}
         </ol>
       </KillSwitchNotice>
       <p>
+        <Link href="/add-drop/">Add/drop pairs</Link>
+        {" · "}
         <Link href={`/week-${weekNum}/wr-rankings/`}>WR rankings</Link>
         {" · "}
-        <Link href="/add-drop/">Add/drop pairs</Link>
+        <Link href="/slate/">Week slate</Link>
         {" · "}
         <Link href="/methodology/">Methodology</Link>
       </p>

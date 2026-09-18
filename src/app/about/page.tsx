@@ -46,23 +46,27 @@ export default function AboutPage() {
 
       <h2>What this site is</h2>
       <p>
-        An independent fantasy football <em>decision</em> site. Pages are meant to answer a
-        specific question with structured estimates — floor, mean, and ceiling — and with
-        availability kept separate from the projection model. The model does not invent a
-        status, a return date, or a stat line that was not supplied as an input.
+        An independent fantasy football <em>decision</em> site. Pages answer a specific question
+        with structured estimates (floor, mean, and ceiling) and with availability kept separate
+        from the projection model. The model does not invent a status, a return date, or a stat
+        line that was not supplied as an input.
       </p>
       <p>The product is organized around the calls people actually make:</p>
       <ul>
         <li>
-          <Link href="/start-sit/">Start / sit</Link> — compare two players on the same week.
+          <Link href="/start-sit/">Start / sit</Link>: compare two players on the same week,
+          with a certainty score.
         </li>
         <li>
-          <Link href="/is-playing/">Is playing</Link> — availability from a reported status
+          <Link href="/is-playing/">Is playing</Link>: availability from a reported status
           label, not from the model guessing.
         </li>
-        <li>Injuries — the status page, distinct from the estimate.</li>
-        <li>Waivers and add/drop — priority and pairwise comparisons.</li>
-        <li>Weekly positional rankings — the same estimates, stacked.</li>
+        <li>Injuries: the status timeline, distinct from the estimate.</li>
+        <li>Waivers and add/drop: priority, urgency, and pairwise comparisons.</li>
+        <li>Weekly positional rankings: the same estimates, stacked.</li>
+        <li>
+          <Link href="/slate/">Week slate</Link>: kick windows and a Sunday Mode toggle.
+        </li>
       </ul>
       <p>
         How those numbers are computed is written down on the{" "}
@@ -80,9 +84,7 @@ export default function AboutPage() {
           Not affiliated with, endorsed by, or sponsored by the NFL or its member clubs. Player
           and team names are used for identification in fantasy analysis only.
         </li>
-        <li>
-          Not gambling advice, odds, or a sportsbook. Nothing here is a wagering product.
-        </li>
+        <li>Not gambling advice, odds, or a sportsbook. Nothing here is a wagering product.</li>
         <li>
           Not a claim that estimates are official, guaranteed, or a substitute for your own
           roster judgment.
@@ -99,7 +101,7 @@ export default function AboutPage() {
         Ownership is listed in the site footer. Contact and legal details that still need an
         operator input are marked on the draft{" "}
         <Link href="/disclaimer/">disclaimer</Link> and{" "}
-        <Link href="/privacy/">privacy</Link> pages — none of those blanks are filled with
+        <Link href="/privacy/">privacy</Link> pages. None of those blanks are filled with
         invented addresses or credentials.
       </p>
     </div>

@@ -2,7 +2,9 @@ import { DEFAULT_SEASON, DEFAULT_WEEK } from "./site";
 import type {
   DataSourceRun,
   Game,
+  InjuryEvent,
   InjuryStatus,
+  KickWindow,
   Player,
   PlayerStatsWeekly,
   Team,
@@ -268,7 +270,155 @@ export const WEEKLY_STATS: PlayerStatsWeekly[] = [
     receptions: 4,
     recYds: 55,
   }),
+  stats("00000000-0000-4000-8000-000000000201", 3, {
+    rushAtt: 20,
+    rushYds: 101,
+    rushTd: 1,
+    targets: 4,
+    receptions: 3,
+    recYds: 18,
+  }),
+  stats("00000000-0000-4000-8000-000000000202", 3, {
+    targets: 8,
+    receptions: 5,
+    recYds: 61,
+  }),
+  stats("00000000-0000-4000-8000-000000000203", 3, {
+    passAtt: 32,
+    passYds: 255,
+    passTd: 2,
+    interceptions: 0,
+    rushAtt: 4,
+    rushYds: 21,
+  }),
+  stats("00000000-0000-4000-8000-000000000204", 3, {
+    targets: 0,
+    receptions: 0,
+    recYds: 0,
+  }),
+  stats("00000000-0000-4000-8000-000000000205", 3, {
+    targets: 12,
+    receptions: 8,
+    recYds: 119,
+    recTd: 1,
+  }),
+  stats("00000000-0000-4000-8000-000000000206", 3, {
+    rushAtt: 13,
+    rushYds: 54,
+    targets: 3,
+    receptions: 2,
+    recYds: 11,
+  }),
+  stats("00000000-0000-4000-8000-000000000207", 3, {
+    passAtt: 30,
+    passYds: 209,
+    passTd: 1,
+    interceptions: 1,
+    rushAtt: 3,
+    rushYds: 9,
+  }),
+  stats("00000000-0000-4000-8000-000000000208", 3, {
+    targets: 7,
+    receptions: 4,
+    recYds: 48,
+  }),
 ];
+
+export const PLAYER_NOTES: Record<string, { role: string; desk: string }> = {
+  "jordan-voss": {
+    role: "Lead back, every-down snaps",
+    desk: "Voss is the volume. Harbor Wave cannot tackle him in this seed. If you sit him, you need a better reason than a hunch.",
+  },
+  "marcus-hale": {
+    role: "Perimeter WR, hamstring watch",
+    desk: "Hale's route share slipped when the hamstring showed up. The mean already prices that. Do not invent a worse number.",
+  },
+  "elias-quinn": {
+    role: "Full-snap passer with designed keepers",
+    desk: "Quinn is the clean QB in this set. The rushing floor is real. Soto is the other chair.",
+  },
+  "theo-marsh": {
+    role: "Inline TE, out with ankle",
+    desk: "Marsh is a zero this week. The timeline is the story, not the target share from week 1.",
+  },
+  "kai-benton": {
+    role: "Alpha WR, 90% snaps",
+    desk: "Benton is the waiver you already missed. Use him as the high side in Hale comparisons.",
+  },
+  "noah-crowe": {
+    role: "Split-back, committee",
+    desk: "Crowe works. He does not work enough to beat Voss. Fine as a flex if your RB2 is worse.",
+  },
+  "riley-soto": {
+    role: "Game-manager QB",
+    desk: "Soto is startable in 2QB. In 1QB he is a streamer behind Quinn.",
+  },
+  "amir-cole": {
+    role: "WR3 / deep-league dart",
+    desk: "Cole is the radar stash. Role is climbing. Do not spend like he is Benton.",
+  },
+};
+
+export const INJURY_EVENTS: InjuryEvent[] = [
+  {
+    playerId: "00000000-0000-4000-8000-000000000202",
+    asOf: "2026-09-09T17:00:00.000Z",
+    statusCode: "HEALTHY",
+    bodyArea: null,
+    note: "Week 1 fixture: no designation.",
+  },
+  {
+    playerId: "00000000-0000-4000-8000-000000000202",
+    asOf: "2026-09-13T16:00:00.000Z",
+    statusCode: "QUESTIONABLE",
+    bodyArea: "hamstring",
+    note: "Week 2 fixture: limited, then questionable. Sample only.",
+  },
+  {
+    playerId: "00000000-0000-4000-8000-000000000202",
+    asOf: FIXTURE_VERIFIED_AT,
+    statusCode: "QUESTIONABLE",
+    bodyArea: "hamstring",
+    note: "Week 3 fixture: still questionable. Not a live report.",
+  },
+  {
+    playerId: "00000000-0000-4000-8000-000000000204",
+    asOf: "2026-09-09T17:00:00.000Z",
+    statusCode: "QUESTIONABLE",
+    bodyArea: "ankle",
+    note: "Week 1 fixture: ankle, questionable. Played through it in this seed.",
+  },
+  {
+    playerId: "00000000-0000-4000-8000-000000000204",
+    asOf: "2026-09-13T16:00:00.000Z",
+    statusCode: "OUT",
+    bodyArea: "ankle",
+    note: "Week 2 fixture: ruled out. Used to exercise the zero gate.",
+  },
+  {
+    playerId: "00000000-0000-4000-8000-000000000204",
+    asOf: FIXTURE_VERIFIED_AT,
+    statusCode: "OUT",
+    bodyArea: "ankle",
+    note: "Week 3 fixture: remains out. Estimate is forced to 0.",
+  },
+];
+
+export function kickWindow(iso: string): KickWindow {
+  const day = new Date(iso).getUTCDay();
+  const hour = new Date(iso).getUTCHours();
+  if (day === 0 && hour < 19) return "sunday-early";
+  if (day === 0) return "sunday-late";
+  if (day === 1) return "monday";
+  return "other";
+}
+
+export function kickWindowLabel(window: KickWindow): string {
+  if (window === "sunday-early") return "Sunday early";
+  if (window === "sunday-late") return "Sunday late";
+  if (window === "monday") return "Monday";
+  return "Other window";
+}
 
 export const USAGE: UsageMetric[] = [
   {
@@ -375,7 +525,7 @@ export const INJURIES: InjuryStatus[] = [
     asOf: FIXTURE_VERIFIED_AT,
     statusCode: "HEALTHY",
     bodyArea: null,
-    notesSourceText: "Fixture sample — no designation in this seed.",
+    notesSourceText: "Fixture sample. No designation in this seed.",
     sourceClass: "FIXTURE",
     sourceRunId: FIXTURE_RUN.id,
   },
@@ -394,7 +544,7 @@ export const INJURIES: InjuryStatus[] = [
     asOf: FIXTURE_VERIFIED_AT,
     statusCode: "HEALTHY",
     bodyArea: null,
-    notesSourceText: "Fixture sample — no designation in this seed.",
+    notesSourceText: "Fixture sample. No designation in this seed.",
     sourceClass: "FIXTURE",
     sourceRunId: FIXTURE_RUN.id,
   },
@@ -413,7 +563,7 @@ export const INJURIES: InjuryStatus[] = [
     asOf: FIXTURE_VERIFIED_AT,
     statusCode: "HEALTHY",
     bodyArea: null,
-    notesSourceText: "Fixture sample — no designation in this seed.",
+    notesSourceText: "Fixture sample. No designation in this seed.",
     sourceClass: "FIXTURE",
     sourceRunId: FIXTURE_RUN.id,
   },
@@ -422,7 +572,7 @@ export const INJURIES: InjuryStatus[] = [
     asOf: FIXTURE_VERIFIED_AT,
     statusCode: "HEALTHY",
     bodyArea: null,
-    notesSourceText: "Fixture sample — no designation in this seed.",
+    notesSourceText: "Fixture sample. No designation in this seed.",
     sourceClass: "FIXTURE",
     sourceRunId: FIXTURE_RUN.id,
   },
@@ -431,7 +581,7 @@ export const INJURIES: InjuryStatus[] = [
     asOf: FIXTURE_VERIFIED_AT,
     statusCode: "HEALTHY",
     bodyArea: null,
-    notesSourceText: "Fixture sample — no designation in this seed.",
+    notesSourceText: "Fixture sample. No designation in this seed.",
     sourceClass: "FIXTURE",
     sourceRunId: FIXTURE_RUN.id,
   },
@@ -440,7 +590,7 @@ export const INJURIES: InjuryStatus[] = [
     asOf: FIXTURE_VERIFIED_AT,
     statusCode: "HEALTHY",
     bodyArea: null,
-    notesSourceText: "Fixture sample — no designation in this seed.",
+    notesSourceText: "Fixture sample. No designation in this seed.",
     sourceClass: "FIXTURE",
     sourceRunId: FIXTURE_RUN.id,
   },

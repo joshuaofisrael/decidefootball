@@ -28,6 +28,8 @@ describe("buildRobotsRules", () => {
       "/waiver-wire/",
       "/add-drop/",
       "/week-",
+      "/slate/",
+      "/watchlist/",
       "/health/",
       "/api/",
     ]) {

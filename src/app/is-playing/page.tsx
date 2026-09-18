@@ -55,7 +55,7 @@ export default function IsPlayingIndexPage() {
                     <Link href={`/is-${player.slug}-playing-today/`}>{player.displayName}</Link>
                   </td>
                   <td>{getTeam(player.teamId)?.displayNameText}</td>
-                  <td>{injury ? <StatusLabel code={injury.statusCode} /> : "—"}</td>
+                  <td>{injury ? <StatusLabel code={injury.statusCode} /> : "n/a"}</td>
                   <td>{statusVerb(injury?.statusCode ?? "")}</td>
                 </tr>
               );

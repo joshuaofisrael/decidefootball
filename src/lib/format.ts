@@ -33,13 +33,13 @@ export function statusVerb(code: string): string {
     case "OUT":
     case "IR":
     case "INACTIVE":
-      return "No — listed as unavailable in this fixture";
+      return "No. Fixture lists this player as unavailable.";
     case "DOUBTFUL":
-      return "Unlikely — fixture status is doubtful";
+      return "Unlikely. Fixture status is doubtful.";
     case "QUESTIONABLE":
-      return "Uncertain — fixture status is questionable";
+      return "Uncertain. Fixture status is questionable.";
     case "HEALTHY":
-      return "Yes — fixture lists no injury designation";
+      return "Yes. Fixture lists no injury designation.";
     default:
       return "Unknown in this fixture set";
   }

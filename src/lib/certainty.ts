@@ -25,7 +25,7 @@ export function computeCertainty(args: {
     if (side.availabilityGated) {
       score -= 22;
       reasons.push("One side is availability-gated to zero.");
-    } else if (side.components.availabilityAdj < 1) {
+    } else if (side.components.availabilityAdj < 0) {
       score -= 10;
       reasons.push("One side carries a status discount.");
     }

@@ -601,7 +601,12 @@ th {
 
 .player-avatar {
   flex: 0 0 auto;
+  background: var(--card);
   box-shadow: 3px 3px 0 var(--ink);
+}
+
+.rec-hero .player-avatar {
+  box-shadow: 3px 3px 0 var(--gold);
 }
 
 .call-heads {

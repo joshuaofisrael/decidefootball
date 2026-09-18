@@ -36,6 +36,7 @@ describe("computeCertainty", () => {
     });
     assert.ok(result.score >= 58);
     assert.ok(result.label === "clear" || result.label === "strong");
+    assert.doesNotMatch(result.reasons.join(" "), /status discount/);
   });
 
   it("cuts the score when one side is gated to zero", () => {

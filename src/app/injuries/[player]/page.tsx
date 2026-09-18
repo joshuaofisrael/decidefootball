@@ -3,9 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
+import { InjuryTimeline } from "@/components/InjuryTimeline";
+import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { StatusLabel } from "@/components/StatusLabel";
 import { Timestamps } from "@/components/Timestamps";
-import { getInjury, getPlayerBySlug, getPlayers, getVerification } from "@/lib/data";
+import { getInjury, getInjuryTimeline, getPlayerBySlug, getPlayers, getVerification } from "@/lib/data";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { nowIso } from "@/lib/timestamps";
 
@@ -24,8 +26,8 @@ export async function generateMetadata({
   const player = getPlayerBySlug(slug);
   if (!player) return { title: "Injury page" };
   return {
-    title: `${player.displayName} fixture injury status`,
-    description: `Sample injury/status page for ${player.displayName}. Not live verified.`,
+    title: `${player.displayName} availability timeline`,
+    description: `Fixture injury and availability timeline for ${player.displayName}. Not a live or official report.`,
     ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
   };
 }
@@ -53,27 +55,28 @@ export default async function InjuryPage({
         ]}
       />
       <FixtureBanner />
-      <h1>{player.displayName} — fixture status</h1>
+      <header className="hub-head">
+        <PlayerAvatar slug={player.slug} name={player.displayName} position={player.position} size={72} />
+        <div>
+          <h1>{player.displayName} availability</h1>
+          {injury ? <StatusLabel code={injury.statusCode} /> : null}
+        </div>
+      </header>
       <Timestamps lastVerifiedAt={stamp.lastVerifiedAt} renderedAt={renderedAt} />
-      {injury ? (
-        <article className="card">
-          <p className="kicker">Reported fixture designation</p>
-          <h2>
-            <StatusLabel code={injury.statusCode} /> {injury.bodyArea ?? ""}
-          </h2>
-          <p>{injury.notesSourceText}</p>
-          <p>
-            Source class: {injury.sourceClass}. This page must never be read as a live verified
-            injury or an official league report.
-          </p>
-        </article>
-      ) : (
-        <p>No fixture status row for this player.</p>
-      )}
+      <article className="card">
+        <h2>Timeline</h2>
+        <p>
+          Dated fixture rows only. This is not a live verified injury and not an official league
+          report.
+        </p>
+        <InjuryTimeline events={getInjuryTimeline(player.id)} />
+      </article>
       <p>
         <Link href={`/players/${player.slug}/`}>Player hub</Link>
         {" · "}
         <Link href={`/is-${player.slug}-playing-today/`}>Is playing today</Link>
+        {" · "}
+        <Link href="/is-playing/">Full availability board</Link>
         {" · "}
         <Link href="/methodology/">Methodology</Link>
       </p>

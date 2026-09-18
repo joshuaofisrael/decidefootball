@@ -24,6 +24,8 @@ export const FIXTURE_CONTENT_DISALLOW = [
   "/waiver-wire/",
   "/add-drop/",
   "/week-",
+  "/slate/",
+  "/watchlist/",
   "/health/",
   "/api/",
 ] as const;

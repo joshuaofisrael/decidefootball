@@ -104,7 +104,7 @@ export default async function WeekRankingsPage({
                     <td>
                       <Link href={`/players/${row.player.slug}/`}>{row.player.displayName}</Link>
                     </td>
-                    <td>{injury ? <StatusLabel code={injury.statusCode} /> : "—"}</td>
+                    <td>{injury ? <StatusLabel code={injury.statusCode} /> : "n/a"}</td>
                     <td>{row.projection.pointsMean.toFixed(1)}</td>
                     <td>{row.projection.pointsFloor.toFixed(1)}</td>
                     <td>{row.projection.pointsCeiling.toFixed(1)}</td>

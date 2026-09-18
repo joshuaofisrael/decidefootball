@@ -1,3 +1,4 @@
+import { computeCertainty } from "./certainty";
 import { MODEL_VERSION, type ScoringFormat } from "./site";
 import type {
   AddDropRecommendation,
@@ -43,6 +44,7 @@ export function recommendStartSit(args: {
     winnerPlayerId,
     lean,
     scoreDelta,
+    certainty: computeCertainty({ scoreDelta, left: leftProjection, right: rightProjection }),
     leftProjection,
     rightProjection,
     modelVersion: MODEL_VERSION,
@@ -112,7 +114,7 @@ export function rankPlayersByProjection(
 export function startLabel(rec: StartSitRecommendation): string {
   if (rec.lean === "start_left") return `Start ${rec.left.displayName}`;
   if (rec.lean === "start_right") return `Start ${rec.right.displayName}`;
-  return "Toss-up — lean neither side on mean alone";
+  return "Toss-up. Lean neither side on mean alone.";
 }
 
 export function addDropLabel(rec: AddDropRecommendation): string {
@@ -122,5 +124,5 @@ export function addDropLabel(rec: AddDropRecommendation): string {
   if (rec.lean === "add_right") {
     return `Add ${rec.right.displayName} over ${rec.left.displayName}`;
   }
-  return "Toss-up — no add/drop edge on mean alone";
+  return "Toss-up. No add/drop edge on mean alone.";
 }

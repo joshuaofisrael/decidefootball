@@ -126,6 +126,32 @@ export interface ProjectionResult {
   };
 }
 
+export type CertaintyLabel = "thin" | "lean" | "clear" | "strong";
+
+export interface CertaintyScore {
+  score: number;
+  label: CertaintyLabel;
+  reasons: string[];
+}
+
+export interface InjuryEvent {
+  playerId: string;
+  asOf: string;
+  statusCode: InjuryStatusCode;
+  bodyArea: string | null;
+  note: string;
+}
+
+export type WaiverUrgency = "hot" | "rising" | "stash" | "fade";
+
+export interface WaiverRadarRow extends WaiverRank {
+  urgency: WaiverUrgency;
+  urgencyScore: number;
+  reasons: string[];
+}
+
+export type KickWindow = "sunday-early" | "sunday-late" | "monday" | "other";
+
 export interface StartSitRecommendation {
   type: "start_sit";
   left: Player;
@@ -136,6 +162,7 @@ export interface StartSitRecommendation {
   winnerPlayerId: string | null;
   lean: "start_left" | "start_right" | "toss_up";
   scoreDelta: number;
+  certainty: CertaintyScore;
   leftProjection: ProjectionResult;
   rightProjection: ProjectionResult;
   modelVersion: string;

@@ -103,7 +103,9 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/start-sit/[a]-vs-[b]/` | Canonical pair by ascending `player.id`; reverse order is a static redirect page |
 | `/add-drop/[a]-vs-[b]/` | Same pair rule |
 | `/week-[n]/[pos]-rankings/` | QB/RB/WR/TE (real static file) |
-| `/waiver-wire/week-[n]/` | Fixture priority list |
+| `/slate/` | Week slate by kick window, Sunday Mode (fixture, noindex) |
+| `/watchlist/` | localStorage watchlist (fixture names, noindex) |
+| `/waiver-wire/week-[n]/` | Waiver radar with urgency |
 | `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented) |
@@ -181,7 +183,22 @@ Ad scripts still wait for the consent stub (accept). Reject keeps the labeled re
 - No NFL/team logos, helmets, official photos, or “official” language
 - No gambling, accounts, or fantasy-platform OAuth
 - Operator line lives in the **footer only**
-- Display ads stay **off** unless the export flag is on; when on, labeled chrome only — never inside recommendation cards
+- Display ads stay **off** unless the export flag is on; when on, labeled chrome only, never inside recommendation cards
+
+## Player imagery and photo licensing
+
+Decide Football does **not** scrape NFL.com, ESPN, team sites, or any official photo archive.
+
+This build ships **original illustrated avatars**: geometric SVG marks generated from each fixture player's name, slug, and position. They are first-party artwork, not likenesses of real athletes, and not team marks.
+
+If a later licensed or Wikimedia Commons photograph is added:
+
+1. Confirm a license that allows reuse (CC BY, CC BY-SA, CC0, or equivalent).
+2. Keep the file under `public/players/` with a sidecar note: author, source URL, license, retrieval date.
+3. Render credit on the player hub (author + license + link). Do not crop away required attribution.
+4. Never hotlink a league or club CDN.
+
+Until that happens, the illustrated marks are the only player imagery.
 
 ## Scripts
 

@@ -43,7 +43,15 @@ jobs:
           grep -q 'Disallow: /is-playing/' out/robots.txt
           grep -q 'Disallow: /is-' out/robots.txt
           grep -q 'Disallow: /week-' out/robots.txt
+          grep -q 'Disallow: /slate/' out/robots.txt
+          grep -q 'Disallow: /watchlist/' out/robots.txt
           grep -q 'Sitemap: https://decidefootball.com/sitemap.xml' out/robots.txt
+          test -f out/slate/index.html
+          test -f out/watchlist/index.html
+          grep -q 'content="noindex,follow"' out/slate/index.html
+          grep -q 'content="noindex,follow"' out/watchlist/index.html
+          ! grep -q '/slate/' out/sitemap.xml
+          ! grep -q '/watchlist/' out/sitemap.xml
           grep -q 'content="index,follow"' out/about/index.html
           grep -q 'content="index,follow"' out/methodology/index.html
           ! grep -q 'noindex' out/about/index.html

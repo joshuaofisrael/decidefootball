@@ -44,10 +44,12 @@ jobs:
           grep -q 'Disallow: /is-' out/robots.txt
           grep -q 'Disallow: /week-' out/robots.txt
           grep -q 'Sitemap: https://decidefootball.com/sitemap.xml' out/robots.txt
-          grep -E -q 'index, ?follow' out/about/index.html
-          grep -E -q 'index, ?follow' out/methodology/index.html
-          grep -q 'noindex' out/start-sit/index.html
-          grep -q 'noindex' out/players/index.html
+          grep -q 'content="index,follow"' out/about/index.html
+          grep -q 'content="index,follow"' out/methodology/index.html
+          ! grep -q 'noindex' out/about/index.html
+          ! grep -q 'noindex' out/methodology/index.html
+          grep -q 'content="noindex,follow"' out/start-sit/index.html
+          grep -q 'content="noindex,follow"' out/players/index.html
           ! grep -q 'SAMPLE / FIXTURE' out/about/index.html
           ! grep -q 'jordan-voss' out/about/index.html
           ! grep -q 'SAMPLE / FIXTURE' out/methodology/index.html

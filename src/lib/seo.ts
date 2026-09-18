@@ -1,4 +1,4 @@
-import { getSiteUrl, SITE_LEGAL_NAME, SITE_NAME } from "./site";
+import { absoluteUrl, getSiteUrl, SITE_LEGAL_NAME, SITE_NAME } from "./site";
 
 export interface Crumb {
   name: string;
@@ -23,6 +23,26 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     name: SITE_NAME,
     url: getSiteUrl(),
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      legalName: SITE_LEGAL_NAME,
+    },
+  };
+}
+
+export function webPageJsonLd(args: { path: string; name: string; description: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: args.name,
+    description: args.description,
+    url: absoluteUrl(args.path),
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: getSiteUrl(),
+    },
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,

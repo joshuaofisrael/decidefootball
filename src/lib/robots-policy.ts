@@ -1,0 +1,62 @@
+import { isFixtureMode, robotsAllowIndexing } from "./compliance";
+
+/** Brand, methodology, and draft legal shells — crawlable while sports fixtures stay blocked. */
+export const EDITORIAL_ROBOTS_ALLOW = [
+  "/about/",
+  "/methodology/",
+  "/privacy/",
+  "/terms/",
+  "/disclaimer/",
+  "/cookies/",
+] as const;
+
+/**
+ * Fixture / sample sports URL prefixes.
+ * `/is-` also covers postbuild pretty copies such as `/is-{slug}-playing-today/`.
+ */
+export const FIXTURE_CONTENT_DISALLOW = [
+  "/players/",
+  "/start-sit/",
+  "/is-playing/",
+  "/is-",
+  "/injuries/",
+  "/rankings/",
+  "/waiver-wire/",
+  "/add-drop/",
+  "/week-",
+  "/health/",
+  "/api/",
+] as const;
+
+export interface RobotsPolicyState {
+  allowIndexing: boolean;
+  fixtureMode: boolean;
+}
+
+export function currentRobotsPolicyState(): RobotsPolicyState {
+  return {
+    allowIndexing: robotsAllowIndexing(),
+    fixtureMode: isFixtureMode(),
+  };
+}
+
+export function buildRobotsRules(state: RobotsPolicyState = currentRobotsPolicyState()): {
+  allow?: string | string[];
+  disallow: string | string[];
+} {
+  if (!state.allowIndexing) {
+    return { disallow: "/" };
+  }
+
+  if (state.fixtureMode) {
+    return {
+      allow: [...EDITORIAL_ROBOTS_ALLOW],
+      disallow: [...FIXTURE_CONTENT_DISALLOW],
+    };
+  }
+
+  return {
+    allow: "/",
+    disallow: ["/api/", "/health/"],
+  };
+}

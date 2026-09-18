@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { FixtureBanner } from "@/components/FixtureBanner";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { DECAY_WEIGHTS, MATCHUP_ADJ_CAP, USAGE_ADJ_CAP } from "@/lib/projections";
 import { MODEL_VERSION } from "@/lib/site";
@@ -9,8 +8,8 @@ import { MODEL_VERSION } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Methodology v0",
   description:
-    "How Decide Football computes weekly estimates. Metrics first. AI explains only when enabled.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE", thin: false })),
+    "How Decide Football computes weekly fantasy estimates. Metrics first. Versioned v0, subject to change, not a backtest.",
+  ...robotsMeta(decideIndexation({ kind: "editorial" })),
 };
 
 export default function MethodologyPage() {
@@ -22,7 +21,6 @@ export default function MethodologyPage() {
           { name: "Methodology", path: "/methodology/" },
         ]}
       />
-      <FixtureBanner />
       <p className="kicker">First-party analysis · {MODEL_VERSION}</p>
       <h1>How projections work (methodology v0)</h1>
       <p>

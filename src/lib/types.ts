@@ -13,6 +13,7 @@ export type GameStatus = "scheduled" | "in_progress" | "final";
 export type UncertaintyLabel = "low" | "med" | "high";
 export type ComparisonType = "start_sit" | "add_drop";
 export type Indexation = "index" | "noindex" | "blocked";
+export type IndexationKind = "sports" | "editorial";
 export type QualityGateStatus = "pass" | "fail" | "pending";
 
 export interface Team {

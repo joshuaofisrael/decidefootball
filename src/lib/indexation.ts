@@ -4,7 +4,7 @@ import {
   isKillSwitchActive,
   sourceIsPublishable,
 } from "./compliance";
-import type { Indexation, SourceClass } from "./types";
+import type { Indexation, IndexationKind, SourceClass } from "./types";
 
 export interface IndexDecision {
   indexation: Indexation;
@@ -12,11 +12,16 @@ export interface IndexDecision {
   reason: string;
 }
 
-export function decideIndexation(args: {
-  sourceClass: SourceClass;
+export interface DecideIndexationArgs {
+  /** Product/editorial pages (About, Methodology). Does not require licensed sports data. */
+  kind?: IndexationKind;
+  /** Sports templates must pass a source class. Ignored for editorial kind. */
+  sourceClass?: SourceClass;
   thin?: boolean;
   draftLegal?: boolean;
-}): IndexDecision {
+}
+
+export function decideIndexation(args: DecideIndexationArgs): IndexDecision {
   if (isKillSwitchActive()) {
     return {
       indexation: "blocked",
@@ -41,7 +46,22 @@ export function decideIndexation(args: {
     };
   }
 
-  if (isFixtureMode() || args.sourceClass === "FIXTURE") {
+  if (args.kind === "editorial") {
+    if (getComplianceGate() !== "GREEN") {
+      return {
+        indexation: "noindex",
+        robots: "noindex,follow",
+        reason: `Editorial pages stay noindex while COMPLIANCE_GATE=${getComplianceGate()}`,
+      };
+    }
+    return {
+      indexation: "index",
+      robots: "index,follow",
+      reason: "Editorial / product page; licensed sports source not required",
+    };
+  }
+
+  if (isFixtureMode() || args.sourceClass === "FIXTURE" || !args.sourceClass) {
     return {
       indexation: "noindex",
       robots: "noindex,follow",

@@ -1,17 +1,13 @@
 import type { MetadataRoute } from "next";
-import { decideIndexation } from "@/lib/indexation";
+import { editorialSitemapEntries } from "@/lib/editorial-urls";
 
 export const dynamic = "force-static";
 
 /**
  * Sitemap includes only indexable URLs.
- * Phase-1 fixture pages and draft legal shells are noindex, so this is empty
- * until licensed GREEN data + quality gates pass.
+ * Fixture sports pages stay out. While sample data is live, that means the
+ * editorial About and Methodology pages only.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const fixture = decideIndexation({ sourceClass: "FIXTURE" });
-  if (fixture.indexation !== "index") {
-    return [];
-  }
-  return [];
+  return editorialSitemapEntries();
 }

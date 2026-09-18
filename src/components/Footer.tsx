@@ -3,6 +3,7 @@ import { INDEPENDENT_MICROCOPY } from "@/lib/compliance";
 import { SITE_LEGAL_NAME, SITE_YEAR } from "@/lib/site";
 
 const legal = [
+  { href: "/about/", label: "About" },
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },
   { href: "/disclaimer/", label: "Disclaimer" },

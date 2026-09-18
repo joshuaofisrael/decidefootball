@@ -41,7 +41,7 @@ This file is the scaffold-phase register. It is not a claim that production page
 4. `last_verified_at` and page `rendered_at` are stored and displayed as different timestamps.
 5. Recommendations are computed from structured fixture metrics. AI explain is off (`AI_EXPLAIN_ENABLED=false`).
 6. `COMPLIANCE_GATE=RED` is a kill switch. Fixture pages stay `noindex` until real GREEN (or counsel-accepted YELLOW) licensed data replaces them.
-7. Sitemap emits only indexable URLs. In this scaffold that list is empty.
+7. Sitemap emits only indexable URLs. Fixture sports URLs stay out. Editorial About and Methodology may be listed when the gate is GREEN.
 
 ## Future licensed ingest (blocked)
 

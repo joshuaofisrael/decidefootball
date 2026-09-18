@@ -16,7 +16,7 @@ A static-export Next.js App Router site that:
 - Renders high-intent decision URLs from **computed fixture metrics**
 - Ships Postgres schema + migration + seed (Prisma) for later licensed ingest — **not required to build or publish**
 - Enforces `COMPLIANCE_GATE=RED|YELLOW|GREEN` at **build** time
-- **noindex**s fixture sports pages and draft legal shells
+- **noindex**s fixture sports pages and draft legal shells; About and Methodology may be indexed as editorial pages
 - Stubs Redis, jobs, licensed ingest, and AI explain (off by default)
 - Does **not** call sports APIs, scrape, or buy anything
 
@@ -104,9 +104,10 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/add-drop/[a]-vs-[b]/` | Same pair rule |
 | `/week-[n]/[pos]-rankings/` | QB/RB/WR/TE (real static file) |
 | `/waiver-wire/week-[n]/` | Fixture priority list |
-| `/methodology/` | v0 estimate methodology |
+| `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
+| `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented) |
-| `/robots.txt` `/sitemap.xml` | Sitemap includes **indexable URLs only** (empty in this phase) |
+| `/robots.txt` `/sitemap.xml` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`). Fixture sports prefixes are disallowed in `robots.txt` |
 | `/health.json` | Build-time health payload |
 
 GitHub Pages cannot emit HTTP 301. Reverse pairs and alias paths are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical` and `noindex`.

@@ -8,6 +8,7 @@ const links = [
   { href: "/week-3/rb-rankings/", label: "Rankings" },
   { href: "/waiver-wire/week-3/", label: "Waivers" },
   { href: "/methodology/", label: "Methodology" },
+  { href: "/about/", label: "About" },
 ];
 
 export function Header() {

@@ -133,8 +133,8 @@ export default function MethodologyPage() {
         <li>Public backtested accuracy claims.</li>
       </ul>
       <p>
-        Licensed ingest waits on Joshua approving API spend. Sample sports pages stay{" "}
-        <em>noindex</em> until then. See the <Link href="/about/">about page</Link> for the
+        Licensed ingest waits on Joshua approving API spend. Sample sports pages stay out of
+        search indexes until then. See the <Link href="/about/">about page</Link> for the
         public product description. Draft legal shells in the footer are unfinished and are not
         offered to search.
       </p>

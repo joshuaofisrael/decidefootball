@@ -1,9 +1,14 @@
 import { isFixtureMode, robotsAllowIndexing } from "./compliance";
 
-/** Brand, methodology, and draft legal shells — crawlable while sports fixtures stay blocked. */
-export const EDITORIAL_ROBOTS_ALLOW = [
-  "/about/",
-  "/methodology/",
+/** Indexable editorial cluster while sports fixtures stay blocked. */
+export const EDITORIAL_ROBOTS_ALLOW = ["/about/", "/methodology/"] as const;
+
+/**
+ * Unfinished legal shells. Page meta is already noindex,follow. Omit them
+ * from both Allow and Disallow in fixture mode so crawlers are not invited
+ * to treat them as indexable inventory, but can still recrawl the noindex tag.
+ */
+export const LEGAL_STUB_PATHS = [
   "/privacy/",
   "/terms/",
   "/disclaimer/",

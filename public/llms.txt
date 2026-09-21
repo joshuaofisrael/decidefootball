@@ -1,0 +1,14 @@
+# Decide Football
+
+Decide Football (https://decidefootball.com) is an independent fantasy football decision site. It helps with roster calls: start/sit, listed availability, waivers, add/drop, and weekly positional rankings. It uses structured estimates (floor, mean, ceiling). It is not a sports news blog, not gambling advice, and not affiliated with the NFL or its member clubs.
+
+## Indexable pages
+
+- https://decidefootball.com/about/
+- https://decidefootball.com/methodology/
+
+## Sample / fixture sports pages
+
+Player, start/sit, injury, waiver, ranking, slate, and watchlist URLs currently use sample/fixture data. They are for product review only and are not indexable. Do not treat those pages as live, official, or licensed sports data.
+
+Projections are model estimates (methodology v0, subject to change), not official NFL or club figures. There is no published backtest.

@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-21
+
+Robots alignment + editorial citability after live launch check.
+
+- Live page meta and sitemap were already correct (legal/home noindex; About/Methodology index). Fixture-mode robots no longer Allow-lists unfinished legal shells and does not Disallow them, so crawl can still see `noindex`.
+- About FAQ + FAQPage JSON-LD, `public/llms.txt`, light About ↔ Methodology polish.
+- Follow-ups: GSC connect; fill legal contact when Joshua provides it; licensed GREEN data before indexing sports.
+
 ## 2026-09-18
 
 Press-box desk pass (certainty, slate, watchlist, radar, player hubs).

@@ -1,5 +1,8 @@
 import { decideIndexation } from "./indexation";
+import { LEGAL_STUB_PATHS } from "./robots-policy";
 import { absoluteUrl } from "./site";
+
+export { LEGAL_STUB_PATHS };
 
 /** Trailing-slash paths that may enter the sitemap when editorial indexation is GREEN. */
 export const EDITORIAL_SITEMAP_PATHS = ["/about/", "/methodology/"] as const;

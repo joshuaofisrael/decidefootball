@@ -36,8 +36,20 @@ jobs:
           grep -q 'https://decidefootball.com/methodology/' out/sitemap.xml
           ! grep -q 'jordan-voss' out/sitemap.xml
           ! grep -q '/players/' out/sitemap.xml
+          ! grep -q '/privacy/' out/sitemap.xml
+          ! grep -q '/terms/' out/sitemap.xml
+          ! grep -q '/disclaimer/' out/sitemap.xml
+          ! grep -q '/cookies/' out/sitemap.xml
           grep -q 'Allow: /about/' out/robots.txt
           grep -q 'Allow: /methodology/' out/robots.txt
+          ! grep -q 'Allow: /privacy/' out/robots.txt
+          ! grep -q 'Allow: /terms/' out/robots.txt
+          ! grep -q 'Allow: /disclaimer/' out/robots.txt
+          ! grep -q 'Allow: /cookies/' out/robots.txt
+          ! grep -q 'Disallow: /privacy/' out/robots.txt
+          ! grep -q 'Disallow: /terms/' out/robots.txt
+          ! grep -q 'Disallow: /disclaimer/' out/robots.txt
+          ! grep -q 'Disallow: /cookies/' out/robots.txt
           grep -q 'Disallow: /players/' out/robots.txt
           grep -q 'Disallow: /start-sit/' out/robots.txt
           grep -q 'Disallow: /is-playing/' out/robots.txt
@@ -46,16 +58,29 @@ jobs:
           grep -q 'Disallow: /slate/' out/robots.txt
           grep -q 'Disallow: /watchlist/' out/robots.txt
           grep -q 'Sitemap: https://decidefootball.com/sitemap.xml' out/robots.txt
+          test -f out/llms.txt
+          grep -q 'https://decidefootball.com/about/' out/llms.txt
+          grep -q 'https://decidefootball.com/methodology/' out/llms.txt
+          grep -q 'not affiliated with the NFL' out/llms.txt
+          grep -q 'sample/fixture' out/llms.txt
           test -f out/slate/index.html
           test -f out/watchlist/index.html
+          grep -q 'content="noindex,follow"' out/index.html
           grep -q 'content="noindex,follow"' out/slate/index.html
           grep -q 'content="noindex,follow"' out/watchlist/index.html
+          grep -q 'content="noindex,follow"' out/privacy/index.html
+          grep -q 'content="noindex,follow"' out/terms/index.html
+          grep -q 'content="noindex,follow"' out/disclaimer/index.html
+          grep -q 'content="noindex,follow"' out/cookies/index.html
           ! grep -q '/slate/' out/sitemap.xml
           ! grep -q '/watchlist/' out/sitemap.xml
           grep -q 'content="index,follow"' out/about/index.html
           grep -q 'content="index,follow"' out/methodology/index.html
           ! grep -q 'noindex' out/about/index.html
           ! grep -q 'noindex' out/methodology/index.html
+          grep -q 'FAQPage' out/about/index.html
+          grep -q 'WebPage' out/about/index.html
+          grep -q 'WebPage' out/methodology/index.html
           grep -q 'content="noindex,follow"' out/start-sit/index.html
           grep -q 'content="noindex,follow"' out/players/index.html
           ! grep -q 'SAMPLE / FIXTURE' out/about/index.html

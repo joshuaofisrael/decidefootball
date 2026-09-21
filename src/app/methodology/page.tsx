@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { DECAY_WEIGHTS, MATCHUP_ADJ_CAP, USAGE_ADJ_CAP } from "@/lib/projections";
-import { MODEL_VERSION } from "@/lib/site";
+import { organizationJsonLd, webPageJsonLd } from "@/lib/seo";
+import { MODEL_VERSION, SITE_NAME } from "@/lib/site";
+
+const title = "Methodology — how Decide Football estimates weekly fantasy decisions";
+const description =
+  "How Decide Football builds start/sit estimates, a certainty score, and waiver urgency. Versioned methodology v0. Model estimates only — not official NFL data, not a backtest.";
 
 export const metadata: Metadata = {
-  title: "Methodology: how the desk computes a week",
-  description:
-    "How Decide Football builds weekly estimates, a certainty score, and waiver urgency. Versioned v0. Not a backtest.",
+  title,
+  description,
   ...robotsMeta(decideIndexation({ kind: "editorial" })),
 };
 
@@ -21,18 +26,31 @@ export default function MethodologyPage() {
           { name: "Methodology", path: "/methodology/" },
         ]}
       />
+      <JsonLd data={organizationJsonLd()} />
+      <JsonLd
+        data={webPageJsonLd({
+          path: "/methodology/",
+          name: title,
+          description,
+        })}
+      />
       <p className="kicker">First-party analysis · {MODEL_VERSION}</p>
       <h1>How the desk computes a week</h1>
       <p>
-        This is a working sketch, not a finished or backtested model. Weights stay labeled
-        placeholders until someone calibrates them. The stamp is <strong>methodology v0,
-        subject to change</strong>.
+        This is the working {SITE_NAME} method for weekly fantasy <em>decisions</em> — start/sit,
+        availability-aware estimates, and waiver urgency. It is a sketch, not a finished or
+        backtested model. Weights stay labeled placeholders until someone calibrates them. The
+        stamp is <strong>methodology v0, subject to change</strong>.
       </p>
       <p>
         The job is narrow. Produce comparable weekly fantasy point estimates so{" "}
         <Link href="/start-sit/">start/sit</Link>, rankings, and add/drop are driven by numbers
         first. A later explain layer may restate those numbers. It may not invent a status, a
         return, or a stat line that was not supplied.
+      </p>
+      <p>
+        Why the product exists, and what is (and is not) offered to search, is on the{" "}
+        <Link href="/about/">about page</Link>.
       </p>
 
       <h2>Inputs</h2>
@@ -115,9 +133,10 @@ export default function MethodologyPage() {
         <li>Public backtested accuracy claims.</li>
       </ul>
       <p>
-        Licensed ingest waits on Joshua approving API spend. See the{" "}
-        <Link href="/disclaimer/">independent disclaimer</Link> and the{" "}
-        <Link href="/about/">about page</Link>.
+        Licensed ingest waits on Joshua approving API spend. Sample sports pages stay{" "}
+        <em>noindex</em> until then. See the <Link href="/about/">about page</Link> for the
+        public product description. Draft legal shells in the footer are unfinished and are not
+        offered to search.
       </p>
     </div>
   );

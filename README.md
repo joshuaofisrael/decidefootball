@@ -108,8 +108,8 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/waiver-wire/week-[n]/` | Waiver radar with urgency |
 | `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
-| `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented) |
-| `/robots.txt` `/sitemap.xml` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`). Fixture sports prefixes are disallowed in `robots.txt` |
+| `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented). `noindex` until placeholders are gone |
+| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`). Fixture sports prefixes and unfinished legal shells are disallowed in fixture-mode `robots.txt` |
 | `/health.json` | Build-time health payload |
 
 GitHub Pages cannot emit HTTP 301. Reverse pairs and alias paths are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical` and `noindex`.

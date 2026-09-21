@@ -4,7 +4,10 @@ import {
   buildRobotsRules,
   EDITORIAL_ROBOTS_ALLOW,
   FIXTURE_CONTENT_DISALLOW,
+  LEGAL_STUB_DISALLOW,
 } from "./robots-policy";
+
+const LEGAL_STUBS = ["/privacy/", "/terms/", "/disclaimer/", "/cookies/"] as const;
 
 describe("buildRobotsRules", () => {
   it("disallows the whole site when the gate forbids indexing", () => {
@@ -13,10 +16,11 @@ describe("buildRobotsRules", () => {
     assert.equal(rules.disallow, "/");
   });
 
-  it("blocks fixture prefixes and allows editorial paths in fixture mode", () => {
+  it("blocks fixture prefixes and unfinished legal shells in fixture mode", () => {
     const rules = buildRobotsRules({ allowIndexing: true, fixtureMode: true });
     assert.deepEqual(rules.allow, [...EDITORIAL_ROBOTS_ALLOW]);
-    assert.deepEqual(rules.disallow, [...FIXTURE_CONTENT_DISALLOW]);
+    assert.deepEqual(rules.disallow, [...FIXTURE_CONTENT_DISALLOW, ...LEGAL_STUB_DISALLOW]);
+    const allow = rules.allow as string[];
     const disallow = rules.disallow as string[];
     for (const prefix of [
       "/players/",
@@ -35,8 +39,13 @@ describe("buildRobotsRules", () => {
     ]) {
       assert.ok(disallow.includes(prefix), `missing disallow ${prefix}`);
     }
-    assert.ok((rules.allow as string[]).includes("/about/"));
-    assert.ok((rules.allow as string[]).includes("/methodology/"));
+    assert.deepEqual(allow, ["/about/", "/methodology/"]);
+    assert.ok(allow.includes("/about/"));
+    assert.ok(allow.includes("/methodology/"));
+    for (const stub of LEGAL_STUBS) {
+      assert.ok(!allow.includes(stub), `legal stub must not be Allow-listed: ${stub}`);
+      assert.ok(disallow.includes(stub), `legal stub must be Disallowed in fixture mode: ${stub}`);
+    }
   });
 
   it("restores a broad allow outside fixture mode", () => {

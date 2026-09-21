@@ -6,6 +6,8 @@ import { SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Use (draft)",
+  description:
+    "Draft terms of use for Decide Football. Unfinished operator inputs remain; this page is not offered for search indexing.",
   ...robotsMeta(decideIndexation({ sourceClass: "GREEN", draftLegal: true })),
 };
 

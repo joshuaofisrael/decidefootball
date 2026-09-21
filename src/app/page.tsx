@@ -25,7 +25,6 @@ export const metadata: Metadata = {
   title: "Decide Football: start, sit, and the Sunday card",
   description:
     "Independent fantasy desk for start/sit, availability, waivers, and rankings. Structured estimates. Not a sports news blog. Not NFL-affiliated. Not gambling.",
-  // Fixture hub: stay noindex even while humans use the Sunday card UI.
   ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
 };
 

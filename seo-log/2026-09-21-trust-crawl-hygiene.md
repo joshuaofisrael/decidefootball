@@ -1,37 +1,34 @@
-# 2026-09-21 — Trust + crawl hygiene + AI citability
+# 2026-09-21 — Robots alignment + editorial citability
 
 **Date:** 21 September 2026 (Europe/London)  
 **Site:** decidefootball.com (Joshua Israel Ventures LLC)  
-**Action:** Highest-EV SEO change for this phase. No new fantasy article. No fixture indexing.
+**Action:** Highest-EV SEO change after live launch check. No new fantasy article. No fixture indexing.
 
-## Data reviewed
+## Data reviewed (live, 21 Sep 2026)
 
-- Live site HTTPS 200; GitHub Pages `https_enforced` true.
-- `robots.txt` allowed `/about/`, `/methodology/`, **and** unfinished legal shells (`/privacy/`, `/terms/`, `/disclaimer/`, `/cookies/`).
-- `sitemap.xml` listed only `/about/` and `/methodology/` (kept).
-- About + Methodology were already indexable from the 18 Sep crawl-hygiene pass.
-- No Search Console, GA4, or Cloudflare analytics — no query data.
-- Live `/privacy/` (and the other legal shells) still contain many `NEED JOSHUA INPUT` placeholders.
-- Homepage still presents SAMPLE/FIXTURE fantasy UI.
+- Homepage, `/privacy/`, `/terms/`, `/disclaimer/`, `/cookies/` already emit `noindex,follow`.
+- `/about/` and `/methodology/` already emit `index,follow`.
+- Sitemap already lists About + Methodology only.
+- Live `robots.txt` still Allow-listed unfinished legal shells alongside About and Methodology.
+- Legal pages still contain `NEED JOSHUA INPUT` placeholders. No GSC/GA4 query data.
 
 ## Why this action
 
-Allow-listing unfinished legal stubs invited Google to index placeholder contact copy. That is a trust loss, and there is no query data to justify a new article. The next useful move is to harden crawl policy around the two real editorial URLs and make those pages easier for search and AI systems to cite accurately.
+Page meta and sitemap were already correct. The remaining trust leak was robots inviting crawl of unfinished legal shells. Align robots with page meta, then add citability on the two indexable URLs (FAQ + `llms.txt`) without touching fixture indexation or inventing contact details.
 
 ## What changed
 
-- Draft legal shells stay `noindex,follow` at page metadata. They are no longer Allow-listed in fixture-mode `robots.txt`; they are Disallowed instead. Contact emails and addresses were not invented.
-- Root `/` and fixture product routes remain `noindex,follow`. Humans can still use the UI. Homepage is not in the sitemap.
-- `/about/` and `/methodology/` titles/descriptions tightened to decision-site intent (not NFL news). About ↔ Methodology links both ways. About adds a short factual FAQ plus FAQPage JSON-LD. Both pages emit WebPage + Organization JSON-LD (BreadcrumbList was already on the crumbs).
-- Added `public/llms.txt` pointing AI crawlers at About and Methodology, stating fixtures are sample/non-indexable and the site is not NFL-affiliated.
-- Sitemap still lists only `/about/` and `/methodology/`.
-- Tests and CI assert legal noindex, editorial index, fixture blocks, sitemap paths, and `llms.txt`.
+- Fixture-mode `robots.txt` Allow list is now only `/about/` and `/methodology/`. Unfinished legal shells are omitted from both Allow and Disallow so crawlers are not invited to index them but can still recrawl the existing `noindex` tag. Legal page metadata was left as-is.
+- `/about/` FAQ (What is Decide Football? NFL affiliation? Are projections official? When will player pages be indexed?) plus matching FAQPage JSON-LD. Accurate answers only; no backtest claims.
+- `public/llms.txt` points AI crawlers at About and Methodology, states fixtures are sample/non-indexable, not NFL-affiliated.
+- Light About ↔ Methodology title/description and internal-link polish.
+- Tests/CI assert robots omit legal from Allow and Disallow, sitemap stays editorial-only, FAQ/`llms.txt` ship.
 
 Ads remain gated/off. LLC branding remains footer-only in visible chrome.
 
 ## Follow-ups
 
 1. Connect Google Search Console (and submit the sitemap) when Joshua is ready. No property data yet.
-2. Fill legal contact / address / counsel items when Joshua provides them. Only then remove `draftLegal` noindex and the legal Disallow (do not invent those fields).
+2. Fill legal contact / address / counsel items when Joshua provides them. Only then Allow-list those URLs and lift `draftLegal` noindex (do not invent those fields).
 3. Do not index player / start-sit / injury / ranking URLs until licensed GREEN sports data replaces fixtures.
 4. Ads stay off. Do not set `NEXT_PUBLIC_ADS_ENABLED`.

@@ -2,11 +2,10 @@
 
 ## 2026-09-21
 
-Trust + crawl hygiene + AI citability for the editorial cluster.
+Robots alignment + editorial citability after live launch check.
 
-- Legal stubs (`/privacy/`, `/terms/`, `/disclaimer/`, `/cookies/`) stay `noindex,follow` and are Disallowed in fixture-mode robots. They are not in the sitemap.
-- About and Methodology remain the only indexable URLs. Titles/descriptions, About ↔ Methodology links, WebPage/Organization/FAQ JSON-LD, and `public/llms.txt` added.
-- Homepage and fixture sports routes stay `noindex`. Tests/CI cover the split.
+- Live page meta and sitemap were already correct (legal/home noindex; About/Methodology index). Fixture-mode robots no longer Allow-lists unfinished legal shells and does not Disallow them, so crawl can still see `noindex`.
+- About FAQ + FAQPage JSON-LD, `public/llms.txt`, light About ↔ Methodology polish.
 - Follow-ups: GSC connect; fill legal contact when Joshua provides it; licensed GREEN data before indexing sports.
 
 ## 2026-09-18

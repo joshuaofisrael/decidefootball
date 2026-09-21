@@ -46,10 +46,10 @@ jobs:
           ! grep -q 'Allow: /terms/' out/robots.txt
           ! grep -q 'Allow: /disclaimer/' out/robots.txt
           ! grep -q 'Allow: /cookies/' out/robots.txt
-          grep -q 'Disallow: /privacy/' out/robots.txt
-          grep -q 'Disallow: /terms/' out/robots.txt
-          grep -q 'Disallow: /disclaimer/' out/robots.txt
-          grep -q 'Disallow: /cookies/' out/robots.txt
+          ! grep -q 'Disallow: /privacy/' out/robots.txt
+          ! grep -q 'Disallow: /terms/' out/robots.txt
+          ! grep -q 'Disallow: /disclaimer/' out/robots.txt
+          ! grep -q 'Disallow: /cookies/' out/robots.txt
           grep -q 'Disallow: /players/' out/robots.txt
           grep -q 'Disallow: /start-sit/' out/robots.txt
           grep -q 'Disallow: /is-playing/' out/robots.txt

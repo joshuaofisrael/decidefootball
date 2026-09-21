@@ -4,11 +4,11 @@ import { isFixtureMode, robotsAllowIndexing } from "./compliance";
 export const EDITORIAL_ROBOTS_ALLOW = ["/about/", "/methodology/"] as const;
 
 /**
- * Draft legal shells with unfinished placeholders. Humans can still open the
- * pages; they stay out of the Allow list and are Disallowed in fixture mode
- * so Google is not invited to index stub Privacy/Terms copy.
+ * Unfinished legal shells. Page meta is already noindex,follow. Omit them
+ * from both Allow and Disallow in fixture mode so crawlers are not invited
+ * to treat them as indexable inventory, but can still recrawl the noindex tag.
  */
-export const LEGAL_STUB_DISALLOW = [
+export const LEGAL_STUB_PATHS = [
   "/privacy/",
   "/terms/",
   "/disclaimer/",
@@ -58,7 +58,7 @@ export function buildRobotsRules(state: RobotsPolicyState = currentRobotsPolicyS
   if (state.fixtureMode) {
     return {
       allow: [...EDITORIAL_ROBOTS_ALLOW],
-      disallow: [...FIXTURE_CONTENT_DISALLOW, ...LEGAL_STUB_DISALLOW],
+      disallow: [...FIXTURE_CONTENT_DISALLOW],
     };
   }
 

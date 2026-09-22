@@ -1,7 +1,7 @@
 import { isFixtureMode, robotsAllowIndexing } from "./compliance";
 
 /** Indexable editorial cluster while sports fixtures stay blocked. */
-export const EDITORIAL_ROBOTS_ALLOW = ["/about/", "/methodology/"] as const;
+export const EDITORIAL_ROBOTS_ALLOW = ["/about/", "/methodology/", "/guide/start-sit/"] as const;
 
 /**
  * Unfinished legal shells. Page meta is already noindex,follow. Omit them

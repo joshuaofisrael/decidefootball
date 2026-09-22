@@ -96,7 +96,8 @@ export default function MethodologyPage() {
       </ul>
       <p>
         Bands: thin, lean, clear, strong. Read them next to the status labels, not instead of
-        them.
+        them. How to weigh floor against ceiling, and what a narrow mean gap is worth, is the{" "}
+        <Link href="/guide/start-sit/">start/sit reading guide</Link>.
       </p>
 
       <h2>Waiver radar</h2>

@@ -4,6 +4,7 @@ import { SITE_LEGAL_NAME, SITE_YEAR } from "@/lib/site";
 
 const legal = [
   { href: "/about/", label: "About" },
+  { href: "/guide/start-sit/", label: "Start/sit guide" },
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },
   { href: "/disclaimer/", label: "Disclaimer" },

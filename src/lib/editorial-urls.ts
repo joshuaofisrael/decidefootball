@@ -5,7 +5,7 @@ import { absoluteUrl } from "./site";
 export { LEGAL_STUB_PATHS };
 
 /** Trailing-slash paths that may enter the sitemap when editorial indexation is GREEN. */
-export const EDITORIAL_SITEMAP_PATHS = ["/about/", "/methodology/"] as const;
+export const EDITORIAL_SITEMAP_PATHS = ["/about/", "/methodology/", "/guide/start-sit/"] as const;
 
 export function editorialSitemapEntries(): { url: string }[] {
   const decision = decideIndexation({ kind: "editorial" });

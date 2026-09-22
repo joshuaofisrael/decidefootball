@@ -69,6 +69,8 @@ export default function HomePage() {
             <Link href="/start-sit/">All pairs</Link>
             {" · "}
             <Link href="/methodology/">How the mean is built</Link>
+            {" · "}
+            <Link href="/guide/start-sit/">How to read the card</Link>
           </p>
         </article>
       ) : null}

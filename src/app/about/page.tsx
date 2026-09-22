@@ -97,6 +97,8 @@ export default function AboutPage() {
         How those numbers are computed is written down on the{" "}
         <Link href="/methodology/">methodology</Link> page. It is versioned, labeled v0, and
         subject to change. There is no backtest published here, and none should be inferred.
+        How to read a finished start/sit card — listed status, the mean, floor and ceiling, and
+        the certainty band — is the <Link href="/guide/start-sit/">start/sit reading guide</Link>.
       </p>
 
       <h2>What this site is not</h2>
@@ -119,8 +121,9 @@ export default function AboutPage() {
       <h2>Data, and what is public in search</h2>
       <p>
         Decision tools are on the site so the product can be used and reviewed. Until licensed
-        sports data is in place, sample sports pages stay out of search indexes. This About page
-        and the <Link href="/methodology/">methodology</Link> page are the public, indexable
+        sports data is in place, sample sports pages stay out of search indexes. This About page,
+        the <Link href="/methodology/">methodology</Link> page, and the{" "}
+        <Link href="/guide/start-sit/">start/sit reading guide</Link> are the public, indexable
         description of the product.
       </p>
       <p>

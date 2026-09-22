@@ -6,6 +6,7 @@ import {
   LEGAL_STUB_PATHS,
 } from "./editorial-urls";
 import { decideIndexation } from "./indexation";
+import { EDITORIAL_ROBOTS_ALLOW, FIXTURE_CONTENT_DISALLOW } from "./robots-policy";
 
 describe("decideIndexation", () => {
   it("noindexes fixture sports pages even when the gate is GREEN", () => {
@@ -39,16 +40,29 @@ describe("decideIndexation", () => {
 });
 
 describe("editorialSitemapEntries", () => {
-  it("lists about and methodology as absolute trailing-slash URLs", () => {
+  it("lists the editorial cluster as absolute trailing-slash URLs", () => {
     const entries = editorialSitemapEntries();
     const urls = entries.map((row) => row.url);
-    assert.deepEqual(EDITORIAL_SITEMAP_PATHS.slice(), ["/about/", "/methodology/"]);
+    assert.deepEqual(EDITORIAL_SITEMAP_PATHS.slice(), [
+      "/about/",
+      "/methodology/",
+      "/guide/start-sit/",
+    ]);
+    assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
     assert.ok(urls.some((url) => url.endsWith("/about/")));
     assert.ok(urls.some((url) => url.endsWith("/methodology/")));
-    assert.equal(entries.length, 2);
+    assert.ok(urls.some((url) => url.endsWith("/guide/start-sit/")));
+    assert.equal(entries.length, 3);
     for (const url of urls) {
       assert.match(url, /^https?:\/\//);
-      assert.ok(!url.includes("/players/"));
+      const path = new URL(url).pathname;
+      for (const prefix of FIXTURE_CONTENT_DISALLOW) {
+        assert.equal(
+          path.startsWith(prefix),
+          false,
+          `${path} must not match fixture prefix ${prefix}`,
+        );
+      }
       assert.ok(!url.includes("jordan-voss"));
       for (const stub of LEGAL_STUB_PATHS) {
         assert.ok(!url.includes(stub), `sitemap must not include legal stub ${stub}`);

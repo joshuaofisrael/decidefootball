@@ -13,7 +13,7 @@ export interface IndexDecision {
 }
 
 export interface DecideIndexationArgs {
-  /** Product/editorial pages (About, Methodology). Does not require licensed sports data. */
+  /** Product/editorial pages (About, Methodology, start/sit guide). Does not require licensed sports data. */
   kind?: IndexationKind;
   /** Sports templates must pass a source class. Ignored for editorial kind. */
   sourceClass?: SourceClass;

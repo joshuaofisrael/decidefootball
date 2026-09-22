@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 /**
  * Sitemap includes only indexable URLs.
  * Fixture sports pages stay out. While sample data is live, that means the
- * editorial About and Methodology pages only.
+ * editorial pages only: About, Methodology, and the start/sit reading guide.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return editorialSitemapEntries();

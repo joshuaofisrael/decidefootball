@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-22
+
+Third indexable URL: `/guide/start-sit/`, a reading guide for this desk's start/sit card.
+
+- Editorial `index,follow` only. Fixture sports prefixes stay disallowed and out of the sitemap. Legal stubs stay omitted from Allow and Disallow.
+- About, Methodology, `llms.txt`, and the footer link the new page. No fixture URL was flipped to index.
+- Follow-ups: GSC still required before this can be measured. Licensed GREEN data before any sports URL is indexed.
+
 ## 2026-09-21
 
 Robots alignment + editorial citability after live launch check.

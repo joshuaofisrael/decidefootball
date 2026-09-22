@@ -14,7 +14,7 @@ describe("buildRobotsRules", () => {
     assert.equal(rules.disallow, "/");
   });
 
-  it("allows only About and Methodology in fixture mode", () => {
+  it("allows only the editorial cluster in fixture mode", () => {
     const rules = buildRobotsRules({ allowIndexing: true, fixtureMode: true });
     assert.deepEqual(rules.allow, [...EDITORIAL_ROBOTS_ALLOW]);
     assert.deepEqual(rules.disallow, [...FIXTURE_CONTENT_DISALLOW]);
@@ -37,7 +37,7 @@ describe("buildRobotsRules", () => {
     ]) {
       assert.ok(disallow.includes(prefix), `missing disallow ${prefix}`);
     }
-    assert.deepEqual(allow, ["/about/", "/methodology/"]);
+    assert.deepEqual(allow, ["/about/", "/methodology/", "/guide/start-sit/"]);
     for (const stub of LEGAL_STUB_PATHS) {
       assert.ok(!allow.includes(stub), `legal stub must not be Allow-listed: ${stub}`);
       assert.ok(

@@ -29,11 +29,14 @@ jobs:
           test -f out/sitemap.xml
           test -f out/about/index.html
           test -f out/methodology/index.html
+          test -f out/guide/start-sit/index.html
           test -f out/is-jordan-voss-playing-today/index.html
           test -f out/week-3/rb-rankings/index.html
           test -f out/start-sit/noah-crowe-vs-jordan-voss/index.html
           grep -q 'https://decidefootball.com/about/' out/sitemap.xml
           grep -q 'https://decidefootball.com/methodology/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/guide/start-sit/' out/sitemap.xml
+          ! grep -q 'https://decidefootball.com/start-sit/' out/sitemap.xml
           ! grep -q 'jordan-voss' out/sitemap.xml
           ! grep -q '/players/' out/sitemap.xml
           ! grep -q '/privacy/' out/sitemap.xml
@@ -42,6 +45,7 @@ jobs:
           ! grep -q '/cookies/' out/sitemap.xml
           grep -q 'Allow: /about/' out/robots.txt
           grep -q 'Allow: /methodology/' out/robots.txt
+          grep -q 'Allow: /guide/start-sit/' out/robots.txt
           ! grep -q 'Allow: /privacy/' out/robots.txt
           ! grep -q 'Allow: /terms/' out/robots.txt
           ! grep -q 'Allow: /disclaimer/' out/robots.txt
@@ -61,6 +65,7 @@ jobs:
           test -f out/llms.txt
           grep -q 'https://decidefootball.com/about/' out/llms.txt
           grep -q 'https://decidefootball.com/methodology/' out/llms.txt
+          grep -q 'https://decidefootball.com/guide/start-sit/' out/llms.txt
           grep -q 'not affiliated with the NFL' out/llms.txt
           grep -q 'sample/fixture' out/llms.txt
           test -f out/slate/index.html
@@ -76,16 +81,22 @@ jobs:
           ! grep -q '/watchlist/' out/sitemap.xml
           grep -q 'content="index,follow"' out/about/index.html
           grep -q 'content="index,follow"' out/methodology/index.html
+          grep -q 'content="index,follow"' out/guide/start-sit/index.html
           ! grep -q 'noindex' out/about/index.html
           ! grep -q 'noindex' out/methodology/index.html
+          ! grep -q 'noindex' out/guide/start-sit/index.html
           grep -q 'FAQPage' out/about/index.html
+          grep -q 'FAQPage' out/guide/start-sit/index.html
           grep -q 'WebPage' out/about/index.html
           grep -q 'WebPage' out/methodology/index.html
+          grep -q 'WebPage' out/guide/start-sit/index.html
           grep -q 'content="noindex,follow"' out/start-sit/index.html
           grep -q 'content="noindex,follow"' out/players/index.html
           ! grep -q 'SAMPLE / FIXTURE' out/about/index.html
           ! grep -q 'jordan-voss' out/about/index.html
           ! grep -q 'SAMPLE / FIXTURE' out/methodology/index.html
+          ! grep -q 'SAMPLE / FIXTURE' out/guide/start-sit/index.html
+          ! grep -q 'jordan-voss' out/guide/start-sit/index.html
           grep -qx 'decidefootball.com' out/CNAME
           test -f out/ads.txt
           ! grep -q '^google.com,' out/ads.txt

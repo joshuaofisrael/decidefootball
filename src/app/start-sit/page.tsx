@@ -59,6 +59,8 @@ export default function StartSitIndexPage() {
         })}
       </div>
       <p>
+        <Link href="/guide/start-sit/">How to read the card</Link>
+        {" · "}
         <Link href="/slate/">Week slate</Link>
         {" · "}
         <Link href="/methodology/">Certainty math</Link>

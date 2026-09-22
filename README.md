@@ -107,9 +107,10 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/watchlist/` | localStorage watchlist (fixture names, noindex) |
 | `/waiver-wire/week-[n]/` | Waiver radar with urgency |
 | `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
+| `/guide/start-sit/` | How to read a start/sit card (editorial; indexable when the gate is GREEN). Not under the fixture `/start-sit/` tree |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented). Page meta is `noindex` until placeholders are gone |
-| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`). Fixture sports prefixes are disallowed. Unfinished legal shells are omitted from fixture-mode Allow (not Disallowed) so crawlers can see page `noindex` |
+| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`, `/guide/start-sit/`). Fixture sports prefixes are disallowed. Unfinished legal shells are omitted from fixture-mode Allow (not Disallowed) so crawlers can see page `noindex` |
 | `/health.json` | Build-time health payload |
 
 GitHub Pages cannot emit HTTP 301. Reverse pairs and alias paths are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical` and `noindex`.

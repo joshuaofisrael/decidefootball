@@ -47,12 +47,18 @@ describe("editorialSitemapEntries", () => {
       "/about/",
       "/methodology/",
       "/guide/start-sit/",
+      "/guide/waiver-radar/",
     ]);
     assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
     assert.ok(urls.some((url) => url.endsWith("/about/")));
     assert.ok(urls.some((url) => url.endsWith("/methodology/")));
     assert.ok(urls.some((url) => url.endsWith("/guide/start-sit/")));
-    assert.equal(entries.length, 3);
+    assert.ok(urls.some((url) => url.endsWith("/guide/waiver-radar/")));
+    assert.equal(entries.length, 4);
+    assert.equal(
+      urls.some((url) => url.includes("/waiver-wire/")),
+      false,
+    );
     for (const url of urls) {
       assert.match(url, /^https?:\/\//);
       const path = new URL(url).pathname;

@@ -181,6 +181,9 @@ export default function StartSitGuidePage() {
       <p>
         The public description of the desk is this guide, the{" "}
         <Link href="/methodology/">methodology</Link>, and the <Link href="/about/">about page</Link>.
+        Waiver urgency uses the same estimates. How to read hot, rising, stash, and fade — and
+        why that tag is not a free-agent claim — is the{" "}
+        <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
       </p>
 
       <h2>Questions</h2>

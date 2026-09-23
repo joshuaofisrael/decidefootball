@@ -16,8 +16,21 @@ import { nowIso } from "@/lib/timestamps";
 
 export const dynamicParams = false;
 
+/**
+ * The public path is `/waiver-wire/week-3/`. A folder named `week-[week]` is
+ * not a strict dynamic segment, so static export never filled `week` and the
+ * page 404'd. The segment value is the full slug `week-N`.
+ */
 export function generateStaticParams() {
-  return [{ week: String(FIXTURE_WEEK) }];
+  return [{ week: `week-${FIXTURE_WEEK}` }];
+}
+
+function waiverWeekNumber(segment: string): number | null {
+  const match = /^week-(\d{1,2})$/.exec(segment);
+  if (!match) return null;
+  const weekNum = Number(match[1]);
+  if (!Number.isInteger(weekNum) || weekNum < 1 || weekNum > 18) return null;
+  return weekNum;
 }
 
 export async function generateMetadata({
@@ -26,9 +39,10 @@ export async function generateMetadata({
   params: Promise<{ week: string }>;
 }): Promise<Metadata> {
   const { week } = await params;
+  const weekNum = waiverWeekNumber(week);
   return {
-    title: `Waiver radar, week ${week}`,
-    description: `Fixture waiver radar for week ${week}: hot, rising, stash, or fade. Estimates only.`,
+    title: `Waiver radar, week ${weekNum ?? "sample"}`,
+    description: `Fixture waiver radar for week ${weekNum ?? "sample"}: hot, rising, stash, or fade. Estimates only.`,
     ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
   };
 }
@@ -39,8 +53,8 @@ export default async function WaiverWeekPage({
   params: Promise<{ week: string }>;
 }) {
   const { week } = await params;
-  const weekNum = Number(week);
-  if (!Number.isInteger(weekNum) || weekNum < 1 || weekNum > 18) notFound();
+  const weekNum = waiverWeekNumber(week);
+  if (weekNum == null) notFound();
 
   const format = getDefaultFormat();
   const ranks = getWaiverRadar(weekNum, format);
@@ -59,7 +73,8 @@ export default async function WaiverWeekPage({
       <h1>Waiver radar, week {weekNum}</h1>
       <p>
         Urgency from fixture estimates, usage change, and listed status. Not a claim that any
-        name is available on a host platform. No OAuth.
+        name is available on a host platform. No OAuth.{" "}
+        <Link href="/guide/waiver-radar/">How to read the tags</Link>.
       </p>
       <Timestamps lastVerifiedAt={FIXTURE_VERIFIED_AT} renderedAt={renderedAt} />
       <KillSwitchNotice>

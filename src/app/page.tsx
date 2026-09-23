@@ -88,6 +88,8 @@ export default function HomePage() {
           <p>Urgency first. Hot, rising, stash, or fade. Not a platform waiver claim.</p>
           <p>
             <Link href="/waiver-wire/week-3/">Week 3 radar</Link>
+            {" · "}
+            <Link href="/guide/waiver-radar/">How to read the tags</Link>
           </p>
         </article>
         <article className="card">

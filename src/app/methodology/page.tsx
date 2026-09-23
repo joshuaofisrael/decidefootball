@@ -104,7 +104,8 @@ export default function MethodologyPage() {
       <p>
         The <Link href="/waiver-wire/week-3/">waiver board</Link> adds an urgency tag (hot,
         rising, stash, fade) from the same estimates plus snap-share change and listed status.
-        It is not a claim that a name is available on any host platform.
+        It is not a claim that a name is available on any host platform. How to read those four
+        tags is the <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
       </p>
 
       <h2>Format</h2>

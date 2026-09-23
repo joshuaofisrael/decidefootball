@@ -37,7 +37,26 @@ describe("buildRobotsRules", () => {
     ]) {
       assert.ok(disallow.includes(prefix), `missing disallow ${prefix}`);
     }
-    assert.deepEqual(allow, ["/about/", "/methodology/", "/guide/start-sit/"]);
+    assert.deepEqual(allow, [
+      "/about/",
+      "/methodology/",
+      "/guide/start-sit/",
+      "/guide/waiver-radar/",
+    ]);
+    for (const path of allow) {
+      for (const prefix of disallow) {
+        assert.equal(
+          path.startsWith(prefix),
+          false,
+          `${path} must not fall under disallow ${prefix}`,
+        );
+      }
+    }
+    assert.ok(disallow.includes("/waiver-wire/"));
+    assert.equal(
+      allow.some((path) => path.startsWith("/waiver-wire/")),
+      false,
+    );
     for (const stub of LEGAL_STUB_PATHS) {
       assert.ok(!allow.includes(stub), `legal stub must not be Allow-listed: ${stub}`);
       assert.ok(

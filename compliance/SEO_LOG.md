@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-24
+
+Fifth indexable URL: `/guide/listed-status/`, a reading guide for this desk's listed availability.
+
+- Editorial `index,follow` only. Fixture sports prefixes stay disallowed and out of the sitemap, including `/is-playing/`, `/is-`, and `/injuries/`. Legal stubs stay omitted from Allow and Disallow.
+- About, Methodology, the start/sit guide, the waiver radar guide, `llms.txt`, and the footer link the new page. Sample is-playing and injury pages link to the guide and stay `noindex`.
+- Follow-ups: GSC still required before this can be measured. Licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT.
+
 ## 2026-09-23
 
 Fourth indexable URL: `/guide/waiver-radar/`, a reading guide for this desk's waiver urgency tags.

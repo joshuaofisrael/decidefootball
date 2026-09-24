@@ -87,6 +87,11 @@ export default function StartSitGuidePage() {
         If the status and the mean disagree, believe the status. A healthy-looking mean on a
         player listed OUT is a zero for the week. The card is telling you the gate fired.
       </p>
+      <p>
+        What each designation means on this desk — Healthy, Questionable, Doubtful, OUT, IR, and
+        INACTIVE — is the <Link href="/guide/listed-status/">listed status guide</Link>. This
+        card still ranks on the mean. The label is read first.
+      </p>
 
       <h2>Mean is the ranking number</h2>
       <p>

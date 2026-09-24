@@ -96,6 +96,8 @@ export default async function IsPlayingPage({
         {" · "}
         <Link href={`/injuries/${player.slug}/`}>Injury page</Link>
         {" · "}
+        <Link href="/guide/listed-status/">How to read the status</Link>
+        {" · "}
         <Link href="/methodology/">Methodology</Link>
       </p>
     </div>

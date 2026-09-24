@@ -141,6 +141,11 @@ export default function WaiverRadarGuidePage() {
         status, not a cleared start. The designation is an input someone listed. The tag does
         not vote a new one into existence.
       </p>
+      <p>
+        What each designation means before a tag is printed is the{" "}
+        <Link href="/guide/listed-status/">listed status guide</Link>. The tag does not replace
+        that label.
+      </p>
 
       <h2>Not a free-agent list</h2>
       <p>

@@ -97,6 +97,8 @@ export default function HomePage() {
           <p>Status from the fixture row. The model does not guess a designation.</p>
           <p>
             <Link href="/is-playing/">Is he playing</Link>
+            {" · "}
+            <Link href="/guide/listed-status/">How to read the status</Link>
           </p>
         </article>
       </div>

@@ -48,15 +48,25 @@ describe("editorialSitemapEntries", () => {
       "/methodology/",
       "/guide/start-sit/",
       "/guide/waiver-radar/",
+      "/guide/listed-status/",
     ]);
     assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
     assert.ok(urls.some((url) => url.endsWith("/about/")));
     assert.ok(urls.some((url) => url.endsWith("/methodology/")));
     assert.ok(urls.some((url) => url.endsWith("/guide/start-sit/")));
     assert.ok(urls.some((url) => url.endsWith("/guide/waiver-radar/")));
-    assert.equal(entries.length, 4);
+    assert.ok(urls.some((url) => url.endsWith("/guide/listed-status/")));
+    assert.equal(entries.length, 5);
     assert.equal(
       urls.some((url) => url.includes("/waiver-wire/")),
+      false,
+    );
+    assert.equal(
+      urls.some((url) => url.includes("/is-playing/") || url.includes("/is-")),
+      false,
+    );
+    assert.equal(
+      urls.some((url) => url.includes("/injuries/")),
       false,
     );
     for (const url of urls) {

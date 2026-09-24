@@ -10,6 +10,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/methodology/",
   "/guide/start-sit/",
   "/guide/waiver-radar/",
+  "/guide/listed-status/",
 ] as const;
 
 export function editorialSitemapEntries(): { url: string }[] {

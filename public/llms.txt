@@ -8,6 +8,7 @@ Decide Football (https://decidefootball.com) is an independent fantasy football 
 - https://decidefootball.com/methodology/
 - https://decidefootball.com/guide/start-sit/ — How to read this desk's start/sit card: listed status first, mean as the ranking number, floor and ceiling as a model range, and certainty as a desk grade rather than a win probability.
 - https://decidefootball.com/guide/waiver-radar/ — How to read this desk's waiver radar tags (hot, rising, stash, fade): same estimates plus snap-share change and listed status, not a claim the player is free on any host platform.
+- https://decidefootball.com/guide/listed-status/ — How to read this desk's listed availability (Healthy, Questionable, Doubtful, OUT, IR, INACTIVE): status before the projection mean, a soft discount versus a hard zero, not an official injury report or a return date.
 
 ## Sample / fixture sports pages
 

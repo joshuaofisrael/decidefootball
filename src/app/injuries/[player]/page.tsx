@@ -78,6 +78,8 @@ export default async function InjuryPage({
         {" · "}
         <Link href="/is-playing/">Full availability board</Link>
         {" · "}
+        <Link href="/guide/listed-status/">How to read the status</Link>
+        {" · "}
         <Link href="/methodology/">Methodology</Link>
       </p>
     </div>

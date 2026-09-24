@@ -42,6 +42,7 @@ describe("buildRobotsRules", () => {
       "/methodology/",
       "/guide/start-sit/",
       "/guide/waiver-radar/",
+      "/guide/listed-status/",
     ]);
     for (const path of allow) {
       for (const prefix of disallow) {
@@ -53,8 +54,21 @@ describe("buildRobotsRules", () => {
       }
     }
     assert.ok(disallow.includes("/waiver-wire/"));
+    assert.ok(disallow.includes("/is-playing/"));
+    assert.ok(disallow.includes("/is-"));
+    assert.ok(disallow.includes("/injuries/"));
     assert.equal(
       allow.some((path) => path.startsWith("/waiver-wire/")),
+      false,
+    );
+    assert.equal(allow.includes("/guide/listed-status/"), true);
+    assert.equal(
+      allow.some(
+        (path) =>
+          path.startsWith("/is-playing/") ||
+          path.startsWith("/is-") ||
+          path.startsWith("/injuries/"),
+      ),
       false,
     );
     for (const stub of LEGAL_STUB_PATHS) {

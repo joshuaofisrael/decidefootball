@@ -16,7 +16,7 @@ A static-export Next.js App Router site that:
 - Renders high-intent decision URLs from **computed fixture metrics**
 - Ships Postgres schema + migration + seed (Prisma) for later licensed ingest — **not required to build or publish**
 - Enforces `COMPLIANCE_GATE=RED|YELLOW|GREEN` at **build** time
-- **noindex**s fixture sports pages and draft legal shells; About and Methodology may be indexed as editorial pages
+- **noindex**s fixture sports pages and draft legal shells; About, Methodology, and the reading guides may be indexed as editorial pages
 - Stubs Redis, jobs, licensed ingest, and AI explain (off by default)
 - Does **not** call sports APIs, scrape, or buy anything
 
@@ -109,9 +109,10 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
 | `/guide/start-sit/` | How to read a start/sit card (editorial; indexable when the gate is GREEN). Not under the fixture `/start-sit/` tree |
 | `/guide/waiver-radar/` | How to read waiver radar tags (editorial; indexable when the gate is GREEN). Not under the fixture `/waiver-wire/` tree |
+| `/guide/listed-status/` | How to read listed availability (editorial; indexable when the gate is GREEN). Not under the fixture `/is-playing/`, `/is-`, or `/injuries/` trees |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented). Page meta is `noindex` until placeholders are gone |
-| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`, `/guide/start-sit/`, `/guide/waiver-radar/`). Fixture sports prefixes are disallowed. Unfinished legal shells are omitted from fixture-mode Allow (not Disallowed) so crawlers can see page `noindex` |
+| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`, `/guide/start-sit/`, `/guide/waiver-radar/`, `/guide/listed-status/`). Fixture sports prefixes are disallowed. Unfinished legal shells are omitted from fixture-mode Allow (not Disallowed) so crawlers can see page `noindex` |
 | `/health.json` | Build-time health payload |
 
 GitHub Pages cannot emit HTTP 301. Reverse pairs and alias paths are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical` and `noindex`.

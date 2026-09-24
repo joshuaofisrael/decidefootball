@@ -82,6 +82,11 @@ export default function MethodologyPage() {
         Mean is the ranking number. Floor and ceiling are a model range, not a promise. All three
         sit on player and comparison pages.
       </p>
+      <p>
+        The availability gate reads a designation someone listed. How to read Healthy,
+        Questionable, Doubtful, OUT, IR, and INACTIVE — and why that label is not the mean — is
+        the <Link href="/guide/listed-status/">listed status guide</Link>.
+      </p>
 
       <h2>Certainty score</h2>
       <p>
@@ -118,7 +123,9 @@ export default function MethodologyPage() {
       <h2>What stays distinct on the page</h2>
       <ul>
         <li>
-          <strong>Reported status</strong>: the listed designation with a last-verified time.
+          <strong>Reported status</strong>: the listed designation with a last-verified time,
+          kept apart from the rendered time of the HTML. How to read that pair is the{" "}
+          <Link href="/guide/listed-status/">listed status guide</Link>.
         </li>
         <li>
           <strong>Model projection</strong>: estimated fantasy points, not official.

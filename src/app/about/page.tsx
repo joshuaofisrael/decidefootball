@@ -100,7 +100,9 @@ export default function AboutPage() {
         How to read a finished start/sit card — listed status, the mean, floor and ceiling, and
         the certainty band — is the <Link href="/guide/start-sit/">start/sit reading guide</Link>.
         How to read the waiver board — hot, rising, stash, and fade — is the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
+        <Link href="/guide/waiver-radar/">waiver radar guide</Link>. How to read a listed
+        designation — Healthy through INACTIVE — before any projection number is the{" "}
+        <Link href="/guide/listed-status/">listed status guide</Link>.
       </p>
 
       <h2>What this site is not</h2>
@@ -125,8 +127,9 @@ export default function AboutPage() {
         Decision tools are on the site so the product can be used and reviewed. Until licensed
         sports data is in place, sample sports pages stay out of search indexes. This About page,
         the <Link href="/methodology/">methodology</Link> page, the{" "}
-        <Link href="/guide/start-sit/">start/sit reading guide</Link>, and the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link> are the public, indexable
+        <Link href="/guide/start-sit/">start/sit reading guide</Link>, the{" "}
+        <Link href="/guide/waiver-radar/">waiver radar guide</Link>, and the{" "}
+        <Link href="/guide/listed-status/">listed status guide</Link> are the public, indexable
         description of the product.
       </p>
       <p>

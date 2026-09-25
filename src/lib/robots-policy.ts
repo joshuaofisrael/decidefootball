@@ -4,6 +4,7 @@ import { isFixtureMode, robotsAllowIndexing } from "./compliance";
 export const EDITORIAL_ROBOTS_ALLOW = [
   "/about/",
   "/methodology/",
+  "/guide/",
   "/guide/start-sit/",
   "/guide/waiver-radar/",
   "/guide/listed-status/",

@@ -40,6 +40,7 @@ describe("buildRobotsRules", () => {
     assert.deepEqual(allow, [
       "/about/",
       "/methodology/",
+      "/guide/",
       "/guide/start-sit/",
       "/guide/waiver-radar/",
       "/guide/listed-status/",
@@ -61,6 +62,7 @@ describe("buildRobotsRules", () => {
       allow.some((path) => path.startsWith("/waiver-wire/")),
       false,
     );
+    assert.equal(allow.includes("/guide/"), true);
     assert.equal(allow.includes("/guide/listed-status/"), true);
     assert.equal(
       allow.some(

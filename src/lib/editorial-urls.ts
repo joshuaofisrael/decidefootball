@@ -8,6 +8,7 @@ export { LEGAL_STUB_PATHS };
 export const EDITORIAL_SITEMAP_PATHS = [
   "/about/",
   "/methodology/",
+  "/guide/",
   "/guide/start-sit/",
   "/guide/waiver-radar/",
   "/guide/listed-status/",

@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-25
+
+Reading-guides hub at `/guide/`. The indexable cluster is now six URLs. The parent path had been a 404 over three leaf guides.
+
+- Editorial `index,follow` only. Fixture sports prefixes stay disallowed and out of the sitemap. Legal stubs stay omitted from Allow and Disallow. Homepage stays `noindex` while fixture mode applies.
+- Leaf guide breadcrumbs are Home → Guides → leaf. About, Methodology, and the footer link the hub and keep the leaf links.
+- Follow-ups: Google Search Console and Cloudflare Web Analytics when Joshua provides the IDs. Licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT.
+
 ## 2026-09-24
 
 Fifth indexable URL: `/guide/listed-status/`, a reading guide for this desk's listed availability.

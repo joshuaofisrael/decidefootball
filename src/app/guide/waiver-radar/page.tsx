@@ -50,6 +50,7 @@ export default function WaiverRadarGuidePage() {
       <Breadcrumbs
         crumbs={[
           { name: "Home", path: "/" },
+          { name: "Guides", path: "/guide/" },
           { name: "Waiver radar guide", path: "/guide/waiver-radar/" },
         ]}
       />

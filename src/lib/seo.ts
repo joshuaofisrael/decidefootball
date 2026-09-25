@@ -83,3 +83,24 @@ export function faqPageJsonLd(items: FaqItem[]) {
     })),
   };
 }
+
+export interface ItemListEntry {
+  name: string;
+  path: string;
+  description: string;
+}
+
+/** ItemList of real editorial URLs. Do not invent entries that are not on the page. */
+export function itemListJsonLd(items: ItemListEntry[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      description: item.description,
+      url: absoluteUrl(item.path),
+    })),
+  };
+}

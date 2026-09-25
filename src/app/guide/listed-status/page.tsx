@@ -50,6 +50,7 @@ export default function ListedStatusGuidePage() {
       <Breadcrumbs
         crumbs={[
           { name: "Home", path: "/" },
+          { name: "Guides", path: "/guide/" },
           { name: "Listed status guide", path: "/guide/listed-status/" },
         ]}
       />

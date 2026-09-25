@@ -107,12 +107,13 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/watchlist/` | localStorage watchlist (fixture names, noindex) |
 | `/waiver-wire/week-[n]/` | Waiver radar with urgency (fixture, `noindex`; not in the sitemap) |
 | `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
+| `/guide/` | Reading-guides hub (editorial; indexable when the gate is GREEN). Parent of the three card-reading notes |
 | `/guide/start-sit/` | How to read a start/sit card (editorial; indexable when the gate is GREEN). Not under the fixture `/start-sit/` tree |
 | `/guide/waiver-radar/` | How to read waiver radar tags (editorial; indexable when the gate is GREEN). Not under the fixture `/waiver-wire/` tree |
 | `/guide/listed-status/` | How to read listed availability (editorial; indexable when the gate is GREEN). Not under the fixture `/is-playing/`, `/is-`, or `/injuries/` trees |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented). Page meta is `noindex` until placeholders are gone |
-| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`, `/guide/start-sit/`, `/guide/waiver-radar/`, `/guide/listed-status/`). Fixture sports prefixes are disallowed. Unfinished legal shells are omitted from fixture-mode Allow (not Disallowed) so crawlers can see page `noindex` |
+| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`, `/guide/`, `/guide/start-sit/`, `/guide/waiver-radar/`, `/guide/listed-status/`). Fixture sports prefixes are disallowed. Unfinished legal shells are omitted from fixture-mode Allow (not Disallowed) so crawlers can see page `noindex` |
 | `/health.json` | Build-time health payload |
 
 GitHub Pages cannot emit HTTP 301. Reverse pairs and alias paths are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical` and `noindex`.

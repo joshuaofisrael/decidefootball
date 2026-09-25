@@ -97,7 +97,8 @@ export default function AboutPage() {
         How those numbers are computed is written down on the{" "}
         <Link href="/methodology/">methodology</Link> page. It is versioned, labeled v0, and
         subject to change. There is no backtest published here, and none should be inferred.
-        How to read a finished start/sit card — listed status, the mean, floor and ceiling, and
+        The reading notes for those cards sit together on the <Link href="/guide/">guides</Link>{" "}
+        page. How to read a finished start/sit card — listed status, the mean, floor and ceiling, and
         the certainty band — is the <Link href="/guide/start-sit/">start/sit reading guide</Link>.
         How to read the waiver board — hot, rising, stash, and fade — is the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>. How to read a listed
@@ -127,6 +128,7 @@ export default function AboutPage() {
         Decision tools are on the site so the product can be used and reviewed. Until licensed
         sports data is in place, sample sports pages stay out of search indexes. This About page,
         the <Link href="/methodology/">methodology</Link> page, the{" "}
+        <Link href="/guide/">guides</Link> page, the{" "}
         <Link href="/guide/start-sit/">start/sit reading guide</Link>, the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>, and the{" "}
         <Link href="/guide/listed-status/">listed status guide</Link> are the public, indexable

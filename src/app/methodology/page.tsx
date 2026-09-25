@@ -50,7 +50,8 @@ export default function MethodologyPage() {
       </p>
       <p>
         Why the product exists, and what is (and is not) offered to search, is on the{" "}
-        <Link href="/about/">about page</Link>.
+        <Link href="/about/">about page</Link>. How to read the cards those numbers land on is
+        the <Link href="/guide/">reading guides</Link>.
       </p>
 
       <h2>Inputs</h2>

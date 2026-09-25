@@ -50,6 +50,7 @@ export default function StartSitGuidePage() {
       <Breadcrumbs
         crumbs={[
           { name: "Home", path: "/" },
+          { name: "Guides", path: "/guide/" },
           { name: "Start/sit guide", path: "/guide/start-sit/" },
         ]}
       />

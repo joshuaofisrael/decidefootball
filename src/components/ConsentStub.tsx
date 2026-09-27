@@ -16,8 +16,8 @@ export function ConsentStub() {
           <div className="consent-inner">
             <p>
               {adsOn
-                ? "Analytics and advertising stay off until you choose. Ad scripts do not load without this consent."
-                : "Analytics are off until you choose. No advertising pixels are loaded in this build."}{" "}
+                ? "Cloudflare Web Analytics records aggregate page views. Advertising stays off until you choose. Ad scripts do not load without this consent."
+                : "Cloudflare Web Analytics records aggregate page views. No advertising pixels are loaded in this build."}{" "}
               Vendor list is not finalized <span className="flag">NEED JOSHUA INPUT</span>.
             </p>
             <div>

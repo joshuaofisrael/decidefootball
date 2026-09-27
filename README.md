@@ -74,6 +74,8 @@ npm run db:seed
 
 Copy `.env.example`. Never commit secrets. GitHub Actions sets `COMPLIANCE_GATE` and `NEXT_PUBLIC_SITE_URL` on build.
 
+Cloudflare Web Analytics is not an env var. The beacon token is baked into the root layout and ships once on every page. Leave `NEXT_PUBLIC_GA4_ID` and `NEXT_PUBLIC_ADS_ENABLED` unset. The beacon does not enable ads.
+
 ## Compliance gate
 
 | Gate | Behavior |

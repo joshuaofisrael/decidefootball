@@ -3,6 +3,7 @@ import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { AdSlot } from "@/components/AdSlot";
 import { AdsenseLoader } from "@/components/AdsenseLoader";
 import { BottomNav } from "@/components/BottomNav";
+import { CloudflareBeacon } from "@/components/CloudflareBeacon";
 import { ConsentStub } from "@/components/ConsentStub";
 import { ConsentProvider } from "@/components/useConsent";
 import { Footer } from "@/components/Footer";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {INDEPENDENT_MICROCOPY} Compliance gate {gate}.
           </p>
         </ConsentProvider>
+        <CloudflareBeacon />
       </body>
     </html>
   );

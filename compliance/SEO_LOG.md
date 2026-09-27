@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-27
+
+Cloudflare Web Analytics beacon is in the shared layout on every page. Ads and GA4 stay off.
+
+- The beacon token is baked into the layout. No AdSense, GA4, or other measurement IDs were added.
+- Privacy, cookie, and consent copy name Cloudflare Web Analytics. Advertising pixels stay gated off.
+- Follow-ups: Google Search Console when Joshua provides access. Licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT.
+
 ## 2026-09-25
 
 Reading-guides hub at `/guide/`. The indexable cluster is now six URLs. The parent path had been a 404 over three leaf guides.

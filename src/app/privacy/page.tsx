@@ -43,7 +43,10 @@ export default function PrivacyPage() {
       <h2>What we may collect (MVP-oriented)</h2>
       <ul>
         <li>Technical / logs via hosting (IP, user agent, URL, timestamps).</li>
-        <li>Analytics only if a product is enabled after cookie/consent decisions.</li>
+        <li>
+          Aggregate page views via Cloudflare Web Analytics, which is on. Other analytics only if
+          enabled after cookie/consent decisions.
+        </li>
         <li>Consent records if the first-party consent stub is used.</li>
         <li>Email content if you write to us. Account email is not a default MVP feature.</li>
         <li>Licensed sports data powers content and is generally not your personal data.</li>
@@ -54,20 +57,21 @@ export default function PrivacyPage() {
       </p>
       <h2>Purposes</h2>
       <p>
-        Operate and secure the site; understand aggregate traffic if analytics are later enabled;
+        Operate and secure the site; understand aggregate traffic with Cloudflare Web Analytics;
         respond to support and privacy requests; comply with law. Lawful-basis language:{" "}
         <span className="flag">NEED JOSHUA INPUT</span> + attorney review.
       </p>
       <h2>Cookies</h2>
       <p>
-        See the Cookie Notice. Non-essential tags stay off until vendors and consent approach are
-        decided. Analytics choice: <span className="flag">NEED JOSHUA INPUT</span>.
+        See the Cookie Notice. Cloudflare Web Analytics is on for aggregate page views. Advertising
+        pixels stay off unless ads are enabled and the consent stub is accepted. Further vendor
+        choices: <span className="flag">NEED JOSHUA INPUT</span>.
       </p>
       <h2>Processors (candidates, not a fake live list)</h2>
       <ul>
         <li>Hosting / CDN: <span className="flag">NEED JOSHUA INPUT</span> (Vercel documented as a path, not locked).</li>
         <li>Database / cache: <span className="flag">NEED JOSHUA INPUT</span></li>
-        <li>Analytics: <span className="flag">NEED JOSHUA INPUT</span></li>
+        <li>Analytics: Cloudflare Web Analytics</li>
         <li>AI provider: none in this scaffold</li>
         <li>Sports data vendor: none purchased; fixtures only</li>
       </ul>

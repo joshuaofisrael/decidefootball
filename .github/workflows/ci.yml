@@ -155,4 +155,26 @@ jobs:
           ! grep -q '^google.com,' out/ads.txt
           ! grep -q 'aria-label="Advertisement"' out/index.html
           ! grep -q 'adsbygoogle.js' out/index.html
+          ! grep -q 'adsbygoogle.js' out/about/index.html
+          ! grep -q 'googletagmanager.com' out/index.html
+          ! grep -q 'googletagmanager.com' out/about/index.html
+          ! grep -q 'google-analytics.com' out/index.html
           ! grep -q 'Advertisement' out/start-sit/noah-crowe-vs-jordan-voss/index.html
+          python3 - <<'PY'
+          import pathlib, re
+          snippet = """<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9c4f710ff2a04acb99c29039ac218aea"}'></script><!-- End Cloudflare Web Analytics -->"""
+          slot = f'<div id="cf-web-analytics" hidden="">{snippet}</div>'
+          script_re = re.compile(r"<script type='module' src='https://static\.cloudflareinsights\.com/beacon\.min\.js'[^>]*>\s*</script>")
+          for rel in ("out/index.html", "out/about/index.html", "out/guide/index.html", "out/privacy/index.html", "out/cookies/index.html"):
+              html = pathlib.Path(rel).read_text()
+              if html.count(snippet) != 1 or len(script_re.findall(html)) != 1 or slot not in html:
+                  raise SystemExit(f"{rel} beacon is not the single layout snippet")
+              if html.find(snippet) > html.rfind("</body>"):
+                  raise SystemExit(f"{rel} beacon is after </body>")
+              if "googletagmanager.com" in html or "adsbygoogle" in html or "google-analytics.com" in html:
+                  raise SystemExit(f"{rel} contains another analytics or ad script")
+          for rel in ("out/privacy/index.html", "out/cookies/index.html", "out/index.html"):
+              html = pathlib.Path(rel).read_text()
+              if "Analytics are off until you choose" in html or "Analytics only if a product is enabled" in html:
+                  raise SystemExit(f"{rel} still claims analytics are off")
+          PY

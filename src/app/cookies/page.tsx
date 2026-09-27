@@ -22,7 +22,8 @@ export default function CookiesPage() {
       <h1>Cookie notice</h1>
       <p>
         This notice covers cookies, local storage, pixels, and similar technologies on {SITE_NAME}.
-        Non-essential tags stay off until counsel and Joshua confirm vendors.
+        Cloudflare Web Analytics is on for aggregate page views. Other non-essential tags stay off
+        until counsel and Joshua confirm vendors.
       </p>
       <h2>Categories</h2>
       <ul>
@@ -31,9 +32,9 @@ export default function CookiesPage() {
           session integrity.
         </li>
         <li>
-          <strong>Analytics</strong> — only after analytics product + consent rules are decided.
-          GA4 ID is an env placeholder and loads only if you accept the consent stub and{" "}
-          <code>NEXT_PUBLIC_GA4_ID</code> is set.
+          <strong>Analytics</strong> — Cloudflare Web Analytics loads on every page and records
+          aggregate page views. It is not an advertising pixel. GA4 stays off unless you accept
+          the consent stub and <code>NEXT_PUBLIC_GA4_ID</code> is set.
         </li>
         <li>
           <strong>Preferences</strong> — first-party keys such as the consent choice{" "}
@@ -49,8 +50,8 @@ export default function CookiesPage() {
       <h2>Vendors actually used</h2>
       <p>
         List only real tools when live. Hosting / CDN cookies:{" "}
-        <span className="flag">NEED JOSHUA INPUT</span>. Analytics product:{" "}
-        <span className="flag">NEED JOSHUA INPUT</span>. CMP:{" "}
+        <span className="flag">NEED JOSHUA INPUT</span>. Analytics product: Cloudflare Web
+        Analytics. CMP:{" "}
         <span className="flag">NEED JOSHUA INPUT</span> or none. Do not invent cookie names or
         third parties.
       </p>

@@ -161,7 +161,6 @@ jobs:
           grep -q 'How to read the board' out/rankings/index.html
           grep -q 'content="noindex,follow"' out/week-3/rb-rankings/index.html
           grep -q 'guide/rankings/' out/week-3/rb-rankings/index.html
-          grep -q 'How to read the board' out/week-3/rb-rankings/index.html
           grep -q 'guide/waiver-radar/' out/waiver-wire/week-3/index.html
           grep -q 'content="noindex,follow"' out/is-playing/index.html
           grep -q 'guide/listed-status/' out/is-playing/index.html

@@ -21,7 +21,7 @@ The choice is structural. It is a seventh crawlable URL with its own intent, not
 - Fixture-mode robots Allow and the sitemap gain `/guide/rankings/` only. Fixture Disallows are unchanged, including `/rankings/` and `/week-`. Legal stubs stay off both lists.
 - `public/llms.txt` lists the new URL with a one-line description. The hub line names four guides.
 - The `/guide/` hub lists rankings as the fourth guide, says four, and keeps the sample-desks-out-of-search copy. The card row uses a two-column four-card layout so the fourth card is not stranded under a three-column grid.
-- About, Methodology (where the mean and the blocked production boards are discussed), the start/sit guide, the listed-status guide, the waiver-radar guide, and the footer link the new page. The sample rankings index and the week positional boards deep-link to the guide for reading help and stay `noindex`.
+- About, Methodology (where the mean and the blocked production boards are discussed), the start/sit guide, the listed-status guide, the waiver-radar guide, and the footer link the new page. The sample rankings index deep-links to the guide for reading help and stays `noindex`. The week positional board source does the same. That export is already a 404 (`week` is undefined and the page calls `notFound()`). This change does not repair that route.
 - Tests and CI expect the seventh editorial URL and still reject fixture paths, including `/rankings/`, on Allow and in the sitemap.
 
 ## What did not change

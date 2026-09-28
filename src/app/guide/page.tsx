@@ -8,7 +8,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
 const description =
-  "Hub for how to read a Decide Football decision card: the start/sit stack, listed status before any number, and waiver radar tags. Not a news blog, not NFL-affiliated, and not gambling advice.";
+  "Hub for how to read a Decide Football decision card: the start/sit stack, listed status before any number, waiver radar tags, and the weekly positional rankings board. Not a news blog, not NFL-affiliated, and not gambling advice.";
 
 const guides = [
   {
@@ -29,6 +29,13 @@ const guides = [
     name: "Waiver radar",
     heading: "Waiver radar",
     sentence: "Hot, rising, stash, and fade say how hard this desk would chase the name.",
+  },
+  {
+    href: "/guide/rankings/",
+    name: "Rankings",
+    heading: "Rankings",
+    sentence:
+      "One position, ordered by the mean, with status, floor, and ceiling on the row. A rank is not a start/sit verdict and not a free-agent claim.",
   },
 ] as const;
 
@@ -71,13 +78,13 @@ export default function GuideHubPage() {
         cards. It is not a news blog, not a game recap, and not a running wire.
       </p>
       <p>
-        Three notes. Each one owns a different line on the card. How the estimates are built is
+        Four notes. Each one owns a different line on the card. How the estimates are built is
         the <Link href="/methodology/">methodology</Link>. What the product is, and is not, is the{" "}
         <Link href="/about/">about page</Link>.
       </p>
 
-      <h2>The three guides</h2>
-      <div className="cards three">
+      <h2>The four guides</h2>
+      <div className="cards four">
         {guides.map((guide) => (
           <article className="card" key={guide.href}>
             <h3>

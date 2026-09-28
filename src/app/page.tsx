@@ -158,6 +158,8 @@ export default function HomePage() {
           {" · "}
           <Link href="/week-3/rb-rankings/">RB rankings</Link>
           {" · "}
+          <Link href="/guide/rankings/">How to read the board</Link>
+          {" · "}
           <Link href="/about/">About the desk</Link>
         </p>
       </section>

@@ -88,7 +88,11 @@ export default function AboutPage() {
         </li>
         <li>Injuries: the status timeline, distinct from the estimate.</li>
         <li>Waivers and add/drop: priority, urgency, and pairwise comparisons.</li>
-        <li>Weekly positional rankings: the same estimates, stacked.</li>
+        <li>
+          <Link href="/rankings/">Weekly positional rankings</Link>: the same estimates, stacked
+          by mean. How to read that board is the{" "}
+          <Link href="/guide/rankings/">rankings guide</Link>.
+        </li>
         <li>
           <Link href="/slate/">Week slate</Link>: kick windows and a Sunday Mode toggle.
         </li>
@@ -103,7 +107,9 @@ export default function AboutPage() {
         How to read the waiver board — hot, rising, stash, and fade — is the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>. How to read a listed
         designation — Healthy through INACTIVE — before any projection number is the{" "}
-        <Link href="/guide/listed-status/">listed status guide</Link>.
+        <Link href="/guide/listed-status/">listed status guide</Link>. How to read the weekly
+        positional board — ordered by mean, with status, floor, and ceiling on the row — is the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>.
       </p>
 
       <h2>What this site is not</h2>
@@ -130,8 +136,9 @@ export default function AboutPage() {
         the <Link href="/methodology/">methodology</Link> page, the{" "}
         <Link href="/guide/">guides</Link> page, the{" "}
         <Link href="/guide/start-sit/">start/sit reading guide</Link>, the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link>, and the{" "}
-        <Link href="/guide/listed-status/">listed status guide</Link> are the public, indexable
+        <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
+        <Link href="/guide/listed-status/">listed status guide</Link>, and the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link> are the public, indexable
         description of the product.
       </p>
       <p>

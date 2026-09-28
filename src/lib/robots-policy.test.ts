@@ -44,6 +44,7 @@ describe("buildRobotsRules", () => {
       "/guide/start-sit/",
       "/guide/waiver-radar/",
       "/guide/listed-status/",
+      "/guide/rankings/",
     ]);
     for (const path of allow) {
       for (const prefix of disallow) {
@@ -64,6 +65,9 @@ describe("buildRobotsRules", () => {
     );
     assert.equal(allow.includes("/guide/"), true);
     assert.equal(allow.includes("/guide/listed-status/"), true);
+    assert.equal(allow.includes("/guide/rankings/"), true);
+    assert.equal(allow.includes("/rankings/"), false);
+    assert.ok(disallow.includes("/rankings/"));
     assert.equal(
       allow.some(
         (path) =>

@@ -50,6 +50,7 @@ describe("editorialSitemapEntries", () => {
       "/guide/start-sit/",
       "/guide/waiver-radar/",
       "/guide/listed-status/",
+      "/guide/rankings/",
     ]);
     assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
     assert.ok(urls.some((url) => url.endsWith("/about/")));
@@ -58,7 +59,12 @@ describe("editorialSitemapEntries", () => {
     assert.ok(urls.some((url) => url.endsWith("/guide/start-sit/")));
     assert.ok(urls.some((url) => url.endsWith("/guide/waiver-radar/")));
     assert.ok(urls.some((url) => url.endsWith("/guide/listed-status/")));
-    assert.equal(entries.length, 6);
+    assert.ok(urls.some((url) => url.endsWith("/guide/rankings/")));
+    assert.equal(
+      urls.some((url) => new URL(url).pathname === "/rankings/"),
+      false,
+    );
+    assert.equal(entries.length, 7);
     assert.equal(
       urls.some((url) => url.includes("/waiver-wire/")),
       false,

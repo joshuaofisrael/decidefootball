@@ -48,7 +48,7 @@ describe("seo json-ld helpers", () => {
     assert.equal(data.mainEntity[0]?.acceptedAnswer["@type"], "Answer");
   });
 
-  it("emits an ItemList of the three reading guides and not fixture paths", () => {
+  it("emits an ItemList of the four reading guides and not fixture paths", () => {
     const data = itemListJsonLd([
       {
         name: "Start/sit",
@@ -65,14 +65,20 @@ describe("seo json-ld helpers", () => {
         path: "/guide/waiver-radar/",
         description: "Hot, rising, stash, and fade.",
       },
+      {
+        name: "Rankings",
+        path: "/guide/rankings/",
+        description: "One position, ordered by the mean.",
+      },
     ]);
     assert.equal(data["@type"], "ItemList");
-    assert.equal(data.itemListElement.length, 3);
+    assert.equal(data.itemListElement.length, 4);
     assert.equal(data.itemListElement[0]?.position, 1);
     const urls = data.itemListElement.map((row) => String(row.url));
     assert.match(urls[0] ?? "", /\/guide\/start-sit\/$/);
     assert.match(urls[1] ?? "", /\/guide\/listed-status\/$/);
     assert.match(urls[2] ?? "", /\/guide\/waiver-radar\/$/);
+    assert.match(urls[3] ?? "", /\/guide\/rankings\/$/);
     for (const url of urls) {
       const path = new URL(url).pathname;
       assert.equal(path.startsWith("/guide/"), true);

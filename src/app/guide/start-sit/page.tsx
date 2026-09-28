@@ -105,6 +105,12 @@ export default function StartSitGuidePage() {
         The range is not a promise of points and not an official projection. Treat the mean as
         the rank. Treat floor and ceiling as the width around it.
       </p>
+      <p>
+        The weekly board is a different page from this card. It stacks one position in mean
+        order and prints status, floor, and ceiling on the row. It does not print a certainty
+        score, and the order is not a pairwise verdict. How to read that list is the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>.
+      </p>
 
       <h2>Floor or ceiling, depending on the week you have</h2>
       <p>
@@ -189,7 +195,8 @@ export default function StartSitGuidePage() {
         <Link href="/methodology/">methodology</Link>, and the <Link href="/about/">about page</Link>.
         Waiver urgency uses the same estimates. How to read hot, rising, stash, and fade — and
         why that tag is not a free-agent claim — is the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
+        <Link href="/guide/waiver-radar/">waiver radar guide</Link>. The ordered positional list
+        is the <Link href="/guide/rankings/">rankings guide</Link>.
       </p>
 
       <h2>Questions</h2>

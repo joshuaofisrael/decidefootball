@@ -22,6 +22,10 @@ export default function RankingsIndexPage() {
       />
       <FixtureBanner />
       <h1>Week {FIXTURE_WEEK} positional rankings</h1>
+      <p>
+        One position, ordered by the mean. Status, floor, and ceiling sit on the row.{" "}
+        <Link href="/guide/rankings/">How to read the board</Link>.
+      </p>
       <ul>
         {POSITIONS.map((pos) => (
           <li key={pos}>

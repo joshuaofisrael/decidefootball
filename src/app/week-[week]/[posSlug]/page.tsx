@@ -116,6 +116,8 @@ export default async function WeekRankingsPage({
         </div>
       </KillSwitchNotice>
       <p>
+        <Link href="/guide/rankings/">How to read the board</Link>
+        {" · "}
         <Link href={`/waiver-wire/week-${weekNum}/`}>Waiver wire week {weekNum}</Link>
         {" · "}
         <Link href="/methodology/">Methodology</Link>

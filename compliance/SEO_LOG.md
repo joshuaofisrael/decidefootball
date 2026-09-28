@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-28
+
+Seventh indexable URL: `/guide/rankings/`, a reading guide for this desk's weekly positional rankings board. The hub now lists four guides.
+
+- Editorial `index,follow` only. Fixture sports prefixes stay disallowed and out of the sitemap, including `/rankings/` and `/week-`. Legal stubs stay omitted from Allow and Disallow. Homepage stays `noindex` while fixture mode applies.
+- About, Methodology, the three sibling guides, `llms.txt`, and the footer link the new page. Sample rankings boards link to the guide and stay `noindex`.
+- Follow-ups: Google Search Console when Joshua provides access. Licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT.
+
 ## 2026-09-27
 
 Cloudflare Web Analytics beacon is in the shared layout on every page. Ads and GA4 stay off.

@@ -109,7 +109,9 @@ export default function WaiverRadarGuidePage() {
       <h2>Same estimates, two extra inputs</h2>
       <p>
         Start/sit, the weekly rankings, and this board share one mean. That mean is the ranking
-        number. Floor and ceiling are a model range around it, not a promise of points.
+        number. Floor and ceiling are a model range around that mean, not a promise of points.
+        The ordered positional list — one position, with status and that range on the row — is
+        the <Link href="/guide/rankings/">rankings guide</Link>.
         Certainty, on a start/sit card, is a desk grade of how hard the math can lean. It is not
         the probability of winning the fantasy week. The{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link> is where that card is taught.
@@ -171,7 +173,8 @@ export default function WaiverRadarGuidePage() {
       <p>
         The public description of the tag is this guide, the{" "}
         <Link href="/methodology/">methodology</Link>, the{" "}
-        <Link href="/guide/start-sit/">start/sit guide</Link>, and the{" "}
+        <Link href="/guide/start-sit/">start/sit guide</Link>, the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>, and the{" "}
         <Link href="/about/">about page</Link>.
       </p>
 

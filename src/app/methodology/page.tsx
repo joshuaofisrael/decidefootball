@@ -81,7 +81,10 @@ export default function MethodologyPage() {
       </ol>
       <p>
         Mean is the ranking number. Floor and ceiling are a model range, not a promise. All three
-        sit on player and comparison pages.
+        sit on player and comparison pages. The weekly positional board sorts on that mean and
+        prints status, floor, and ceiling beside the rank. How to read that ordered list — and
+        why a rank is not a start/sit verdict — is the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>.
       </p>
       <p>
         The availability gate reads a designation someone listed. How to read Healthy,
@@ -143,10 +146,11 @@ export default function MethodologyPage() {
         <li>Public backtested accuracy claims.</li>
       </ul>
       <p>
-        Licensed ingest waits on Joshua approving API spend. Sample sports pages stay out of
-        search indexes until then. See the <Link href="/about/">about page</Link> for the
-        public product description. Draft legal shells in the footer are unfinished and are not
-        offered to search.
+        Licensed ingest waits on Joshua approving API spend. Sample sports pages, including the
+        weekly rankings boards, stay out of search indexes until then. How to read that board
+        is the <Link href="/guide/rankings/">rankings guide</Link>. See the{" "}
+        <Link href="/about/">about page</Link> for the public product description. Draft legal
+        shells in the footer are unfinished and are not offered to search.
       </p>
     </div>
   );

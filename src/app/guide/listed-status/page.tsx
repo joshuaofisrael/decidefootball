@@ -93,6 +93,11 @@ export default function ListedStatusGuidePage() {
         the gate fired. Questionable and doubtful leave a discounted estimate. That number is not
         a cleared player.
       </p>
+      <p>
+        The same label is the status column on the weekly positional board. A rank does not
+        replace it. How to read that ordered list is the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>.
+      </p>
 
       <h2>The six designations</h2>
       <p>
@@ -187,7 +192,8 @@ export default function ListedStatusGuidePage() {
         The public description of the designation is this guide, the{" "}
         <Link href="/methodology/">methodology</Link>, the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>, the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link>, and the{" "}
+        <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>, and the{" "}
         <Link href="/about/">about page</Link>.
       </p>
 

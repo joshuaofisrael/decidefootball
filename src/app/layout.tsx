@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { AdSlot } from "@/components/AdSlot";
 import { AdsenseLoader } from "@/components/AdsenseLoader";
 import { BottomNav } from "@/components/BottomNav";
@@ -14,25 +13,8 @@ import { getComplianceGate, INDEPENDENT_MICROCOPY } from "@/lib/compliance";
 import { decideIndexation } from "@/lib/indexation";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { getSiteUrl, SITE_NAME } from "@/lib/site";
+import { display, mono, sans } from "./fonts";
 import "./globals.css";
-
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700"],
-});
-
-const sans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "600"],
-});
 
 const defaultIndex = decideIndexation({ sourceClass: "FIXTURE" });
 const showAds = adsConfigured();

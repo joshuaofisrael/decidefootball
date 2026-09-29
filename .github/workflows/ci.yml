@@ -171,6 +171,12 @@ jobs:
           grep -q 'guide/listed-status/' out/injuries/jordan-voss/index.html
           grep -qx 'decidefootball.com' out/CNAME
           test -f out/ads.txt
+          find out/_next/static/media -name '*.woff2' | grep -q .
+          ! grep -R --include='*.html' --include='*.css' --include='*.js' -q 'fonts.googleapis.com' out
+          ! grep -R --include='*.html' --include='*.css' --include='*.js' -q 'fonts.gstatic.com' out
+          grep -R -q -- '--font-display:' out
+          grep -R -q -- '--font-sans:' out
+          grep -R -q -- '--font-mono:' out
           ! grep -q '^google.com,' out/ads.txt
           ! grep -q 'aria-label="Advertisement"' out/index.html
           ! grep -q 'adsbygoogle.js' out/index.html

@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     "Start or sit. Is he playing. Waivers and rankings from structured estimates. Independent desk. Not NFL-affiliated. Not gambling.",
   applicationName: SITE_NAME,
   robots: defaultIndex.robots,
+  verification: { google: "sZ1l2pwWVsYn45xUk4e6ehpvyDBpikVSNKNdhUKisKw" },
   openGraph: {
     siteName: SITE_NAME,
     locale: "en_US",

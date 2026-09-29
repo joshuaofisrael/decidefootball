@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { decideIndexation, robotsMeta, type DecideIndexationArgs } from "./indexation";
 import { absoluteUrl, getSiteUrl, SITE_LEGAL_NAME, SITE_NAME } from "./site";
 
 export interface Crumb {
@@ -88,6 +90,48 @@ export interface ItemListEntry {
   name: string;
   path: string;
   description: string;
+}
+
+/**
+ * Path used for canonical and og:url. Relative, with a trailing slash, so
+ * metadataBase can resolve it. Home stays `/`.
+ */
+export function canonicalPath(path: string): string {
+  const trimmed = path.trim();
+  if (trimmed === "" || trimmed === "/") return "/";
+  const withLeading = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return `${withLeading.replace(/\/+$/, "")}/`;
+}
+
+export interface PageMetadataArgs {
+  path: string;
+  title: string;
+  description?: string;
+  /** Same inputs pages already pass to decideIndexation. */
+  indexation: DecideIndexationArgs;
+}
+
+/**
+ * Per-page metadata. Repeats layout openGraph siteName, locale, and type
+ * because a page openGraph object replaces the layout object.
+ */
+export function pageMetadata(args: PageMetadataArgs): Metadata {
+  const path = canonicalPath(args.path);
+  const description = args.description;
+  return {
+    title: args.title,
+    ...(description !== undefined ? { description } : {}),
+    ...robotsMeta(decideIndexation(args.indexation)),
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      locale: "en_US",
+      url: path,
+      title: args.title,
+      ...(description !== undefined ? { description } : {}),
+    },
+  };
 }
 
 /** ItemList of real editorial URLs. Do not invent entries that are not on the page. */

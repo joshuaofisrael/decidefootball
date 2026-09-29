@@ -1,12 +1,32 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import type { Metadata } from "next";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
   organizationJsonLd,
+  pageMetadata,
   webPageJsonLd,
 } from "./seo";
+
+function canonicalOf(metadata: Metadata): string {
+  const canonical = metadata.alternates?.canonical;
+  if (typeof canonical === "string") return canonical;
+  if (canonical instanceof URL) return canonical.pathname;
+  return "";
+}
+
+function ogOf(metadata: Metadata): { url?: string; siteName?: string; locale?: string; type?: string } {
+  const og = metadata.openGraph;
+  if (!og || Array.isArray(og)) return {};
+  return {
+    url: typeof og.url === "string" ? og.url : og.url?.toString(),
+    siteName: "siteName" in og ? og.siteName : undefined,
+    locale: "locale" in og ? og.locale : undefined,
+    type: "type" in og ? og.type : undefined,
+  };
+}
 
 describe("seo json-ld helpers", () => {
   it("emits Organization without inventing contact points", () => {
@@ -108,5 +128,81 @@ describe("seo json-ld helpers", () => {
     assert.equal(crumbs.itemListElement.length, 2);
     assert.equal(crumbs.itemListElement[1]?.name, "Guides");
     assert.match(String(crumbs.itemListElement[1]?.item), /\/guide\/$/);
+  });
+});
+
+describe("pageMetadata canonicals", () => {
+  it("emits trailing-slash canonical paths for editorial pages", () => {
+    const about = pageMetadata({
+      path: "/about",
+      title: "About Decide Football",
+      description: "Independent fantasy football decision site.",
+      indexation: { kind: "editorial" },
+    });
+    assert.equal(canonicalOf(about), "/about/");
+    assert.equal(ogOf(about).url, "/about/");
+    assert.equal(about.robots, "index,follow");
+    assert.equal(about.title, "About Decide Football");
+    assert.equal(about.description, "Independent fantasy football decision site.");
+    assert.equal(ogOf(about).siteName, "Decide Football");
+    assert.equal(ogOf(about).locale, "en_US");
+    assert.equal(ogOf(about).type, "website");
+
+    const hub = pageMetadata({
+      path: "/guide/",
+      title: "Reading guides",
+      description: "How to read a decision card.",
+      indexation: { kind: "editorial" },
+    });
+    assert.equal(canonicalOf(hub), "/guide/");
+    assert.equal(ogOf(hub).url, "/guide/");
+
+    const rankings = pageMetadata({
+      path: "guide/rankings",
+      title: "Rankings guide",
+      description: "One position, ordered by the mean.",
+      indexation: { kind: "editorial" },
+    });
+    assert.equal(canonicalOf(rankings), "/guide/rankings/");
+    assert.equal(ogOf(rankings).url, "/guide/rankings/");
+  });
+
+  it("emits a trailing-slash canonical for a sample fixture path and keeps it noindex", () => {
+    const fixture = pageMetadata({
+      path: "/start-sit/noah-crowe-vs-jordan-voss",
+      title: "Start Noah Crowe or Jordan Voss?",
+      description: "Fixture start/sit with a certainty score.",
+      indexation: { sourceClass: "FIXTURE" },
+    });
+    assert.equal(canonicalOf(fixture), "/start-sit/noah-crowe-vs-jordan-voss/");
+    assert.equal(ogOf(fixture).url, "/start-sit/noah-crowe-vs-jordan-voss/");
+    assert.equal(fixture.robots, "noindex,follow");
+    assert.equal(ogOf(fixture).siteName, "Decide Football");
+    assert.equal(ogOf(fixture).type, "website");
+  });
+
+  it("keeps draft legal pages noindex and does not invent a description", () => {
+    const privacy = pageMetadata({
+      path: "/privacy/",
+      title: "Privacy Policy (draft)",
+      indexation: { sourceClass: "GREEN", draftLegal: true },
+    });
+    assert.equal(canonicalOf(privacy), "/privacy/");
+    assert.equal(ogOf(privacy).url, "/privacy/");
+    assert.equal(privacy.robots, "noindex,follow");
+    assert.equal("description" in privacy, false);
+    assert.equal("description" in (privacy.openGraph ?? {}), false);
+  });
+
+  it("keeps the homepage canonical at /", () => {
+    const home = pageMetadata({
+      path: "/",
+      title: "Decide Football: start, sit, and the Sunday card",
+      description: "Independent fantasy desk.",
+      indexation: { sourceClass: "FIXTURE" },
+    });
+    assert.equal(canonicalOf(home), "/");
+    assert.equal(ogOf(home).url, "/");
+    assert.equal(home.robots, "noindex,follow");
   });
 });

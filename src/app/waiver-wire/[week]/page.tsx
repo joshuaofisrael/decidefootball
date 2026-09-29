@@ -9,8 +9,8 @@ import { Timestamps } from "@/components/Timestamps";
 import { WatchButton } from "@/components/WatchButton";
 import { getWaiverRadar } from "@/lib/data";
 import { FIXTURE_VERIFIED_AT, FIXTURE_WEEK } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { urgencyLabel } from "@/lib/radar";
+import { pageMetadata } from "@/lib/seo";
 import { formatLabel, getDefaultFormat } from "@/lib/site";
 import { nowIso } from "@/lib/timestamps";
 
@@ -40,11 +40,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { week } = await params;
   const weekNum = waiverWeekNumber(week);
-  return {
+  return pageMetadata({
+    path: `/waiver-wire/${week}/`,
     title: `Waiver radar, week ${weekNum ?? "sample"}`,
     description: `Fixture waiver radar for week ${weekNum ?? "sample"}: hot, rising, stash, or fade. Estimates only.`,
-    ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-  };
+    indexation: { sourceClass: "FIXTURE" },
+  });
 }
 
 export default async function WaiverWeekPage({

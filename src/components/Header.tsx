@@ -7,6 +7,7 @@ const links = [
   { href: "/watchlist/", label: "Watch" },
   { href: "/players/", label: "Club" },
   { href: "/waiver-wire/week-3/", label: "Radar" },
+  { href: "/guide/", label: "Guides" },
   { href: "/methodology/", label: "Method" },
   { href: "/about/", label: "About" },
 ];

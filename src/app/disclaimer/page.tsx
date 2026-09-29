@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LegalDraftBanner } from "@/components/LegalDraftBanner";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/disclaimer/",
   title: "Independent disclaimer (draft)",
-  ...robotsMeta(decideIndexation({ sourceClass: "GREEN", draftLegal: true })),
-};
+  indexation: { sourceClass: "GREEN", draftLegal: true },
+});
 
 export default function DisclaimerPage() {
   return (

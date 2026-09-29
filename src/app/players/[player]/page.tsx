@@ -30,7 +30,7 @@ import {
 } from "@/lib/data";
 import { fantasyPoints } from "@/lib/format";
 import { FIXTURE_WEEK } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { getDefaultFormat } from "@/lib/site";
 import { formatTimestamp, nowIso } from "@/lib/timestamps";
 
@@ -47,12 +47,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { player: slug } = await params;
   const player = getPlayerBySlug(slug);
-  if (!player) return { title: "Player not found" };
-  return {
+  if (!player) {
+    return pageMetadata({
+      path: `/players/${slug}/`,
+      title: "Player not found",
+      indexation: { sourceClass: "FIXTURE", thin: true },
+    });
+  }
+  return pageMetadata({
+    path: `/players/${player.slug}/`,
     title: `${player.displayName} hub: usage, estimate, and status`,
     description: `Fixture desk for ${player.displayName}: illustrated mark, usage bars, sparkline, and an injury timeline. Sample data.`,
-    ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-  };
+    indexation: { sourceClass: "FIXTURE" },
+  });
 }
 
 export default async function PlayerHubPage({

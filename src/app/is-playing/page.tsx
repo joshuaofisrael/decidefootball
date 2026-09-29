@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
@@ -7,15 +6,16 @@ import { Timestamps } from "@/components/Timestamps";
 import { getInjury, getPlayers, getTeam } from "@/lib/data";
 import { statusVerb } from "@/lib/format";
 import { FIXTURE_VERIFIED_AT } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { getDisplayTimeZone } from "@/lib/site";
 import { nowIso } from "@/lib/timestamps";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/is-playing/",
   title: "Is playing today",
   description: "Fixture availability answers. Status is not inferred by the projection model.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function IsPlayingIndexPage() {
   const renderedAt = nowIso();

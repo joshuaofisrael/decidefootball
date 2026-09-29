@@ -15,9 +15,9 @@ import {
   getVerification,
 } from "@/lib/data";
 import { statusVerb } from "@/lib/format";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { playingTodaySegment } from "@/lib/static-paths";
-import { absoluteUrl, getDisplayTimeZone } from "@/lib/site";
+import { getDisplayTimeZone } from "@/lib/site";
 import { formatTimestamp, nowIso } from "@/lib/timestamps";
 
 export const dynamicParams = false;
@@ -33,13 +33,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { player: slug } = await params;
   const player = getPlayerBySlug(slug);
-  if (!player) return { title: "Is playing" };
-  return {
+  if (!player) {
+    return pageMetadata({
+      path: `/is-playing/${slug}/`,
+      title: "Is playing",
+      indexation: { sourceClass: "FIXTURE", thin: true },
+    });
+  }
+  return pageMetadata({
+    path: `/is-${playingTodaySegment(player.slug)}/`,
     title: `Is ${player.displayName} playing today?`,
     description: `Fixture availability answer for ${player.displayName}. Not a live official report.`,
-    alternates: { canonical: absoluteUrl(`/is-${playingTodaySegment(player.slug)}/`) },
-    ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-  };
+    indexation: { sourceClass: "FIXTURE" },
+  });
 }
 
 export default async function IsPlayingPage({

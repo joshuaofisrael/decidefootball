@@ -19,8 +19,8 @@ import {
   getVerification,
   resolvePair,
 } from "@/lib/data";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { startLabel } from "@/lib/recommendations";
+import { pageMetadata } from "@/lib/seo";
 import { startSitStaticParams } from "@/lib/static-paths";
 import { nowIso } from "@/lib/timestamps";
 
@@ -37,16 +37,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { pair } = await params;
   const resolved = resolvePair(pair);
-  if (!resolved) return { title: "Start or sit" };
-  const canonical = `/start-sit/${resolved.left.slug}-vs-${resolved.right.slug}/`;
-  return {
+  if (!resolved) {
+    return pageMetadata({
+      path: `/start-sit/${pair}/`,
+      title: "Start or sit",
+      indexation: { sourceClass: "FIXTURE", thin: true },
+    });
+  }
+  return pageMetadata({
+    path: `/start-sit/${resolved.left.slug}-vs-${resolved.right.slug}/`,
     title: `Start ${resolved.left.displayName} or ${resolved.right.displayName}?`,
     description: `Fixture start/sit with a certainty score. ${resolved.left.displayName} against ${resolved.right.displayName}, from structured estimates.`,
-    alternates: { canonical },
-    ...robotsMeta(
-      decideIndexation({ sourceClass: "FIXTURE", thin: !resolved.isCanonical }),
-    ),
-  };
+    indexation: { sourceClass: "FIXTURE", thin: !resolved.isCanonical },
+  });
 }
 
 export default async function StartSitPage({

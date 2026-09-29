@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { FIXTURE_WEEK } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { POSITIONS } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/rankings/",
   title: "Weekly rankings",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function RankingsIndexPage() {
   return (

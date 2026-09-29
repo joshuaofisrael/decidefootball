@@ -8,8 +8,8 @@ import { ProjectionCard } from "@/components/ProjectionCard";
 import { StaticRedirect } from "@/components/StaticRedirect";
 import { Timestamps } from "@/components/Timestamps";
 import { getAddDropRecommendation, getVerification, resolvePair } from "@/lib/data";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { addDropLabel } from "@/lib/recommendations";
+import { pageMetadata } from "@/lib/seo";
 import { addDropStaticParams } from "@/lib/static-paths";
 import { nowIso } from "@/lib/timestamps";
 
@@ -26,16 +26,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { pair } = await params;
   const resolved = resolvePair(pair);
-  if (!resolved) return { title: "Add / drop" };
-  const canonical = `/add-drop/${resolved.left.slug}-vs-${resolved.right.slug}/`;
-  return {
+  if (!resolved) {
+    return pageMetadata({
+      path: `/add-drop/${pair}/`,
+      title: "Add / drop",
+      indexation: { sourceClass: "FIXTURE", thin: true },
+    });
+  }
+  return pageMetadata({
+    path: `/add-drop/${resolved.left.slug}-vs-${resolved.right.slug}/`,
     title: `Add ${resolved.left.displayName} or ${resolved.right.displayName}?`,
     description: "Fixture add/drop comparison from computed estimates.",
-    alternates: { canonical },
-    ...robotsMeta(
-      decideIndexation({ sourceClass: "FIXTURE", thin: !resolved.isCanonical }),
-    ),
-  };
+    indexation: { sourceClass: "FIXTURE", thin: !resolved.isCanonical },
+  });
 }
 
 export default async function AddDropPage({

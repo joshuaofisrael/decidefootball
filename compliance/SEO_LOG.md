@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-29
+
+Primary nav gains Guides (`/guide/`). Every page that exports metadata now sets a trailing-slash canonical and a matching `og:url`. No new article.
+
+- Editorial cluster unchanged: the seven URLs stay `index,follow`. Fixture sports prefixes stay disallowed and out of the sitemap. Legal drafts stay `noindex`. Homepage stays `noindex` while fixture mode applies.
+- The root layout does not set a sitewide canonical. Dynamic routes use the concrete path.
+- Follow-ups: Google Search Console when Joshua provides access. Licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT.
+
 ## 2026-09-28
 
 Seventh indexable URL: `/guide/rankings/`, a reading guide for this desk's weekly positional rankings board. The hub now lists four guides.

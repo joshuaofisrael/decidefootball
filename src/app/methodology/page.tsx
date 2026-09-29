@@ -1,21 +1,20 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { DECAY_WEIGHTS, MATCHUP_ADJ_CAP, USAGE_ADJ_CAP } from "@/lib/projections";
-import { organizationJsonLd, webPageJsonLd } from "@/lib/seo";
+import { organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { MODEL_VERSION, SITE_NAME } from "@/lib/site";
 
 const title = "Methodology — how Decide Football estimates weekly fantasy decisions";
 const description =
   "How Decide Football builds start/sit estimates, a certainty score, and waiver urgency. Versioned methodology v0. Model estimates only — not official NFL data, not a backtest.";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/methodology/",
   title,
   description,
-  ...robotsMeta(decideIndexation({ kind: "editorial" })),
-};
+  indexation: { kind: "editorial" },
+});
 
 export default function MethodologyPage() {
   return (

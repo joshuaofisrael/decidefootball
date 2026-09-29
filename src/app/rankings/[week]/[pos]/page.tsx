@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { StaticRedirect } from "@/components/StaticRedirect";
 import { FIXTURE_WEEK } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { weekRankingsPath } from "@/lib/static-paths";
-import { POSITIONS, type SkillPosition, absoluteUrl } from "@/lib/site";
+import { POSITIONS, type SkillPosition } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -27,12 +27,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { week, pos } = await params;
   const position = parsePos(pos);
-  const to = position ? weekRankingsPath(Number(week), position) : "/rankings/";
-  return {
+  return pageMetadata({
+    path: position ? weekRankingsPath(Number(week), position) : `/rankings/${week}/${pos}/`,
     title: position ? `Week ${week} ${position} rankings` : "Rankings",
-    alternates: { canonical: absoluteUrl(to) },
-    ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE", thin: true })),
-  };
+    indexation: { sourceClass: "FIXTURE", thin: true },
+  });
 }
 
 export default async function RankingsAliasPage({

@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LegalDraftBanner } from "@/components/LegalDraftBanner";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/cookies/",
   title: "Cookie notice (draft)",
-  ...robotsMeta(decideIndexation({ sourceClass: "GREEN", draftLegal: true })),
-};
+  indexation: { sourceClass: "GREEN", draftLegal: true },
+});
 
 export default function CookiesPage() {
   return (

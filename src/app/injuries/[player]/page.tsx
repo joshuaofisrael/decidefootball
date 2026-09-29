@@ -8,7 +8,7 @@ import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { StatusLabel } from "@/components/StatusLabel";
 import { Timestamps } from "@/components/Timestamps";
 import { getInjury, getInjuryTimeline, getPlayerBySlug, getPlayers, getVerification } from "@/lib/data";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { nowIso } from "@/lib/timestamps";
 
 export const dynamicParams = false;
@@ -24,12 +24,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { player: slug } = await params;
   const player = getPlayerBySlug(slug);
-  if (!player) return { title: "Injury page" };
-  return {
+  if (!player) {
+    return pageMetadata({
+      path: `/injuries/${slug}/`,
+      title: "Injury page",
+      indexation: { sourceClass: "FIXTURE", thin: true },
+    });
+  }
+  return pageMetadata({
+    path: `/injuries/${player.slug}/`,
     title: `${player.displayName} availability timeline`,
     description: `Fixture injury and availability timeline for ${player.displayName}. Not a live or official report.`,
-    ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-  };
+    indexation: { sourceClass: "FIXTURE" },
+  });
 }
 
 export default async function InjuryPage({

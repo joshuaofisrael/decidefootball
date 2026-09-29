@@ -8,13 +8,13 @@ import { StatusLabel } from "@/components/StatusLabel";
 import { Timestamps } from "@/components/Timestamps";
 import { getInjury, getRankings } from "@/lib/data";
 import { FIXTURE_VERIFIED_AT, FIXTURE_WEEK } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import {
   parseRankingsPosSlug,
   rankingsPosSlug,
   weekRankingsPath,
 } from "@/lib/static-paths";
-import { POSITIONS, absoluteUrl, formatLabel, getDefaultFormat } from "@/lib/site";
+import { POSITIONS, formatLabel, getDefaultFormat } from "@/lib/site";
 import { nowIso } from "@/lib/timestamps";
 
 export const dynamicParams = false;
@@ -33,13 +33,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { week, posSlug } = await params;
   const position = parseRankingsPosSlug(posSlug);
-  if (!position) return { title: "Rankings" };
-  return {
+  if (!position) {
+    return pageMetadata({
+      path: `/week-${week}/${posSlug}/`,
+      title: "Rankings",
+      indexation: { sourceClass: "FIXTURE", thin: true },
+    });
+  }
+  return pageMetadata({
+    path: weekRankingsPath(Number(week), position),
     title: `Week ${week} ${position} rankings`,
     description: `Fixture ${position} rankings for week ${week}. Estimates only.`,
-    alternates: { canonical: absoluteUrl(weekRankingsPath(Number(week), position)) },
-    ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-  };
+    indexation: { sourceClass: "FIXTURE" },
+  });
 }
 
 export default async function WeekRankingsPage({

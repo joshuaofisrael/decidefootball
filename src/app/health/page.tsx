@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import { getComplianceGate, isFixtureMode } from "@/lib/compliance";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { nowIso } from "@/lib/timestamps";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/health/",
   title: "Health",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE", thin: true })),
-};
+  indexation: { sourceClass: "FIXTURE", thin: true },
+});
 
 export default function HealthPage() {
   const payload = {

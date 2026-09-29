@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { getAddDropPairs, getAddDropRecommendation } from "@/lib/data";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { addDropLabel } from "@/lib/recommendations";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/add-drop/",
   title: "Add / drop",
   description: "Fixture add/drop comparisons from the same estimate engine as start/sit.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function AddDropIndexPage() {
   return (

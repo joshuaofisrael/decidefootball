@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
@@ -8,15 +7,16 @@ import { SundayToggle } from "@/components/SundayToggle";
 import { Timestamps } from "@/components/Timestamps";
 import { getInjury, getProjection, getSlate } from "@/lib/data";
 import { FIXTURE_VERIFIED_AT, FIXTURE_WEEK, kickWindowLabel } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 import { formatTimestamp, nowIso } from "@/lib/timestamps";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/slate/",
   title: "Week slate and Sunday Mode",
   description:
     "Fixture week slate by kick window. Sunday Mode parks Monday games. Sample data, not a live NFL schedule.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function SlatePage() {
   const slate = getSlate();

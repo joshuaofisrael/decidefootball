@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { CertaintyMeter } from "@/components/CertaintyMeter";
 import { FixtureBanner } from "@/components/FixtureBanner";
@@ -17,16 +16,17 @@ import {
   getTeam,
 } from "@/lib/data";
 import { FIXTURE_VERIFIED_AT, kickWindowLabel } from "@/lib/fixtures";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { startLabel } from "@/lib/recommendations";
+import { pageMetadata } from "@/lib/seo";
 import { nowIso } from "@/lib/timestamps";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/",
   title: "Decide Football: start, sit, and the Sunday card",
   description:
     "Independent fantasy desk for start/sit, availability, waivers, and rankings. Structured estimates. Not a sports news blog. Not NFL-affiliated. Not gambling.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function HomePage() {
   const renderedAt = nowIso();

@@ -106,6 +106,21 @@ jobs:
           grep -q 'content="noindex,follow"' out/cookies/index.html
           ! grep -q '/slate/' out/sitemap.xml
           ! grep -q '/watchlist/' out/sitemap.xml
+          grep -q 'rel="canonical" href="https://decidefootball.com/about/"' out/about/index.html
+          grep -q 'property="og:url" content="https://decidefootball.com/about/"' out/about/index.html
+          grep -q 'property="og:site_name" content="Decide Football"' out/about/index.html
+          grep -q 'property="og:locale" content="en_US"' out/about/index.html
+          grep -q 'property="og:type" content="website"' out/about/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/guide/"' out/guide/index.html
+          grep -q 'property="og:url" content="https://decidefootball.com/guide/"' out/guide/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/guide/rankings/"' out/guide/rankings/index.html
+          grep -q 'property="og:url" content="https://decidefootball.com/guide/rankings/"' out/guide/rankings/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/start-sit/"' out/start-sit/index.html
+          grep -q 'property="og:url" content="https://decidefootball.com/start-sit/"' out/start-sit/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/"' out/index.html
+          grep -q 'property="og:url" content="https://decidefootball.com/"' out/index.html
+          grep -q 'href="/guide/">Guides</a><a href="/methodology/">Method</a>' out/about/index.html
+          grep -q 'aria-label="Primary mobile"' out/about/index.html
           grep -q 'content="index,follow"' out/about/index.html
           grep -q 'content="index,follow"' out/methodology/index.html
           grep -q 'content="index,follow"' out/guide/index.html

@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { getStartSitPairs, getStartSitRecommendation } from "@/lib/data";
 import { certaintyCopy } from "@/lib/certainty";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
 import { startLabel } from "@/lib/recommendations";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/start-sit/",
   title: "Start or sit",
   description: "Fixture start/sit pairs with a certainty score. Metrics first. Sample data.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function StartSitIndexPage() {
   const pairs = getStartSitPairs();

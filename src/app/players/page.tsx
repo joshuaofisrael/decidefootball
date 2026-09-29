@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
@@ -6,13 +5,14 @@ import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { StatusLabel } from "@/components/StatusLabel";
 import { WatchButton } from "@/components/WatchButton";
 import { getInjury, getPlayers, getProjection, getTeam } from "@/lib/data";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/players/",
   title: "Fixture club",
   description: "Fixture player hubs with illustrated marks, usage, and status. No NFL photos or logos.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function PlayersIndexPage() {
   return (

@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { WatchlistDesk } from "@/components/WatchlistDesk";
 import { getInjury, getPlayers, getProjection, getTeam } from "@/lib/data";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/watchlist/",
   title: "Watchlist",
   description:
     "Local watchlist stored in this browser. Fixture names only. Not synced to a fantasy platform.",
-  ...robotsMeta(decideIndexation({ sourceClass: "FIXTURE" })),
-};
+  indexation: { sourceClass: "FIXTURE" },
+});
 
 export default function WatchlistPage() {
   const catalog = getPlayers().map((player) => {

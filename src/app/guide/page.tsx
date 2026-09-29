@@ -1,9 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { decideIndexation, robotsMeta } from "@/lib/indexation";
-import { itemListJsonLd, organizationJsonLd, webPageJsonLd } from "@/lib/seo";
+import { itemListJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
@@ -39,11 +37,12 @@ const guides = [
   },
 ] as const;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/guide/",
   title,
   description,
-  ...robotsMeta(decideIndexation({ kind: "editorial" })),
-};
+  indexation: { kind: "editorial" },
+});
 
 export default function GuideHubPage() {
   return (

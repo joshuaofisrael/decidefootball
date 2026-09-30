@@ -37,7 +37,7 @@ const guideFaqs = [
   {
     question: "Why do the sample add/drop URLs stay out of search while this guide does not?",
     answer:
-      "The add/drop desk and the pair cards are on the site so the product can be reviewed, and they use sample data. They stay out of search, noindex, under Disallow /add-drop/, until licensed GREEN sports data is in place. This guide does not promise those URLs will be indexed, and it does not give a date. This page lives at /guide/add-drop/. That path is a reading guide. It is not the fixture desk at /add-drop/, and it does not match that blocked path.",
+      "The add/drop desk and the pair cards are on the site so the product can be reviewed, and they use sample data. They stay out of search until licensed GREEN sports data is in place. Crawlers are told to skip the add/drop prefix. This guide does not promise those URLs will be indexed, and it does not give a date. This page lives at /guide/add-drop/. That path is a reading guide. It is not the fixture desk at /add-drop/, and it does not match that blocked path.",
   },
 ] as const;
 

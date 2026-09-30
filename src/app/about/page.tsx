@@ -108,7 +108,9 @@ export default function AboutPage() {
         designation — Healthy through INACTIVE — before any projection number is the{" "}
         <Link href="/guide/listed-status/">listed status guide</Link>. How to read the weekly
         positional board — ordered by mean, with status, floor, and ceiling on the row — is the{" "}
-        <Link href="/guide/rankings/">rankings guide</Link>.
+        <Link href="/guide/rankings/">rankings guide</Link>. How to read an add/drop card —
+        mean delta and the same 1.5-point toss-up, as a roster-churn comparison rather than a
+        lineup call — is the <Link href="/guide/add-drop/">add/drop guide</Link>.
       </p>
 
       <h2>What this site is not</h2>
@@ -136,8 +138,9 @@ export default function AboutPage() {
         <Link href="/guide/">guides</Link> page, the{" "}
         <Link href="/guide/start-sit/">start/sit reading guide</Link>, the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
-        <Link href="/guide/listed-status/">listed status guide</Link>, and the{" "}
-        <Link href="/guide/rankings/">rankings guide</Link> are the public, indexable
+        <Link href="/guide/listed-status/">listed status guide</Link>, the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>, and the{" "}
+        <Link href="/guide/add-drop/">add/drop guide</Link> are the public, indexable
         description of the product.
       </p>
       <p>

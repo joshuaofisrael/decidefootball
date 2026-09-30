@@ -8,7 +8,9 @@ export const dynamic = "force-static";
  * Fixture sports pages stay out. While sample data is live, that means the
  * editorial pages only: About, Methodology, the reading-guides hub,
  * the start/sit reading guide, the waiver radar reading guide, the
- * listed status reading guide, and the weekly rankings reading guide.
+ * listed status reading guide, the weekly rankings reading guide, and the
+ * add/drop reading guide. Fixture /add-drop/ stays out. /guide/add-drop/ does
+ * not match that prefix.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return editorialSitemapEntries();

@@ -195,7 +195,10 @@ export default function StartSitGuidePage() {
         Waiver urgency uses the same estimates. How to read hot, rising, stash, and fade — and
         why that tag is not a free-agent claim — is the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>. The ordered positional list
-        is the <Link href="/guide/rankings/">rankings guide</Link>.
+        is the <Link href="/guide/rankings/">rankings guide</Link>. The same estimates on a
+        roster-churn card — add one name over the name you would drop — are the{" "}
+        <Link href="/guide/add-drop/">add/drop guide</Link>, and that card is not this lineup
+        call.
       </p>
 
       <h2>Questions</h2>

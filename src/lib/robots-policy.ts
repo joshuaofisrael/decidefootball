@@ -9,6 +9,7 @@ export const EDITORIAL_ROBOTS_ALLOW = [
   "/guide/waiver-radar/",
   "/guide/listed-status/",
   "/guide/rankings/",
+  "/guide/add-drop/",
 ] as const;
 
 /**

@@ -105,7 +105,9 @@ export default function MethodologyPage() {
       <p>
         Bands: thin, lean, clear, strong. Read them next to the status labels, not instead of
         them. How to weigh floor against ceiling, and what a narrow mean gap is worth, is the{" "}
-        <Link href="/guide/start-sit/">start/sit reading guide</Link>.
+        <Link href="/guide/start-sit/">start/sit reading guide</Link>. Add/drop uses the same
+        mean and the same 1.5-point toss-up. That card is a roster-churn comparison. How to
+        read it is the <Link href="/guide/add-drop/">add/drop guide</Link>.
       </p>
 
       <h2>Waiver radar</h2>

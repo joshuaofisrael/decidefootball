@@ -6,14 +6,15 @@ Decide Football (https://decidefootball.com) is an independent fantasy football 
 
 - https://decidefootball.com/about/
 - https://decidefootball.com/methodology/
-- https://decidefootball.com/guide/ — Hub for how to read this desk's decision cards: start/sit (mean, floor, ceiling, certainty), listed status (Healthy through INACTIVE), waiver radar (hot, rising, stash, fade), and weekly positional rankings (ordered by mean, with status, floor, and ceiling on the row). Not a news blog, not NFL-affiliated, and not gambling advice.
+- https://decidefootball.com/guide/ — Hub for how to read this desk's decision cards: start/sit (mean, floor, ceiling, certainty), listed status (Healthy through INACTIVE), waiver radar (hot, rising, stash, fade), weekly positional rankings (ordered by mean, with status, floor, and ceiling on the row), and add/drop (a roster-churn comparison: mean delta and the same 1.5-point toss-up, not a lineup call and not a free-agent claim). Not a news blog, not NFL-affiliated, and not gambling advice.
 - https://decidefootball.com/guide/start-sit/ — How to read this desk's start/sit card: listed status first, mean as the ranking number, floor and ceiling as a model range, and certainty as a desk grade rather than a win probability.
 - https://decidefootball.com/guide/waiver-radar/ — How to read this desk's waiver radar tags (hot, rising, stash, fade): same estimates plus snap-share change and listed status, not a claim the player is free on any host platform.
 - https://decidefootball.com/guide/listed-status/ — How to read this desk's listed availability (Healthy, Questionable, Doubtful, OUT, IR, INACTIVE): status before the projection mean, a soft discount versus a hard zero, not an official injury report or a return date.
 - https://decidefootball.com/guide/rankings/ — How to read this desk's weekly positional rankings board: one position ordered by mean, with listed status, floor, and ceiling on the row. A rank is not a start/sit verdict, not an official list, and not a free-agent claim. Certainty is a start/sit grade, not a column on this board.
+- https://decidefootball.com/guide/add-drop/ — How to read this desk's add/drop card: a roster-churn comparison of two names, listed status first, mean as the ranking number, floor and ceiling as a model range, and the mean delta against the same 1.5-point toss-up as start/sit. Not a lineup call, not a free-agent or FAAB claim, and not the fixture desk at /add-drop/.
 
 ## Sample / fixture sports pages
 
-Player, start/sit, injury, waiver, ranking, slate, and watchlist URLs currently use sample/fixture data. They are for product review only and are not indexable. Do not treat those pages as live, official, or licensed sports data.
+Player, start/sit, injury, waiver, add/drop, ranking, slate, and watchlist URLs currently use sample/fixture data. They are for product review only and are not indexable. Do not treat those pages as live, official, or licensed sports data. The reading guide at /guide/add-drop/ is editorial. The sample desk at /add-drop/ is not.
 
 Projections are model estimates (methodology v0, subject to change), not official NFL or club figures. There is no published backtest.

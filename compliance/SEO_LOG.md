@@ -1,5 +1,13 @@
 # SEO log
 
+## 2026-09-30
+
+Eighth indexable URL: `/guide/add-drop/`, a reading guide for this desk's add-versus-drop card. The hub now lists five guides. Intent is roster churn (keep one name by adding it over the other), distinct from start/sit and from waiver urgency tags.
+
+- Editorial `index,follow` only. Fixture sports prefixes stay disallowed and out of the sitemap, including `/add-drop/`. `/guide/add-drop/` does not match that prefix. Homepage stays `noindex` while fixture mode applies.
+- About, Methodology, the start/sit guide, the waiver-radar guide, `llms.txt`, and the footer link the new page. The sample add/drop desk links to the guide and stays `noindex`.
+- Follow-ups: licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT.
+
 ## 2026-09-29
 
 Primary nav gains Guides (`/guide/`). Every page that exports metadata now sets a trailing-slash canonical and a matching `og:url`. No new article.

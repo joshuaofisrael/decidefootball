@@ -68,7 +68,7 @@ describe("seo json-ld helpers", () => {
     assert.equal(data.mainEntity[0]?.acceptedAnswer["@type"], "Answer");
   });
 
-  it("emits an ItemList of the four reading guides and not fixture paths", () => {
+  it("emits an ItemList of the five reading guides and not fixture paths", () => {
     const data = itemListJsonLd([
       {
         name: "Start/sit",
@@ -90,15 +90,21 @@ describe("seo json-ld helpers", () => {
         path: "/guide/rankings/",
         description: "One position, ordered by the mean.",
       },
+      {
+        name: "Add/drop",
+        path: "/guide/add-drop/",
+        description: "Roster-churn comparison: mean delta and the 1.5-point toss-up.",
+      },
     ]);
     assert.equal(data["@type"], "ItemList");
-    assert.equal(data.itemListElement.length, 4);
+    assert.equal(data.itemListElement.length, 5);
     assert.equal(data.itemListElement[0]?.position, 1);
     const urls = data.itemListElement.map((row) => String(row.url));
     assert.match(urls[0] ?? "", /\/guide\/start-sit\/$/);
     assert.match(urls[1] ?? "", /\/guide\/listed-status\/$/);
     assert.match(urls[2] ?? "", /\/guide\/waiver-radar\/$/);
     assert.match(urls[3] ?? "", /\/guide\/rankings\/$/);
+    assert.match(urls[4] ?? "", /\/guide\/add-drop\/$/);
     for (const url of urls) {
       const path = new URL(url).pathname;
       assert.equal(path.startsWith("/guide/"), true);
@@ -165,6 +171,16 @@ describe("pageMetadata canonicals", () => {
     });
     assert.equal(canonicalOf(rankings), "/guide/rankings/");
     assert.equal(ogOf(rankings).url, "/guide/rankings/");
+
+    const addDrop = pageMetadata({
+      path: "/guide/add-drop/",
+      title: "Add/drop guide",
+      description: "How to read an add/drop comparison card.",
+      indexation: { kind: "editorial" },
+    });
+    assert.equal(canonicalOf(addDrop), "/guide/add-drop/");
+    assert.equal(ogOf(addDrop).url, "/guide/add-drop/");
+    assert.equal(addDrop.robots, "index,follow");
   });
 
   it("emits a trailing-slash canonical for a sample fixture path and keeps it noindex", () => {

@@ -161,6 +161,10 @@ export default function WaiverRadarGuidePage() {
         roster call. It is not a spread, a moneyline, or advice on a wager. Nothing on this
         desk is a gambling product.
       </p>
+      <p>
+        A pairwise add-versus-drop, which name to keep by dropping the other, is the{" "}
+        <Link href="/guide/add-drop/">add/drop guide</Link>, and it is not this urgency tag.
+      </p>
 
       <h2>Where the board is</h2>
       <p>

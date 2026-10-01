@@ -123,7 +123,8 @@ export default function AddDropGuidePage() {
         The desk draws the same toss-up line as start/sit: 1.5 estimated points. Inside that
         gap the card says to lean neither side on mean alone. At 1.5 points or beyond, the
         higher mean is the add and the other name is the drop. Role and listed status still
-        matter. A tenth of a point is not a verdict.
+        matter. A tenth of a point is not a verdict. Applying the line to means you type is the{" "}
+        <Link href="/guide/toss-up/">toss-up tool</Link>. The same delta is the start/sit lean.
       </p>
       <p>
         The line is softness in the estimate. It is not a spread, a moneyline, a win
@@ -178,7 +179,8 @@ export default function AddDropGuidePage() {
         <Link href="/methodology/">methodology</Link>, the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>, the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
-        <Link href="/guide/rankings/">rankings guide</Link>, and the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>, the{" "}
+        <Link href="/guide/toss-up/">toss-up tool</Link>, and the{" "}
         <Link href="/about/">about page</Link>.
       </p>
 

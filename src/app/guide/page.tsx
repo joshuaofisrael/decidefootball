@@ -6,7 +6,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
 const description =
-  "Hub for how to read a Decide Football decision card: the start/sit stack, listed status before any number, waiver radar tags, the weekly positional rankings board, and the add/drop comparison. Not a news blog, not NFL-affiliated, and not gambling advice.";
+  "Hub for how to read a Decide Football decision card: the start/sit stack, listed status before any number, waiver radar tags, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta. Not a news blog, not NFL-affiliated, and not gambling advice.";
 
 const guides = [
   {
@@ -41,6 +41,13 @@ const guides = [
     heading: "Add/drop",
     sentence:
       "Keep one name by adding it over the name you would drop. Mean, floor, ceiling, and the mean delta, with the same 1.5-point toss-up as start/sit. Not a lineup call and not a free-agent claim.",
+  },
+  {
+    href: "/guide/toss-up/",
+    name: "Toss-up tool",
+    heading: "Toss-up tool",
+    sentence:
+      "Type two means. The desk leans on the same 1.5-point mean delta used for start/sit and add/drop. Floor and ceiling are for weighing. The form does not look up a player.",
   },
 ] as const;
 
@@ -84,12 +91,13 @@ export default function GuideHubPage() {
         cards. It is not a news blog, not a game recap, and not a running wire.
       </p>
       <p>
-        Five notes. Each one owns a different line on the card. How the estimates are built is
-        the <Link href="/methodology/">methodology</Link>. What the product is, and is not, is the{" "}
-        <Link href="/about/">about page</Link>.
+        Five reading notes, and one tool. Each note owns a different line on the card. The tool
+        applies the 1.5-point mean-delta line to numbers you type. How the estimates are built
+        is the <Link href="/methodology/">methodology</Link>. What the product is, and is not, is
+        the <Link href="/about/">about page</Link>.
       </p>
 
-      <h2>The five guides</h2>
+      <h2>Five reading guides and the toss-up tool</h2>
       <div className="cards four">
         {guides.map((guide) => (
           <article className="card" key={guide.href}>

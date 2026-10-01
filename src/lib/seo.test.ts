@@ -68,7 +68,7 @@ describe("seo json-ld helpers", () => {
     assert.equal(data.mainEntity[0]?.acceptedAnswer["@type"], "Answer");
   });
 
-  it("emits an ItemList of the five reading guides and not fixture paths", () => {
+  it("emits an ItemList of the reading guides, the toss-up tool, and not fixture paths", () => {
     const data = itemListJsonLd([
       {
         name: "Start/sit",
@@ -95,9 +95,14 @@ describe("seo json-ld helpers", () => {
         path: "/guide/add-drop/",
         description: "Roster-churn comparison: mean delta and the 1.5-point toss-up.",
       },
+      {
+        name: "Toss-up tool",
+        path: "/guide/toss-up/",
+        description: "Type two means. The lean is the 1.5-point mean delta.",
+      },
     ]);
     assert.equal(data["@type"], "ItemList");
-    assert.equal(data.itemListElement.length, 5);
+    assert.equal(data.itemListElement.length, 6);
     assert.equal(data.itemListElement[0]?.position, 1);
     const urls = data.itemListElement.map((row) => String(row.url));
     assert.match(urls[0] ?? "", /\/guide\/start-sit\/$/);
@@ -105,6 +110,7 @@ describe("seo json-ld helpers", () => {
     assert.match(urls[2] ?? "", /\/guide\/waiver-radar\/$/);
     assert.match(urls[3] ?? "", /\/guide\/rankings\/$/);
     assert.match(urls[4] ?? "", /\/guide\/add-drop\/$/);
+    assert.match(urls[5] ?? "", /\/guide\/toss-up\/$/);
     for (const url of urls) {
       const path = new URL(url).pathname;
       assert.equal(path.startsWith("/guide/"), true);
@@ -181,6 +187,16 @@ describe("pageMetadata canonicals", () => {
     assert.equal(canonicalOf(addDrop), "/guide/add-drop/");
     assert.equal(ogOf(addDrop).url, "/guide/add-drop/");
     assert.equal(addDrop.robots, "index,follow");
+
+    const tossUp = pageMetadata({
+      path: "/guide/toss-up/",
+      title: "Toss-up tool",
+      description: "Apply the 1.5-point mean-delta line to two means you type.",
+      indexation: { kind: "editorial" },
+    });
+    assert.equal(canonicalOf(tossUp), "/guide/toss-up/");
+    assert.equal(ogOf(tossUp).url, "/guide/toss-up/");
+    assert.equal(tossUp.robots, "index,follow");
   });
 
   it("emits a trailing-slash canonical for a sample fixture path and keeps it noindex", () => {

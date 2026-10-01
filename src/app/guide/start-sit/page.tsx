@@ -165,7 +165,9 @@ export default function StartSitGuidePage() {
         lean neither side on mean alone, and certainty stays thin. Outside it, the higher mean is
         a lean. Role and listed status still matter. A tenth of a point is not a verdict. A
         slightly higher mean on a smaller role does not, by itself, jump the player whose job is
-        the one you are actually starting.
+        the one you are actually starting. To apply that line to two means you type, use the{" "}
+        <Link href="/guide/toss-up/">toss-up tool</Link>. It uses this same 1.5-point delta. It
+        does not look up a player, and it does not replace listed status.
       </p>
 
       <h2>What this is not</h2>
@@ -198,7 +200,8 @@ export default function StartSitGuidePage() {
         is the <Link href="/guide/rankings/">rankings guide</Link>. The same estimates on a
         roster-churn card — add one name over the name you would drop — are the{" "}
         <Link href="/guide/add-drop/">add/drop guide</Link>, and that card is not this lineup
-        call.
+        call. The shared 1.5-point line, applied to means you type, is the{" "}
+        <Link href="/guide/toss-up/">toss-up tool</Link>.
       </p>
 
       <h2>Questions</h2>

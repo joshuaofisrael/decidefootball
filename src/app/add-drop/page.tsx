@@ -25,7 +25,9 @@ export default function AddDropIndexPage() {
       <h1>Add or drop</h1>
       <p>
         Same metrics family as start/sit. Canonical pair order and reverse 301.{" "}
-        <Link href="/guide/add-drop/">How to read the card</Link>.
+        <Link href="/guide/add-drop/">How to read the card</Link>
+        {" · "}
+        <Link href="/guide/toss-up/">Toss-up tool</Link>.
       </p>
       <div className="cards">
         {getAddDropPairs().map(({ left, right }) => {

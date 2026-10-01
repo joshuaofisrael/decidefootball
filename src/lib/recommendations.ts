@@ -9,7 +9,32 @@ import type {
 } from "./types";
 import { round1 } from "./format";
 
-const TOSS_UP_DELTA = 1.5;
+/** Absolute mean gap, in estimated points, below which the desk will not lean. */
+export const TOSS_UP_DELTA = 1.5;
+
+export type MeanDeltaLean = "a" | "b" | "toss_up";
+
+export interface MeanDeltaDecision {
+  /** Side A mean minus side B mean, rounded to one decimal. */
+  scoreDelta: number;
+  /** Absolute value of that rounded delta. */
+  absoluteDelta: number;
+  lean: MeanDeltaLean;
+}
+
+/**
+ * Desk lean from two means. The gap is rounded to one decimal first, then
+ * compared with TOSS_UP_DELTA. Under 1.5 the pair is a toss-up. At 1.5 or
+ * beyond, the higher mean is the lean. Floor and ceiling are not inputs.
+ */
+export function meanDeltaLean(meanA: number, meanB: number): MeanDeltaDecision {
+  const scoreDelta = round1(meanA - meanB);
+  const absoluteDelta = round1(Math.abs(scoreDelta));
+  let lean: MeanDeltaLean = "toss_up";
+  if (scoreDelta >= TOSS_UP_DELTA) lean = "a";
+  else if (scoreDelta <= -TOSS_UP_DELTA) lean = "b";
+  return { scoreDelta, absoluteDelta, lean };
+}
 
 export function recommendStartSit(args: {
   left: Player;
@@ -22,14 +47,15 @@ export function recommendStartSit(args: {
   computedAt?: string;
 }): StartSitRecommendation {
   const { left, right, leftProjection, rightProjection } = args;
-  const scoreDelta = round1(leftProjection.pointsMean - rightProjection.pointsMean);
+  const decision = meanDeltaLean(leftProjection.pointsMean, rightProjection.pointsMean);
+  const scoreDelta = decision.scoreDelta;
   let lean: StartSitRecommendation["lean"] = "toss_up";
   let winnerPlayerId: string | null = null;
 
-  if (scoreDelta >= TOSS_UP_DELTA) {
+  if (decision.lean === "a") {
     lean = "start_left";
     winnerPlayerId = left.id;
-  } else if (scoreDelta <= -TOSS_UP_DELTA) {
+  } else if (decision.lean === "b") {
     lean = "start_right";
     winnerPlayerId = right.id;
   }

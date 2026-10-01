@@ -14,6 +14,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/guide/listed-status/",
   "/guide/rankings/",
   "/guide/add-drop/",
+  "/guide/toss-up/",
 ] as const;
 
 export function editorialSitemapEntries(): { url: string }[] {

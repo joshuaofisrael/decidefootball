@@ -1,5 +1,14 @@
 # SEO log
 
+## 2026-10-01
+
+Ninth indexable URL: `/guide/toss-up/`, an interactive tool for this desk's 1.5-point mean-delta line. The hub now lists five reading guides and the toss-up tool. Intent is calculator/comparison on numbers the visitor types, distinct from the start/sit reading guide and the add/drop reading guide.
+
+- Editorial `index,follow` only. Fixture sports prefixes stay disallowed and out of the sitemap, including `/start-sit/` and `/add-drop/`. Homepage stays `noindex` while fixture mode applies.
+- The lean reuses `TOSS_UP_DELTA` (1.5). The form does not search players or call a projection feed.
+- About, Methodology, the start/sit guide, the add/drop guide, the rankings guide, `llms.txt`, and the footer link the new page. Sample start/sit and add/drop indexes link the tool and stay `noindex`.
+- Follow-ups: licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT. No Search Console query data yet.
+
 ## 2026-09-30
 
 Eighth indexable URL: `/guide/add-drop/`, a reading guide for this desk's add-versus-drop card. The hub now lists five guides. Intent is roster churn (keep one name by adding it over the other), distinct from start/sit and from waiver urgency tags.

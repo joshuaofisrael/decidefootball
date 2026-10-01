@@ -107,7 +107,9 @@ export default function MethodologyPage() {
         them. How to weigh floor against ceiling, and what a narrow mean gap is worth, is the{" "}
         <Link href="/guide/start-sit/">start/sit reading guide</Link>. Add/drop uses the same
         mean and the same 1.5-point toss-up. That card is a roster-churn comparison. How to
-        read it is the <Link href="/guide/add-drop/">add/drop guide</Link>.
+        read it is the <Link href="/guide/add-drop/">add/drop guide</Link>. Applying that line
+        to two means you type is the <Link href="/guide/toss-up/">toss-up tool</Link>. It does
+        not look up a player.
       </p>
 
       <h2>Waiver radar</h2>

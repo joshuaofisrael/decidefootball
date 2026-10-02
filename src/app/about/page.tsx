@@ -112,7 +112,9 @@ export default function AboutPage() {
         mean delta and the same 1.5-point toss-up, as a roster-churn comparison rather than a
         lineup call — is the <Link href="/guide/add-drop/">add/drop guide</Link>. The same
         1.5-point line, applied to means you type, is the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link>.
+        <Link href="/guide/toss-up/">toss-up tool</Link>. The same certainty grade the start/sit
+        card prints — thin, lean, clear, or strong — applied to means and flags you type, is the{" "}
+        <Link href="/guide/certainty/">certainty tool</Link>.
       </p>
 
       <h2>What this site is not</h2>
@@ -142,9 +144,10 @@ export default function AboutPage() {
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
         <Link href="/guide/listed-status/">listed status guide</Link>, the{" "}
         <Link href="/guide/rankings/">rankings guide</Link>, the{" "}
-        <Link href="/guide/add-drop/">add/drop guide</Link>, and the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link> are the public, indexable description of
-        the product.
+        <Link href="/guide/add-drop/">add/drop guide</Link>, the{" "}
+        <Link href="/guide/toss-up/">toss-up tool</Link>, and the{" "}
+        <Link href="/guide/certainty/">certainty tool</Link> are the public, indexable description
+        of the product.
       </p>
       <p>
         Draft legal shells (privacy, terms, disclaimer, cookies) remain available for humans in

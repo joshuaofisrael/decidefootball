@@ -115,7 +115,8 @@ export default function AddDropGuidePage() {
         Mean delta is the left mean minus the right mean, printed to one decimal. The card
         shows that gap next to the label. It does not print the start/sit certainty bands —
         thin, lean, clear, or strong. Those bands grade how hard a lineup call can lean on the
-        math. This card uses the shared toss-up line instead.
+        math. This card uses the shared toss-up line instead. Applying that grade to means and
+        flags you type is the <Link href="/guide/certainty/">certainty tool</Link>.
       </p>
 
       <h2>The 1.5-point line</h2>
@@ -180,7 +181,8 @@ export default function AddDropGuidePage() {
         <Link href="/guide/start-sit/">start/sit guide</Link>, the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
         <Link href="/guide/rankings/">rankings guide</Link>, the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link>, and the{" "}
+        <Link href="/guide/toss-up/">toss-up tool</Link>, the{" "}
+        <Link href="/guide/certainty/">certainty tool</Link>, and the{" "}
         <Link href="/about/">about page</Link>.
       </p>
 

@@ -63,6 +63,8 @@ export default function StartSitIndexPage() {
         {" · "}
         <Link href="/guide/toss-up/">Toss-up tool</Link>
         {" · "}
+        <Link href="/guide/certainty/">Certainty tool</Link>
+        {" · "}
         <Link href="/slate/">Week slate</Link>
         {" · "}
         <Link href="/methodology/">Certainty math</Link>

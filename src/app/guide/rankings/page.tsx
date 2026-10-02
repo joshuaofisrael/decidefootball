@@ -128,7 +128,8 @@ export default function RankingsGuidePage() {
         toss-up line at 1.5 estimated points and keeps certainty thin inside it. Take the pair to
         the comparison card. The list already told you the mean order. It did not tell you the
         call is settled. Applying that line to two means you type is the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link>.
+        <Link href="/guide/toss-up/">toss-up tool</Link>. Grading how sure the lean is, with the
+        same desk score, is the <Link href="/guide/certainty/">certainty tool</Link>.
       </p>
 
       <h2>A rank is not a free-agent claim</h2>

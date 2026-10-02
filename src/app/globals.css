@@ -836,7 +836,8 @@ th {
   color: var(--muted);
 }
 
-.toss-tool input[type="text"] {
+.toss-tool input[type="text"],
+.toss-tool select {
   font: inherit;
   color: var(--ink);
   background: #fffdf6;
@@ -849,6 +850,28 @@ th {
 .toss-tool input:focus {
   outline: 2px solid var(--field);
   outline-offset: 1px;
+}
+
+.flag-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0 0 0.75rem;
+}
+
+.flag-list label {
+  display: flex;
+  gap: 0.45rem;
+  align-items: flex-start;
+  font-size: 0.92rem;
+}
+
+.flag-list input {
+  margin-top: 0.28rem;
+}
+
+.flag-list label:has(input:disabled) {
+  color: var(--muted);
 }
 
 .field-error {
@@ -867,6 +890,19 @@ th {
 
 .toss-result .kicker {
   color: #d9c7a2;
+}
+
+.toss-result .certainty {
+  background: color-mix(in srgb, #000 18%, transparent);
+  margin-bottom: 0.85rem;
+}
+
+.toss-result .certainty-track {
+  background: color-mix(in srgb, var(--field-ink) 18%, transparent);
+}
+
+.toss-result a {
+  color: #f3c7a4;
 }
 
 .toss-lean {

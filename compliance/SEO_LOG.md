@@ -1,5 +1,14 @@
 # SEO log
 
+## 2026-10-02
+
+Tenth indexable URL: `/guide/certainty/`, an interactive tool for this desk's certainty grade (thin, lean, clear, strong). The hub now lists five reading guides and two tools. Intent is how sure a lean is, on numbers and flags the visitor types. The toss-up tool still answers who leans. This page does not replace the start/sit reading guide.
+
+- Editorial `index,follow` only. Fixture sports prefixes stay disallowed and out of the sitemap, including `/start-sit/` and `/add-drop/`. `/guide/certainty/` does not match Disallow `/start-sit/`. Homepage stays `noindex` while fixture mode applies.
+- The grade reuses `computeCertainty`. The form builds projection stubs and does not search players or call a projection feed. Bands stay 78 strong, 58 clear, 40 lean, else thin.
+- About, Methodology, the start/sit guide, the toss-up tool, the rankings guide, the add/drop guide, `llms.txt`, and the footer link the new page. The sample start/sit index links the tool and stays `noindex`.
+- Follow-ups: licensed GREEN data before any sports URL is indexed. Legal contact still NEED JOSHUA INPUT. No Search Console query data yet.
+
 ## 2026-10-01
 
 Ninth indexable URL: `/guide/toss-up/`, an interactive tool for this desk's 1.5-point mean-delta line. The hub now lists five reading guides and the toss-up tool. Intent is calculator/comparison on numbers the visitor types, distinct from the start/sit reading guide and the add/drop reading guide.

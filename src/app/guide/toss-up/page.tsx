@@ -33,7 +33,7 @@ const guideFaqs = [
   {
     question: "If the means are far apart, does listed status still come first?",
     answer:
-      "Yes. A wide mean gap is a lean on the numbers you typed. It does not clear a listed designation, and it does not replace role. The start/sit card also prints a certainty grade — thin, lean, clear, or strong — which this tool does not compute. Read status before the mean. This page is not gambling advice.",
+      "Yes. A wide mean gap is a lean on the numbers you typed. It does not clear a listed designation, and it does not replace role. The start/sit card also prints a certainty grade — thin, lean, clear, or strong — which this tool does not compute. That grade, from means and flags you type, is the certainty tool at /guide/certainty/. Read status before the mean. This page is not gambling advice.",
   },
 ] as const;
 
@@ -126,8 +126,9 @@ export default function TossUpGuidePage() {
         Start/sit asks which name to put in the lineup. When the rounded gap clears 1.5, the
         sentence names the higher side: Start that side. Inside the line, the sentence is a
         toss-up: lean neither side on mean alone. The card also prints a certainty grade — thin,
-        lean, clear, or strong. A toss-up keeps that grade thin. This tool prints the delta and
-        the line. It does not print that grade. The arithmetic for the grade is on the{" "}
+        lean, clear, or strong. This tool prints the delta and the line. It does not print that
+        grade. Applying the same grade to means and flags you type is the{" "}
+        <Link href="/guide/certainty/">certainty tool</Link>. The arithmetic is on the{" "}
         <Link href="/methodology/">methodology</Link> page, labeled v0 and subject to change.
       </p>
       <p>
@@ -151,7 +152,9 @@ export default function TossUpGuidePage() {
           real card.
         </li>
         <li>
-          Not the start/sit certainty grade. Thin, lean, clear, and strong live on that card.
+          Not the certainty grade. Thin, lean, clear, and strong are the{" "}
+          <Link href="/guide/certainty/">certainty tool</Link>. This page only applies the
+          1.5-point line.
         </li>
         <li>Not a free-agent claim, a waiver-priority order, or FAAB advice.</li>
         <li>Not an official projection, club report, or injury wire.</li>

@@ -155,8 +155,11 @@ export default function StartSitGuidePage() {
       <p>
         It is not the probability that you win the fantasy week, and it is not the probability
         that the higher mean outscores the other side on Sunday. Read the band next to the status
-        labels, not instead of them. The arithmetic behind the score is on the{" "}
-        <Link href="/methodology/">methodology</Link> page, labeled v0 and subject to change.
+        labels, not instead of them. To apply that grade to two means and the flags you type —
+        the gate, a status discount, uncertainty, and trailing weeks — use the{" "}
+        <Link href="/guide/certainty/">certainty tool</Link>. It does not look up a player. The
+        arithmetic behind the score is on the <Link href="/methodology/">methodology</Link> page,
+        labeled v0 and subject to change.
       </p>
 
       <h2>A narrow mean is soft evidence</h2>
@@ -201,7 +204,8 @@ export default function StartSitGuidePage() {
         roster-churn card — add one name over the name you would drop — are the{" "}
         <Link href="/guide/add-drop/">add/drop guide</Link>, and that card is not this lineup
         call. The shared 1.5-point line, applied to means you type, is the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link>.
+        <Link href="/guide/toss-up/">toss-up tool</Link>. The certainty grade, applied to means
+        and flags you type, is the <Link href="/guide/certainty/">certainty tool</Link>.
       </p>
 
       <h2>Questions</h2>

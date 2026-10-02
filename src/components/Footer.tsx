@@ -8,6 +8,7 @@ const legal = [
   { href: "/guide/start-sit/", label: "Start/sit guide" },
   { href: "/guide/add-drop/", label: "Add/drop guide" },
   { href: "/guide/toss-up/", label: "Toss-up tool" },
+  { href: "/guide/certainty/", label: "Certainty tool" },
   { href: "/guide/waiver-radar/", label: "Waiver radar guide" },
   { href: "/guide/listed-status/", label: "Listed status guide" },
   { href: "/guide/rankings/", label: "Rankings guide" },

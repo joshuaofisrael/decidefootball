@@ -11,6 +11,7 @@ export const EDITORIAL_ROBOTS_ALLOW = [
   "/guide/rankings/",
   "/guide/add-drop/",
   "/guide/toss-up/",
+  "/guide/certainty/",
 ] as const;
 
 /**

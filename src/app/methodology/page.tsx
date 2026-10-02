@@ -109,7 +109,9 @@ export default function MethodologyPage() {
         mean and the same 1.5-point toss-up. That card is a roster-churn comparison. How to
         read it is the <Link href="/guide/add-drop/">add/drop guide</Link>. Applying that line
         to two means you type is the <Link href="/guide/toss-up/">toss-up tool</Link>. It does
-        not look up a player.
+        not look up a player. Applying this grade to means and flags you type is the{" "}
+        <Link href="/guide/certainty/">certainty tool</Link>. It uses the same helper. It is not
+        a win probability.
       </p>
 
       <h2>Waiver radar</h2>

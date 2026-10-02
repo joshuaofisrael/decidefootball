@@ -47,6 +47,7 @@ describe("buildRobotsRules", () => {
       "/guide/rankings/",
       "/guide/add-drop/",
       "/guide/toss-up/",
+      "/guide/certainty/",
     ]);
     for (const path of allow) {
       for (const prefix of disallow) {
@@ -70,10 +71,12 @@ describe("buildRobotsRules", () => {
     assert.equal(allow.includes("/guide/rankings/"), true);
     assert.equal(allow.includes("/guide/add-drop/"), true);
     assert.equal(allow.includes("/guide/toss-up/"), true);
+    assert.equal(allow.includes("/guide/certainty/"), true);
     assert.equal(allow.includes("/add-drop/"), false);
     assert.equal(allow.includes("/start-sit/"), false);
     assert.equal("/guide/add-drop/".startsWith("/add-drop/"), false);
     assert.equal("/guide/toss-up/".startsWith("/start-sit/"), false);
+    assert.equal("/guide/certainty/".startsWith("/start-sit/"), false);
     assert.equal(allow.includes("/rankings/"), false);
     assert.ok(disallow.includes("/rankings/"));
     assert.equal(

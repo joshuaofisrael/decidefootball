@@ -32,7 +32,7 @@ export function Footer() {
         </nav>
         <p>{INDEPENDENT_MICROCOPY}</p>
         <p className="owner-line">
-          Operated and owned by {SITE_LEGAL_NAME}.
+          {`Operated by ${SITE_LEGAL_NAME}.`}
           <br />© {SITE_YEAR} {SITE_LEGAL_NAME}. All rights reserved.
         </p>
       </div>

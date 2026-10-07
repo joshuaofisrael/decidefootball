@@ -144,9 +144,10 @@ export default function WaiverRadarGuidePage() {
         not vote a new one into existence.
       </p>
       <p>
-        What each designation means before a tag is printed is the{" "}
-        <Link href="/guide/listed-status/">listed status guide</Link>. The tag does not replace
-        that label.
+        <Link href="/guide/listed-status/">
+          What Questionable, Doubtful, Out, IR, and inactive mean
+        </Link>{" "}
+        is the page to read before a tag. The tag does not replace that label.
       </p>
 
       <h2>Not a free-agent list</h2>

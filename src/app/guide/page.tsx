@@ -6,7 +6,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
 const description =
-  "Hub for how to read a Decide Football decision card: the start/sit stack, listed status before any number, waiver radar tags, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta and a certainty tool for the desk grade. Not a news blog, not NFL-affiliated, and not gambling advice.";
+  "Hub for how to read a Decide Football decision card: the start/sit stack, NFL injury designations before any number, waiver radar tags, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta and a certainty tool for the desk grade. Not a news blog, not NFL-affiliated, and not gambling advice.";
 
 const guides = [
   {
@@ -18,9 +18,10 @@ const guides = [
   },
   {
     href: "/guide/listed-status/",
-    name: "Listed status",
-    heading: "Listed status",
-    sentence: "Healthy through INACTIVE is read before any number.",
+    name: "Injury designations",
+    heading: "Injury designations",
+    sentence:
+      "What Questionable, Doubtful, Out, injured reserve, and inactive mean on the NFL injury report, and how a lineup should treat each label.",
   },
   {
     href: "/guide/waiver-radar/",

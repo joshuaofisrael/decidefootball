@@ -10,7 +10,7 @@ const legal = [
   { href: "/guide/toss-up/", label: "Toss-up tool" },
   { href: "/guide/certainty/", label: "Certainty tool" },
   { href: "/guide/waiver-radar/", label: "Waiver radar guide" },
-  { href: "/guide/listed-status/", label: "Listed status guide" },
+  { href: "/guide/listed-status/", label: "Injury designations" },
   { href: "/guide/rankings/", label: "Rankings guide" },
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },

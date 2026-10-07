@@ -104,8 +104,11 @@ export default function RankingsGuidePage() {
         OUT, IR, and INACTIVE force the estimate to zero: mean, floor, and ceiling. Those rows
         sort with the other zeros. They are not starts, and a rank among zeros is not a return
         date. The model does not invent one. Questionable and doubtful apply a discount. They
-        are not a cleared player, and they are not a ruled-out player. What each designation
-        means is the <Link href="/guide/listed-status/">listed status guide</Link>.
+        are not a cleared player, and they are not a ruled-out player.{" "}
+        <Link href="/guide/listed-status/">
+          What Questionable, Doubtful, Out, IR, and inactive mean
+        </Link>{" "}
+        is the page for those labels.
       </p>
       <p>
         Floor and ceiling are the model range around the mean, a low end and a high end. A wider
@@ -175,7 +178,7 @@ export default function RankingsGuidePage() {
         The public description of the board is this guide, the{" "}
         <Link href="/methodology/">methodology</Link>, the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>, the{" "}
-        <Link href="/guide/listed-status/">listed status guide</Link>, the{" "}
+        <Link href="/guide/listed-status/">injury designations</Link>, the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>, and the{" "}
         <Link href="/about/">about page</Link>.
       </p>

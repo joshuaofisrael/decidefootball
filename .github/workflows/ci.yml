@@ -153,6 +153,15 @@ jobs:
           grep -q 'content="index,follow"' out/guide/start-sit/index.html
           grep -q 'content="index,follow"' out/guide/waiver-radar/index.html
           grep -q 'content="index,follow"' out/guide/listed-status/index.html
+          grep -q 'Questionable, Doubtful, Out: NFL injury designations for fantasy' out/guide/listed-status/index.html
+          grep -q 'What Questionable, Doubtful, and Out mean on the NFL injury report' out/guide/listed-status/index.html
+          grep -q 'property="og:title" content="Questionable, Doubtful, Out: NFL injury designations for fantasy"' out/guide/listed-status/index.html
+          grep -q 'name="twitter:title" content="Questionable, Doubtful, Out: NFL injury designations for fantasy"' out/guide/listed-status/index.html
+          grep -q 'https://www.nfl.com/news/competition-committee-approves-revisions-to-injury-report-0ap3000000688693' out/guide/listed-status/index.html
+          grep -q 'https://operations.nfl.com/calendar-events/nfl-important-dates' out/guide/listed-status/index.html
+          grep -q 'https://operations.nfl.com/game-operations-logistics/preparation-safety/game-and-stadium-prep' out/guide/listed-status/index.html
+          grep -q 'What do Questionable, Doubtful, and Out mean?' out/guide/listed-status/index.html
+          ! grep -q '<lastmod>' out/sitemap.xml
           grep -q 'content="index,follow"' out/guide/rankings/index.html
           grep -q 'content="index,follow"' out/guide/add-drop/index.html
           grep -q 'content="index,follow"' out/guide/toss-up/index.html
@@ -253,7 +262,7 @@ jobs:
           grep -q 'guide/waiver-radar/' out/waiver-wire/week-3/index.html
           grep -q 'content="noindex,follow"' out/is-playing/index.html
           grep -q 'guide/listed-status/' out/is-playing/index.html
-          grep -q 'How to read the status' out/is-playing/index.html
+          grep -q 'What Questionable, Doubtful, and Out mean' out/is-playing/index.html
           grep -q 'content="noindex,follow"' out/is-jordan-voss-playing-today/index.html
           grep -q 'guide/listed-status/' out/is-jordan-voss-playing-today/index.html
           grep -q 'content="noindex,follow"' out/injuries/jordan-voss/index.html

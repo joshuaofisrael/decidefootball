@@ -100,8 +100,11 @@ export default function AddDropGuidePage() {
       <p>
         Read listed status before any number. OUT, IR, and INACTIVE force that side to zero.
         The model does not invent a return date. Questionable and doubtful leave a discounted
-        estimate. What each designation means is the{" "}
-        <Link href="/guide/listed-status/">listed status guide</Link>. If the status and the
+        estimate.{" "}
+        <Link href="/guide/listed-status/">
+          What Questionable, Doubtful, Out, IR, and inactive mean
+        </Link>{" "}
+        is the page for the label. If the status and the
         mean disagree, believe the status.
       </p>
       <p>

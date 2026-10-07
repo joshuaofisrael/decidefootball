@@ -98,7 +98,7 @@ export default function HomePage() {
           <p>
             <Link href="/is-playing/">Is he playing</Link>
             {" · "}
-            <Link href="/guide/listed-status/">How to read the status</Link>
+            <Link href="/guide/listed-status/">What Questionable, Doubtful, and Out mean</Link>
           </p>
         </article>
       </div>

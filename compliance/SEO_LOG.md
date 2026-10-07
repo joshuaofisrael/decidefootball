@@ -1,5 +1,15 @@
 # SEO log
 
+## 2026-10-07
+
+Retargeted the existing `/guide/listed-status/` page at the generic query: what Questionable, Doubtful, and Out mean on the NFL injury report, plus injured reserve and inactive. Same URL. No new indexable URL.
+
+- Title, H1, description, Open Graph, and Twitter now lead with that question. A designation table and the weekly filing clock (practice report, Friday game status for Sunday games, 90-minute inactive list) sit above the card-reading notes.
+- League facts are cited to the August 21, 2016 NFL.com Competition Committee revision and to NFL Football Operations' 2026 important dates and countdown to kickoff. The 2026 calendars still set the Sunday game status report for Friday by 4:00 p.m. New York time.
+- FAQPage questions match those generic questions. The hub card, sibling guides, methodology, about, and `llms.txt` point at the page with descriptive anchors.
+- Fixture sports pages stay `noindex` and Disallow. Homepage stays `noindex`. Ads stay off. Sitemap has no `lastmod` field, so it was left unchanged.
+- Hypothesis: retargeting to the generic injury-designation query should earn the first real impressions within 2 to 4 weeks.
+
 ## 2026-10-02
 
 Tenth indexable URL: `/guide/certainty/`, an interactive tool for this desk's certainty grade (thin, lean, clear, strong). The hub now lists five reading guides and two tools. Intent is how sure a lean is, on numbers and flags the visitor types. The toss-up tool still answers who leans. This page does not replace the start/sit reading guide.

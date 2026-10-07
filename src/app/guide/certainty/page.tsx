@@ -111,8 +111,11 @@ export default function CertaintyGuidePage() {
       <p>
         OUT, IR, and INACTIVE zero that side. On this form, mark the side availability-gated.
         The desk mean becomes zero, and the grade records that the side is gated. The model
-        does not invent a return date. What each designation means is the{" "}
-        <Link href="/guide/listed-status/">listed status guide</Link>. If the status and the
+        does not invent a return date.{" "}
+        <Link href="/guide/listed-status/">
+          What Questionable, Doubtful, Out, IR, and inactive mean
+        </Link>{" "}
+        is the page for the label. If the status and the
         mean disagree, believe the status.
       </p>
 
@@ -175,8 +178,11 @@ export default function CertaintyGuidePage() {
         Read the bands on a finished card in the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>. Apply the 1.5-point line in the{" "}
         <Link href="/guide/toss-up/">toss-up tool</Link>. Read the designation before the number
-        in the <Link href="/guide/listed-status/">listed status guide</Link>. How the score is
-        built is the <Link href="/methodology/">methodology</Link>. The rest of the reading notes
+        in{" "}
+        <Link href="/guide/listed-status/">
+          what Questionable, Doubtful, and Out mean
+        </Link>. How the score is built is the <Link href="/methodology/">methodology</Link>. The rest of
+        the reading notes
         sit on the <Link href="/guide/">guides</Link> hub. What the product is, and is not, is
         the <Link href="/about/">about page</Link>.
       </p>

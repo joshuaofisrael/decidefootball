@@ -34,7 +34,7 @@ export default function IsPlayingIndexPage() {
       <p>
         Availability comes from the fixture status row, not from the estimate engine. Display
         timezone is <span className="flag">NEED JOSHUA INPUT</span> (currently {tz}).{" "}
-        <Link href="/guide/listed-status/">How to read the status</Link>.
+        <Link href="/guide/listed-status/">What Questionable, Doubtful, and Out mean</Link>.
       </p>
       <Timestamps lastVerifiedAt={FIXTURE_VERIFIED_AT} renderedAt={renderedAt} />
       <div className="table-wrap">

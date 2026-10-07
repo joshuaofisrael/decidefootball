@@ -1,47 +1,39 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
+import {
+  LISTED_STATUS_CRUMB,
+  LISTED_STATUS_DESCRIPTION,
+  LISTED_STATUS_FAQS,
+  LISTED_STATUS_H1,
+  LISTED_STATUS_PATH,
+  LISTED_STATUS_SOURCES,
+  LISTED_STATUS_TABLE,
+  LISTED_STATUS_TITLE,
+  NFL_COM_IMPORTANT_DATES_URL,
+  NFL_INJURY_REVISION_URL,
+  NFL_OPS_IMPORTANT_DATES_URL,
+  NFL_OPS_KICKOFF_URL,
+} from "@/lib/listed-status-guide";
 import { faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
-const title = "How to read listed status — Healthy, Questionable, Doubtful, OUT, IR, INACTIVE";
-const description =
-  "How to read a Decide Football listed status: Healthy, Questionable, Doubtful, OUT, IR, and INACTIVE, kept separate from the projection mean. Not an official injury report and not a return date.";
+const title = LISTED_STATUS_TITLE;
+const description = LISTED_STATUS_DESCRIPTION;
 
-const guideFaqs = [
-  {
-    question: "What do Healthy, Questionable, and Doubtful mean on this desk?",
-    answer:
-      "Healthy means the row lists no injury designation. Status does not discount the estimate and does not zero it. That is not an official clearance, and it is not a promise of snaps. Questionable means uncertain: a soft discount, not a cleared player and not a ruled-out player. Doubtful means unlikely: a heavier soft discount than questionable, and still not a hard zero. All three are inputs someone listed. The model does not invent a designation.",
+export const metadata = {
+  ...pageMetadata({
+    path: LISTED_STATUS_PATH,
+    title,
+    description,
+    indexation: { kind: "editorial" },
+  }),
+  twitter: {
+    card: "summary" as const,
+    title,
+    description,
   },
-  {
-    question: "Why do OUT, IR, and INACTIVE zero the estimate?",
-    answer:
-      "OUT, IR, and INACTIVE are different labels someone listed, and on this desk they hit the same gate. The estimate goes to zero: mean, floor, and ceiling. Those rows are not starts this week. The model does not invent a return date, a practice window, or a week the player comes back. If a projection number still looks usable beside one of those labels, believe the label.",
-  },
-  {
-    question: "What is the difference between last verified and page rendered?",
-    answer:
-      "Last verified is when the listed designation was last checked as an input. Page rendered is when this HTML was baked. They are different clocks. A new render does not mean the designation was re-checked. A last-verified time is not a return date, and it is not proof the label is an official league report.",
-  },
-  {
-    question: "Is listed status an official NFL or club injury report?",
-    answer:
-      "No. Decide Football is not affiliated with the NFL or its member clubs. A listed status is an input someone listed for this desk. It is not an official injury wire, not a league inactive list, and not a promise of a return date. The method is methodology v0, subject to change. There is no published backtest, and none should be inferred.",
-  },
-  {
-    question: "Why do the is-playing and injury pages stay out of search?",
-    answer:
-      "Sample availability pages are on the site so the product can be reviewed. The is-playing board, the per-player playing-today pages, and the injury timelines use fixture data. They stay out of search until licensed GREEN sports data is in place. This guide does not promise those URLs will be indexed, and it does not give a date. This page lives under /guide/, outside those fixture paths.",
-  },
-] as const;
-
-export const metadata = pageMetadata({
-  path: "/guide/listed-status/",
-  title,
-  description,
-  indexation: { kind: "editorial" },
-});
+};
 
 export default function ListedStatusGuidePage() {
   return (
@@ -50,146 +42,171 @@ export default function ListedStatusGuidePage() {
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Guides", path: "/guide/" },
-          { name: "Listed status guide", path: "/guide/listed-status/" },
+          { name: LISTED_STATUS_CRUMB, path: LISTED_STATUS_PATH },
         ]}
       />
       <JsonLd data={organizationJsonLd()} />
       <JsonLd
         data={webPageJsonLd({
-          path: "/guide/listed-status/",
+          path: LISTED_STATUS_PATH,
           name: title,
           description,
         })}
       />
-      <JsonLd data={faqPageJsonLd([...guideFaqs])} />
-      <p className="kicker">Reading the designation</p>
-      <h1>How to read a listed status</h1>
+      <JsonLd data={faqPageJsonLd([...LISTED_STATUS_FAQS])} />
+      <p className="kicker">NFL injury report</p>
+      <h1>{LISTED_STATUS_H1}</h1>
       <p>
-        A {SITE_NAME} availability line is a designation someone listed: Healthy, Questionable,
-        Doubtful, OUT, IR, or INACTIVE. Read it before any projection number. The mean is a
-        separate estimate. The label does not become the points, and the points do not vote a
-        new label into existence.
-      </p>
-      <p>
-        This page is how to read that designation. How the estimates are built is the{" "}
-        <Link href="/methodology/">methodology</Link>. How to read the mean, the floor and
-        ceiling, and the certainty grade is the{" "}
-        <Link href="/guide/start-sit/">start/sit guide</Link>. How a waiver tag uses the same
-        label is the <Link href="/guide/waiver-radar/">waiver radar guide</Link>. What the
-        product is, and is not, is the <Link href="/about/">about page</Link>.
+        On the NFL game status report, <strong>Questionable</strong> means it is uncertain
+        whether the player will play, <strong>Doubtful</strong> means it is unlikely the player
+        will participate, and <strong>Out</strong> means the player will not play. Those
+        definitions are from the{" "}
+        <a href={NFL_INJURY_REVISION_URL}>
+          Competition Committee&apos;s 2016 injury-report revision
+        </a>. Injured reserve and the game-day inactive list are separate reports. A player who is
+        not listed is one the club has filed as certain to play.
       </p>
 
-      <h2>Status before any number</h2>
-      <p>
-        The designation comes first. A mean, a floor, a ceiling, and a certainty grade sit beside
-        it on a start/sit card. Those are a different stack. The{" "}
-        <Link href="/guide/start-sit/">start/sit guide</Link> is where that stack is taught. They
-        do not replace the label, and this page does not re-teach them.
-      </p>
-      <p>
-        If the status and the mean disagree, believe the status. A number that still looks usable
-        on a player listed OUT, IR, or INACTIVE is a zero for the week. The card is telling you
-        the gate fired. Questionable and doubtful leave a discounted estimate. That number is not
-        a cleared player.
-      </p>
-      <p>
-        The same label is the status column on the weekly positional board. A rank does not
-        replace it. How to read that ordered list is the{" "}
-        <Link href="/guide/rankings/">rankings guide</Link>.
-      </p>
+      <div className="table-wrap">
+        <table>
+          <caption className="visually-hidden">
+            NFL injury designations and what each one means for a fantasy lineup
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Designation</th>
+              <th scope="col">League meaning</th>
+              <th scope="col">Fantasy lineup</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LISTED_STATUS_TABLE.map((row) => (
+              <tr key={row.designation}>
+                <th scope="row">{row.designation}</th>
+                <td>{row.league}</td>
+                <td>{row.lineup}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <h2>The six designations</h2>
+      <h2>The weekly clock</h2>
       <p>
-        The desk prints one listed status. Read it as the input it is. It is not a sentence
-        about the future, and it is not a scouting report.
+        Fantasy lineups move on three different filings. Practice participation is not the game
+        status, and the game status is not the inactive list.
       </p>
+      <p>
+        <strong>Practice report.</strong> For a Sunday game, clubs file a practice report
+        Wednesday, Thursday, and Friday by 4:00 p.m. New York time, or as soon as possible after
+        practice if practice ends later. On a day the club practices, an estimated report is not
+        acceptable. The{" "}
+        <a href={NFL_OPS_IMPORTANT_DATES_URL}>2026 Football Operations calendar</a> sets that
+        schedule, and{" "}
+        <a href={NFL_COM_IMPORTANT_DATES_URL}>NFL.com&apos;s 2026–27 important dates</a> publish
+        the same clock. The 2016 revision lists an injured player as Did Not Participate, Limited
+        Participation (less than 100 percent of that player&apos;s normal repetitions), or Full
+        Participation (100 percent of those repetitions). That revision removed Out from the
+        practice report so it would not be confused with the game status report.
+      </p>
+      <p>
+        <strong>Game status report.</strong> For a Sunday game, the weekly game status report is
+        due Friday by 4:00 p.m. New York time, or as soon as possible after practice. Both of
+        those 2026 calendars say Friday for a Sunday game. If the player&apos;s condition changes
+        after the report is filed, the club has to report an update. Other kickoff days have
+        their own deadline on the same calendar. A Monday game is due Saturday.
+      </p>
+      <p>
+        <strong>Inactive list.</strong> One hour and 30 minutes before kickoff, club staff
+        deliver the Game Day Administration Report to the referee. That report includes the
+        club&apos;s inactive list.{" "}
+        <a href={NFL_OPS_KICKOFF_URL}>NFL Football Operations&apos; countdown to kickoff</a>{" "}
+        describes the meeting. That filing is the inactive list for the game.
+      </p>
+      <p>A practical checklist for the week:</p>
       <ul>
         <li>
-          <strong>Healthy.</strong> No injury designation on the row. Status does not discount
-          the estimate and does not zero it. This desk reads the listing as available. That is
-          not an official clearance, and it is not a promise of snaps.
+          A Questionable player in a later window: keep a replacement who fills the same lineup
+          spot and whose game has not started.
         </li>
         <li>
-          <strong>Questionable.</strong> Uncertain. A soft discount. Not a cleared player, and
-          not a ruled-out player. The estimate can still be a number. The label is still dirty.
+          The inactive list is the final word for that kickoff. Check it again after the Friday
+          game status report.
         </li>
         <li>
-          <strong>Doubtful.</strong> Unlikely. A heavier soft discount than questionable. Still
-          not a hard zero, and still not a return date. The row has not been cleared, and it has
-          not been ruled out the way OUT is.
+          Out and inactive are different objects. Out is the game-status label that the player
+          will not play. Inactive is the game-day list. A player can be Questionable on Friday
+          and inactive 90 minutes before kickoff.
         </li>
-        <li>
-          <strong>OUT.</strong> Listed out. The estimate is forced to zero. Not a start this
-          week. The desk does not add a sentence about when the player might be back.
-        </li>
-        <li>
-          <strong>IR.</strong> Listed on injured reserve. The estimate is forced to zero, the
-          same gate as OUT. The desk does not invent the week someone comes off IR.
-        </li>
-        <li>
-          <strong>INACTIVE.</strong> Listed inactive. The estimate is forced to zero, the same
-          gate as OUT and IR. A different label someone listed. Not a separate projection story,
-          and not a return window.
-        </li>
+        <li>Do not start a player who is Out, on injured reserve, or inactive.</li>
       </ul>
-
-      <h2>Soft discount and hard zero</h2>
       <p>
-        Questionable and doubtful are discounts. The model still produces an estimate, and it
-        marks the row as less clean than a healthy listing. Doubtful discounts more than
-        questionable, because the desk treats doubtful as unlikely and questionable as uncertain.
-        The size of that discount is part of methodology v0 and can change. This page does not
-        treat the discount as a fixed official rate. How the gate is applied is the{" "}
+        The same 2016 revision removed <strong>Probable</strong>. The league&apos;s stated reason
+        was that approximately 95 percent of players listed Probable in prior years did play.
+        Questionable was defined as uncertain whether the player will play, not as a fixed
+        percentage. If there is any question about availability, the club should list the player
+        as Questionable. Reading Questionable as a fixed 50/50 is not that definition.
+      </p>
+
+      <h2>How {SITE_NAME} cards use the label</h2>
+      <p>
+        {SITE_NAME} reads the label before any projection. The mean is a separate estimate. A
+        number does not create a new label, and the label does not become the points. How the
+        estimates are built is the <Link href="/methodology/">methodology</Link>. How to read the
+        mean, the floor and ceiling, and the certainty grade is the{" "}
+        <Link href="/guide/start-sit/">start/sit guide</Link>.
+      </p>
+      <p>
+        When the card says <strong>Healthy</strong>, no injury designation was listed. The
+        estimate is not discounted and not zeroed for status. That is not an official clearance,
+        and it is not a promise of snaps. It matches a player the club left off the game status
+        report as certain to play. It is still not the inactive list.
+      </p>
+      <p>
+        <strong>Questionable</strong> and <strong>Doubtful</strong> leave a number, with a soft
+        discount. Doubtful is discounted more than Questionable, because the card treats Doubtful
+        as unlikely and Questionable as uncertain. The size of the discount is part of methodology
+        v0 and can change. It is not a league rate. How the gate is applied is the{" "}
         <Link href="/methodology/">methodology</Link>.
       </p>
       <p>
-        OUT, IR, and INACTIVE are a hard zero. Mean, floor, and ceiling are 0. The model does
-        not invent a designation to get there, and it does not invent a return to get back.
+        <strong>OUT</strong>, <strong>IR</strong>, and <strong>INACTIVE</strong> are a hard zero.
+        Mean, floor, and ceiling are 0. Those rows are not starts this week. The model does not
+        invent a return date or a practice window. If a projection still looks usable next to one
+        of those labels, believe the label.
       </p>
       <p>
-        Waiver urgency reads the same gate. A hot tag is not printed over OUT, IR, or INACTIVE.
-        How to read the tag is the <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
-        The tag does not replace the label.
+        The same label is the status column on the weekly rankings board. A rank does not replace
+        it. How to read that ordered list is the{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>. Waiver urgency reads the same gate. A
+        hot tag is not printed over OUT, IR, or INACTIVE. How to read the tag is the{" "}
+        <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
       </p>
 
       <h2>Last verified is not the render time</h2>
       <p>
-        Availability pages print two clocks, and they stay distinct. <strong>Last verified</strong>{" "}
-        is when the listed designation was last checked as an input. <strong>Page rendered</strong>{" "}
-        is when this HTML was baked. A new render does not mean someone re-checked the
-        designation. A last-verified time is not a return date, and it is not proof the label
-        came from an official league wire.
-      </p>
-      <p>
-        Read them as two facts. One is about the status input. One is about the page you are
-        looking at. Neither one is a projection, and neither one is a promise that the
-        designation will still be true at kickoff.
+        Availability pages print two clocks. <strong>Last verified</strong> is when the listed
+        designation was last checked as an input. <strong>Page rendered</strong> is when this
+        HTML was baked. A new render does not mean the designation was re-checked. Neither clock
+        is a return date, and neither one means the label is the league&apos;s own report.
       </p>
 
       <h2>Not an official report</h2>
       <p>
         {SITE_NAME} is not affiliated with, endorsed by, or sponsored by the NFL or its member
-        clubs. A listed status is an input for a fantasy roster call. It is not an official
-        injury wire, not a club report, and not a league inactive list. Names are identification
-        for fantasy analysis only.
+        clubs. A listed status on this site is an input for a fantasy roster call. It is not an
+        official injury wire, not a club report, and not the league inactive list. Names are
+        identification for fantasy analysis only.
       </p>
       <p>
-        Nothing here is a return date. Nothing here is gambling advice, a spread, or a
-        sportsbook. The method is methodology v0, subject to change. No accuracy rate is
-        published here, and none should be inferred.
-      </p>
-
-      <h2>Where the sample pages are</h2>
-      <p>
-        The <Link href="/is-playing/">is-playing board</Link> is on the site so the product can
-        be used and reviewed. Each name also has a playing-today page, and an injury timeline
-        under the injuries path. Those URLs use sample data. They stay out of search until
-        licensed GREEN sports data is in place. This page does not set a date for that, and it
-        does not promise those URLs will enter a search index.
+        Nothing here is gambling advice, a spread, or a sportsbook. The method is methodology v0,
+        subject to change. No accuracy rate is published here, and none should be inferred.
       </p>
       <p>
-        The public description of the designation is this guide, the{" "}
-        <Link href="/methodology/">methodology</Link>, the{" "}
+        The <Link href="/is-playing/">is-playing board</Link>, the playing-today pages, and the
+        injury timelines use sample data. They stay out of search until licensed sports data is
+        in place. This page does not set a date for that. The public description of the label is
+        this guide, the <Link href="/methodology/">methodology</Link>, the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>, the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
         <Link href="/guide/rankings/">rankings guide</Link>, and the{" "}
@@ -204,6 +221,7 @@ export default function ListedStatusGuidePage() {
         </li>
         <li>Not an official injury wire, club report, or league inactive list.</li>
         <li>Not a return date, a practice window, or a promise someone plays.</li>
+        <li>Not a fixed 50/50, and not the old Probable tag.</li>
         <li>Not gambling advice, odds, or a sportsbook.</li>
         <li>
           Not a backtest. The method is methodology v0, subject to change. No accuracy rate is
@@ -212,12 +230,21 @@ export default function ListedStatusGuidePage() {
       </ul>
 
       <h2>Questions</h2>
-      {guideFaqs.map((item) => (
+      {LISTED_STATUS_FAQS.map((item) => (
         <div key={item.question}>
           <h3>{item.question}</h3>
           <p>{item.answer}</p>
         </div>
       ))}
+
+      <h2>Sources</h2>
+      <ul>
+        {LISTED_STATUS_SOURCES.map((source) => (
+          <li key={source.url}>
+            <a href={source.url}>{source.label}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

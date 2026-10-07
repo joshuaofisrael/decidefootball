@@ -116,7 +116,10 @@ export default function TossUpGuidePage() {
       <p>
         On the real card, listed status is read before any of those numbers. OUT, IR, and
         INACTIVE force that side to zero. The model does not invent a return date. What each
-        designation means is the <Link href="/guide/listed-status/">listed status guide</Link>.
+        designation means is{" "}
+        <Link href="/guide/listed-status/">
+          what Questionable, Doubtful, Out, IR, and inactive mean
+        </Link>.
         If the status and the mean disagree, believe the status. This tool cannot see a
         designation you did not account for in the means you typed.
       </p>

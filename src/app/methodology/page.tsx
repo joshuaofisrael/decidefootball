@@ -86,9 +86,11 @@ export default function MethodologyPage() {
         <Link href="/guide/rankings/">rankings guide</Link>.
       </p>
       <p>
-        The availability gate reads a designation someone listed. How to read Healthy,
-        Questionable, Doubtful, OUT, IR, and INACTIVE — and why that label is not the mean — is
-        the <Link href="/guide/listed-status/">listed status guide</Link>.
+        The availability gate reads a designation someone listed. The league meanings, and why
+        that label is separate from the mean, are in{" "}
+        <Link href="/guide/listed-status/">
+          what Questionable, Doubtful, Out, IR, and inactive mean
+        </Link>.
       </p>
 
       <h2>Certainty score</h2>
@@ -133,8 +135,11 @@ export default function MethodologyPage() {
       <ul>
         <li>
           <strong>Reported status</strong>: the listed designation with a last-verified time,
-          kept apart from the rendered time of the HTML. How to read that pair is the{" "}
-          <Link href="/guide/listed-status/">listed status guide</Link>.
+          kept apart from the rendered time of the HTML. How those two clocks differ, next to the
+          league definitions, is{" "}
+          <Link href="/guide/listed-status/">
+            what Questionable, Doubtful, and Out mean
+          </Link>.
         </li>
         <li>
           <strong>Model projection</strong>: estimated fantasy points, not official.

@@ -78,7 +78,8 @@ describe("seo json-ld helpers", () => {
       {
         name: "Listed status",
         path: "/guide/listed-status/",
-        description: "Healthy through INACTIVE, before any number.",
+        description:
+          "What Questionable, Doubtful, Out, injured reserve, and inactive mean.",
       },
       {
         name: "Waiver radar",

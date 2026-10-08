@@ -344,10 +344,10 @@ export default function WaiverRadarGuidePage() {
       <h2>What this is not</h2>
       <ul>
         <li>
-          Not affiliated with, endorsed by, or sponsored by the NFL or its member clubs. Names
+          Not affiliated with, endorsed by, or sponsored by the NFL, its member clubs, ESPN, Yahoo, or Sleeper. Names
           are identification for fantasy analysis only.
         </li>
-        <li>Not an official waiver wire, club report, or injury wire.</li>
+        <li>Not an official waiver list, club report, or injury wire.</li>
         <li>Not a claim that any name is available on a host platform.</li>
         <li>Not gambling advice, odds, or a sportsbook.</li>
         <li>

@@ -41,4 +41,4 @@ export const ESTIMATE_DISCLAIMER =
   "Estimates only. Not a guarantee of fantasy points, availability, or outcomes. You decide your roster.";
 
 export const INDEPENDENT_MICROCOPY =
-  "Decide Football is an independent fantasy football information site. It is not affiliated with, endorsed by, or sponsored by the NFL or its member clubs.";
+  "Decide Football is an independent fantasy football information site. It is not affiliated with, endorsed by, or sponsored by the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper. All trademarks belong to their respective owners and are used only to identify them.";

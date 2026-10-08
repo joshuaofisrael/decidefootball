@@ -155,7 +155,7 @@ export default function RankingsGuidePage() {
         </li>
         <li>Not a free-agent list, and not a claim that any name is available on a host platform.</li>
         <li>
-          Not affiliated with, endorsed by, or sponsored by the NFL or its member clubs. Names
+          Not affiliated with, endorsed by, or sponsored by the NFL, its member clubs, ESPN, Yahoo, or Sleeper. Names
           are identification for fantasy analysis only.
         </li>
         <li>Not an official ranking, club report, or injury wire.</li>

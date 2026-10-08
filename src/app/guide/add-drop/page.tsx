@@ -157,7 +157,7 @@ export default function AddDropGuidePage() {
         <li>Not a waiver claim, a waiver-priority order, or FAAB advice.</li>
         <li>Not an official projection, club report, or injury wire.</li>
         <li>
-          Not affiliated with, endorsed by, or sponsored by the NFL or its member clubs. Names
+          Not affiliated with, endorsed by, or sponsored by the NFL, its member clubs, ESPN, Yahoo, or Sleeper. Names
           are identification for fantasy analysis only.
         </li>
         <li>Not gambling advice, odds, or a sportsbook.</li>

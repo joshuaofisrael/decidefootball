@@ -15,7 +15,7 @@ export function organizationJsonLd() {
     legalName: SITE_LEGAL_NAME,
     url: absoluteUrl("/"),
     description:
-      "Independent fantasy football decision information. Not affiliated with the NFL or its member clubs.",
+      "Independent fantasy football decision information. Not affiliated with the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper.",
   };
 }
 

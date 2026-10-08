@@ -23,8 +23,8 @@ export default function DisclaimerPage() {
       <p>
         {SITE_NAME} ({SITE_HOST}) is an independent fantasy football information and analysis
         site operated by {SITE_LEGAL_NAME}. It is not affiliated with, endorsed by, or sponsored
-        by the National Football League (NFL) or its member clubs. Exact non-affiliation wording
-        requires attorney review.
+        by the National Football League (NFL), its member clubs, the NFL Players Association, ESPN,
+        Yahoo, or Sleeper.
       </p>
       <h2>Independence</h2>
       <p>{SITE_NAME} is not affiliated with, endorsed by, sponsored by, or officially connected to:</p>
@@ -32,9 +32,10 @@ export default function DisclaimerPage() {
         <li>the National Football League (NFL);</li>
         <li>any NFL member club;</li>
         <li>the NFL Players Association or related entities;</li>
+        <li>ESPN, Yahoo, Sleeper, or NFL.com;</li>
         <li>
           any fantasy sports platform, media company, or data vendor merely because names appear
-          in factual discussion.
+          in factual discussion or source citations.
         </li>
       </ul>
       <p>
@@ -68,9 +69,22 @@ export default function DisclaimerPage() {
         {SITE_NAME} does not offer gambling, wagering, sportsbook odds, or real-money betting
         services.
       </p>
-      <h2>Data and logos</h2>
+      <h2>Trademarks, logos, and images</h2>
+      <p>
+        NFL, the names of NFL member clubs, ESPN, Yahoo, Sleeper, and other names mentioned on
+        this site are trademarks of their respective owners. {SITE_NAME} uses them in plain text
+        only to identify those organizations, their products, or rules they publish. No such
+        use implies sponsorship or endorsement.
+      </p>
       <ul>
-        <li>Do not assume NFL or club logos, shields, or trade dress may be used.</li>
+        <li>
+          {SITE_NAME} does not use NFL, club, NFL Players Association, or fantasy platform logos,
+          shields, helmets, uniforms, or other trade dress.
+        </li>
+        <li>
+          {SITE_NAME} does not publish player photographs. Player marks on the site are original
+          illustrations made from initials and position.
+        </li>
         <li>
           The site will not claim “official NFL data” unless a license and counsel expressly
           support that claim.

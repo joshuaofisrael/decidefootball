@@ -4,7 +4,7 @@ import { join, relative } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 import { INDEPENDENT_MICROCOPY } from "./compliance";
-import { BRAND_SENTENCE, COPYRIGHT_LINE, OPERATOR_VISIBLE_LINE, SITE_CONTACT_EMAIL } from "./site";
+import { BRAND_SENTENCE, COPYRIGHT_LINE, FLORIDA_GOVERNING_LAW, OPERATOR_VISIBLE_LINE, SITE_CONTACT_EMAIL } from "./site";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const SELF = fileURLToPath(import.meta.url);
@@ -37,6 +37,11 @@ describe("trademark guard", () => {
     assert.equal(BRAND_SENTENCE, "Decide Football is a brand of Joshua Israel Ventures LLC.");
     assert.equal(SITE_CONTACT_EMAIL, "joshuaofisrael@gmail.com");
     assert.equal(BRAND_SENTENCE.toLowerCase().includes("dba"), false);
+    assert.equal(
+      FLORIDA_GOVERNING_LAW,
+      "governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida",
+    );
+    assert.equal(/county|michigan/i.test(FLORIDA_GOVERNING_LAW), false);
   });
 
   it("does not use NFL event marks such as Super Bowl or Pro Bowl", () => {

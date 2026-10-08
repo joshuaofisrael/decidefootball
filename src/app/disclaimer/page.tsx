@@ -1,6 +1,6 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { pageMetadata } from "@/lib/seo";
-import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { FLORIDA_GOVERNING_LAW, SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 
 const title = "Independent disclaimer";
 const description =
@@ -71,6 +71,9 @@ export default function DisclaimerPage() {
         Association, or fantasy platform logos, shields, helmets, uniforms, or other trade dress,
         and it does not publish player photographs.
       </p>
+
+      <h2>Governing law</h2>
+      <p>{`This disclaimer is ${FLORIDA_GOVERNING_LAW}.`}</p>
 
       <h2>Contact</h2>
       <p>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "How to read weekly positional rankings — mean, floor, ceiling, status";
@@ -61,6 +61,7 @@ export default function RankingsGuidePage() {
           description,
         })}
       />
+      <JsonLd data={articleJsonLd({ path: "/guide/rankings/", headline: title, description })} />
       <JsonLd data={faqPageJsonLd([...guideFaqs])} />
       <p className="kicker">Reading the order</p>
       <h1>How to read a weekly rankings board</h1>

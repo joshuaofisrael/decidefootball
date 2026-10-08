@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { DECAY_WEIGHTS, MATCHUP_ADJ_CAP, USAGE_ADJ_CAP } from "@/lib/projections";
-import { organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { MODEL_VERSION, SITE_NAME } from "@/lib/site";
 
 const title = "Methodology — how Decide Football estimates weekly fantasy decisions";
@@ -33,6 +33,7 @@ export default function MethodologyPage() {
           description,
         })}
       />
+      <JsonLd data={articleJsonLd({ path: "/methodology/", headline: title, description })} />
       <p className="kicker">First-party analysis · {MODEL_VERSION}</p>
       <h1>How the desk computes a week</h1>
       <p>

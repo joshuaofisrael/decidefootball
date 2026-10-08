@@ -98,10 +98,32 @@ jobs:
           grep -q 'Disallow: /slate/' out/robots.txt
           grep -q 'Disallow: /watchlist/' out/robots.txt
           grep -q 'Sitemap: https://decidefootball.com/sitemap.xml' out/robots.txt
+          grep -q 'Allow: /llms.txt' out/robots.txt
+          grep -Fxq 'User-Agent: *' out/robots.txt
+          grep -Fxq 'User-Agent: OAI-SearchBot' out/robots.txt
+          grep -Fxq 'User-Agent: ChatGPT-User' out/robots.txt
+          grep -Fxq 'User-Agent: GPTBot' out/robots.txt
+          grep -Fxq 'User-Agent: PerplexityBot' out/robots.txt
+          grep -Fxq 'User-Agent: Perplexity-User' out/robots.txt
+          grep -Fxq 'User-Agent: ClaudeBot' out/robots.txt
+          grep -Fxq 'User-Agent: Claude-SearchBot' out/robots.txt
+          grep -Fxq 'User-Agent: Claude-User' out/robots.txt
+          grep -Fxq 'User-Agent: Google-Extended' out/robots.txt
+          grep -Fxq 'User-Agent: Applebot' out/robots.txt
+          grep -Fxq 'User-Agent: Applebot-Extended' out/robots.txt
+          grep -Fxq 'User-Agent: Bingbot' out/robots.txt
+          grep -Fxq 'User-Agent: DuckAssistBot' out/robots.txt
+          grep -Fxq 'User-Agent: Amazonbot' out/robots.txt
+          ! grep -q 'llms.txt' out/sitemap.xml
           test -f out/llms.txt
+          grep -q '^# Decide Football$' out/llms.txt
+          grep -q '^## Guides$' out/llms.txt
+          grep -q '^## About$' out/llms.txt
+          grep -q '^Operated by Joshua Israel Ventures LLC.$' out/llms.txt
+          grep -q 'Live player data is not licensed yet' out/llms.txt
           grep -q 'https://decidefootball.com/about/' out/llms.txt
           grep -q 'https://decidefootball.com/methodology/' out/llms.txt
-          grep -q 'https://decidefootball.com/guide/ —' out/llms.txt
+          grep -q '](https://decidefootball.com/guide/):' out/llms.txt
           grep -q 'https://decidefootball.com/guide/start-sit/' out/llms.txt
           grep -q 'https://decidefootball.com/guide/waiver-radar/' out/llms.txt
           grep -q 'https://decidefootball.com/guide/listed-status/' out/llms.txt

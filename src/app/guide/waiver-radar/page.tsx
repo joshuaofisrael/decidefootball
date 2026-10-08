@@ -19,7 +19,7 @@ import {
   WAIVER_TYPE_TABLE,
   YAHOO_WAIVERS_URL,
 } from "@/lib/waiver-radar-guide";
-import { faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = WAIVER_RADAR_TITLE;
@@ -56,6 +56,9 @@ export default function WaiverRadarGuidePage() {
           name: title,
           description,
         })}
+      />
+      <JsonLd
+        data={articleJsonLd({ path: WAIVER_RADAR_PATH, headline: title, description })}
       />
       <JsonLd data={faqPageJsonLd([...WAIVER_RADAR_FAQS])} />
       <p className="kicker">Fantasy waivers</p>

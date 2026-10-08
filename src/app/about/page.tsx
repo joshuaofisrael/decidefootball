@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "About Decide Football — independent fantasy football decision site";
@@ -55,13 +55,14 @@ export default function AboutPage() {
           description,
         })}
       />
+      <JsonLd data={articleJsonLd({ path: "/about/", headline: title, description })} />
       <JsonLd data={faqPageJsonLd([...aboutFaqs])} />
       <p className="kicker">Independent fantasy decisions</p>
       <h1>About {SITE_NAME}</h1>
       <p>
-        {SITE_NAME} exists for a narrow job: help you make a roster call. Start or sit. Is this
-        player available. What a listed status says versus what a projection is estimating. Who
-        to add or drop. How a position ranks this week.
+        {SITE_NAME} is an independent fantasy football decision site for roster calls: start or
+        sit, whether a player is listed as available, who to add or drop, and how a position
+        ranks this week.
       </p>
       <p>
         Those are decisions with a clock on them. The site is built around that, not around a

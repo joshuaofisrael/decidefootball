@@ -1,5 +1,26 @@
 import { isFixtureMode, robotsAllowIndexing } from "./compliance";
 
+/**
+ * Named AI search crawlers. They are listed in the same robots group as `*`
+ * so a specific agent does not override the star rules.
+ */
+export const AI_SEARCH_USER_AGENTS = [
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
+  "PerplexityBot",
+  "Perplexity-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "Google-Extended",
+  "Applebot",
+  "Applebot-Extended",
+  "Bingbot",
+  "DuckAssistBot",
+  "Amazonbot",
+] as const;
+
 /** Indexable editorial cluster while sports fixtures stay blocked. */
 export const EDITORIAL_ROBOTS_ALLOW = [
   "/about/",
@@ -63,18 +84,19 @@ export function buildRobotsRules(state: RobotsPolicyState = currentRobotsPolicyS
   disallow: string | string[];
 } {
   if (!state.allowIndexing) {
+    // Kill switch stays a full disallow. Do not open /llms.txt as an exception.
     return { disallow: "/" };
   }
 
   if (state.fixtureMode) {
     return {
-      allow: [...EDITORIAL_ROBOTS_ALLOW],
+      allow: [...EDITORIAL_ROBOTS_ALLOW, "/llms.txt"],
       disallow: [...FIXTURE_CONTENT_DISALLOW],
     };
   }
 
   return {
-    allow: "/",
+    allow: ["/", "/llms.txt"],
     disallow: ["/api/", "/health/"],
   };
 }

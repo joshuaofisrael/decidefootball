@@ -13,6 +13,7 @@ describe("public/llms.txt", () => {
     assert.match(text, /sample\/fixture/);
     assert.match(text, /not affiliated with the NFL/);
     assert.match(text, /^Operated by Joshua Israel Ventures LLC\.$/m);
+    assert.match(text, /Decide Football is a brand of Joshua Israel Ventures LLC\./);
     assert.match(text, /^## Guides\n/m);
     assert.match(text, /^## About\n/m);
     assert.equal(text.includes("/llms.txt"), false);
@@ -24,12 +25,19 @@ describe("public/llms.txt", () => {
     );
     const paths = links.map((url) => new URL(url).pathname);
     assert.deepEqual([...paths].sort(), [...EDITORIAL_SITEMAP_PATHS].sort());
-    assert.equal(links.length, 10);
-    const [guides, about] = text.split("## About");
+    assert.equal(links.length, EDITORIAL_SITEMAP_PATHS.length);
+    const [guides, afterGuides] = text.split("## About");
     assert.ok(guides?.includes("## Guides"));
+    const [about, legal] = (afterGuides ?? "").split("## Legal");
     assert.equal(about?.includes("## Guides"), false);
+    assert.match(legal ?? "", /https:\/\/decidefootball\.com\/terms\//);
     for (const path of EDITORIAL_SITEMAP_PATHS) {
-      const section = path === "/about/" || path === "/methodology/" ? about : guides;
+      const section =
+        path === "/about/" || path === "/methodology/"
+          ? about
+          : path.startsWith("/guide")
+            ? guides
+            : legal;
       assert.equal(
         section?.includes(`https://decidefootball.com${path}`),
         true,

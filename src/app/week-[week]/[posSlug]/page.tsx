@@ -76,8 +76,7 @@ export default async function WeekRankingsPage({
         Week {weekNum} {position} rankings
       </h1>
       <p>
-        Default format {formatLabel(format)} is provisional{" "}
-        <span className="flag">NEED JOSHUA INPUT</span>. K and DST are out of Phase 1.
+        Default format {formatLabel(format)}. Kicker and team defense are not on this board.
       </p>
       <Timestamps lastVerifiedAt={FIXTURE_VERIFIED_AT} renderedAt={renderedAt} />
       <p>

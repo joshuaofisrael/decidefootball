@@ -58,9 +58,10 @@ jobs:
           ! grep -q '/injuries/' out/sitemap.xml
           ! grep -q 'jordan-voss' out/sitemap.xml
           ! grep -q '/players/' out/sitemap.xml
-          ! grep -q '/privacy/' out/sitemap.xml
-          ! grep -q '/terms/' out/sitemap.xml
-          ! grep -q '/disclaimer/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/terms/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/privacy/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/disclaimer/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/contact/' out/sitemap.xml
           ! grep -q '/cookies/' out/sitemap.xml
           grep -q 'Allow: /about/' out/robots.txt
           grep -q 'Allow: /methodology/' out/robots.txt
@@ -80,13 +81,15 @@ jobs:
           ! grep -q 'Allow: /waiver-wire/' out/robots.txt
           ! grep -q 'Allow: /is-playing/' out/robots.txt
           ! grep -q 'Allow: /injuries/' out/robots.txt
-          ! grep -q 'Allow: /privacy/' out/robots.txt
-          ! grep -q 'Allow: /terms/' out/robots.txt
-          ! grep -q 'Allow: /disclaimer/' out/robots.txt
+          grep -q 'Allow: /privacy/' out/robots.txt
+          grep -q 'Allow: /terms/' out/robots.txt
+          grep -q 'Allow: /disclaimer/' out/robots.txt
+          grep -q 'Allow: /contact/' out/robots.txt
           ! grep -q 'Allow: /cookies/' out/robots.txt
           ! grep -q 'Disallow: /privacy/' out/robots.txt
           ! grep -q 'Disallow: /terms/' out/robots.txt
           ! grep -q 'Disallow: /disclaimer/' out/robots.txt
+          ! grep -q 'Disallow: /contact/' out/robots.txt
           ! grep -q 'Disallow: /cookies/' out/robots.txt
           grep -q 'Disallow: /waiver-wire/' out/robots.txt
           grep -q 'Disallow: /players/' out/robots.txt
@@ -133,15 +136,54 @@ jobs:
           grep -q 'https://decidefootball.com/guide/certainty/' out/llms.txt
           grep -q 'not affiliated with the NFL' out/llms.txt
           grep -q 'sample/fixture' out/llms.txt
+          grep -q 'Decide Football is a brand of Joshua Israel Ventures LLC.' out/llms.txt
+          grep -q 'https://decidefootball.com/terms/' out/llms.txt
+          grep -q 'https://decidefootball.com/privacy/' out/llms.txt
+          grep -q 'https://decidefootball.com/disclaimer/' out/llms.txt
+          grep -q 'https://decidefootball.com/contact/' out/llms.txt
+          grep -q '© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is owned and operated by Joshua Israel Ventures LLC.' out/about/index.html
+          grep -q 'Operated by Joshua Israel Ventures LLC' out/about/index.html
+          grep -q 'Decide Football is a brand of Joshua Israel Ventures LLC.' out/about/index.html
+          grep -q 'not affiliated with, endorsed by, or sponsored by the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper' out/about/index.html
+          grep -q 'href="/terms/"' out/about/index.html
+          grep -q 'href="/privacy/"' out/about/index.html
+          grep -q 'href="/disclaimer/"' out/about/index.html
+          grep -q 'href="/contact/"' out/about/index.html
+          grep -q 'Joshua Israel Ventures LLC is the contracting party' out/terms/index.html
+          grep -q 'State of Florida' out/terms/index.html
+          ! grep -R -i -q 'michigan' out
+          grep -q 'as is' out/terms/index.html
+          grep -q 'Joshua Israel Ventures LLC is the data controller' out/privacy/index.html
+          grep -q 'cookieless' out/privacy/index.html
+          grep -q 'does not set AdSense cookies' out/privacy/index.html
+          grep -q 'joshuaofisrael@gmail.com' out/privacy/index.html
+          grep -q 'joshuaofisrael@gmail.com' out/contact/index.html
+          grep -q 'Operator:' out/contact/index.html
+          grep -q 'The Site currently has no paid links or ads.' out/disclaimer/index.html
+          grep -q 'Any paid links or ads added later will be disclosed.' out/disclaimer/index.html
+          grep -q '"@type":"Brand","name":"Decide Football"' out/about/index.html
+          grep -q '"name":"Joshua Israel Ventures LLC"' out/about/index.html
+          ! grep -q 'attorney' out/terms/index.html
+          ! grep -q 'attorney' out/privacy/index.html
+          ! grep -q 'attorney' out/disclaimer/index.html
+          ! grep -q 'attorney' out/contact/index.html
+          ! grep -q 'NEED JOSHUA' out/terms/index.html
+          ! grep -q 'NEED JOSHUA' out/privacy/index.html
+          ! grep -q 'NEED JOSHUA' out/disclaimer/index.html
+          ! grep -q 'NEED JOSHUA' out/contact/index.html
+          ! grep -q 'NEED JOSHUA' out/cookies/index.html
+          ! grep -q 'NEED JOSHUA' out/about/index.html
           test -f out/slate/index.html
           test -f out/watchlist/index.html
           grep -q 'content="noindex,follow"' out/index.html
           grep -q 'content="noindex,follow"' out/slate/index.html
           grep -q 'content="noindex,follow"' out/watchlist/index.html
-          grep -q 'content="noindex,follow"' out/privacy/index.html
-          grep -q 'content="noindex,follow"' out/terms/index.html
-          grep -q 'content="noindex,follow"' out/disclaimer/index.html
+          grep -q 'content="index,follow"' out/privacy/index.html
+          grep -q 'content="index,follow"' out/terms/index.html
+          grep -q 'content="index,follow"' out/disclaimer/index.html
+          grep -q 'content="index,follow"' out/contact/index.html
           grep -q 'content="noindex,follow"' out/cookies/index.html
+          test -f out/contact/index.html
           ! grep -q '/slate/' out/sitemap.xml
           ! grep -q '/watchlist/' out/sitemap.xml
           grep -q 'rel="canonical" href="https://decidefootball.com/about/"' out/about/index.html
@@ -203,6 +245,10 @@ jobs:
           grep -q 'content="index,follow"' out/guide/toss-up/index.html
           grep -q 'content="index,follow"' out/guide/certainty/index.html
           ! grep -q 'noindex' out/about/index.html
+          ! grep -q 'noindex' out/terms/index.html
+          ! grep -q 'noindex' out/privacy/index.html
+          ! grep -q 'noindex' out/disclaimer/index.html
+          ! grep -q 'noindex' out/contact/index.html
           ! grep -q 'noindex' out/methodology/index.html
           ! grep -q 'noindex' out/guide/index.html
           ! grep -q 'noindex' out/guide/start-sit/index.html

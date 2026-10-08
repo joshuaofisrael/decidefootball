@@ -9,9 +9,11 @@ export const dynamic = "force-static";
  * editorial pages only: About, Methodology, the reading-guides hub,
  * the start/sit reading guide, the waiver radar reading guide, the
  * listed status reading guide, the weekly rankings reading guide, the
- * add/drop reading guide, the toss-up tool, and the certainty tool.
+ * add/drop reading guide, the toss-up tool, the certainty tool,
+ * terms, privacy, the disclaimer, and contact.
  * Fixture /add-drop/ stays out. /guide/add-drop/ does not match that prefix.
  * /guide/toss-up/ and /guide/certainty/ are editorial and are not under /start-sit/.
+ * The cookie notice stays out.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return editorialSitemapEntries();

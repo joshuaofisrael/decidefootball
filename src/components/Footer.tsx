@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { INDEPENDENT_MICROCOPY } from "@/lib/compliance";
-import { SITE_LEGAL_NAME, SITE_YEAR } from "@/lib/site";
+import { COPYRIGHT_LINE, OPERATOR_VISIBLE_LINE } from "@/lib/site";
 
 const legal = [
   { href: "/about/", label: "About" },
@@ -15,6 +15,7 @@ const legal = [
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },
   { href: "/disclaimer/", label: "Disclaimer" },
+  { href: "/contact/", label: "Contact" },
   { href: "/cookies/", label: "Cookies" },
   { href: "/methodology/", label: "Methodology" },
 ];
@@ -31,10 +32,8 @@ export function Footer() {
           ))}
         </nav>
         <p>{INDEPENDENT_MICROCOPY}</p>
-        <p className="owner-line">
-          {`Operated by ${SITE_LEGAL_NAME}.`}
-          <br />© {SITE_YEAR} {SITE_LEGAL_NAME}. All rights reserved.
-        </p>
+        <p className="owner-line">{`${OPERATOR_VISIBLE_LINE}.`}</p>
+        <p className="owner-line">{COPYRIGHT_LINE}</p>
       </div>
     </footer>
   );

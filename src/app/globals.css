@@ -388,13 +388,14 @@ th {
 
 .site-footer {
   background: #121811;
-  color: #c8c3b6;
+  color: #f3ead2;
   padding: 2rem 0 2.4rem;
-  font-size: 0.88rem;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 .site-footer a {
-  color: #e8e2d4;
+  color: #fff8e8;
 }
 
 .footer-nav {
@@ -405,8 +406,10 @@ th {
 }
 
 .owner-line {
-  color: #8d897e;
-  max-width: 36rem;
+  color: #f3ead2;
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 42rem;
 }
 
 .consent {

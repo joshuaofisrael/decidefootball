@@ -129,7 +129,7 @@ export default function MethodologyPage() {
       <ul>
         <li>Standard: yards and touchdowns only.</li>
         <li>Half-PPR: +0.5 per reception.</li>
-        <li>Full PPR: +1.0 per reception (provisional default, NEED JOSHUA INPUT).</li>
+        <li>Full PPR: +1.0 per reception. This is the default format on the site.</li>
       </ul>
 
       <h2>What stays distinct on the page</h2>
@@ -160,8 +160,8 @@ export default function MethodologyPage() {
         Licensed ingest waits on Joshua approving API spend. Sample sports pages, including the
         weekly rankings boards, stay out of search indexes until then. How to read that board
         is the <Link href="/guide/rankings/">rankings guide</Link>. See the{" "}
-        <Link href="/about/">about page</Link> for the public product description. Draft legal
-        shells in the footer are unfinished and are not offered to search.
+        <Link href="/about/">about page</Link> for the public product description. Terms, privacy,
+        the disclaimer, and contact are linked from the footer.
       </p>
     </div>
   );

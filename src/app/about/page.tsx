@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
-import { SITE_NAME } from "@/lib/site";
+import { BRAND_SENTENCE, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 
 const title = "About Decide Football — independent fantasy football decision site";
 const description =
@@ -59,6 +59,7 @@ export default function AboutPage() {
       <JsonLd data={faqPageJsonLd([...aboutFaqs])} />
       <p className="kicker">Independent fantasy decisions</p>
       <h1>About {SITE_NAME}</h1>
+      <p>{BRAND_SENTENCE}</p>
       <p>
         {SITE_NAME} is an independent fantasy football decision site for roster calls: start or
         sit, whether a player is listed as available, who to add or drop, and how a position
@@ -153,9 +154,10 @@ export default function AboutPage() {
         of the product.
       </p>
       <p>
-        Draft legal shells (privacy, terms, disclaimer, cookies) remain available for humans in
-        the footer. They still contain unfinished operator inputs and are not offered to search
-        indexes. Contact details are not invented here.
+        <Link href="/terms/">Terms</Link>, <Link href="/privacy/">privacy</Link>, the{" "}
+        <Link href="/disclaimer/">disclaimer</Link>, and <Link href="/contact/">contact</Link> are
+        published by {SITE_LEGAL_NAME}. The cookie notice stays in the footer and is not offered
+        to search.
       </p>
 
       <h2>Questions</h2>

@@ -150,7 +150,8 @@ jobs:
           grep -q 'href="/disclaimer/"' out/about/index.html
           grep -q 'href="/contact/"' out/about/index.html
           grep -q 'Joshua Israel Ventures LLC is the contracting party' out/terms/index.html
-          grep -q 'State of Michigan' out/terms/index.html
+          grep -q 'State of Florida' out/terms/index.html
+          ! grep -R -i -q 'michigan' out
           grep -q 'as is' out/terms/index.html
           grep -q 'Joshua Israel Ventures LLC is the data controller' out/privacy/index.html
           grep -q 'cookieless' out/privacy/index.html

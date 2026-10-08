@@ -4,7 +4,7 @@ import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib
 
 const title = "Terms of Use";
 const description =
-  "Terms of Use for Decide Football, a brand owned by Joshua Israel Ventures LLC. General information only. Governed by the laws of the State of Michigan.";
+  "Terms of Use for Decide Football, a brand owned by Joshua Israel Ventures LLC. General information only. Governed by the laws of the State of Florida.";
 
 export const metadata = pageMetadata({
   path: "/terms/",
@@ -95,7 +95,7 @@ export default function TermsPage() {
 
       <h2>Governing law</h2>
       <p>
-        These Terms are governed by the laws of the State of Michigan, without regard to
+        These Terms are governed by the laws of the State of Florida, without regard to
         conflict-of-law rules.
       </p>
 

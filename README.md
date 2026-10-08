@@ -111,7 +111,7 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
 | `/guide/` | Reading-guides hub (editorial; indexable when the gate is GREEN). Parent of the five card-reading notes, the toss-up tool, and the certainty tool |
 | `/guide/start-sit/` | How to read a start/sit card (editorial; indexable when the gate is GREEN). Not under the fixture `/start-sit/` tree |
-| `/guide/waiver-radar/` | How to read waiver radar tags (editorial; indexable when the gate is GREEN). Not under the fixture `/waiver-wire/` tree |
+| `/guide/waiver-radar/` | How fantasy football waivers work (priority, rolling, FAAB), plus how the tags are read (editorial; indexable when the gate is GREEN). Not under the fixture `/waiver-wire/` tree |
 | `/guide/listed-status/` | What Questionable, Doubtful, Out, IR, and inactive mean, and how the cards treat the label (editorial; indexable when the gate is GREEN). Not under the fixture `/is-playing/`, `/is-`, or `/injuries/` trees |
 | `/guide/rankings/` | How to read the weekly positional rankings board (editorial; indexable when the gate is GREEN). Not under the fixture `/rankings/` tree |
 | `/guide/add-drop/` | How to read an add/drop comparison card (editorial; indexable when the gate is GREEN). Not under the fixture `/add-drop/` tree |

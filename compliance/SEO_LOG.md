@@ -1,5 +1,15 @@
 # SEO log
 
+## 2026-10-08
+
+Retargeted the existing `/guide/waiver-radar/` page at the generic query: how fantasy football waivers work. Same URL. No new indexable URL.
+
+- Title, H1, description, Open Graph, and Twitter now lead with rolling waiver priority, reverse standings, and FAAB. A comparison table, the weekly clear, and a FAAB section sit above the hot / rising / stash / fade notes.
+- Host facts are limited to pages that loaded: ESPN Fan Support's football waivers overview and waiver-order article, Yahoo Help's fantasy-football waivers overview, and three Sleeper Support articles (waiver types, FAAB, regular-season waivers). support.nfl.com returned a Cloudflare challenge, so no NFL Fantasy product default is stated. The budget split on the page is labeled arithmetic. No bid percentage is given.
+- FAQPage questions match those waiver questions. The hub card and the listed-status guide point back with anchors for the new topic. `llms.txt` describes the page. The sitemap has no `lastmod` field, so it was left unchanged.
+- Fixture sports pages stay `noindex` and Disallow. Homepage stays `noindex`. Ads stay off. Footer operator line is unchanged.
+- Hypothesis: retargeting to the generic waiver query should earn the first real impressions within 2 to 4 weeks.
+
 ## 2026-10-07
 
 Retargeted the existing `/guide/listed-status/` page at the generic query: what Questionable, Doubtful, and Out mean on the NFL injury report, plus injured reserve and inactive. Same URL. No new indexable URL.

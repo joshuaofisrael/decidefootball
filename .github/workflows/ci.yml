@@ -152,6 +152,20 @@ jobs:
           grep -q 'content="index,follow"' out/guide/index.html
           grep -q 'content="index,follow"' out/guide/start-sit/index.html
           grep -q 'content="index,follow"' out/guide/waiver-radar/index.html
+          grep -q 'How fantasy football waivers work: priority, rolling, FAAB' out/guide/waiver-radar/index.html
+          grep -q 'How rolling waiver priority, reverse standings, and FAAB blind bids decide a fantasy football waiver claim' out/guide/waiver-radar/index.html
+          grep -q 'property="og:title" content="How fantasy football waivers work: priority, rolling, FAAB"' out/guide/waiver-radar/index.html
+          grep -q 'name="twitter:title" content="How fantasy football waivers work: priority, rolling, FAAB"' out/guide/waiver-radar/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/guide/waiver-radar/"' out/guide/waiver-radar/index.html
+          grep -q 'https://support.espn.com/hc/en-us/articles/360000041152-Waivers-Overview' out/guide/waiver-radar/index.html
+          grep -q 'https://help.yahoo.com/kb/fantasy-football/overview-waivers-fantasy-football-sln6427.html' out/guide/waiver-radar/index.html
+          grep -q 'https://support.sleeper.com/en/articles/1876040-how-does-faab-bidding-work' out/guide/waiver-radar/index.html
+          grep -q 'How do fantasy football waivers work?' out/guide/waiver-radar/index.html
+          grep -q 'Remaining budget divided by remaining weeks is arithmetic, not a bid.' out/guide/waiver-radar/index.html
+          grep -q 'Operated by Joshua Israel Ventures LLC' out/guide/waiver-radar/index.html
+          grep -q 'static.cloudflareinsights.com/beacon.min.js' out/guide/waiver-radar/index.html
+          grep -q 'How fantasy football waivers work' out/guide/listed-status/index.html
+          grep -q 'How waivers work' out/guide/index.html
           grep -q 'content="index,follow"' out/guide/listed-status/index.html
           grep -q 'Questionable, Doubtful, Out: NFL injury designations for fantasy' out/guide/listed-status/index.html
           grep -q 'What Questionable, Doubtful, and Out mean on the NFL injury report' out/guide/listed-status/index.html

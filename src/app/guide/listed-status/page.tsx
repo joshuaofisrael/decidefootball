@@ -179,8 +179,9 @@ export default function ListedStatusGuidePage() {
         The same label is the status column on the weekly rankings board. A rank does not replace
         it. How to read that ordered list is the{" "}
         <Link href="/guide/rankings/">rankings guide</Link>. Waiver urgency reads the same gate. A
-        hot tag is not printed over OUT, IR, or INACTIVE. How to read the tag is the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
+        hot tag is not printed over OUT, IR, or INACTIVE.{" "}
+        <Link href="/guide/waiver-radar/">How fantasy football waivers work</Link> covers that
+        gate, including the tag.
       </p>
 
       <h2>Last verified is not the render time</h2>
@@ -207,8 +208,8 @@ export default function ListedStatusGuidePage() {
         injury timelines use sample data. They stay out of search until licensed sports data is
         in place. This page does not set a date for that. The public description of the label is
         this guide, the <Link href="/methodology/">methodology</Link>, the{" "}
-        <Link href="/guide/start-sit/">start/sit guide</Link>, the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link>, the{" "}
+        <Link href="/guide/start-sit/">start/sit guide</Link>,{" "}
+        <Link href="/guide/waiver-radar/">how fantasy football waivers work</Link>, the{" "}
         <Link href="/guide/rankings/">rankings guide</Link>, and the{" "}
         <Link href="/about/">about page</Link>.
       </p>

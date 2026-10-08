@@ -24,9 +24,7 @@ export default function TermsPage() {
       />
       <h1>Terms of Use</h1>
       <p>
-        These Terms are a contract between you and <strong>{SITE_LEGAL_NAME}</strong>.{" "}
-        {SITE_LEGAL_NAME} is the contracting party for the {SITE_NAME} website at {SITE_HOST}{" "}
-        (the “Site”). {SITE_NAME} is a brand owned by {SITE_LEGAL_NAME}.
+        {`These Terms are a contract between you and ${SITE_LEGAL_NAME}. ${SITE_LEGAL_NAME} is the contracting party for the ${SITE_NAME} website at ${SITE_HOST} (the “Site”). ${SITE_NAME} is a brand owned by ${SITE_LEGAL_NAME}.`}
       </p>
       <p>
         By accessing or using the Site, you agree to these Terms. If you do not agree, do not

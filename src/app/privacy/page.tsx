@@ -24,8 +24,7 @@ export default function PrivacyPage() {
       />
       <h1>Privacy Policy</h1>
       <p>
-        <strong>{SITE_LEGAL_NAME}</strong> is the data controller for the {SITE_NAME} website at{" "}
-        {SITE_HOST}. {SITE_NAME} is a brand of {SITE_LEGAL_NAME}.
+        {`${SITE_LEGAL_NAME} is the data controller for the ${SITE_NAME} website at ${SITE_HOST}. ${SITE_NAME} is a brand of ${SITE_LEGAL_NAME}.`}
       </p>
 
       <h2>What the site collects</h2>

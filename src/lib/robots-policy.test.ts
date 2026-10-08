@@ -50,6 +50,10 @@ describe("buildRobotsRules", () => {
       "/guide/add-drop/",
       "/guide/toss-up/",
       "/guide/certainty/",
+      "/terms/",
+      "/privacy/",
+      "/disclaimer/",
+      "/contact/",
       "/llms.txt",
     ]);
     for (const path of allow) {

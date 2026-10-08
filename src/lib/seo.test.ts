@@ -8,6 +8,7 @@ import {
   itemListJsonLd,
   organizationJsonLd,
   pageMetadata,
+  publisherJsonLd,
   webPageJsonLd,
   websiteJsonLd,
 } from "./seo";
@@ -34,8 +35,10 @@ describe("seo json-ld helpers", () => {
   it("emits Organization without inventing contact points", () => {
     const data = organizationJsonLd();
     assert.equal(data["@type"], "Organization");
-    assert.equal(data.name, "Decide Football");
+    assert.equal(data.name, "Joshua Israel Ventures LLC");
     assert.equal(data.legalName, "Joshua Israel Ventures LLC");
+    assert.equal(data.brand["@type"], "Brand");
+    assert.equal(data.brand.name, "Decide Football");
     assert.equal(data.url, "https://decidefootball.com/");
     assert.equal("email" in data, false);
     assert.equal("address" in data, false);
@@ -46,8 +49,13 @@ describe("seo json-ld helpers", () => {
     assert.equal(site["@type"], "WebSite");
     assert.equal(site.name, "Decide Football");
     assert.equal(site.url, "https://decidefootball.com/");
+    assert.equal(site.publisher["@id"], data["@id"]);
     assert.equal(site.publisher["@type"], "Organization");
+    assert.equal(site.publisher.name, "Joshua Israel Ventures LLC");
     assert.equal(site.publisher.legalName, "Joshua Israel Ventures LLC");
+    assert.equal(site.publisher.brand["@type"], "Brand");
+    assert.equal(site.publisher.brand.name, "Decide Football");
+    assert.deepEqual(site.publisher, publisherJsonLd());
   });
 
   it("emits Article from the page title and meta description, without an author or a date", () => {
@@ -62,8 +70,10 @@ describe("seo json-ld helpers", () => {
     assert.match(data.description, /certainty as a desk grade/);
     assert.equal(data.url, "https://decidefootball.com/guide/start-sit/");
     assert.equal(data.publisher["@type"], "Organization");
-    assert.equal(data.publisher.name, "Decide Football");
+    assert.equal(data.publisher.name, "Joshua Israel Ventures LLC");
     assert.equal(data.publisher.legalName, "Joshua Israel Ventures LLC");
+    assert.equal(data.publisher.brand["@type"], "Brand");
+    assert.equal(data.publisher.brand.name, "Decide Football");
     assert.equal("author" in data, false);
     assert.equal("dateModified" in data, false);
     assert.equal("datePublished" in data, false);

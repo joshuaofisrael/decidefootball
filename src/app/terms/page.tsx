@@ -1,12 +1,16 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { LegalDraftBanner } from "@/components/LegalDraftBanner";
 import { pageMetadata } from "@/lib/seo";
-import { SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+
+const title = "Terms of Use";
+const description =
+  "Terms of Use for Decide Football, a brand owned by Joshua Israel Ventures LLC. General information only. Governed by the laws of the State of Michigan.";
 
 export const metadata = pageMetadata({
   path: "/terms/",
-  title: "Terms of Use (draft)",
-  indexation: { sourceClass: "GREEN", draftLegal: true },
+  title,
+  description,
+  indexation: { kind: "editorial" },
 });
 
 export default function TermsPage() {
@@ -18,98 +22,90 @@ export default function TermsPage() {
           { name: "Terms", path: "/terms/" },
         ]}
       />
-      <LegalDraftBanner />
       <h1>Terms of Use</h1>
       <p>
-        By accessing or using the {SITE_NAME} website at {SITE_HOST} (the “Site”), you agree to
-        these Terms. If you do not agree, do not use the Site.
+        These Terms are a contract between you and <strong>{SITE_LEGAL_NAME}</strong>.{" "}
+        {SITE_LEGAL_NAME} is the contracting party for the {SITE_NAME} website at {SITE_HOST}{" "}
+        (the “Site”). {SITE_NAME} is a brand owned by {SITE_LEGAL_NAME}.
       </p>
       <p>
-        The Site is operated by <strong>{SITE_LEGAL_NAME}</strong> (“Operator”). Joshua Israel
-        personally is not named as the Site operator in these Terms.
+        By accessing or using the Site, you agree to these Terms. If you do not agree, do not
+        use the Site.
       </p>
-      <h2>What the Site is (and is not)</h2>
+
+      <h2>General information only</h2>
+      <p>
+        Content on the Site is general information only. It is not financial advice, not
+        gambling or betting advice, not legal advice, and not other professional advice. Using
+        the Site does not create a professional, advisory, fiduciary, or client relationship
+        with {SITE_LEGAL_NAME}.
+      </p>
       <p>
         The Site provides independent fantasy football information, analysis, rankings,
-        comparisons, and related commentary for informational and entertainment purposes.
-      </p>
-      <p>
-        The Site’s MVP does not provide gambling, sports betting, wagering accounts, or
-        real-money gaming services. Content is not offered as betting advice.
+        comparisons, and related commentary for informational and entertainment purposes. It
+        does not provide gambling, sports betting, wagering accounts, or real-money gaming
+        services.
       </p>
       <p>
         Projections, rankings, start/sit guidance, waiver suggestions, and similar outputs are
-        estimates only. They are not promises or guarantees. You are solely responsible for your
-        roster and fantasy decisions.
+        model estimates only. They are not promises, guarantees, or official league or club
+        data. You are solely responsible for your roster and fantasy decisions.
       </p>
       <p>
-        Labels used on the Site: <strong>Official</strong> only when Operator and counsel agree
-        the source may be described that way; <strong>Reported</strong> facts from approved
-        sources (may be delayed or revised); <strong>Model projection</strong> — Operator’s own
-        estimates, not factual predictions.
+        The Site is not affiliated with, endorsed by, or sponsored by the NFL, its member clubs,
+        the NFL Players Association, ESPN, Yahoo, or Sleeper.
       </p>
-      <p>
-        The Site may later use AI to explain structured metrics. AI must not invent statistics,
-        injuries, or participation status. Structured data controls if prose conflicts. AI
-        explain is off in this scaffold.
-      </p>
-      <p>
-        The Site is not affiliated with, endorsed by, or sponsored by the NFL or its member
-        clubs. See the Independent Disclaimer.
-      </p>
-      <h2>Eligibility</h2>
-      <p>
-        You must be able to form a binding contract. The Site is not directed at children under
-        13 (US) or the relevant age elsewhere. Higher age gate:{" "}
-        <span className="flag">NEED JOSHUA INPUT</span>.
-      </p>
+
       <h2>License to use the Site</h2>
       <p>
-        Operator grants a limited, non-exclusive, non-transferable, revocable license for
-        personal, non-commercial fantasy information use. You must not scrape or systematically
-        download the Site in bulk; bypass access controls or compliance gates; use the Site to
-        build a competing data feed; misrepresent affiliation; or use the Site unlawfully.
+        {SITE_LEGAL_NAME} grants a limited, non-exclusive, non-transferable, revocable license
+        for personal, non-commercial use of the Site. You must not scrape or systematically
+        download the Site in bulk, bypass access controls, use the Site to build a competing
+        data feed, misrepresent affiliation, or use the Site unlawfully.
       </p>
+
       <h2>Intellectual property</h2>
       <p>
-        Site design, original text, and Operator-created analysis are owned by {SITE_LEGAL_NAME}{" "}
-        or its licensors. No license is granted to NFL marks, club marks, player publicity
-        rights, or third-party logos. Player and team names may appear for identification and
-        fantasy discussion only. NFL, NFL club names, ESPN, Yahoo, Sleeper, and other
-        third-party names are trademarks of their respective owners. The Site uses them in plain
-        text only to identify those organizations and does not claim affiliation, sponsorship,
-        or endorsement. As of this draft, no trademark or DBA for {SITE_NAME} has been
-        filed.
+        {SITE_NAME} is a brand owned by {SITE_LEGAL_NAME}. Site design, original text, and
+        original analysis are owned by {SITE_LEGAL_NAME} or its licensors. No license is granted
+        to NFL marks, club marks, player publicity rights, or third-party logos. Player and team
+        names may appear for identification and fantasy discussion only. NFL, NFL club names,
+        ESPN, Yahoo, Sleeper, and other third-party names are trademarks of their respective
+        owners. The Site uses them in plain text only to identify those organizations and does
+        not claim affiliation, sponsorship, or endorsement.
       </p>
-      <h2>Disclaimers</h2>
+
+      <h2>Warranty disclaimer</h2>
       <p>
-        TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SITE AND ALL CONTENT ARE PROVIDED “AS IS”
-        AND “AS AVAILABLE,” WITHOUT WARRANTIES OF ANY KIND. OPERATOR DOES NOT WARRANT THAT
-        PROJECTIONS OR RANKINGS WILL BE ACCURATE, THAT REPORTED STATUSES ARE ERROR-FREE, OR THAT
-        ANY PARTICULAR FANTASY OUTCOME WILL OCCUR. Attorney review required for enforceability
-        and consumer-law carve-outs.
+        To the maximum extent permitted by law, the Site and all content are provided &quot;as
+        is&quot; and &quot;as available,&quot; without warranties of any kind, whether express or
+        implied, including warranties of accuracy, merchantability, fitness for a particular
+        purpose, and non-infringement. {SITE_LEGAL_NAME} does not warrant that the Site will be
+        uninterrupted or error-free, or that projections, rankings, reported statuses, or other
+        content will be accurate, complete, or current.
       </p>
+
       <h2>Limitation of liability</h2>
       <p>
-        TO THE MAXIMUM EXTENT PERMITTED BY LAW, {SITE_LEGAL_NAME} AND ITS OFFICERS, MEMBERS, AND
-        AGENTS WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE
-        DAMAGES, OR FOR LOST FANTASY WINS, LOST PROFITS, OR DATA LOSS. Aggregate liability cap:{" "}
-        <span className="flag">ATTORNEY REVIEW</span> — do not invent a number without counsel.
+        To the maximum extent permitted by law, {SITE_LEGAL_NAME} and its members, officers, and
+        agents will not be liable for any indirect, incidental, special, consequential, or
+        punitive damages, or for lost profits, lost data, or fantasy outcomes, arising out of or
+        related to your use of the Site or your reliance on its content, whether in contract,
+        tort, or otherwise. Some jurisdictions do not allow certain limitations, so parts of
+        this section may not apply to you.
       </p>
+
       <h2>Governing law</h2>
       <p>
-        Governing law and venue: <span className="flag">NEED JOSHUA INPUT</span> + attorney
-        review. Do not invent a state or country. US-focused audience is expected; ops may
-        involve Europe/London context.
+        These Terms are governed by the laws of the State of Michigan, without regard to
+        conflict-of-law rules.
       </p>
+
       <h2>Contact</h2>
       <p>
-        Legal / terms contact: <span className="flag">NEED JOSHUA INPUT</span>
+        {SITE_LEGAL_NAME}
         <br />
-        Notice address: <span className="flag">NEED JOSHUA INPUT</span> — do not invent a street
-        address.
-        <br />
-        Entity: {SITE_LEGAL_NAME}
+        <a href={`mailto:${SITE_CONTACT_EMAIL}`}>{SITE_CONTACT_EMAIL}</a>
       </p>
     </div>
   );

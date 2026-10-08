@@ -2,6 +2,23 @@ import type { Metadata } from "next";
 import { decideIndexation, robotsMeta, type DecideIndexationArgs } from "./indexation";
 import { absoluteUrl, getSiteUrl, SITE_LEGAL_NAME, SITE_NAME } from "./site";
 
+const ORGANIZATION_ID = `${absoluteUrl("/")}#organization`;
+
+/** Publisher is the LLC. Decide Football is its brand, not a separate business. */
+export function publisherJsonLd() {
+  return {
+    "@type": "Organization" as const,
+    "@id": ORGANIZATION_ID,
+    name: SITE_LEGAL_NAME,
+    legalName: SITE_LEGAL_NAME,
+    url: absoluteUrl("/"),
+    brand: {
+      "@type": "Brand" as const,
+      name: SITE_NAME,
+    },
+  };
+}
+
 export interface Crumb {
   name: string;
   path: string;
@@ -10,10 +27,7 @@ export interface Crumb {
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: SITE_NAME,
-    legalName: SITE_LEGAL_NAME,
-    url: absoluteUrl("/"),
+    ...publisherJsonLd(),
     description:
       "Independent fantasy football decision information. Not affiliated with the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper.",
   };
@@ -25,12 +39,7 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     name: SITE_NAME,
     url: absoluteUrl("/"),
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      legalName: SITE_LEGAL_NAME,
-      url: absoluteUrl("/"),
-    },
+    publisher: publisherJsonLd(),
   };
 }
 
@@ -47,12 +56,7 @@ export function articleJsonLd(args: { path: string; headline: string; descriptio
     description: args.description,
     url: absoluteUrl(args.path),
     mainEntityOfPage: absoluteUrl(args.path),
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      legalName: SITE_LEGAL_NAME,
-      url: absoluteUrl("/"),
-    },
+    publisher: publisherJsonLd(),
   };
 }
 
@@ -68,11 +72,7 @@ export function webPageJsonLd(args: { path: string; name: string; description: s
       name: SITE_NAME,
       url: absoluteUrl("/"),
     },
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      legalName: SITE_LEGAL_NAME,
-    },
+    publisher: publisherJsonLd(),
   };
 }
 

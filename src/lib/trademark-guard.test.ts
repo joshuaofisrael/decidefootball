@@ -4,6 +4,7 @@ import { join, relative } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 import { INDEPENDENT_MICROCOPY } from "./compliance";
+import { BRAND_SENTENCE, COPYRIGHT_LINE, OPERATOR_VISIBLE_LINE, SITE_CONTACT_EMAIL } from "./site";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const SELF = fileURLToPath(import.meta.url);
@@ -28,6 +29,14 @@ describe("trademark guard", () => {
     }
     assert.match(INDEPENDENT_MICROCOPY, /not affiliated with, endorsed by, or sponsored by/);
     assert.match(INDEPENDENT_MICROCOPY, /trademarks belong to their respective owners/);
+    assert.equal(OPERATOR_VISIBLE_LINE, "Operated by Joshua Israel Ventures LLC");
+    assert.equal(
+      COPYRIGHT_LINE,
+      "© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is owned and operated by Joshua Israel Ventures LLC.",
+    );
+    assert.equal(BRAND_SENTENCE, "Decide Football is a brand of Joshua Israel Ventures LLC.");
+    assert.equal(SITE_CONTACT_EMAIL, "joshuaofisrael@gmail.com");
+    assert.equal(BRAND_SENTENCE.toLowerCase().includes("dba"), false);
   });
 
   it("does not use NFL event marks such as Super Bowl or Pro Bowl", () => {

@@ -186,6 +186,10 @@ function validateRobotsGroup() {
     "Allow: /guide/",
     "Allow: /guide/start-sit/",
     "Allow: /guide/certainty/",
+    "Allow: /terms/",
+    "Allow: /privacy/",
+    "Allow: /disclaimer/",
+    "Allow: /contact/",
     "Disallow: /players/",
     "Disallow: /start-sit/",
     "Disallow: /is-playing/",
@@ -241,12 +245,26 @@ function validateJsonLd() {
   if (homeTypes.includes("Article")) fail("homepage must not be an Article");
   const org = homeBlocks.find((block) => block["@type"] === "Organization");
   const site = homeBlocks.find((block) => block["@type"] === "WebSite");
-  if (org.name !== "Decide Football" || org.url !== "https://decidefootball.com/") {
+  if (org.name !== "Joshua Israel Ventures LLC" || org.url !== "https://decidefootball.com/") {
     fail(`homepage Organization name/url: ${org.name} ${org.url}`);
   }
   if (org.legalName !== "Joshua Israel Ventures LLC") fail("homepage Organization legalName");
+  if (org.brand?.["@type"] !== "Brand" || org.brand?.name !== "Decide Football") {
+    fail("homepage Organization brand");
+  }
+  if (org.email || org.address) fail("homepage Organization invents contact");
   if (site.name !== "Decide Football" || site.url !== "https://decidefootball.com/") {
     fail(`homepage WebSite name/url: ${site.name} ${site.url}`);
+  }
+  if (
+    site.publisher?.["@type"] !== "Organization" ||
+    site.publisher?.name !== "Joshua Israel Ventures LLC" ||
+    site.publisher?.["@id"] !== org["@id"]
+  ) {
+    fail("homepage WebSite publisher does not point at Joshua Israel Ventures LLC");
+  }
+  if (site.publisher?.brand?.["@type"] !== "Brand" || site.publisher?.brand?.name !== "Decide Football") {
+    fail("homepage WebSite publisher brand");
   }
   for (const block of homeBlocks) assertNoInventedReview("out/index.html", block);
 
@@ -281,11 +299,14 @@ function validateJsonLd() {
     if (!description || article.description !== description) {
       fail(`${rel} Article description does not match meta description`);
     }
-    if (article.publisher?.["@type"] !== "Organization" || article.publisher.name !== "Decide Football") {
-      fail(`${rel} Article publisher is not the Decide Football Organization`);
+    if (article.publisher?.["@type"] !== "Organization" || article.publisher.name !== "Joshua Israel Ventures LLC") {
+      fail(`${rel} Article publisher is not Joshua Israel Ventures LLC`);
     }
     if (article.publisher.legalName !== "Joshua Israel Ventures LLC") {
       fail(`${rel} Article publisher legalName`);
+    }
+    if (article.publisher.brand?.["@type"] !== "Brand" || article.publisher.brand?.name !== "Decide Football") {
+      fail(`${rel} Article publisher brand`);
     }
     for (const block of blocks) assertNoInventedReview(rel, block);
     if (!html.includes('content="index,follow"')) fail(`${rel} editorial robots meta changed`);

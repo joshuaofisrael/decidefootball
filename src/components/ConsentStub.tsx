@@ -17,8 +17,7 @@ export function ConsentStub() {
             <p>
               {adsOn
                 ? "Cloudflare Web Analytics records aggregate page views. Advertising stays off until you choose. Ad scripts do not load without this consent."
-                : "Cloudflare Web Analytics records aggregate page views. No advertising pixels are loaded in this build."}{" "}
-              Vendor list is not finalized <span className="flag">NEED JOSHUA INPUT</span>.
+                : "Cloudflare Web Analytics records aggregate page views. No advertising pixels are loaded in this build."}
             </p>
             <div>
               <button type="button" className="btn" onClick={() => save("reject")}>

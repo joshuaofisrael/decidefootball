@@ -1,6 +1,6 @@
 # Decide Football
 
-> Decide Football publishes fantasy football guides for start/sit, waiver claims, and injury designations (Questionable, Doubtful, Out, injured reserve, and inactive). Live player data is not licensed yet. Player, start/sit, injury, waiver, and ranking pages currently use sample/fixture data and stay out of search indexes until licensed sports data is in place. The site is not affiliated with the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper. It is not a sports news blog and not gambling advice.
+> Decide Football publishes fantasy football guides for start/sit, waiver claims, and injury designations (Questionable, Doubtful, Out, injured reserve, and inactive). Live player data is not licensed yet. Player, start/sit, injury, waiver, and ranking pages currently use sample/fixture data and stay out of search indexes until licensed sports data is in place. The site is not affiliated with the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper. It is not a sports news blog and not gambling advice. Decide Football is a brand of Joshua Israel Ventures LLC.
 
 Operated by Joshua Israel Ventures LLC.
 
@@ -19,3 +19,10 @@ Operated by Joshua Israel Ventures LLC.
 
 - [About Decide Football — independent fantasy football decision site](https://decidefootball.com/about/): Decide Football is an independent fantasy football decision site for start/sit, availability, waivers, and rankings. Not NFL news. Not NFL-affiliated. Not gambling advice. Not official projections.
 - [Methodology — how Decide Football estimates weekly fantasy decisions](https://decidefootball.com/methodology/): How Decide Football builds start/sit estimates, a certainty score, and waiver urgency. Versioned methodology v0. Model estimates only — not official NFL data, not a backtest.
+
+## Legal
+
+- [Terms of Use](https://decidefootball.com/terms/): Joshua Israel Ventures LLC is the contracting party. Content is general information only, not financial, gambling, legal, or professional advice. Governed by the laws of the State of Michigan. Decide Football is a brand owned by Joshua Israel Ventures LLC.
+- [Privacy Policy](https://decidefootball.com/privacy/): Joshua Israel Ventures LLC is the data controller. Cloudflare Web Analytics is cookieless. Ads are off, so the site sets no AdSense cookies. Contact joshuaofisrael@gmail.com.
+- [Independent disclaimer](https://decidefootball.com/disclaimer/): Accuracy, no professional relationship, model estimates are not official data, and not gambling advice. The site currently has no paid links or ads. Any added later will be disclosed.
+- [Contact](https://decidefootball.com/contact/): Email joshuaofisrael@gmail.com. Operator Joshua Israel Ventures LLC.

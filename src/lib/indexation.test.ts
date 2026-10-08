@@ -54,6 +54,10 @@ describe("editorialSitemapEntries", () => {
       "/guide/add-drop/",
       "/guide/toss-up/",
       "/guide/certainty/",
+      "/terms/",
+      "/privacy/",
+      "/disclaimer/",
+      "/contact/",
     ]);
     assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
     assert.ok(urls.some((url) => url.endsWith("/about/")));
@@ -74,7 +78,7 @@ describe("editorialSitemapEntries", () => {
       urls.some((url) => new URL(url).pathname === "/add-drop/"),
       false,
     );
-    assert.equal(entries.length, 10);
+    assert.equal(entries.length, 14);
     assert.equal(
       urls.some((url) => url.includes("/waiver-wire/")),
       false,

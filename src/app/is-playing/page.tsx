@@ -33,7 +33,7 @@ export default function IsPlayingIndexPage() {
       <h1>Is this player playing?</h1>
       <p>
         Availability comes from the fixture status row, not from the estimate engine. Display
-        timezone is <span className="flag">NEED JOSHUA INPUT</span> (currently {tz}).{" "}
+        timezone is {tz}.{" "}
         <Link href="/guide/listed-status/">What Questionable, Doubtful, and Out mean</Link>.
       </p>
       <Timestamps lastVerifiedAt={FIXTURE_VERIFIED_AT} renderedAt={renderedAt} />

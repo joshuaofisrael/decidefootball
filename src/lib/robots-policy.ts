@@ -21,7 +21,10 @@ export const AI_SEARCH_USER_AGENTS = [
   "Amazonbot",
 ] as const;
 
-/** Indexable editorial cluster while sports fixtures stay blocked. */
+/**
+ * Indexable pages while sports fixtures stay blocked.
+ * Finished legal pages are included. The cookie notice is not.
+ */
 export const EDITORIAL_ROBOTS_ALLOW = [
   "/about/",
   "/methodology/",
@@ -33,19 +36,17 @@ export const EDITORIAL_ROBOTS_ALLOW = [
   "/guide/add-drop/",
   "/guide/toss-up/",
   "/guide/certainty/",
+  "/terms/",
+  "/privacy/",
+  "/disclaimer/",
+  "/contact/",
 ] as const;
 
 /**
- * Unfinished legal shells. Page meta is already noindex,follow. Omit them
- * from both Allow and Disallow in fixture mode so crawlers are not invited
- * to treat them as indexable inventory, but can still recrawl the noindex tag.
+ * Cookie notice stays noindex,follow. Omit it from both Allow and Disallow
+ * so crawlers are not invited to index it, but can still recrawl the noindex tag.
  */
-export const LEGAL_STUB_PATHS = [
-  "/privacy/",
-  "/terms/",
-  "/disclaimer/",
-  "/cookies/",
-] as const;
+export const LEGAL_STUB_PATHS = ["/cookies/"] as const;
 
 /**
  * Fixture / sample sports URL prefixes.

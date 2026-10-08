@@ -16,6 +16,10 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/guide/add-drop/",
   "/guide/toss-up/",
   "/guide/certainty/",
+  "/terms/",
+  "/privacy/",
+  "/disclaimer/",
+  "/contact/",
 ] as const;
 
 export function editorialSitemapEntries(): { url: string }[] {

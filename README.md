@@ -191,6 +191,8 @@ Ad scripts still wait for the consent stub (accept). Reject keeps the labeled re
 
 - Metrics-first recommendations; never invent numbers
 - No NFL/team logos, helmets, official photos, or “official” language
+- No “Super Bowl” or other NFL event marks in titles or copy (say “the championship game”); competitor and platform names (ESPN, Yahoo, Sleeper, NFL.com) appear as plain-text citations only, never logos
+- Footer non-affiliation line names the NFL, its clubs, the NFL Players Association, ESPN, Yahoo, and Sleeper, plus a trademark-ownership line
 - No gambling, accounts, or fantasy-platform OAuth
 - Operator line lives in the **footer only**
 - Display ads stay **off** unless the export flag is on; when on, labeled chrome only, never inside recommendation cards

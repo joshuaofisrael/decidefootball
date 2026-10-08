@@ -1,6 +1,6 @@
 # Decide Football
 
-> Decide Football publishes fantasy football guides for start/sit, waiver claims, and injury designations (Questionable, Doubtful, Out, injured reserve, and inactive). Live player data is not licensed yet. Player, start/sit, injury, waiver, and ranking pages currently use sample/fixture data and stay out of search indexes until licensed sports data is in place. The site is not affiliated with the NFL or its member clubs. It is not a sports news blog and not gambling advice.
+> Decide Football publishes fantasy football guides for start/sit, waiver claims, and injury designations (Questionable, Doubtful, Out, injured reserve, and inactive). Live player data is not licensed yet. Player, start/sit, injury, waiver, and ranking pages currently use sample/fixture data and stay out of search indexes until licensed sports data is in place. The site is not affiliated with the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper. It is not a sports news blog and not gambling advice.
 
 Operated by Joshua Israel Ventures LLC.
 

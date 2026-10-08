@@ -75,7 +75,10 @@ export default function TermsPage() {
         Site design, original text, and Operator-created analysis are owned by {SITE_LEGAL_NAME}{" "}
         or its licensors. No license is granted to NFL marks, club marks, player publicity
         rights, or third-party logos. Player and team names may appear for identification and
-        fantasy discussion only. As of this draft, no trademark or DBA for {SITE_NAME} has been
+        fantasy discussion only. NFL, NFL club names, ESPN, Yahoo, Sleeper, and other
+        third-party names are trademarks of their respective owners. The Site uses them in plain
+        text only to identify those organizations and does not claim affiliation, sponsorship,
+        or endorsement. As of this draft, no trademark or DBA for {SITE_NAME} has been
         filed.
       </p>
       <h2>Disclaimers</h2>

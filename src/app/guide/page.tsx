@@ -6,7 +6,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
 const description =
-  "Hub for how to read a Decide Football decision card: the start/sit stack, NFL injury designations before any number, waiver radar tags, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta and a certainty tool for the desk grade. Not a news blog, not NFL-affiliated, and not gambling advice.";
+  "Hub for how to read a Decide Football decision card: the start/sit stack, NFL injury designations before any number, how waivers work, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta and a certainty tool for the desk grade. Not a news blog, not NFL-affiliated, and not gambling advice.";
 
 const guides = [
   {
@@ -25,9 +25,10 @@ const guides = [
   },
   {
     href: "/guide/waiver-radar/",
-    name: "Waiver radar",
-    heading: "Waiver radar",
-    sentence: "Hot, rising, stash, and fade say how hard this desk would chase the name.",
+    name: "How waivers work",
+    heading: "How waivers work",
+    sentence:
+      "How rolling waiver priority, reverse standings, and FAAB decide a claim, and when a player becomes a free agent.",
   },
   {
     href: "/guide/rankings/",

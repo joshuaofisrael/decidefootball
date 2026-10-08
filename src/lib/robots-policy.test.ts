@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import robots from "../app/robots";
 import {
+  AI_SEARCH_USER_AGENTS,
   buildRobotsRules,
   EDITORIAL_ROBOTS_ALLOW,
   FIXTURE_CONTENT_DISALLOW,
@@ -16,7 +18,7 @@ describe("buildRobotsRules", () => {
 
   it("allows only the editorial cluster in fixture mode", () => {
     const rules = buildRobotsRules({ allowIndexing: true, fixtureMode: true });
-    assert.deepEqual(rules.allow, [...EDITORIAL_ROBOTS_ALLOW]);
+    assert.deepEqual(rules.allow, [...EDITORIAL_ROBOTS_ALLOW, "/llms.txt"]);
     assert.deepEqual(rules.disallow, [...FIXTURE_CONTENT_DISALLOW]);
     const allow = rules.allow as string[];
     const disallow = rules.disallow as string[];
@@ -48,6 +50,7 @@ describe("buildRobotsRules", () => {
       "/guide/add-drop/",
       "/guide/toss-up/",
       "/guide/certainty/",
+      "/llms.txt",
     ]);
     for (const path of allow) {
       for (const prefix of disallow) {
@@ -99,7 +102,23 @@ describe("buildRobotsRules", () => {
 
   it("restores a broad allow outside fixture mode", () => {
     const rules = buildRobotsRules({ allowIndexing: true, fixtureMode: false });
-    assert.equal(rules.allow, "/");
+    assert.deepEqual(rules.allow, ["/", "/llms.txt"]);
     assert.deepEqual(rules.disallow, ["/api/", "/health/"]);
+  });
+
+  it("names AI crawlers in the same group as the star agent", () => {
+    const body = robots();
+    const rule = Array.isArray(body.rules) ? body.rules[0] : body.rules;
+    assert.ok(rule);
+    assert.deepEqual(rule.userAgent, ["*", ...AI_SEARCH_USER_AGENTS]);
+    assert.equal(Array.isArray(body.rules), false);
+    assert.equal(body.sitemap, "https://decidefootball.com/sitemap.xml");
+    const allow = rule.allow;
+    assert.ok(Array.isArray(allow));
+    assert.ok(allow.includes("/llms.txt"));
+    for (const path of EDITORIAL_ROBOTS_ALLOW) {
+      assert.ok(allow.includes(path), `missing allow ${path}`);
+    }
+    assert.deepEqual(rule.disallow, [...FIXTURE_CONTENT_DISALLOW]);
   });
 });

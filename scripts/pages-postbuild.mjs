@@ -133,4 +133,175 @@ function ensureCloudflareBeacon() {
 
 ensureCloudflareBeacon();
 
+const AI_SEARCH_USER_AGENTS = [
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
+  "PerplexityBot",
+  "Perplexity-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "Google-Extended",
+  "Applebot",
+  "Applebot-Extended",
+  "Bingbot",
+  "DuckAssistBot",
+  "Amazonbot",
+];
+
+function fail(message) {
+  console.error(`pages-postbuild: ${message}`);
+  process.exit(1);
+}
+
+function validateRobotsGroup() {
+  const robots = readFileSync(join(out, "robots.txt"), "utf8");
+  const lines = robots.split(/\r?\n/).filter((line) => line.length > 0);
+  const agents = [];
+  let index = 0;
+  while (index < lines.length && lines[index].startsWith("User-Agent: ")) {
+    agents.push(lines[index].slice("User-Agent: ".length));
+    index += 1;
+  }
+  const expected = ["*", ...AI_SEARCH_USER_AGENTS];
+  if (agents.length !== expected.length || agents.some((agent, i) => agent !== expected[i])) {
+    fail(`robots user-agents are not one shared group: ${agents.join(", ")}`);
+  }
+  const rules = [];
+  while (index < lines.length && !lines[index].startsWith("Sitemap:")) {
+    rules.push(lines[index]);
+    index += 1;
+  }
+  if (rules.some((line) => !line.startsWith("Allow: ") && !line.startsWith("Disallow: "))) {
+    fail(`robots group contains a non-rule line: ${rules.join(" | ")}`);
+  }
+  if (lines[index] !== "Sitemap: https://decidefootball.com/sitemap.xml" || index !== lines.length - 1) {
+    fail("robots.txt must end with one Sitemap line for https://decidefootball.com/sitemap.xml");
+  }
+  for (const required of [
+    "Allow: /llms.txt",
+    "Allow: /about/",
+    "Allow: /methodology/",
+    "Allow: /guide/",
+    "Allow: /guide/start-sit/",
+    "Allow: /guide/certainty/",
+    "Disallow: /players/",
+    "Disallow: /start-sit/",
+    "Disallow: /is-playing/",
+    "Disallow: /is-",
+    "Disallow: /week-",
+    "Disallow: /api/",
+    "Disallow: /rankings/",
+    "Disallow: /add-drop/",
+  ]) {
+    if (!rules.includes(required)) fail(`robots.txt missing ${required}`);
+  }
+  const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
+  if (sitemap.includes("llms.txt")) fail("sitemap.xml must list HTML pages only");
+}
+
+function jsonLdBlocks(file, html) {
+  const blocks = [];
+  const re = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
+  for (const match of html.matchAll(re)) {
+    const raw = match[1].trim();
+    try {
+      blocks.push(JSON.parse(raw));
+    } catch (error) {
+      fail(`${file} JSON-LD did not parse: ${error instanceof Error ? error.message : error}`);
+    }
+  }
+  if (blocks.length === 0) fail(`${file} has no JSON-LD`);
+  return blocks;
+}
+
+function metaContent(html, attr, key) {
+  const re = new RegExp(`<meta ${attr}="${key}" content="([^"]*)"`, "i");
+  const match = html.match(re);
+  return match ? match[1].replaceAll("&amp;", "&").replaceAll("&#x27;", "'").replaceAll("&quot;", '"') : "";
+}
+
+function assertNoInventedReview(file, block) {
+  const blob = JSON.stringify(block);
+  if (/"author"\s*:/.test(blob)) fail(`${file} JSON-LD invents an author`);
+  if (block.dateModified || block.datePublished) fail(`${file} JSON-LD invents a date`);
+  if (blob.includes("aggregateRating") || blob.includes('"Review"') || blob.includes('"review"')) {
+    fail(`${file} JSON-LD invents a review or rating`);
+  }
+}
+
+function validateJsonLd() {
+  const home = readFileSync(join(out, "index.html"), "utf8");
+  const homeBlocks = jsonLdBlocks("out/index.html", home);
+  const homeTypes = homeBlocks.map((block) => block["@type"]);
+  if (!homeTypes.includes("Organization") || !homeTypes.includes("WebSite")) {
+    fail(`homepage JSON-LD types: ${homeTypes.join(", ")}`);
+  }
+  if (homeTypes.includes("Article")) fail("homepage must not be an Article");
+  const org = homeBlocks.find((block) => block["@type"] === "Organization");
+  const site = homeBlocks.find((block) => block["@type"] === "WebSite");
+  if (org.name !== "Decide Football" || org.url !== "https://decidefootball.com/") {
+    fail(`homepage Organization name/url: ${org.name} ${org.url}`);
+  }
+  if (org.legalName !== "Joshua Israel Ventures LLC") fail("homepage Organization legalName");
+  if (site.name !== "Decide Football" || site.url !== "https://decidefootball.com/") {
+    fail(`homepage WebSite name/url: ${site.name} ${site.url}`);
+  }
+  for (const block of homeBlocks) assertNoInventedReview("out/index.html", block);
+
+  const editorial = [
+    ["about/index.html", true, false],
+    ["methodology/index.html", false, false],
+    ["guide/index.html", false, true],
+    ["guide/start-sit/index.html", true, false],
+    ["guide/waiver-radar/index.html", true, false],
+    ["guide/listed-status/index.html", true, false],
+    ["guide/rankings/index.html", true, false],
+    ["guide/add-drop/index.html", true, false],
+    ["guide/toss-up/index.html", true, false],
+    ["guide/certainty/index.html", true, false],
+  ];
+  for (const [rel, faq, itemList] of editorial) {
+    const html = readFileSync(join(out, rel), "utf8");
+    const blocks = jsonLdBlocks(rel, html);
+    const types = blocks.map((block) => block["@type"]);
+    for (const required of ["Article", "BreadcrumbList", "Organization", "WebSite"]) {
+      if (!types.includes(required)) fail(`${rel} missing ${required}; has ${types.join(", ")}`);
+    }
+    if (faq && !types.includes("FAQPage")) fail(`${rel} missing FAQPage`);
+    if (!faq && types.includes("FAQPage")) fail(`${rel} has an unexpected FAQPage`);
+    if (itemList && !types.includes("ItemList")) fail(`${rel} missing ItemList`);
+    const article = blocks.find((block) => block["@type"] === "Article");
+    const ogTitle = metaContent(html, "property", "og:title");
+    const description = metaContent(html, "name", "description");
+    if (!ogTitle || article.headline !== ogTitle) {
+      fail(`${rel} Article headline does not match og:title (${article.headline} vs ${ogTitle})`);
+    }
+    if (!description || article.description !== description) {
+      fail(`${rel} Article description does not match meta description`);
+    }
+    if (article.publisher?.["@type"] !== "Organization" || article.publisher.name !== "Decide Football") {
+      fail(`${rel} Article publisher is not the Decide Football Organization`);
+    }
+    if (article.publisher.legalName !== "Joshua Israel Ventures LLC") {
+      fail(`${rel} Article publisher legalName`);
+    }
+    for (const block of blocks) assertNoInventedReview(rel, block);
+    if (!html.includes('content="index,follow"')) fail(`${rel} editorial robots meta changed`);
+  }
+
+  const fixture = readFileSync(join(out, "start-sit/index.html"), "utf8");
+  const fixtureBlocks = jsonLdBlocks("start-sit/index.html", fixture);
+  if (fixtureBlocks.some((block) => block["@type"] === "Article")) {
+    fail("fixture start/sit index must not gain Article JSON-LD");
+  }
+  if (!fixture.includes('content="noindex,follow"')) fail("fixture start/sit robots meta changed");
+  if (!home.includes('content="noindex,follow"')) fail("homepage robots meta changed");
+}
+
+validateRobotsGroup();
+validateJsonLd();
+
 console.log("pages-postbuild: wrote out/.nojekyll, out/CNAME, out/health.json, ads.txt, pretty is-playing URLs");
+console.log("pages-postbuild: validated robots.txt group and JSON-LD in the static export");

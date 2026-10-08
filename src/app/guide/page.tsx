@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { itemListJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, itemListJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
@@ -84,6 +84,7 @@ export default function GuideHubPage() {
           description,
         })}
       />
+      <JsonLd data={articleJsonLd({ path: "/guide/", headline: title, description })} />
       <JsonLd
         data={itemListJsonLd(
           guides.map((guide) => ({
@@ -96,8 +97,8 @@ export default function GuideHubPage() {
       <p className="kicker">Reading the desk</p>
       <h1>How to read the decision cards</h1>
       <p>
-        {SITE_NAME} prints a card for a roster call. This page is the hub for how to read those
-        cards. It is not a news blog, not a game recap, and not a running wire.
+        This page is the hub for how to read a {SITE_NAME} decision card. It is not a news blog,
+        not a game recap, and not a running wire.
       </p>
       <p>
         Five reading notes, and two tools. Each note owns a different line on the card. The

@@ -2,12 +2,14 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import type { Metadata } from "next";
 import {
+  articleJsonLd,
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
   organizationJsonLd,
   pageMetadata,
   webPageJsonLd,
+  websiteJsonLd,
 } from "./seo";
 
 function canonicalOf(metadata: Metadata): string {
@@ -34,8 +36,39 @@ describe("seo json-ld helpers", () => {
     assert.equal(data["@type"], "Organization");
     assert.equal(data.name, "Decide Football");
     assert.equal(data.legalName, "Joshua Israel Ventures LLC");
+    assert.equal(data.url, "https://decidefootball.com/");
     assert.equal("email" in data, false);
     assert.equal("address" in data, false);
+    assert.equal("aggregateRating" in data, false);
+    assert.equal("review" in data, false);
+
+    const site = websiteJsonLd();
+    assert.equal(site["@type"], "WebSite");
+    assert.equal(site.name, "Decide Football");
+    assert.equal(site.url, "https://decidefootball.com/");
+    assert.equal(site.publisher["@type"], "Organization");
+    assert.equal(site.publisher.legalName, "Joshua Israel Ventures LLC");
+  });
+
+  it("emits Article from the page title and meta description, without an author or a date", () => {
+    const data = articleJsonLd({
+      path: "/guide/start-sit/",
+      headline: "How to read start/sit estimates — floor, mean, ceiling, certainty",
+      description:
+        "How to read a Decide Football start/sit card: listed status first, mean as the ranking number, floor and ceiling as a model range, and certainty as a desk grade — not a win probability.",
+    });
+    assert.equal(data["@type"], "Article");
+    assert.equal(data.headline, "How to read start/sit estimates — floor, mean, ceiling, certainty");
+    assert.match(data.description, /certainty as a desk grade/);
+    assert.equal(data.url, "https://decidefootball.com/guide/start-sit/");
+    assert.equal(data.publisher["@type"], "Organization");
+    assert.equal(data.publisher.name, "Decide Football");
+    assert.equal(data.publisher.legalName, "Joshua Israel Ventures LLC");
+    assert.equal("author" in data, false);
+    assert.equal("dateModified" in data, false);
+    assert.equal("datePublished" in data, false);
+    assert.equal("aggregateRating" in data, false);
+    assert.equal("review" in data, false);
   });
 
   it("emits WebPage and BreadcrumbList for editorial URLs", () => {

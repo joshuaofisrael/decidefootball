@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { TossUpTool } from "@/components/TossUpTool";
-import { faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "Toss-up tool — apply the 1.5-point mean-delta line";
@@ -62,6 +62,7 @@ export default function TossUpGuidePage() {
           description,
         })}
       />
+      <JsonLd data={articleJsonLd({ path: "/guide/toss-up/", headline: title, description })} />
       <JsonLd data={faqPageJsonLd([...guideFaqs])} />
       <p className="kicker">Mean delta</p>
       <h1>Apply the 1.5-point toss-up line</h1>

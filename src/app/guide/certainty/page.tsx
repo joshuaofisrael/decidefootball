@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CertaintyTool } from "@/components/CertaintyTool";
 import { JsonLd } from "@/components/JsonLd";
-import { faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = "Certainty tool — grade how sure the lean is";
@@ -62,6 +62,7 @@ export default function CertaintyGuidePage() {
           description,
         })}
       />
+      <JsonLd data={articleJsonLd({ path: "/guide/certainty/", headline: title, description })} />
       <JsonLd data={faqPageJsonLd([...guideFaqs])} />
       <p className="kicker">Desk grade</p>
       <h1>Grade how sure the lean is</h1>

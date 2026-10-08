@@ -13,7 +13,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: SITE_NAME,
     legalName: SITE_LEGAL_NAME,
-    url: getSiteUrl(),
+    url: absoluteUrl("/"),
     description:
       "Independent fantasy football decision information. Not affiliated with the NFL or its member clubs.",
   };
@@ -24,11 +24,34 @@ export function websiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_NAME,
-    url: getSiteUrl(),
+    url: absoluteUrl("/"),
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
       legalName: SITE_LEGAL_NAME,
+      url: absoluteUrl("/"),
+    },
+  };
+}
+
+/**
+ * Editorial Article. Headline and description are the page title and meta
+ * description. No author and no dateModified: this repo does not store a
+ * real modified time for these pages.
+ */
+export function articleJsonLd(args: { path: string; headline: string; description: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: args.headline,
+    description: args.description,
+    url: absoluteUrl(args.path),
+    mainEntityOfPage: absoluteUrl(args.path),
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      legalName: SITE_LEGAL_NAME,
+      url: absoluteUrl("/"),
     },
   };
 }
@@ -43,7 +66,7 @@ export function webPageJsonLd(args: { path: string; name: string; description: s
     isPartOf: {
       "@type": "WebSite",
       name: SITE_NAME,
-      url: getSiteUrl(),
+      url: absoluteUrl("/"),
     },
     publisher: {
       "@type": "Organization",

@@ -15,7 +15,7 @@ import {
   NFL_OPS_IMPORTANT_DATES_URL,
   NFL_OPS_KICKOFF_URL,
 } from "@/lib/listed-status-guide";
-import { faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 const title = LISTED_STATUS_TITLE;
@@ -52,6 +52,9 @@ export default function ListedStatusGuidePage() {
           name: title,
           description,
         })}
+      />
+      <JsonLd
+        data={articleJsonLd({ path: LISTED_STATUS_PATH, headline: title, description })}
       />
       <JsonLd data={faqPageJsonLd([...LISTED_STATUS_FAQS])} />
       <p className="kicker">NFL injury report</p>

@@ -150,7 +150,9 @@ jobs:
           grep -q 'href="/disclaimer/"' out/about/index.html
           grep -q 'href="/contact/"' out/about/index.html
           grep -q 'Joshua Israel Ventures LLC is the contracting party' out/terms/index.html
-          grep -q 'State of Florida' out/terms/index.html
+          grep -q 'These Terms are governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida.' out/terms/index.html
+          grep -q 'This Privacy Policy is governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida.' out/privacy/index.html
+          grep -q 'This disclaimer is governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida.' out/disclaimer/index.html
           ! grep -R -i -q 'michigan' out
           grep -q 'as is' out/terms/index.html
           grep -q 'Joshua Israel Ventures LLC is the data controller' out/privacy/index.html

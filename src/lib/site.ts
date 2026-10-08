@@ -11,6 +11,10 @@ export const COPYRIGHT_LINE = `© ${SITE_YEAR} ${SITE_LEGAL_NAME}. All rights re
 
 export const BRAND_SENTENCE = `${SITE_NAME} is a brand of ${SITE_LEGAL_NAME}.`;
 
+/** Shared governing-law sentence. No county, city, or street address. */
+export const FLORIDA_GOVERNING_LAW =
+  "governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida";
+
 export const DEFAULT_SEASON = 2026;
 export const DEFAULT_WEEK = 3;
 export const MODEL_VERSION = "v0-fixture";

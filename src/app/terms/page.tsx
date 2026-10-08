@@ -1,10 +1,10 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { pageMetadata } from "@/lib/seo";
-import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { FLORIDA_GOVERNING_LAW, SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 
 const title = "Terms of Use";
 const description =
-  "Terms of Use for Decide Football, a brand owned by Joshua Israel Ventures LLC. General information only. Governed by the laws of the State of Florida.";
+  "Terms of Use for Decide Football, a brand owned by Joshua Israel Ventures LLC. General information only. Governed by the laws of the State of Florida, with exclusive venue in the state or federal courts located in Florida.";
 
 export const metadata = pageMetadata({
   path: "/terms/",
@@ -94,10 +94,7 @@ export default function TermsPage() {
       </p>
 
       <h2>Governing law</h2>
-      <p>
-        These Terms are governed by the laws of the State of Florida, without regard to
-        conflict-of-law rules.
-      </p>
+      <p>{`These Terms are ${FLORIDA_GOVERNING_LAW}.`}</p>
 
       <h2>Contact</h2>
       <p>

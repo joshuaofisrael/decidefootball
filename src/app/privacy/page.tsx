@@ -1,6 +1,6 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { pageMetadata } from "@/lib/seo";
-import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { FLORIDA_GOVERNING_LAW, SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 
 const title = "Privacy Policy";
 const description =
@@ -40,6 +40,9 @@ export default function PrivacyPage() {
         <code>df_watchlist</code>), and a Sunday-mode preference (<code>df_sunday_mode</code>) in
         local storage on the device. The Site does not run an account system.
       </p>
+
+      <h2>Governing law</h2>
+      <p>{`This Privacy Policy is ${FLORIDA_GOVERNING_LAW}.`}</p>
 
       <h2>Contact</h2>
       <p>

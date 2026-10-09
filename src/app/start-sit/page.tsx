@@ -59,7 +59,7 @@ export default function StartSitIndexPage() {
         })}
       </div>
       <p>
-        <Link href="/guide/start-sit/">How to read the card</Link>
+        <Link href="/guide/start-sit/">Floor vs ceiling</Link>
         {" · "}
         <Link href="/guide/toss-up/">Toss-up tool</Link>
         {" · "}

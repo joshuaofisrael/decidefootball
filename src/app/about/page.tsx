@@ -103,8 +103,8 @@ export default function AboutPage() {
         <Link href="/methodology/">methodology</Link> page. It is versioned, labeled v0, and
         subject to change. There is no backtest published here, and none should be inferred.
         The reading notes for those cards sit together on the <Link href="/guide/">guides</Link>{" "}
-        page. How to read a finished start/sit card — listed status, the mean, floor and ceiling, and
-        the certainty band — is the <Link href="/guide/start-sit/">start/sit reading guide</Link>.
+        page. Who to start using floor, mean, and ceiling — and when a close call is a toss-up —
+        is the <Link href="/guide/start-sit/">start/sit guide</Link>.
         How to read the waiver board — hot, rising, stash, and fade — is the{" "}
         <Link href="/guide/waiver-radar/">waiver radar guide</Link>.{" "}
         <Link href="/guide/listed-status/">

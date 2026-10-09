@@ -155,8 +155,8 @@ export default function ListedStatusGuidePage() {
       <p>
         {SITE_NAME} reads the label before any projection. The mean is a separate estimate. A
         number does not create a new label, and the label does not become the points. How the
-        estimates are built is the <Link href="/methodology/">methodology</Link>. How to read the
-        mean, the floor and ceiling, and the certainty grade is the{" "}
+        estimates are built is the <Link href="/methodology/">methodology</Link>. Who to start
+        using floor, mean, and ceiling is the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>.
       </p>
       <p>

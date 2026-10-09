@@ -72,8 +72,8 @@ export default function TossUpGuidePage() {
         estimated points or more. Under that line the pair is a toss-up on mean alone.
       </p>
       <p>
-        The <Link href="/guide/start-sit/">start/sit guide</Link> teaches how to read a finished
-        lineup card: listed status, the mean, the range, and the certainty bands. The{" "}
+        The <Link href="/guide/start-sit/">start/sit guide</Link> is how floor, mean, and ceiling
+        decide who to start, and when a close call is a toss-up. The{" "}
         <Link href="/guide/add-drop/">add/drop guide</Link> teaches the roster-churn label. This
         page applies the shared line to numbers you supply. How the estimates are built is the{" "}
         <Link href="/methodology/">methodology</Link>. What the product is, and is not, is the{" "}
@@ -110,8 +110,8 @@ export default function TossUpGuidePage() {
         When the pair is a toss-up, that range is what you weigh next. If you are protecting a
         lead and a crater would give the week away, weigh the floor: which side leaves less room
         to fall apart. If you are behind and a modest mean will not catch the gap, weigh the
-        ceiling. That is the same reading the{" "}
-        <Link href="/guide/start-sit/">start/sit guide</Link> gives for a finished card. It is
+        ceiling. That weighing is the same one the{" "}
+        <Link href="/guide/start-sit/">start/sit guide</Link> uses for a close call. It is
         still roster reading. It is not odds.
       </p>
       <p>
@@ -181,7 +181,7 @@ export default function TossUpGuidePage() {
         fixture player rows into the form, and it does not put those desks into search.
       </p>
       <p>
-        Read the line on the cards in the <Link href="/guide/start-sit/">start/sit guide</Link>{" "}
+        Read that framework in the <Link href="/guide/start-sit/">start/sit guide</Link>{" "}
         and the <Link href="/guide/add-drop/">add/drop guide</Link>. How the numbers are built
         is the <Link href="/methodology/">methodology</Link>. The rest of the reading notes sit
         on the <Link href="/guide/">guides</Link> hub. What the product is, and is not, is the{" "}

@@ -246,8 +246,8 @@ export function CertaintyTool() {
       </p>
       <p className="tool-links">
         Who leans, on the {TOSS_UP_DELTA.toFixed(1)}-point line, is the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link>. How to read the finished card is the{" "}
-        <Link href="/guide/start-sit/">start/sit guide</Link>.
+        <Link href="/guide/toss-up/">toss-up tool</Link>. Floor, mean, and ceiling for who to
+        start is the <Link href="/guide/start-sit/">start/sit guide</Link>.
       </p>
 
       <div className="side-grid">

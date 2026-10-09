@@ -6,15 +6,15 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
 const description =
-  "Hub for how to read a Decide Football decision card: the start/sit stack, NFL injury designations before any number, how waivers work, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta and a certainty tool for the desk grade. Not a news blog, not NFL-affiliated, and not gambling advice.";
+  "Hub for how to read a Decide Football decision card: who to start using floor, mean, and ceiling, NFL injury designations before any number, how waivers work, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta and a certainty tool for the desk grade. Not a news blog, not NFL-affiliated, and not gambling advice.";
 
 const guides = [
   {
     href: "/guide/start-sit/",
-    name: "Start/sit",
-    heading: "Start/sit",
+    name: "Floor vs ceiling",
+    heading: "Floor vs ceiling",
     sentence:
-      "The mean, the floor, the ceiling, and the certainty stack: the ranking number, the range around it, and a desk grade of how hard the math can lean.",
+      "Who to start using floor, mean, and ceiling: weigh the floor to protect a lead, the ceiling when you need upside, and treat a narrow mean gap as a toss-up.",
   },
   {
     href: "/guide/listed-status/",

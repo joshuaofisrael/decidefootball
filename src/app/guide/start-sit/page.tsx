@@ -1,47 +1,39 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
+import {
+  START_SIT_CHECKLIST,
+  START_SIT_CRUMB,
+  START_SIT_DESCRIPTION,
+  START_SIT_DIRECT_ANSWER,
+  START_SIT_FAQS,
+  START_SIT_H1,
+  START_SIT_LOCK,
+  START_SIT_NOT,
+  START_SIT_PATH,
+  START_SIT_TITLE,
+  START_SIT_TOSS_UP,
+  START_SIT_WEEK_TABLE,
+} from "@/lib/start-sit-guide";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
-const title = "How to read start/sit estimates — floor, mean, ceiling, certainty";
-const description =
-  "How to read a Decide Football start/sit card: listed status first, mean as the ranking number, floor and ceiling as a model range, and certainty as a desk grade — not a win probability.";
+const title = START_SIT_TITLE;
+const description = START_SIT_DESCRIPTION;
 
-const guideFaqs = [
-  {
-    question: "What do floor, mean, and ceiling mean here?",
-    answer:
-      "The mean is the ranking number: the estimate start/sit and weekly rankings sort on. Floor and ceiling are the model range around that mean, a low end and a high end. They are not a promise of points and not an official projection. A wider range means a thinner sample or a dirtier listed status. OUT, IR, and INACTIVE force the row to zero. The model does not invent a return date.",
+export const metadata = {
+  ...pageMetadata({
+    path: START_SIT_PATH,
+    title,
+    description,
+    indexation: { kind: "editorial" },
+  }),
+  twitter: {
+    card: "summary" as const,
+    title,
+    description,
   },
-  {
-    question: "What is the certainty score not?",
-    answer:
-      "Certainty is a desk grade of how much the call can lean on the math. The bands are thin, lean, clear, and strong. It is not a probability of winning the fantasy week, not a betting line, and not a guarantee that the higher mean wins. Read it next to listed status, not instead of it.",
-  },
-  {
-    question: "Why are the sample start/sit URLs not in search?",
-    answer:
-      "Comparison pages on the start/sit desk are on the site so the product can be reviewed, and they use sample data. They stay out of search until licensed sports data is in place. This guide does not promise that those URLs will be indexed, and it does not give a date.",
-  },
-  {
-    question: "If the means are close, does the higher one win the start?",
-    answer:
-      "No. A narrow mean gap is soft evidence. Under 1.5 estimated points the desk treats the pair as a toss-up and keeps certainty thin. Role and listed status still matter. The higher mean is a lean, not a verdict.",
-  },
-  {
-    question: "When should I weigh the floor instead of the ceiling?",
-    answer:
-      "When you are protecting a lead in your fantasy matchup, weigh the floor: you care which side the model leaves less room to fall apart. When you need upside to catch up, weigh the ceiling. That is how to read the range for the week you have. It is not odds, a spread, or gambling advice.",
-  },
-] as const;
-
-export const metadata = pageMetadata({
-  path: "/guide/start-sit/",
-  title,
-  description,
-  indexation: { kind: "editorial" },
-});
+};
 
 export default function StartSitGuidePage() {
   return (
@@ -50,147 +42,153 @@ export default function StartSitGuidePage() {
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Guides", path: "/guide/" },
-          { name: "Start/sit guide", path: "/guide/start-sit/" },
+          { name: START_SIT_CRUMB, path: START_SIT_PATH },
         ]}
       />
       <JsonLd data={organizationJsonLd()} />
       <JsonLd
         data={webPageJsonLd({
-          path: "/guide/start-sit/",
+          path: START_SIT_PATH,
           name: title,
           description,
         })}
       />
-      <JsonLd data={articleJsonLd({ path: "/guide/start-sit/", headline: title, description })} />
-      <JsonLd data={faqPageJsonLd([...guideFaqs])} />
-      <p className="kicker">Reading the card</p>
-      <h1>How to read a start/sit card</h1>
+      <JsonLd data={articleJsonLd({ path: START_SIT_PATH, headline: title, description })} />
+      <JsonLd data={faqPageJsonLd([...START_SIT_FAQS])} />
+      <p className="kicker">Fantasy lineups</p>
+      <h1>{START_SIT_H1}</h1>
+      <p>{START_SIT_DIRECT_ANSWER}</p>
+
+      <div className="table-wrap">
+        <table>
+          <caption className="visually-hidden">
+            Floor-first, mean-first, and ceiling-first weeks: what you optimize for, when that
+            week fits, and what you accept
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Week</th>
+              <th scope="col">What you optimize for</th>
+              <th scope="col">When it fits</th>
+              <th scope="col">What you accept</th>
+            </tr>
+          </thead>
+          <tbody>
+            {START_SIT_WEEK_TABLE.map((row) => (
+              <tr key={row.week}>
+                <th scope="row">{row.week}</th>
+                <td>{row.optimize}</td>
+                <td>{row.fits}</td>
+                <td>{row.accept}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <p>
-        A {SITE_NAME} start/sit card is a stack, not a slogan. Listed status comes first. The mean
-        is the ranking number. Floor and ceiling are a model range around that mean. Certainty is
-        a grade of how hard the math can lean, not a chance of winning the week.
-      </p>
-      <p>
-        This page is how to read that stack. How the numbers are built is the{" "}
-        <Link href="/methodology/">methodology</Link>. What the product is, and is not, is the{" "}
-        <Link href="/about/">about page</Link>.
+        The mean still ranks the pair. The week in front of you chooses which end of the range
+        you weigh. A floor-first week protects a lead. A mean-first week stays with the ranking
+        number when the matchup is close. A ceiling-first week looks for upside when you are
+        behind. None of the three is a spread, a moneyline, or a win probability.
       </p>
 
-      <h2>Listed status, before any number</h2>
+      <h2>A checklist before Sunday lock</h2>
+      <p>{START_SIT_LOCK}</p>
+      <ol>
+        {START_SIT_CHECKLIST.map((item) => (
+          <li key={item.title}>
+            <strong>{item.title}.</strong> {item.detail}
+            {item.href && item.linkLabel ? (
+              <>
+                {" "}
+                <Link href={item.href}>{item.linkLabel}</Link>.
+              </>
+            ) : null}
+          </li>
+        ))}
+      </ol>
+
+      <h2>When a close call is a toss-up</h2>
+      <p>{START_SIT_TOSS_UP}</p>
       <p>
-        OUT, IR, and INACTIVE are not starts. The model sets that row to zero. It does not invent
-        a return date, a practice window, or a sentence about when someone might be back.
-        Questionable and doubtful apply a discount. They are not a cleared player, and they are
-        not a ruled-out player. The designation is an input someone listed. The projection does
-        not vote a new one into existence.
+        The <Link href="/guide/toss-up/">toss-up tool</Link> applies that 1.5-point line to two
+        means you type. The <Link href="/guide/certainty/">certainty tool</Link> grades how sure
+        the lean is. This page is the decision framework. It does not repeat either form, and it
+        does not look up a player.
+      </p>
+
+      <h2>How {SITE_NAME} cards use the stack</h2>
+      <p>
+        A {SITE_NAME} start/sit card prints the same decision in a fixed order. Listed status
+        comes first. The mean is the ranking number. Floor and ceiling are the model range around
+        that mean. Certainty is a grade of how hard the math can lean, not a chance of winning
+        the week.
       </p>
       <p>
-        If the status and the mean disagree, believe the status. A healthy-looking mean on a
-        player listed OUT is a zero for the week. The card is telling you the gate fired.
+        How the numbers are built is the <Link href="/methodology/">methodology</Link>. What the
+        product is, and is not, is the <Link href="/about/">about page</Link>.
+      </p>
+
+      <h3>Listed status first</h3>
+      <p>
+        OUT, IR, and INACTIVE are not starts. The model sets that row to zero. It does not invent
+        a return date or a practice window. Questionable and Doubtful are a discount. They are
+        not a cleared player, and they are not a ruled-out player. If the status and the mean
+        disagree, believe the status.
       </p>
       <p>
         <Link href="/guide/listed-status/">
-          What Questionable, Doubtful, Out, IR, and inactive mean
+          What Questionable, Doubtful, Out, injured reserve, and inactive mean
         </Link>{" "}
-        is the league side of the label. This card still ranks on the mean. The label is read
-        first.
+        is the page for the label. The card still ranks on the mean. The label is read first.
       </p>
 
-      <h2>Mean is the ranking number</h2>
+      <h3>Mean, then the range</h3>
       <p>
-        Start/sit and the weekly rankings sort on the mean. That is the single estimate the desk
-        uses to order a call. Floor and ceiling sit beside it as a range: the low end and the
-        high end, given the sample and the status the model was handed. A wider range means the
-        sample is thin or the status is dirty.
+        Start/sit and the weekly rankings sort on the mean. Floor and ceiling sit beside it as a
+        low end and a high end. A wider range means the sample is thin or the listed status is
+        dirty. The range is not a promise of points and not an official projection.
       </p>
       <p>
-        The range is not a promise of points and not an official projection. Treat the mean as
-        the rank. Treat floor and ceiling as the width around it.
-      </p>
-      <p>
-        The weekly board is a different page from this card. It stacks one position in mean
-        order and prints status, floor, and ceiling on the row. It does not print a certainty
-        score, and the order is not a pairwise verdict. How to read that list is the{" "}
+        The weekly board is a different page. It stacks one position in mean order and prints
+        status, floor, and ceiling on the row. It does not print a certainty score, and the order
+        is not a pairwise verdict. How to read that list is the{" "}
         <Link href="/guide/rankings/">rankings guide</Link>.
       </p>
 
-      <h2>Floor or ceiling, depending on the week you have</h2>
+      <h3>Certainty is not a win probability</h3>
       <p>
-        The mean ranks the pair. Which end of the range you weigh depends on the fantasy week in
-        front of you.
-      </p>
-      <p>
-        If you are ahead in your matchup and a crater would give the week away, weigh the floor.
-        You are asking which side the model leaves less room to fall apart. If you are behind and
-        a modest mean will not catch the gap, weigh the ceiling. You are asking which side the
-        model leaves more room above the mean.
-      </p>
-      <p>
-        That is roster reading. It is not a spread, a moneyline, a win probability, or advice on
-        a wager. Nothing on this desk is a gambling product.
-      </p>
-
-      <h2>Certainty is a desk grade</h2>
-      <p>
-        The card also prints a certainty score, from 0 to 96, with a band: thin, lean, clear, or
-        strong. On the card those bands read as a thin edge, a soft lean, a clear lean, or a
-        strong call. The score is how much this desk thinks the call can lean on the math in
-        front of it. A wider mean gap raises it. A toss-up keeps it thin. High uncertainty, a
-        status discount, or an availability zero cuts it.
+        The card prints a certainty band: thin, lean, clear, or strong. On the card those bands
+        read as a thin edge, a soft lean, a clear lean, or a strong call. A wider mean gap can
+        raise the grade. A toss-up keeps it thin. A status discount or an availability zero cuts
+        it. The band is how much this desk thinks the call can lean on the math. It is not the
+        probability that you win the fantasy week, and it is not the probability that the higher
+        mean outscores the other side.
       </p>
       <ul>
         <li>
-          <strong>Thin.</strong> The math is a thin edge. Do not treat the higher mean as settled.
+          <strong>Thin.</strong> A thin edge. Do not treat the higher mean as settled.
         </li>
         <li>
           <strong>Lean.</strong> A soft lean. The mean prefers a side, and the inputs are not
           clean enough to carry the week alone.
         </li>
         <li>
-          <strong>Clear.</strong> The call can lean on the math. Still read the status labels
-          beside it.
+          <strong>Clear.</strong> The call can lean on the math. Still read the status beside it.
         </li>
         <li>
           <strong>Strong.</strong> The numbers can carry more of the call. Still not a win
-          probability, and still not a reason to ignore an OUT tag.
+          probability, and still not a reason to ignore an Out tag.
         </li>
       </ul>
       <p>
-        It is not the probability that you win the fantasy week, and it is not the probability
-        that the higher mean outscores the other side on Sunday. Read the band next to the status
-        labels, not instead of them. To apply that grade to two means and the flags you type —
-        the gate, a status discount, uncertainty, and trailing weeks — use the{" "}
-        <Link href="/guide/certainty/">certainty tool</Link>. It does not look up a player. The
-        arithmetic behind the score is on the <Link href="/methodology/">methodology</Link> page,
-        labeled v0 and subject to change.
+        To apply that grade to two means and the flags you type, use the{" "}
+        <Link href="/guide/certainty/">certainty tool</Link>. The arithmetic is on the{" "}
+        <Link href="/methodology/">methodology</Link> page, labeled v0 and subject to change. No
+        accuracy rate is published here, and none should be inferred.
       </p>
 
-      <h2>A narrow mean is soft evidence</h2>
-      <p>
-        The desk draws a toss-up line at 1.5 estimated points. Inside that gap the card says to
-        lean neither side on mean alone, and certainty stays thin. Outside it, the higher mean is
-        a lean. Role and listed status still matter. A tenth of a point is not a verdict. A
-        slightly higher mean on a smaller role does not, by itself, jump the player whose job is
-        the one you are actually starting. To apply that line to two means you type, use the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link>. It uses this same 1.5-point delta. It
-        does not look up a player, and it does not replace listed status.
-      </p>
-
-      <h2>What this is not</h2>
-      <ul>
-        <li>
-          Not affiliated with, endorsed by, or sponsored by the NFL or its member clubs. Names
-          are identification for fantasy analysis only.
-        </li>
-        <li>Not an official projection, club report, or injury wire.</li>
-        <li>Not gambling advice, odds, or a sportsbook.</li>
-        <li>
-          Not a backtest. The method is methodology v0, subject to change. No accuracy rate is
-          published here, and none should be inferred.
-        </li>
-      </ul>
-
-      <h2>Where the comparison cards are</h2>
+      <h3>Where the comparison cards are</h3>
       <p>
         Comparison tools are at the <Link href="/start-sit/">start/sit desk</Link> so the product
         can be used and reviewed. Those URLs use sample data. They stay out of search until
@@ -198,21 +196,23 @@ export default function StartSitGuidePage() {
         promise those URLs will enter a search index.
       </p>
       <p>
-        The public description of the desk is this guide, the{" "}
-        <Link href="/methodology/">methodology</Link>, and the <Link href="/about/">about page</Link>.
-        Waiver urgency uses the same estimates. How to read hot, rising, stash, and fade — and
-        why that tag is not a free-agent claim — is the{" "}
-        <Link href="/guide/waiver-radar/">waiver radar guide</Link>. The ordered positional list
-        is the <Link href="/guide/rankings/">rankings guide</Link>. The same estimates on a
-        roster-churn card — add one name over the name you would drop — are the{" "}
-        <Link href="/guide/add-drop/">add/drop guide</Link>, and that card is not this lineup
-        call. The shared 1.5-point line, applied to means you type, is the{" "}
-        <Link href="/guide/toss-up/">toss-up tool</Link>. The certainty grade, applied to means
-        and flags you type, is the <Link href="/guide/certainty/">certainty tool</Link>.
+        Waiver urgency uses the same estimates.{" "}
+        <Link href="/guide/waiver-radar/">How fantasy football waivers work</Link> is a different
+        question from this lineup call, and a tag there is not a free-agent claim. The same
+        estimates on a roster-churn card — add one name over the name you would drop — are the{" "}
+        <Link href="/guide/add-drop/">add/drop guide</Link>. The shared 1.5-point line, applied
+        to means you type, is the <Link href="/guide/toss-up/">toss-up tool</Link>.
       </p>
 
+      <h2>What this is not</h2>
+      <ul>
+        {START_SIT_NOT.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+
       <h2>Questions</h2>
-      {guideFaqs.map((item) => (
+      {START_SIT_FAQS.map((item) => (
         <div key={item.question}>
           <h3>{item.question}</h3>
           <p>{item.answer}</p>

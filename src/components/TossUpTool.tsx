@@ -166,8 +166,8 @@ export function TossUpTool() {
       </fieldset>
       <p className="tool-links">
         The same delta applies to a start/sit lineup call and an add/drop roster-churn
-        comparison. The toggle changes the sentence. It does not change the math. How to read
-        each card: <Link href="/guide/start-sit/">start/sit guide</Link>
+        comparison. The toggle changes the sentence. It does not change the math.{" "}
+        <Link href="/guide/start-sit/">Floor vs ceiling</Link>
         {" · "}
         <Link href="/guide/add-drop/">add/drop guide</Link>.
       </p>

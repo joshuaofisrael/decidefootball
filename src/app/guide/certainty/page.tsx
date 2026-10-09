@@ -74,8 +74,8 @@ export default function CertaintyGuidePage() {
         This page answers how sure that lean is.
       </p>
       <p>
-        The <Link href="/guide/start-sit/">start/sit guide</Link> teaches how to read a finished
-        lineup card: listed status, the mean, the range, and these bands. How the estimates are
+        The <Link href="/guide/start-sit/">start/sit guide</Link> is how floor, mean, and ceiling
+        decide who to start. These bands grade that call. How the estimates are
         built is the <Link href="/methodology/">methodology</Link>. What the product is, and is
         not, is the <Link href="/about/">about page</Link>.
       </p>
@@ -176,7 +176,7 @@ export default function CertaintyGuidePage() {
         player rows into the form, and it does not put that desk into search.
       </p>
       <p>
-        Read the bands on a finished card in the{" "}
+        How those bands sit on a lineup decision is the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>. Apply the 1.5-point line in the{" "}
         <Link href="/guide/toss-up/">toss-up tool</Link>. Read the designation before the number
         in{" "}

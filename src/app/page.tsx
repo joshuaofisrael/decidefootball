@@ -70,7 +70,7 @@ export default function HomePage() {
             {" · "}
             <Link href="/methodology/">How the mean is built</Link>
             {" · "}
-            <Link href="/guide/start-sit/">How to read the card</Link>
+            <Link href="/guide/start-sit/">Floor vs ceiling</Link>
           </p>
         </article>
       ) : null}

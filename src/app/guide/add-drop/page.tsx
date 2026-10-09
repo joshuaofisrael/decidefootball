@@ -77,8 +77,8 @@ export default function AddDropGuidePage() {
       </p>
       <p>
         This page is how to read that card. How the numbers are built is the{" "}
-        <Link href="/methodology/">methodology</Link>. How the same mean, floor, ceiling, and
-        toss-up line work on a lineup card is the{" "}
+        <Link href="/methodology/">methodology</Link>. How floor, mean, and ceiling decide a
+        lineup, including that toss-up line, is the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>. What the product is, and is not,
         is the <Link href="/about/">about page</Link>.
       </p>

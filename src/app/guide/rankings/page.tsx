@@ -72,8 +72,8 @@ export default function RankingsGuidePage() {
       </p>
       <p>
         This page is how to read that stack. How the numbers are built is the{" "}
-        <Link href="/methodology/">methodology</Link>. How a pairwise card uses the same mean,
-        with a certainty grade, is the <Link href="/guide/start-sit/">start/sit guide</Link>.
+        <Link href="/methodology/">methodology</Link>. Who to start using floor, mean, and
+        ceiling is the <Link href="/guide/start-sit/">start/sit guide</Link>.
         What the product is, and is not, is the <Link href="/about/">about page</Link>.
       </p>
 
@@ -125,7 +125,8 @@ export default function RankingsGuidePage() {
         The positional board does not print a certainty score. Certainty — thin, lean, clear, or
         strong — is the start/sit desk grade of how hard a pairwise call can lean on the math. It
         is not the probability of winning the fantasy week. The{" "}
-        <Link href="/guide/start-sit/">start/sit guide</Link> is where that grade is taught.
+        <Link href="/guide/start-sit/">start/sit guide</Link> puts that grade under the floor,
+        mean, and ceiling.
       </p>
       <p>
         A higher rank is not that grade. When two neighbors sit close, the start/sit desk draws a

@@ -229,7 +229,7 @@ export default function WaiverRadarGuidePage() {
         <li>
           Then the role. Look at snap share and whether the job changed. Once the name is a
           lineup question,{" "}
-          <Link href="/guide/start-sit/">how to read the mean, the floor, and the ceiling</Link>{" "}
+          <Link href="/guide/start-sit/">who to start using floor, mean, and ceiling</Link>{" "}
           is the start/sit guide.
         </li>
         <li>
@@ -283,8 +283,8 @@ export default function WaiverRadarGuidePage() {
         ordered positional list is the <Link href="/guide/rankings/">rankings guide</Link>.
         Certainty, on a start/sit card, is a grade of how hard the math can lean. It is not the
         probability of winning the fantasy week.{" "}
-        <Link href="/guide/start-sit/">How to read the mean, the floor, and the ceiling</Link>{" "}
-        is taught on the start/sit guide.
+        <Link href="/guide/start-sit/">Who to start using floor, mean, and ceiling</Link>{" "}
+        is the start/sit guide.
       </p>
       <p>
         Waiver urgency adds the two inputs the tag is for. Snap share versus the prior week can

@@ -1,5 +1,15 @@
 # SEO log
 
+## 2026-10-09
+
+Retargeted the existing `/guide/start-sit/` page at the generic query: how to decide who to start in fantasy football using floor, mean, and ceiling, and when a close call is a toss-up. Same URL. No new indexable URL.
+
+- Title, H1, description, Open Graph, and Twitter now lead with that decision. A floor-first / mean-first / ceiling-first table, a Sunday-lock checklist, and the 1.5-point toss-up line sit above the card-reading notes.
+- No host lineup-lock clock is stated. No ESPN, Yahoo, Sleeper, or NFL Fantasy settings page is cited. The 1.5-point line is the desk constant already used by the toss-up tool and methodology. No projection numbers are attached to players. Methodology stays v0. No accuracy rate is published.
+- FAQPage questions match those start/sit questions, plus one question on this site's certainty grade. The hub card, sibling anchors, and `llms.txt` point at the new topic. The sitemap has no `lastmod` field, so it was left unchanged.
+- Fixture sports pages stay `noindex` and Disallow, including `/start-sit/`. Homepage stays `noindex`. Ads stay off. Footer operator line is unchanged. `/waiver-wire/` was not renamed.
+- Hypothesis: retargeting to the generic floor-versus-ceiling query should earn the first real impressions within 2 to 4 weeks.
+
 ## 2026-10-08
 
 Retargeted the existing `/guide/waiver-radar/` page at the generic query: how fantasy football waivers work. Same URL. No new indexable URL.

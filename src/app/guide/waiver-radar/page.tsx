@@ -328,10 +328,9 @@ export default function WaiverRadarGuidePage() {
 
       <h3>Where the board is</h3>
       <p>
-        The <Link href="/waiver-wire/week-3/">waiver board</Link> is on the site so the product
-        can be used and reviewed. Those URLs use sample data. They stay out of search until
-        licensed sports data is in place. This page does not set a date for that, and it does
-        not promise those URLs will enter a search index.
+        The <Link href="/waiver-radar/">waiver board</Link> is on the site so the product
+        can be used and reviewed. The numbers there are sample data for demonstrating the tool.
+        They are not live licensed NFL stats.
       </p>
       <p>
         The public description of the tag is this guide, the{" "}

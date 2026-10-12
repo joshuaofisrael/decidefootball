@@ -170,10 +170,9 @@ export default function CertaintyGuidePage() {
 
       <h2>Where the reading guides are</h2>
       <p>
-        The sample start/sit desk stays out of search until licensed GREEN sports data is in
-        place. This page does not set a date for that, and it does not promise those URLs will
-        enter a search index. This tool lives at /guide/certainty/. It does not put fixture
-        player rows into the form, and it does not put that desk into search.
+        The sample start/sit desk is indexable. Its numbers are sample data for demonstrating the
+        tool, not live licensed NFL stats. This tool lives at /guide/certainty/. It does not put
+        fixture player rows into the form.
       </p>
       <p>
         How those bands sit on a lineup decision is the{" "}

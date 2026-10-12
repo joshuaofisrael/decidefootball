@@ -1,4 +1,4 @@
-import { isFixtureMode, robotsAllowIndexing } from "./compliance";
+import { robotsAllowIndexing, isFixtureMode } from "./compliance";
 
 /**
  * Named AI search crawlers. They are listed in the same robots group as `*`
@@ -22,8 +22,9 @@ export const AI_SEARCH_USER_AGENTS = [
 ] as const;
 
 /**
- * Indexable pages while sports fixtures stay blocked.
- * Finished legal pages are included. The cookie notice is not.
+ * Indexable editorial pages. Finished legal pages are included.
+ * The cookie notice is indexable and listed with them.
+ * Sample desks are allowed by `Allow: /` and are not repeated here.
  */
 export const EDITORIAL_ROBOTS_ALLOW = [
   "/about/",
@@ -40,33 +41,19 @@ export const EDITORIAL_ROBOTS_ALLOW = [
   "/privacy/",
   "/disclaimer/",
   "/contact/",
+  "/cookies/",
 ] as const;
 
 /**
- * Cookie notice stays noindex,follow. Omit it from both Allow and Disallow
- * so crawlers are not invited to index it, but can still recrawl the noindex tag.
+ * No legal page is omitted from crawl. Kept as an empty list so callers
+ * that still iterate stubs do not invent a noindex exception.
  */
-export const LEGAL_STUB_PATHS = ["/cookies/"] as const;
+export const LEGAL_STUB_PATHS = [] as const;
 
 /**
- * Fixture / sample sports URL prefixes.
- * `/is-` also covers postbuild pretty copies such as `/is-{slug}-playing-today/`.
+ * Not a public page. Real HTML pages, including sample desks, stay crawlable.
  */
-export const FIXTURE_CONTENT_DISALLOW = [
-  "/players/",
-  "/start-sit/",
-  "/is-playing/",
-  "/is-",
-  "/injuries/",
-  "/rankings/",
-  "/waiver-wire/",
-  "/add-drop/",
-  "/week-",
-  "/slate/",
-  "/watchlist/",
-  "/health/",
-  "/api/",
-] as const;
+export const NON_PAGE_DISALLOW = ["/api/"] as const;
 
 export interface RobotsPolicyState {
   allowIndexing: boolean;
@@ -89,15 +76,8 @@ export function buildRobotsRules(state: RobotsPolicyState = currentRobotsPolicyS
     return { disallow: "/" };
   }
 
-  if (state.fixtureMode) {
-    return {
-      allow: [...EDITORIAL_ROBOTS_ALLOW, "/llms.txt"],
-      disallow: [...FIXTURE_CONTENT_DISALLOW],
-    };
-  }
-
   return {
-    allow: ["/", "/llms.txt"],
-    disallow: ["/api/", "/health/"],
+    allow: ["/", ...EDITORIAL_ROBOTS_ALLOW, "/llms.txt"],
+    disallow: [...NON_PAGE_DISALLOW],
   };
 }

@@ -20,6 +20,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/privacy/",
   "/disclaimer/",
   "/contact/",
+  "/cookies/",
 ] as const;
 
 export function editorialSitemapEntries(): { url: string }[] {

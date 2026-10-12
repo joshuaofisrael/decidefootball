@@ -12,8 +12,7 @@ export function FixtureBanner() {
   if (isYellowHold()) {
     return (
       <p className="banner hold" role="status">
-        Compliance gate is YELLOW. Pages stay noindex until Joshua and counsel accept residual
-        risk. {FIXTURE_BANNER}
+        Compliance gate is YELLOW. The pages stay available for review. {FIXTURE_BANNER}
       </p>
     );
   }

@@ -5,20 +5,21 @@ import {
   EDITORIAL_SITEMAP_PATHS,
   LEGAL_STUB_PATHS,
 } from "./editorial-urls";
+import { indexableSitemapEntries, indexableSitemapPaths, WAIVER_DESK_PATH } from "./indexable-urls";
 import { decideIndexation } from "./indexation";
-import { EDITORIAL_ROBOTS_ALLOW, FIXTURE_CONTENT_DISALLOW } from "./robots-policy";
+import { EDITORIAL_ROBOTS_ALLOW, NON_PAGE_DISALLOW } from "./robots-policy";
 
 describe("decideIndexation", () => {
-  it("noindexes fixture sports pages even when the gate is GREEN", () => {
+  it("indexes sample sports pages", () => {
     const decision = decideIndexation({ sourceClass: "FIXTURE" });
-    assert.equal(decision.indexation, "noindex");
-    assert.equal(decision.robots, "noindex,follow");
+    assert.equal(decision.indexation, "index");
+    assert.equal(decision.robots, "index,follow");
   });
 
-  it("noindexes the homepage fixture hub the same way as other sports pages", () => {
+  it("indexes the homepage the same way as other sample desks", () => {
     const decision = decideIndexation({ sourceClass: "FIXTURE" });
-    assert.equal(decision.indexation, "noindex");
-    assert.equal(decision.robots, "noindex,follow");
+    assert.equal(decision.indexation, "index");
+    assert.equal(decision.robots, "index,follow");
   });
 
   it("indexes editorial pages without a licensed sports source", () => {
@@ -32,6 +33,12 @@ describe("decideIndexation", () => {
     assert.equal(decision.indexation, "index");
   });
 
+  it("noindexes a redirect stub", () => {
+    const decision = decideIndexation({ redirectStub: true, sourceClass: "FIXTURE" });
+    assert.equal(decision.indexation, "noindex");
+    assert.equal(decision.robots, "noindex,follow");
+  });
+
   it("noindexes draft legal shells until placeholders are gone", () => {
     const decision = decideIndexation({ sourceClass: "GREEN", draftLegal: true });
     assert.equal(decision.indexation, "noindex");
@@ -40,7 +47,7 @@ describe("decideIndexation", () => {
 });
 
 describe("editorialSitemapEntries", () => {
-  it("lists the editorial cluster as absolute trailing-slash URLs", () => {
+  it("lists the editorial cluster, including the cookie notice, as absolute trailing-slash URLs", () => {
     const entries = editorialSitemapEntries();
     const urls = entries.map((row) => row.url);
     assert.deepEqual(EDITORIAL_SITEMAP_PATHS.slice(), [
@@ -58,53 +65,66 @@ describe("editorialSitemapEntries", () => {
       "/privacy/",
       "/disclaimer/",
       "/contact/",
+      "/cookies/",
     ]);
     assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
-    assert.ok(urls.some((url) => url.endsWith("/about/")));
-    assert.ok(urls.some((url) => url.endsWith("/methodology/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/start-sit/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/waiver-radar/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/listed-status/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/rankings/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/add-drop/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/toss-up/")));
-    assert.ok(urls.some((url) => url.endsWith("/guide/certainty/")));
-    assert.equal(
-      urls.some((url) => new URL(url).pathname === "/rankings/"),
-      false,
-    );
-    assert.equal(
-      urls.some((url) => new URL(url).pathname === "/add-drop/"),
-      false,
-    );
-    assert.equal(entries.length, 14);
-    assert.equal(
-      urls.some((url) => url.includes("/waiver-wire/")),
-      false,
-    );
-    assert.equal(
-      urls.some((url) => url.includes("/is-playing/") || url.includes("/is-")),
-      false,
-    );
-    assert.equal(
-      urls.some((url) => url.includes("/injuries/")),
-      false,
-    );
+    assert.equal(entries.length, EDITORIAL_SITEMAP_PATHS.length);
     for (const url of urls) {
       assert.match(url, /^https?:\/\//);
-      const path = new URL(url).pathname;
-      for (const prefix of FIXTURE_CONTENT_DISALLOW) {
-        assert.equal(
-          path.startsWith(prefix),
-          false,
-          `${path} must not match fixture prefix ${prefix}`,
-        );
+      assert.ok(url.endsWith("/"));
+    }
+  });
+});
+
+describe("indexableSitemapEntries", () => {
+  it("lists every real page and omits redirect stubs", () => {
+    const paths = indexableSitemapPaths();
+    const urls = indexableSitemapEntries().map((row) => row.url);
+    assert.equal(urls.length, paths.length);
+    assert.equal(paths[0], "/");
+    for (const path of EDITORIAL_SITEMAP_PATHS) {
+      assert.ok(paths.includes(path), path);
+    }
+    for (const path of [
+      "/rankings/",
+      "/start-sit/",
+      "/add-drop/",
+      WAIVER_DESK_PATH,
+      "/players/",
+      "/players/jordan-voss/",
+      "/injuries/jordan-voss/",
+      "/is-jordan-voss-playing-today/",
+      "/is-playing/",
+      "/slate/",
+      "/watchlist/",
+      "/health/",
+      "/week-3/rb-rankings/",
+      "/start-sit/jordan-voss-vs-noah-crowe/",
+      "/add-drop/kai-benton-vs-amir-cole/",
+    ]) {
+      assert.ok(paths.includes(path), `missing ${path}`);
+    }
+    assert.equal(paths.includes("/waiver-wire/"), false);
+    assert.equal(paths.includes("/waiver-wire/week-3/"), false);
+    assert.equal(paths.includes("/start-sit/noah-crowe-vs-jordan-voss/"), false);
+    assert.equal(paths.includes("/rankings/3/rb/"), false);
+    assert.equal(paths.includes("/is-playing/jordan-voss/"), false);
+    assert.equal(paths.includes("/llms.txt"), false);
+    const seen = new Set<string>();
+    for (const path of paths) {
+      assert.equal(seen.has(path), false, `duplicate ${path}`);
+      seen.add(path);
+      assert.ok(path.endsWith("/") || path === "/");
+      for (const prefix of NON_PAGE_DISALLOW) {
+        assert.equal(path.startsWith(prefix), false, path);
       }
-      assert.ok(!url.includes("jordan-voss"));
       for (const stub of LEGAL_STUB_PATHS) {
-        assert.ok(!url.includes(stub), `sitemap must not include legal stub ${stub}`);
+        assert.ok(!path.includes(stub));
       }
+    }
+    for (const url of urls) {
+      assert.match(url, /^https:\/\/decidefootball\.com\//);
+      assert.equal(new URL(url).pathname, paths[urls.indexOf(url)]);
     }
   });
 });

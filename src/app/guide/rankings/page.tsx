@@ -30,9 +30,9 @@ const guideFaqs = [
       "No. The board does not know your league, your roster, or who is available on Yahoo, ESPN, Sleeper, or any other host. A high rank is not a free-agent claim. Waiver urgency — hot, rising, stash, and fade — is a different board. A rank is also not a start/sit verdict by itself. Pairwise comparison, with the certainty grade, is the start/sit card. The higher mean on a list is the order this desk printed.",
   },
   {
-    question: "Why do the sample rankings URLs stay out of search?",
+    question: "Are the sample rankings live NFL stats?",
     answer:
-      "The rankings desk and the week-by-position boards are on the site so the product can be reviewed, and they use sample data. They stay out of search until licensed GREEN sports data is in place. This guide does not promise those URLs will be indexed, and it does not give a date. This page lives at /guide/rankings/. That path is a reading guide. It is not the fixture board at /rankings/, and it does not match that blocked path.",
+      "No. The rankings desk and the week-by-position boards use sample data for demonstrating the tool. They are indexable, and they are not live licensed NFL statistics. This page lives at /guide/rankings/. That path is a reading guide. It is not the sample board at /rankings/.",
   },
 ] as const;
 

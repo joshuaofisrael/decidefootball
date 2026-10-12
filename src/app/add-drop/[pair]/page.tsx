@@ -36,8 +36,8 @@ export async function generateMetadata({
   return pageMetadata({
     path: `/add-drop/${resolved.left.slug}-vs-${resolved.right.slug}/`,
     title: `Add ${resolved.left.displayName} or ${resolved.right.displayName}?`,
-    description: "Fixture add/drop comparison from computed estimates.",
-    indexation: { sourceClass: "FIXTURE", thin: !resolved.isCanonical },
+    description: `Sample add/drop comparison of ${resolved.left.displayName} and ${resolved.right.displayName} for demonstrating the tool. Not live licensed NFL stats.`,
+    indexation: { sourceClass: "FIXTURE" },
   });
 }
 

@@ -110,8 +110,9 @@ describe("recommendStartSit", () => {
 });
 
 describe("decideIndexation", () => {
-  it("noindexes fixture pages even when gate is GREEN", () => {
+  it("indexes fixture pages when the gate is GREEN", () => {
     const decision = decideIndexation({ sourceClass: "FIXTURE" });
-    assert.equal(decision.indexation, "noindex");
+    assert.equal(decision.indexation, "index");
+    assert.equal(decision.robots, "index,follow");
   });
 });

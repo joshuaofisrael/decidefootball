@@ -50,19 +50,29 @@ jobs:
           grep -q 'https://decidefootball.com/guide/add-drop/' out/sitemap.xml
           grep -q 'https://decidefootball.com/guide/toss-up/' out/sitemap.xml
           grep -q 'https://decidefootball.com/guide/certainty/' out/sitemap.xml
-          ! grep -q 'https://decidefootball.com/rankings/' out/sitemap.xml
-          ! grep -q 'https://decidefootball.com/add-drop/' out/sitemap.xml
-          ! grep -q 'https://decidefootball.com/start-sit/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/cookies/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/rankings/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/add-drop/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/start-sit/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/waiver-radar/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/players/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/players/jordan-voss/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/is-playing/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/is-jordan-voss-playing-today/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/injuries/jordan-voss/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/slate/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/watchlist/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/health/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/week-3/rb-rankings/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/start-sit/jordan-voss-vs-noah-crowe/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/add-drop/kai-benton-vs-amir-cole/' out/sitemap.xml
           ! grep -q '/waiver-wire/' out/sitemap.xml
-          ! grep -q '/is-playing/' out/sitemap.xml
-          ! grep -q '/injuries/' out/sitemap.xml
-          ! grep -q 'jordan-voss' out/sitemap.xml
-          ! grep -q '/players/' out/sitemap.xml
+          ! grep -q 'https://decidefootball.com/is-playing/jordan-voss/' out/sitemap.xml
+          ! grep -q 'noah-crowe-vs-jordan-voss' out/sitemap.xml
           grep -q 'https://decidefootball.com/terms/' out/sitemap.xml
           grep -q 'https://decidefootball.com/privacy/' out/sitemap.xml
           grep -q 'https://decidefootball.com/disclaimer/' out/sitemap.xml
           grep -q 'https://decidefootball.com/contact/' out/sitemap.xml
-          ! grep -q '/cookies/' out/sitemap.xml
           grep -q 'Allow: /about/' out/robots.txt
           grep -q 'Allow: /methodology/' out/robots.txt
           grep -q '^Allow: /guide/$' out/robots.txt
@@ -73,33 +83,27 @@ jobs:
           grep -q 'Allow: /guide/add-drop/' out/robots.txt
           grep -q 'Allow: /guide/toss-up/' out/robots.txt
           grep -q 'Allow: /guide/certainty/' out/robots.txt
-          ! grep -q '^Allow: /start-sit/' out/robots.txt
-          ! grep -q 'Allow: /rankings/' out/robots.txt
-          ! grep -q '^Allow: /add-drop/' out/robots.txt
-          grep -q 'Disallow: /add-drop/' out/robots.txt
-          grep -q 'Disallow: /rankings/' out/robots.txt
-          ! grep -q 'Allow: /waiver-wire/' out/robots.txt
-          ! grep -q 'Allow: /is-playing/' out/robots.txt
-          ! grep -q 'Allow: /injuries/' out/robots.txt
+          grep -q '^Allow: /$' out/robots.txt
+          ! grep -q 'Disallow: /add-drop/' out/robots.txt
+          ! grep -q 'Disallow: /rankings/' out/robots.txt
+          ! grep -q 'Disallow: /start-sit/' out/robots.txt
+          ! grep -q 'Disallow: /players/' out/robots.txt
+          ! grep -q 'Disallow: /waiver-radar/' out/robots.txt
+          ! grep -q 'Disallow: /waiver-wire/' out/robots.txt
+          ! grep -q 'Disallow: /is-playing/' out/robots.txt
+          ! grep -q 'Disallow: /injuries/' out/robots.txt
+          ! grep -q 'Disallow: /health/' out/robots.txt
+          ! grep -q 'Disallow: /cookies/' out/robots.txt
+          grep -q 'Allow: /cookies/' out/robots.txt
+          grep -q 'Disallow: /api/' out/robots.txt
           grep -q 'Allow: /privacy/' out/robots.txt
           grep -q 'Allow: /terms/' out/robots.txt
           grep -q 'Allow: /disclaimer/' out/robots.txt
           grep -q 'Allow: /contact/' out/robots.txt
-          ! grep -q 'Allow: /cookies/' out/robots.txt
           ! grep -q 'Disallow: /privacy/' out/robots.txt
           ! grep -q 'Disallow: /terms/' out/robots.txt
           ! grep -q 'Disallow: /disclaimer/' out/robots.txt
           ! grep -q 'Disallow: /contact/' out/robots.txt
-          ! grep -q 'Disallow: /cookies/' out/robots.txt
-          grep -q 'Disallow: /waiver-wire/' out/robots.txt
-          grep -q 'Disallow: /players/' out/robots.txt
-          grep -q 'Disallow: /start-sit/' out/robots.txt
-          grep -q 'Disallow: /is-playing/' out/robots.txt
-          grep -q 'Disallow: /is-' out/robots.txt
-          grep -q 'Disallow: /injuries/' out/robots.txt
-          grep -q 'Disallow: /week-' out/robots.txt
-          grep -q 'Disallow: /slate/' out/robots.txt
-          grep -q 'Disallow: /watchlist/' out/robots.txt
           grep -q 'Sitemap: https://decidefootball.com/sitemap.xml' out/robots.txt
           grep -q 'Allow: /llms.txt' out/robots.txt
           grep -Fxq 'User-Agent: *' out/robots.txt
@@ -141,6 +145,13 @@ jobs:
           grep -q 'https://decidefootball.com/privacy/' out/llms.txt
           grep -q 'https://decidefootball.com/disclaimer/' out/llms.txt
           grep -q 'https://decidefootball.com/contact/' out/llms.txt
+          grep -q 'https://decidefootball.com/cookies/' out/llms.txt
+          grep -q '^## Sample desks$' out/llms.txt
+          grep -q 'https://decidefootball.com/waiver-radar/' out/llms.txt
+          grep -q 'https://decidefootball.com/start-sit/' out/llms.txt
+          grep -q 'https://decidefootball.com/rankings/' out/llms.txt
+          grep -q 'sample data for demonstrating the tool' out/llms.txt
+          ! grep -q 'waiver-wire' out/llms.txt
           grep -q '© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is owned and operated by Joshua Israel Ventures LLC.' out/about/index.html
           grep -q 'Operated by Joshua Israel Ventures LLC' out/about/index.html
           grep -q 'Decide Football is a brand of Joshua Israel Ventures LLC.' out/about/index.html
@@ -177,17 +188,21 @@ jobs:
           ! grep -q 'NEED JOSHUA' out/about/index.html
           test -f out/slate/index.html
           test -f out/watchlist/index.html
-          grep -q 'content="noindex,follow"' out/index.html
-          grep -q 'content="noindex,follow"' out/slate/index.html
-          grep -q 'content="noindex,follow"' out/watchlist/index.html
+          grep -q 'content="index,follow"' out/index.html
+          grep -q 'content="index,follow"' out/slate/index.html
+          grep -q 'content="index,follow"' out/watchlist/index.html
+          ! grep -q 'noindex' out/index.html
+          ! grep -q 'noindex' out/slate/index.html
+          ! grep -q 'noindex' out/watchlist/index.html
+          grep -q 'sample data for demonstrating the tool' out/index.html
+          grep -q 'sample data for demonstrating the tool' out/slate/index.html
           grep -q 'content="index,follow"' out/privacy/index.html
           grep -q 'content="index,follow"' out/terms/index.html
           grep -q 'content="index,follow"' out/disclaimer/index.html
           grep -q 'content="index,follow"' out/contact/index.html
-          grep -q 'content="noindex,follow"' out/cookies/index.html
+          grep -q 'content="index,follow"' out/cookies/index.html
+          ! grep -q 'noindex' out/cookies/index.html
           test -f out/contact/index.html
-          ! grep -q '/slate/' out/sitemap.xml
-          ! grep -q '/watchlist/' out/sitemap.xml
           grep -q 'rel="canonical" href="https://decidefootball.com/about/"' out/about/index.html
           grep -q 'property="og:url" content="https://decidefootball.com/about/"' out/about/index.html
           grep -q 'property="og:site_name" content="Decide Football"' out/about/index.html
@@ -279,10 +294,25 @@ jobs:
           grep -q 'WebPage' out/guide/add-drop/index.html
           grep -q 'WebPage' out/guide/toss-up/index.html
           grep -q 'WebPage' out/guide/certainty/index.html
+          test -f out/waiver-wire/index.html
+          test -f out/waiver-wire/week-3/index.html
+          test -f out/waiver-radar/index.html
+          grep -q 'content="noindex,follow"' out/waiver-wire/index.html
           grep -q 'content="noindex,follow"' out/waiver-wire/week-3/index.html
-          grep -q 'How to read the tags' out/waiver-wire/week-3/index.html
-          grep -q 'content="noindex,follow"' out/start-sit/index.html
-          grep -q 'content="noindex,follow"' out/players/index.html
+          grep -q 'http-equiv="refresh" content="0;url=/waiver-radar/"' out/waiver-wire/index.html
+          grep -q 'http-equiv="refresh" content="0;url=/waiver-radar/"' out/waiver-wire/week-3/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/waiver-radar/"' out/waiver-wire/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/waiver-radar/"' out/waiver-wire/week-3/index.html
+          grep -q 'content="index,follow"' out/waiver-radar/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/waiver-radar/"' out/waiver-radar/index.html
+          grep -q 'How to read the tags' out/waiver-radar/index.html
+          grep -q 'sample data for demonstrating the tool' out/waiver-radar/index.html
+          grep -q 'href="/guide/waiver-radar/"' out/waiver-radar/index.html
+          ! grep -q 'noindex' out/waiver-radar/index.html
+          grep -q 'content="index,follow"' out/start-sit/index.html
+          grep -q 'content="index,follow"' out/players/index.html
+          grep -q 'sample data for demonstrating the tool' out/start-sit/index.html
+          grep -q 'sample data for demonstrating the tool' out/players/index.html
           ! grep -q 'SAMPLE / FIXTURE' out/about/index.html
           ! grep -q 'jordan-voss' out/about/index.html
           ! grep -q 'SAMPLE / FIXTURE' out/methodology/index.html
@@ -334,22 +364,27 @@ jobs:
           grep -q 'href="/guide/listed-status/"' out/guide/certainty/index.html
           grep -q 'href="/methodology/"' out/guide/certainty/index.html
           grep -q 'href="/about/"' out/guide/certainty/index.html
-          grep -q 'content="noindex,follow"' out/add-drop/index.html
+          grep -q 'content="index,follow"' out/add-drop/index.html
           grep -q 'guide/add-drop/' out/add-drop/index.html
           grep -q 'How to read the card' out/add-drop/index.html
-          grep -q 'content="noindex,follow"' out/add-drop/kai-benton-vs-amir-cole/index.html
-          grep -q 'content="noindex,follow"' out/rankings/index.html
+          grep -q 'content="index,follow"' out/add-drop/kai-benton-vs-amir-cole/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/add-drop/kai-benton-vs-amir-cole/"' out/add-drop/kai-benton-vs-amir-cole/index.html
+          grep -q 'content="index,follow"' out/rankings/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/rankings/"' out/rankings/index.html
           grep -q 'guide/rankings/' out/rankings/index.html
           grep -q 'How to read the board' out/rankings/index.html
-          grep -q 'content="noindex,follow"' out/week-3/rb-rankings/index.html
+          grep -q 'content="index,follow"' out/week-3/rb-rankings/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/week-3/rb-rankings/"' out/week-3/rb-rankings/index.html
           grep -q 'guide/rankings/' out/week-3/rb-rankings/index.html
-          grep -q 'guide/waiver-radar/' out/waiver-wire/week-3/index.html
-          grep -q 'content="noindex,follow"' out/is-playing/index.html
+          grep -q 'href="/waiver-radar/"' out/week-3/rb-rankings/index.html
+          grep -q 'content="index,follow"' out/is-playing/index.html
           grep -q 'guide/listed-status/' out/is-playing/index.html
           grep -q 'What Questionable, Doubtful, and Out mean' out/is-playing/index.html
-          grep -q 'content="noindex,follow"' out/is-jordan-voss-playing-today/index.html
+          grep -q 'content="index,follow"' out/is-jordan-voss-playing-today/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/is-jordan-voss-playing-today/"' out/is-jordan-voss-playing-today/index.html
           grep -q 'guide/listed-status/' out/is-jordan-voss-playing-today/index.html
-          grep -q 'content="noindex,follow"' out/injuries/jordan-voss/index.html
+          grep -q 'content="index,follow"' out/injuries/jordan-voss/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/injuries/jordan-voss/"' out/injuries/jordan-voss/index.html
           grep -q 'guide/listed-status/' out/injuries/jordan-voss/index.html
           grep -qx 'decidefootball.com' out/CNAME
           test -f out/ads.txt

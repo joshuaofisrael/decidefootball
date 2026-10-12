@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { WAIVER_DESK_PATH } from "@/lib/indexable-urls";
 import { SITE_NAME } from "@/lib/site";
 
 const links = [
@@ -6,7 +7,7 @@ const links = [
   { href: "/slate/", label: "Slate" },
   { href: "/watchlist/", label: "Watch" },
   { href: "/players/", label: "Club" },
-  { href: "/waiver-wire/week-3/", label: "Radar" },
+  { href: WAIVER_DESK_PATH, label: "Radar" },
   { href: "/guide/", label: "Guides" },
   { href: "/methodology/", label: "Method" },
   { href: "/about/", label: "About" },

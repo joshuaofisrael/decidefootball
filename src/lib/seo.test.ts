@@ -259,7 +259,7 @@ describe("pageMetadata canonicals", () => {
     assert.equal(certainty.robots, "index,follow");
   });
 
-  it("emits a trailing-slash canonical for a sample fixture path and keeps it noindex", () => {
+  it("emits a trailing-slash canonical for a sample fixture path and keeps it indexable", () => {
     const fixture = pageMetadata({
       path: "/start-sit/noah-crowe-vs-jordan-voss",
       title: "Start Noah Crowe or Jordan Voss?",
@@ -268,7 +268,7 @@ describe("pageMetadata canonicals", () => {
     });
     assert.equal(canonicalOf(fixture), "/start-sit/noah-crowe-vs-jordan-voss/");
     assert.equal(ogOf(fixture).url, "/start-sit/noah-crowe-vs-jordan-voss/");
-    assert.equal(fixture.robots, "noindex,follow");
+    assert.equal(fixture.robots, "index,follow");
     assert.equal(ogOf(fixture).siteName, "Decide Football");
     assert.equal(ogOf(fixture).type, "website");
   });
@@ -295,6 +295,6 @@ describe("pageMetadata canonicals", () => {
     });
     assert.equal(canonicalOf(home), "/");
     assert.equal(ogOf(home).url, "/");
-    assert.equal(home.robots, "noindex,follow");
+    assert.equal(home.robots, "index,follow");
   });
 });

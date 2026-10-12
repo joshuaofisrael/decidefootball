@@ -6,7 +6,7 @@ export const metadata = pageMetadata({
   path: "/cookies/",
   title: "Cookie notice",
   description: `How ${SITE_NAME} uses cookieless Cloudflare Web Analytics. Ads are off, so no AdSense cookies are set.`,
-  indexation: { sourceClass: "GREEN", draftLegal: true },
+  indexation: { kind: "editorial" },
 });
 
 export default function CookiesPage() {

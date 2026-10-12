@@ -191,9 +191,8 @@ export default function StartSitGuidePage() {
       <h3>Where the comparison cards are</h3>
       <p>
         Comparison tools are at the <Link href="/start-sit/">start/sit desk</Link> so the product
-        can be used and reviewed. Those URLs use sample data. They stay out of search until
-        licensed sports data is in place. This page does not set a date for that, and it does not
-        promise those URLs will enter a search index.
+        can be used and reviewed. Those URLs use sample data for demonstrating the tool. They are
+        not live licensed NFL stats.
       </p>
       <p>
         Waiver urgency uses the same estimates.{" "}

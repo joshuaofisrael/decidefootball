@@ -81,8 +81,8 @@ Cloudflare Web Analytics is not an env var. The beacon token is baked into the r
 | Gate | Behavior |
 |------|----------|
 | **RED** | Kill switch. Decision figures withheld. `noindex`. `robots.txt` disallows `/`. Legal pages still render. |
-| **YELLOW** | Render with hold banner. Stay `noindex` unless Joshua + counsel accept residual risk. |
-| **GREEN** | First-party analysis may render. **Fixture sports pages still `noindex`** until licensed GREEN (or accepted YELLOW) data replaces them. |
+| **YELLOW** | Render with a hold banner. Pages stay indexable. Sample numbers stay labeled as sample data. |
+| **GREEN** | First-party analysis may render. Sample desks are `index,follow` and labeled as sample data. They are not live licensed NFL statistics. |
 
 `last_verified` (data freshness) and `rendered` (this HTML, baked at export) are always shown separately.
 
@@ -105,24 +105,24 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/start-sit/[a]-vs-[b]/` | Canonical pair by ascending `player.id`; reverse order is a static redirect page |
 | `/add-drop/[a]-vs-[b]/` | Same pair rule |
 | `/week-[n]/[pos]-rankings/` | QB/RB/WR/TE (real static file) |
-| `/slate/` | Week slate by kick window, Sunday Mode (fixture, noindex) |
-| `/watchlist/` | localStorage watchlist (fixture names, noindex) |
-| `/waiver-wire/week-[n]/` | Waiver radar with urgency (fixture, `noindex`; not in the sitemap) |
+| `/slate/` | Week slate by kick window, Sunday Mode (sample data, indexable) |
+| `/watchlist/` | localStorage watchlist (sample names, indexable) |
+| `/waiver-radar/` | Waiver radar with urgency (sample data, indexable). The old `/waiver-wire/` address is a noindex redirect |
 | `/about/` | Brand / trust page (editorial; indexable when the gate is GREEN) |
 | `/guide/` | Reading-guides hub (editorial; indexable when the gate is GREEN). Parent of the five card-reading notes, the toss-up tool, and the certainty tool |
 | `/guide/start-sit/` | Who to start using floor, mean, and ceiling (editorial; indexable when the gate is GREEN). Not under the fixture `/start-sit/` tree |
-| `/guide/waiver-radar/` | How fantasy football waivers work (priority, rolling, FAAB), plus how the tags are read (editorial; indexable when the gate is GREEN). Not under the fixture `/waiver-wire/` tree |
+| `/guide/waiver-radar/` | How fantasy football waivers work (priority, rolling, FAAB), plus how the tags are read (editorial; indexable when the gate is GREEN). This is the reading guide, not the sample desk at `/waiver-radar/` |
 | `/guide/listed-status/` | What Questionable, Doubtful, Out, IR, and inactive mean, and how the cards treat the label (editorial; indexable when the gate is GREEN). Not under the fixture `/is-playing/`, `/is-`, or `/injuries/` trees |
 | `/guide/rankings/` | How to read the weekly positional rankings board (editorial; indexable when the gate is GREEN). Not under the fixture `/rankings/` tree |
 | `/guide/add-drop/` | How to read an add/drop comparison card (editorial; indexable when the gate is GREEN). Not under the fixture `/add-drop/` tree |
 | `/guide/toss-up/` | Interactive 1.5-point mean-delta toss-up tool (editorial; indexable when the gate is GREEN). Numbers are typed by the visitor. Not a fixture player desk |
 | `/guide/certainty/` | Interactive certainty-grade tool (editorial; indexable when the gate is GREEN). Same thin / lean / clear / strong helper as the start/sit card. Numbers and flags are typed by the visitor. Not a fixture player desk |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
-| `/privacy/` `/terms/` `/disclaimer/` `/cookies/` | Draft shells; **NEED JOSHUA INPUT** for contact/address (none invented). Page meta is `noindex` until placeholders are gone |
-| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap lists indexable editorial URLs only (`/about/`, `/methodology/`, `/guide/`, `/guide/start-sit/`, `/guide/waiver-radar/`, `/guide/listed-status/`, `/guide/rankings/`, `/guide/add-drop/`, `/guide/toss-up/`, `/guide/certainty/`). Fixture sports prefixes are disallowed, including `/rankings/`, `/start-sit/`, and `/add-drop/`. `/guide/add-drop/` does not match Disallow `/add-drop/`. Unfinished legal shells are omitted from fixture-mode Allow (not Disallowed) so crawlers can see page `noindex` |
+| `/privacy/` `/terms/` `/disclaimer/` `/cookies/` `/contact/` | Finished legal pages. Indexable. Florida governing law. |
+| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap and `llms.txt` list every real page, including sample desks. `robots.txt` allows `/` and the editorial paths, and disallows only `/api/`. AI crawlers stay in the same group as `*` |
 | `/health.json` | Build-time health payload |
 
-GitHub Pages cannot emit HTTP 301. Reverse pairs and alias paths are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical` and `noindex`.
+GitHub Pages cannot emit HTTP 301. Reverse pairs, rankings aliases, and the old waiver desk address are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical`. Only the old waiver desk address is `noindex`.
 
 ## Publish on GitHub Pages (free)
 

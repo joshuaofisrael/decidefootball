@@ -35,7 +35,7 @@ export function robotsAllowIndexing(): boolean {
 }
 
 export const FIXTURE_BANNER =
-  "SAMPLE / FIXTURE DATA. Hand-built estimates for UI and pipeline testing. Not live verified injuries, participation, or official reports.";
+  "SAMPLE / FIXTURE DATA. The numbers on this page are sample data for demonstrating the tool. They are not live licensed NFL stats, injuries, or official reports.";
 
 export const ESTIMATE_DISCLAIMER =
   "Estimates only. Not a guarantee of fantasy points, availability, or outcomes. You decide your roster.";

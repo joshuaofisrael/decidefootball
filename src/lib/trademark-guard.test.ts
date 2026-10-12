@@ -52,6 +52,45 @@ describe("trademark guard", () => {
     }
   });
 
+  it("flags waiver wire in page titles and product paths", () => {
+    const phrase = /waiver[\s-]*wire/i;
+    const appRoot = join(ROOT, "src/app");
+    const redirectDir = join(appRoot, "waiver-wire");
+    assert.equal(existsSync(redirectDir), true, "old desk URL must keep a redirect stub");
+
+    function walkDirs(dir: string, out: string[] = []): string[] {
+      for (const name of readdirSync(dir)) {
+        const full = join(dir, name);
+        if (statSync(full).isDirectory()) {
+          out.push(full);
+          walkDirs(full, out);
+        }
+      }
+      return out;
+    }
+
+    for (const dir of walkDirs(appRoot)) {
+      const rel = relative(appRoot, dir);
+      if (rel === "waiver-wire" || rel.startsWith("waiver-wire/")) continue;
+      assert.equal(phrase.test(rel), false, `path ${rel}`);
+    }
+
+    const pages = walk(appRoot).filter((file) => file.endsWith("page.tsx") || file.endsWith("layout.tsx"));
+    for (const file of pages) {
+      const text = readFileSync(file, "utf8");
+      const rel = relative(ROOT, file);
+      for (const match of text.matchAll(/title:\s*(?:"([^"]*)"|'([^']*)'|`([^`]*)`)/g)) {
+        const title = match[1] ?? match[2] ?? match[3] ?? "";
+        assert.equal(phrase.test(title), false, `${rel} title: ${title}`);
+      }
+      if (file.startsWith(redirectDir)) continue;
+      assert.equal(phrase.test(text), false, rel);
+    }
+
+    const llms = readFileSync(join(ROOT, "public/llms.txt"), "utf8");
+    assert.equal(phrase.test(llms), false);
+  });
+
   it("ships no raster images without a license sidecar", () => {
     for (const file of files) {
       if (!RASTER_EXT.test(file)) continue;

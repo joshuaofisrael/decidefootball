@@ -119,7 +119,7 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/guide/certainty/` | Interactive certainty-grade tool (editorial; indexable when the gate is GREEN). Same thin / lean / clear / strong helper as the start/sit card. Numbers and flags are typed by the visitor. Not a fixture player desk |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` `/contact/` | Finished legal pages. Indexable. Florida governing law. |
-| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap and `llms.txt` list every real page, including sample desks. `robots.txt` allows `/` and the editorial paths, and disallows only `/api/`. AI crawlers stay in the same group as `*` |
+| `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap and `llms.txt` list every real page, including sample desks. Each sitemap URL has a `lastmod` of `YYYY-MM-DD` from that page's content. `robots.txt` allows `/` and the editorial paths, and disallows only `/api/`. Named crawlers stay in the same group as `*` |
 | `/health.json` | Build-time health payload |
 
 GitHub Pages cannot emit HTTP 301. Reverse pairs, rankings aliases, and the old waiver desk address are exported as HTML redirects (`<meta refresh>` + `location.replace`) with `rel=canonical`. Only the old waiver desk address is `noindex`.

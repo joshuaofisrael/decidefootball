@@ -1,8 +1,8 @@
 import { robotsAllowIndexing, isFixtureMode } from "./compliance";
 
 /**
- * Named AI search crawlers. They are listed in the same robots group as `*`
- * so a specific agent does not override the star rules.
+ * Named crawlers listed in the same robots group as `*` so a specific agent
+ * does not override the star rules. The group allows `/` and disallows only `/api/`.
  */
 export const AI_SEARCH_USER_AGENTS = [
   "OAI-SearchBot",
@@ -19,6 +19,11 @@ export const AI_SEARCH_USER_AGENTS = [
   "Bingbot",
   "DuckAssistBot",
   "Amazonbot",
+  "anthropic-ai",
+  "CCBot",
+  "Bytespider",
+  "Meta-ExternalAgent",
+  "cohere-ai",
 ] as const;
 
 /**

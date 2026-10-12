@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -121,6 +123,13 @@ jobs:
           grep -Fxq 'User-Agent: Bingbot' out/robots.txt
           grep -Fxq 'User-Agent: DuckAssistBot' out/robots.txt
           grep -Fxq 'User-Agent: Amazonbot' out/robots.txt
+          grep -Fxq 'User-Agent: anthropic-ai' out/robots.txt
+          grep -Fxq 'User-Agent: CCBot' out/robots.txt
+          grep -Fxq 'User-Agent: Bytespider' out/robots.txt
+          grep -Fxq 'User-Agent: Meta-ExternalAgent' out/robots.txt
+          grep -Fxq 'User-Agent: cohere-ai' out/robots.txt
+          grep -c '^Disallow: ' out/robots.txt | grep -qx 1
+          grep -qx 'Disallow: /api/' <(grep '^Disallow: ' out/robots.txt)
           ! grep -q 'llms.txt' out/sitemap.xml
           test -f out/llms.txt
           grep -q '^# Decide Football$' out/llms.txt
@@ -256,7 +265,25 @@ jobs:
           grep -q 'https://operations.nfl.com/calendar-events/nfl-important-dates' out/guide/listed-status/index.html
           grep -q 'https://operations.nfl.com/game-operations-logistics/preparation-safety/game-and-stadium-prep' out/guide/listed-status/index.html
           grep -q 'What do Questionable, Doubtful, and Out mean?' out/guide/listed-status/index.html
-          ! grep -q '<lastmod>' out/sitemap.xml
+          python3 - <<'PY'
+          import pathlib, re
+          xml = pathlib.Path("out/sitemap.xml").read_text()
+          blocks = re.findall(r"<url>\s*(.*?)\s*</url>", xml, flags=re.S)
+          if len(blocks) != 58:
+              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 58")
+          for block in blocks:
+              loc = re.search(r"<loc>([^<]+)</loc>", block)
+              mods = re.findall(r"<lastmod>([^<]+)</lastmod>", block)
+              if not loc or len(mods) != 1 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", mods[0]):
+                  raise SystemExit(f"sitemap url needs one YYYY-MM-DD lastmod: {block}")
+          html_hits = []
+          for path in pathlib.Path("out").rglob("*.html"):
+              text = path.read_text(errors="ignore")
+              if re.search(r"\bnoai\b|\bnoimageai\b|X-Robots-Tag", text, flags=re.I):
+                  html_hits.append(str(path))
+          if html_hits:
+              raise SystemExit("noai, noimageai, or X-Robots-Tag in " + ", ".join(html_hits))
+          PY
           grep -q 'content="index,follow"' out/guide/rankings/index.html
           grep -q 'content="index,follow"' out/guide/add-drop/index.html
           grep -q 'content="index,follow"' out/guide/toss-up/index.html

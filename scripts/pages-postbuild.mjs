@@ -148,6 +148,11 @@ const AI_SEARCH_USER_AGENTS = [
   "Bingbot",
   "DuckAssistBot",
   "Amazonbot",
+  "anthropic-ai",
+  "CCBot",
+  "Bytespider",
+  "Meta-ExternalAgent",
+  "cohere-ai",
 ];
 
 function fail(message) {
@@ -207,8 +212,29 @@ function validateRobotsGroup() {
   ]) {
     if (rules.includes(blocked)) fail(`robots.txt still blocks a real page: ${blocked}`);
   }
+  const disallows = rules.filter((line) => line.startsWith("Disallow: "));
+  if (disallows.length !== 1 || disallows[0] !== "Disallow: /api/") {
+    fail(`robots.txt must disallow only /api/: ${disallows.join(" | ")}`);
+  }
+  if (!rules.includes("Allow: /")) fail("robots.txt missing Allow: /");
   const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
   if (sitemap.includes("llms.txt")) fail("sitemap.xml must list HTML pages only");
+  const locs = sitemap.match(/<loc>[^<]+<\/loc>/g) ?? [];
+  const mods = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/g) ?? [];
+  if (locs.length !== 58) fail(`sitemap has ${locs.length} urls, expected 58`);
+  if (mods.length !== locs.length) fail("every sitemap url needs one lastmod");
+  for (const tag of mods) {
+    const value = tag.slice("<lastmod>".length, -"</lastmod>".length);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) fail(`lastmod must be YYYY-MM-DD: ${value}`);
+  }
+}
+
+function validateNoAiOptOut() {
+  const token = /\bnoai\b|\bnoimageai\b|X-Robots-Tag/i;
+  for (const file of walkHtml(out)) {
+    const html = readFileSync(file, "utf8");
+    if (token.test(html)) fail(`${file} includes noai, noimageai, or X-Robots-Tag`);
+  }
 }
 
 function jsonLdBlocks(file, html) {
@@ -384,6 +410,7 @@ function assertSampleJsonLd(file, blocks) {
 
 validateRobotsGroup();
 validateJsonLd();
+validateNoAiOptOut();
 
 console.log("pages-postbuild: wrote out/.nojekyll, out/CNAME, out/health.json, ads.txt, pretty is-playing URLs");
 console.log("pages-postbuild: validated robots.txt group and JSON-LD in the static export");

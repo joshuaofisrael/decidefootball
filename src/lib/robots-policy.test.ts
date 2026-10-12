@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
 import { describe, it } from "node:test";
+import { fileURLToPath } from "node:url";
 import robots from "../app/robots";
+import { pageMetadata } from "./seo";
 import {
   AI_SEARCH_USER_AGENTS,
   buildRobotsRules,
@@ -8,6 +12,39 @@ import {
   LEGAL_STUB_PATHS,
   NON_PAGE_DISALLOW,
 } from "./robots-policy";
+
+const ROOT = fileURLToPath(new URL("../../", import.meta.url));
+
+const EXPECTED_CRAWLERS = [
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
+  "PerplexityBot",
+  "Perplexity-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "Google-Extended",
+  "Applebot",
+  "Applebot-Extended",
+  "Bingbot",
+  "DuckAssistBot",
+  "Amazonbot",
+  "anthropic-ai",
+  "CCBot",
+  "Bytespider",
+  "Meta-ExternalAgent",
+  "cohere-ai",
+] as const;
+
+function walk(dir: string, out: string[] = []): string[] {
+  for (const name of readdirSync(dir)) {
+    const full = join(dir, name);
+    if (statSync(full).isDirectory()) walk(full, out);
+    else out.push(full);
+  }
+  return out;
+}
 
 describe("buildRobotsRules", () => {
   it("disallows the whole site when the gate forbids indexing", () => {
@@ -74,19 +111,49 @@ describe("buildRobotsRules", () => {
   });
 
   it("names AI crawlers in the same group as the star agent", () => {
+    assert.deepEqual([...AI_SEARCH_USER_AGENTS], [...EXPECTED_CRAWLERS]);
     const body = robots();
     const rule = Array.isArray(body.rules) ? body.rules[0] : body.rules;
     assert.ok(rule);
-    assert.deepEqual(rule.userAgent, ["*", ...AI_SEARCH_USER_AGENTS]);
+    assert.deepEqual(rule.userAgent, ["*", ...EXPECTED_CRAWLERS]);
     assert.equal(Array.isArray(body.rules), false);
     assert.equal(body.sitemap, "https://decidefootball.com/sitemap.xml");
     const allow = rule.allow;
     assert.ok(Array.isArray(allow));
+    assert.equal(allow[0], "/");
     assert.ok(allow.includes("/llms.txt"));
-    assert.ok(allow.includes("/"));
     for (const path of EDITORIAL_ROBOTS_ALLOW) {
       assert.ok(allow.includes(path), `missing allow ${path}`);
     }
+    assert.deepEqual(rule.disallow, ["/api/"]);
     assert.deepEqual(rule.disallow, [...NON_PAGE_DISALLOW]);
+    const postbuild = readFileSync(join(ROOT, "scripts/pages-postbuild.mjs"), "utf8");
+    const block = postbuild.match(/const AI_SEARCH_USER_AGENTS = \[([\s\S]*?)\];/);
+    assert.ok(block);
+    const agents = [...block[1].matchAll(/"([^"]+)"/g)].map((match) => match[1]);
+    assert.deepEqual(agents, [...EXPECTED_CRAWLERS]);
+  });
+
+  it("does not emit noai, noimageai, or an X-Robots-Tag header", () => {
+    const token = /\bnoai\b|\bnoimageai\b|X-Robots-Tag/i;
+    const files = [
+      ...walk(join(ROOT, "src/app")),
+      ...walk(join(ROOT, "src/components")),
+      ...walk(join(ROOT, "src/lib")).filter((file) => !file.endsWith(".test.ts")),
+      ...walk(join(ROOT, "public")),
+      join(ROOT, "next.config.ts"),
+    ];
+    for (const file of files) {
+      assert.equal(token.test(readFileSync(file, "utf8")), false, file);
+    }
+    for (const args of [
+      { path: "/about/", title: "About", description: "Desk.", indexation: { kind: "editorial" as const } },
+      { path: "/start-sit/", title: "Start", description: "Desk.", indexation: { sourceClass: "FIXTURE" as const } },
+      { path: "/terms/", title: "Terms", indexation: { kind: "editorial" as const } },
+    ]) {
+      const robotsMeta = pageMetadata(args).robots;
+      assert.equal(typeof robotsMeta, "string");
+      assert.equal(token.test(String(robotsMeta)), false);
+    }
   });
 });

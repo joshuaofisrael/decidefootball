@@ -1,6 +1,6 @@
 # Decide Football
 
-> Decide Football publishes fantasy football guides for start/sit, waiver claims, and injury designations (Questionable, Doubtful, Out, injured reserve, and inactive). Live player data is not licensed yet. Player, start/sit, injury, waiver, and ranking pages currently use sample/fixture data and stay out of search indexes until licensed sports data is in place. The site is not affiliated with the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper. It is not a sports news blog and not gambling advice. Decide Football is a brand of Joshua Israel Ventures LLC.
+> Decide Football publishes fantasy football guides for start/sit, waiver claims, and injury designations (Questionable, Doubtful, Out, injured reserve, and inactive). Live player data is not licensed yet. The homepage and the sample/fixture desks (start/sit, add/drop, rankings, waiver radar, players, availability, slate, and watchlist) are indexable. The numbers on those pages are sample data for demonstrating the tool. They are not live licensed NFL statistics. The site is not affiliated with the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper. It is not a sports news blog and not gambling advice. Decide Football is a brand of Joshua Israel Ventures LLC.
 
 Operated by Joshua Israel Ventures LLC.
 
@@ -15,6 +15,54 @@ Operated by Joshua Israel Ventures LLC.
 - [Toss-up tool — apply the 1.5-point mean-delta line](https://decidefootball.com/guide/toss-up/): Type two fantasy-point means. Decide Football applies the same 1.5-point toss-up line used on start/sit and add/drop. Floor and ceiling are for weighing only. Not a player search, not official projections, and not gambling advice.
 - [Certainty tool — grade how sure the lean is](https://decidefootball.com/guide/certainty/): Type two fantasy-point means and the desk flags. Decide Football applies the same certainty grade the start/sit card prints: thin, lean, clear, or strong. Not a win probability, not a player search, not official projections, and not gambling advice.
 
+## Sample desks
+
+Numbers on these pages are sample data for demonstrating the tool. They are not live licensed NFL statistics.
+
+- [Decide Football: start, sit, and the Sunday card](https://decidefootball.com/): Homepage for the sample desk. Start/sit, availability, waiver radar, and rankings. Sample data, not live licensed NFL stats.
+- [Start or sit](https://decidefootball.com/start-sit/): Sample start/sit pairs with a certainty score, for demonstrating the tool.
+- [Start Jordan Voss or Noah Crowe?](https://decidefootball.com/start-sit/jordan-voss-vs-noah-crowe/): Sample start/sit card for Jordan Voss and Noah Crowe. Not live licensed NFL stats.
+- [Start Marcus Hale or Kai Benton?](https://decidefootball.com/start-sit/marcus-hale-vs-kai-benton/): Sample start/sit card for Marcus Hale and Kai Benton. Not live licensed NFL stats.
+- [Start Elias Quinn or Riley Soto?](https://decidefootball.com/start-sit/elias-quinn-vs-riley-soto/): Sample start/sit card for Elias Quinn and Riley Soto. Not live licensed NFL stats.
+- [Add / drop](https://decidefootball.com/add-drop/): Sample add/drop comparisons for demonstrating the tool. Not live licensed NFL stats.
+- [Add Kai Benton or Amir Cole?](https://decidefootball.com/add-drop/kai-benton-vs-amir-cole/): Sample add/drop card for Kai Benton and Amir Cole. Not live licensed NFL stats.
+- [Add Noah Crowe or Amir Cole?](https://decidefootball.com/add-drop/noah-crowe-vs-amir-cole/): Sample add/drop card for Noah Crowe and Amir Cole. Not live licensed NFL stats.
+- [Weekly rankings](https://decidefootball.com/rankings/): Sample weekly positional rankings index. Not live licensed NFL statistics.
+- [Week 3 QB rankings](https://decidefootball.com/week-3/qb-rankings/): Sample quarterback rankings for week 3. Not live licensed NFL statistics.
+- [Week 3 RB rankings](https://decidefootball.com/week-3/rb-rankings/): Sample running-back rankings for week 3. Not live licensed NFL statistics.
+- [Week 3 WR rankings](https://decidefootball.com/week-3/wr-rankings/): Sample wide-receiver rankings for week 3. Not live licensed NFL statistics.
+- [Week 3 TE rankings](https://decidefootball.com/week-3/te-rankings/): Sample tight-end rankings for week 3. Not live licensed NFL statistics.
+- [Waiver radar, week 3](https://decidefootball.com/waiver-radar/): Sample waiver radar for week 3: hot, rising, stash, or fade. Not live licensed NFL stats.
+- [Fixture club](https://decidefootball.com/players/): Sample player hubs. Illustrated marks only. Not live licensed NFL stats.
+- [Jordan Voss hub](https://decidefootball.com/players/jordan-voss/): Sample player hub for Jordan Voss. Not live licensed NFL stats.
+- [Jordan Voss availability timeline](https://decidefootball.com/injuries/jordan-voss/): Sample availability timeline for Jordan Voss. Not a live or official report.
+- [Is Jordan Voss playing today?](https://decidefootball.com/is-jordan-voss-playing-today/): Sample availability answer for Jordan Voss. Not a live official report.
+- [Marcus Hale hub](https://decidefootball.com/players/marcus-hale/): Sample player hub for Marcus Hale. Not live licensed NFL stats.
+- [Marcus Hale availability timeline](https://decidefootball.com/injuries/marcus-hale/): Sample availability timeline for Marcus Hale. Not a live or official report.
+- [Is Marcus Hale playing today?](https://decidefootball.com/is-marcus-hale-playing-today/): Sample availability answer for Marcus Hale. Not a live official report.
+- [Elias Quinn hub](https://decidefootball.com/players/elias-quinn/): Sample player hub for Elias Quinn. Not live licensed NFL stats.
+- [Elias Quinn availability timeline](https://decidefootball.com/injuries/elias-quinn/): Sample availability timeline for Elias Quinn. Not a live or official report.
+- [Is Elias Quinn playing today?](https://decidefootball.com/is-elias-quinn-playing-today/): Sample availability answer for Elias Quinn. Not a live official report.
+- [Theo Marsh hub](https://decidefootball.com/players/theo-marsh/): Sample player hub for Theo Marsh. Not live licensed NFL stats.
+- [Theo Marsh availability timeline](https://decidefootball.com/injuries/theo-marsh/): Sample availability timeline for Theo Marsh. Not a live or official report.
+- [Is Theo Marsh playing today?](https://decidefootball.com/is-theo-marsh-playing-today/): Sample availability answer for Theo Marsh. Not a live official report.
+- [Kai Benton hub](https://decidefootball.com/players/kai-benton/): Sample player hub for Kai Benton. Not live licensed NFL stats.
+- [Kai Benton availability timeline](https://decidefootball.com/injuries/kai-benton/): Sample availability timeline for Kai Benton. Not a live or official report.
+- [Is Kai Benton playing today?](https://decidefootball.com/is-kai-benton-playing-today/): Sample availability answer for Kai Benton. Not a live official report.
+- [Noah Crowe hub](https://decidefootball.com/players/noah-crowe/): Sample player hub for Noah Crowe. Not live licensed NFL stats.
+- [Noah Crowe availability timeline](https://decidefootball.com/injuries/noah-crowe/): Sample availability timeline for Noah Crowe. Not a live or official report.
+- [Is Noah Crowe playing today?](https://decidefootball.com/is-noah-crowe-playing-today/): Sample availability answer for Noah Crowe. Not a live official report.
+- [Riley Soto hub](https://decidefootball.com/players/riley-soto/): Sample player hub for Riley Soto. Not live licensed NFL stats.
+- [Riley Soto availability timeline](https://decidefootball.com/injuries/riley-soto/): Sample availability timeline for Riley Soto. Not a live or official report.
+- [Is Riley Soto playing today?](https://decidefootball.com/is-riley-soto-playing-today/): Sample availability answer for Riley Soto. Not a live official report.
+- [Amir Cole hub](https://decidefootball.com/players/amir-cole/): Sample player hub for Amir Cole. Not live licensed NFL stats.
+- [Amir Cole availability timeline](https://decidefootball.com/injuries/amir-cole/): Sample availability timeline for Amir Cole. Not a live or official report.
+- [Is Amir Cole playing today?](https://decidefootball.com/is-amir-cole-playing-today/): Sample availability answer for Amir Cole. Not a live official report.
+- [Is playing today](https://decidefootball.com/is-playing/): Sample availability board. Status is not inferred as a live report.
+- [Week slate and Sunday Mode](https://decidefootball.com/slate/): Sample week slate by kick window. Not a live NFL schedule.
+- [Watchlist](https://decidefootball.com/watchlist/): Browser-local watchlist of sample names. Not synced to a fantasy platform.
+- [Health](https://decidefootball.com/health/): Static export health. Reports the compliance gate. Not a sports statistics page.
+
 ## About
 
 - [About Decide Football — independent fantasy football decision site](https://decidefootball.com/about/): Decide Football is an independent fantasy football decision site for start/sit, availability, waivers, and rankings. Not NFL news. Not NFL-affiliated. Not gambling advice. Not official projections.
@@ -26,3 +74,4 @@ Operated by Joshua Israel Ventures LLC.
 - [Privacy Policy](https://decidefootball.com/privacy/): Joshua Israel Ventures LLC is the data controller. Cloudflare Web Analytics is cookieless. Ads are off, so the site sets no AdSense cookies. Contact joshuaofisrael@gmail.com.
 - [Independent disclaimer](https://decidefootball.com/disclaimer/): Accuracy, no professional relationship, model estimates are not official data, and not gambling advice. The site currently has no paid links or ads. Any added later will be disclosed.
 - [Contact](https://decidefootball.com/contact/): Email joshuaofisrael@gmail.com. Operator Joshua Israel Ventures LLC.
+- [Cookie notice](https://decidefootball.com/cookies/): Cookieless Cloudflare Web Analytics. Ads are off, so no AdSense cookies are set. Local storage holds consent, the watchlist, and Sunday mode on this device.

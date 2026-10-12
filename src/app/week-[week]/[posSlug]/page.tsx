@@ -31,19 +31,21 @@ export async function generateMetadata({
 }: {
   params: Promise<{ week: string; posSlug: string }>;
 }): Promise<Metadata> {
-  const { week, posSlug } = await params;
+  const { posSlug } = await params;
   const position = parseRankingsPosSlug(posSlug);
+  // `week-[week]` builds /week-3/ from generateStaticParams but does not pass `week`.
+  const weekNum = FIXTURE_WEEK;
   if (!position) {
     return pageMetadata({
-      path: `/week-${week}/${posSlug}/`,
+      path: `/week-${weekNum}/${posSlug}/`,
       title: "Rankings",
       indexation: { sourceClass: "FIXTURE", thin: true },
     });
   }
   return pageMetadata({
-    path: weekRankingsPath(Number(week), position),
-    title: `Week ${week} ${position} rankings`,
-    description: `Fixture ${position} rankings for week ${week}. Estimates only.`,
+    path: weekRankingsPath(weekNum, position),
+    title: `Week ${weekNum} ${position} rankings`,
+    description: `Sample ${position} rankings for week ${weekNum}, for demonstrating the tool. Not live licensed NFL statistics.`,
     indexation: { sourceClass: "FIXTURE" },
   });
 }
@@ -53,10 +55,10 @@ export default async function WeekRankingsPage({
 }: {
   params: Promise<{ week: string; posSlug: string }>;
 }) {
-  const { week, posSlug } = await params;
-  const weekNum = Number(week);
+  const { posSlug } = await params;
+  const weekNum = FIXTURE_WEEK;
   const position = parseRankingsPosSlug(posSlug);
-  if (!position || !Number.isInteger(weekNum) || weekNum < 1 || weekNum > 18) notFound();
+  if (!position) notFound();
 
   const format = getDefaultFormat();
   const ranks = getRankings(position, weekNum, format);
@@ -123,7 +125,7 @@ export default async function WeekRankingsPage({
       <p>
         <Link href="/guide/rankings/">How to read the board</Link>
         {" · "}
-        <Link href={`/waiver-wire/week-${weekNum}/`}>Waiver radar, week {weekNum}</Link>
+        <Link href="/waiver-radar/">Waiver radar, week {weekNum}</Link>
         {" · "}
         <Link href="/methodology/">Methodology</Link>
       </p>

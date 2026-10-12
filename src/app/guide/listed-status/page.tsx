@@ -208,8 +208,8 @@ export default function ListedStatusGuidePage() {
       </p>
       <p>
         The <Link href="/is-playing/">is-playing board</Link>, the playing-today pages, and the
-        injury timelines use sample data. They stay out of search until licensed sports data is
-        in place. This page does not set a date for that. The public description of the label is
+        injury timelines use sample data for demonstrating the tool. They are not live licensed
+        NFL stats. The public description of the label is
         this guide, the <Link href="/methodology/">methodology</Link>, the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>,{" "}
         <Link href="/guide/waiver-radar/">how fantasy football waivers work</Link>, the{" "}

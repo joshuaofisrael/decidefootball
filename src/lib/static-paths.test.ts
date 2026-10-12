@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { EDITORIAL_SITEMAP_PATHS } from "./editorial-urls";
-import { FIXTURE_CONTENT_DISALLOW } from "./robots-policy";
+import { NON_PAGE_DISALLOW } from "./robots-policy";
 import {
   addDropStaticParams,
   parsePlayingTodaySegment,
@@ -38,7 +38,7 @@ describe("editorial tool paths", () => {
     assert.equal(EDITORIAL_SITEMAP_PATHS.includes("/guide/certainty/"), true);
     const fixtureSlugs = [...startSitStaticParams(), ...addDropStaticParams()].map((row) => row.pair);
     assert.equal(fixtureSlugs.includes("certainty"), false);
-    for (const prefix of FIXTURE_CONTENT_DISALLOW) {
+    for (const prefix of NON_PAGE_DISALLOW) {
       assert.equal(
         "/guide/certainty/".startsWith(prefix),
         false,

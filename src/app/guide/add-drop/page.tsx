@@ -35,9 +35,9 @@ const guideFaqs = [
       "No. The card does not know your league, your roster, your waiver order, or your FAAB balance. It does not know who is available on Yahoo, ESPN, Sleeper, or any other host. It is not a waiver claim and not a bid. Hot, rising, stash, and fade are a different board. This comparison only says which name the mean prefers if you are choosing one over the other.",
   },
   {
-    question: "Why do the sample add/drop URLs stay out of search while this guide does not?",
+    question: "Are the sample add/drop numbers live NFL stats?",
     answer:
-      "The add/drop desk and the pair cards are on the site so the product can be reviewed, and they use sample data. They stay out of search until licensed GREEN sports data is in place. Crawlers are told to skip the add/drop prefix. This guide does not promise those URLs will be indexed, and it does not give a date. This page lives at /guide/add-drop/. That path is a reading guide. It is not the fixture desk at /add-drop/, and it does not match that blocked path.",
+      "No. The add/drop desk and the pair cards use sample data for demonstrating the tool. They are indexable, and they are not live licensed NFL statistics. This page lives at /guide/add-drop/. That path is a reading guide. It is not the sample desk at /add-drop/.",
   },
 ] as const;
 
@@ -170,14 +170,12 @@ export default function AddDropGuidePage() {
       <h2>Where the sample cards are</h2>
       <p>
         Comparison tools are at the <Link href="/add-drop/">add/drop desk</Link> so the product
-        can be used and reviewed. Those URLs, including each pair card, use sample data. They
-        stay out of search until licensed GREEN sports data is in place. This page does not set
-        a date for that, and it does not promise those URLs will enter a search index.
+        can be used and reviewed. Those URLs, including each pair card, use sample data for
+        demonstrating the tool. They are not live licensed NFL stats.
       </p>
       <p>
         The sample desk lives on the add/drop path. This guide lives at /guide/add-drop/. That
-        path is a reading guide. It does not match the blocked add/drop prefix, and it does not
-        put the sample cards into search.
+        path is a reading guide. It is not the sample desk.
       </p>
       <p>
         The public description of the card is this guide, the{" "}

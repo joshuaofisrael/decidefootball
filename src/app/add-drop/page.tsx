@@ -8,7 +8,8 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   path: "/add-drop/",
   title: "Add / drop",
-  description: "Fixture add/drop comparisons from the same estimate engine as start/sit.",
+  description:
+    "Sample add/drop comparisons for demonstrating the tool, from the same estimate engine as start/sit. Not live licensed NFL stats.",
   indexation: { sourceClass: "FIXTURE" },
 });
 

@@ -1,5 +1,9 @@
 # SEO log
 
+## 2026-10-12
+
+Standing rule from 11 Oct 2026: every real page is indexable by default. Sample desks are `index,follow`, with a visible sample-data label and no JSON-LD claim of live licensed NFL statistics. The sample waiver desk moved from `/waiver-wire/` to `/waiver-radar/`. `/waiver-wire/` and `/waiver-wire/week-3/` are noindex redirect stubs. `/guide/waiver-radar/` is unchanged. Sitemap and `llms.txt` list the real pages. `robots.txt` no longer disallows those pages. Ads stay off. The footer operator line is unchanged.
+
 ## 2026-10-09
 
 Retargeted the existing `/guide/start-sit/` page at the generic query: how to decide who to start in fantasy football using floor, mean, and ceiling, and when a close call is a toss-up. Same URL. No new indexable URL.

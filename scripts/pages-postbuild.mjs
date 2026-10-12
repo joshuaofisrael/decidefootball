@@ -180,6 +180,7 @@ function validateRobotsGroup() {
     fail("robots.txt must end with one Sitemap line for https://decidefootball.com/sitemap.xml");
   }
   for (const required of [
+    "Allow: /",
     "Allow: /llms.txt",
     "Allow: /about/",
     "Allow: /methodology/",
@@ -190,16 +191,21 @@ function validateRobotsGroup() {
     "Allow: /privacy/",
     "Allow: /disclaimer/",
     "Allow: /contact/",
-    "Disallow: /players/",
-    "Disallow: /start-sit/",
-    "Disallow: /is-playing/",
-    "Disallow: /is-",
-    "Disallow: /week-",
+    "Allow: /cookies/",
     "Disallow: /api/",
-    "Disallow: /rankings/",
-    "Disallow: /add-drop/",
   ]) {
     if (!rules.includes(required)) fail(`robots.txt missing ${required}`);
+  }
+  for (const blocked of [
+    "Disallow: /players/",
+    "Disallow: /start-sit/",
+    "Disallow: /rankings/",
+    "Disallow: /add-drop/",
+    "Disallow: /waiver-radar/",
+    "Disallow: /health/",
+    "Disallow: /cookies/",
+  ]) {
+    if (rules.includes(blocked)) fail(`robots.txt still blocks a real page: ${blocked}`);
   }
   const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
   if (sitemap.includes("llms.txt")) fail("sitemap.xml must list HTML pages only");
@@ -317,8 +323,63 @@ function validateJsonLd() {
   if (fixtureBlocks.some((block) => block["@type"] === "Article")) {
     fail("fixture start/sit index must not gain Article JSON-LD");
   }
-  if (!fixture.includes('content="noindex,follow"')) fail("fixture start/sit robots meta changed");
-  if (!home.includes('content="noindex,follow"')) fail("homepage robots meta changed");
+  if (!fixture.includes('content="index,follow"')) fail("fixture start/sit must be index,follow");
+  if (!home.includes('content="index,follow"')) fail("homepage must be index,follow");
+  assertSampleJsonLd("out/index.html", homeBlocks);
+  assertSampleJsonLd("start-sit/index.html", fixtureBlocks);
+
+  const desks = [
+    "out/index.html",
+    "out/start-sit/index.html",
+    "out/add-drop/index.html",
+    "out/rankings/index.html",
+    "out/waiver-radar/index.html",
+    "out/players/index.html",
+    "out/slate/index.html",
+    "out/watchlist/index.html",
+    "out/is-playing/index.html",
+  ];
+  for (const rel of desks) {
+    const html = readFileSync(join(rel.startsWith("out/") ? rel : join("out", rel)), "utf8");
+    if (!html.includes("sample data for demonstrating the tool")) {
+      fail(`${rel} is missing the visible sample-data label`);
+    }
+    if (!html.includes('content="index,follow"')) fail(`${rel} must be index,follow`);
+    if (html.includes("noindex")) fail(`${rel} must not be noindex`);
+  }
+
+  for (const file of walkHtml(out)) {
+    let html = readFileSync(file, "utf8");
+    const rel = file.slice(out.length + 1);
+    if (rel === "404/index.html" || rel === "404.html") {
+      // Next injects noindex on the not-found document. That file is not a
+      // real page. Replace it so the only noindex left is the waiver redirect.
+      const next = html
+        .replaceAll(
+          '<meta name="robots" content="noindex"/>',
+          '<meta name="robots" content="index,follow"/>',
+        )
+        .replaceAll('\\"content\\":\\"noindex\\"', '\\"content\\":\\"index,follow\\"');
+      if (next !== html) writeFileSync(file, next);
+      html = next;
+    }
+    const stub = rel.startsWith("waiver-wire/");
+    if (stub) {
+      if (!html.includes('content="noindex,follow"')) fail(`${rel} redirect stub must be noindex,follow`);
+      if (!html.includes('rel="canonical" href="https://decidefootball.com/waiver-radar/"')) {
+        fail(`${rel} redirect stub must canonical to /waiver-radar/`);
+      }
+      continue;
+    }
+    if (html.includes("noindex")) fail(`${rel} real page must not be noindex`);
+  }
+}
+
+function assertSampleJsonLd(file, blocks) {
+  const blob = JSON.stringify(blocks);
+  if (/SportsEvent|live licensed|official statistics|Dataset/i.test(blob)) {
+    fail(`${file} JSON-LD claims live or official statistics`);
+  }
 }
 
 validateRobotsGroup();

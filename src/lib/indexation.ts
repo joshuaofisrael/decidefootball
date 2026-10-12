@@ -1,9 +1,4 @@
-import {
-  getComplianceGate,
-  isFixtureMode,
-  isKillSwitchActive,
-  sourceIsPublishable,
-} from "./compliance";
+import { isKillSwitchActive } from "./compliance";
 import type { Indexation, IndexationKind, SourceClass } from "./types";
 
 export interface IndexDecision {
@@ -15,18 +10,33 @@ export interface IndexDecision {
 export interface DecideIndexationArgs {
   /** Product/editorial pages (About, Methodology, reading guides). Does not require licensed sports data. */
   kind?: IndexationKind;
-  /** Sports templates must pass a source class. Ignored for editorial kind. */
+  /** Sports templates may still pass a source class. It does not block indexing. */
   sourceClass?: SourceClass;
   thin?: boolean;
   draftLegal?: boolean;
+  /** Static redirect stub. The destination page is the indexable URL. */
+  redirectStub?: boolean;
 }
 
+/**
+ * Pages are indexable by default. Sample desks stay indexable and are labeled
+ * as sample data on the page. The RED kill switch, an unfinished legal draft,
+ * a thin shell, and a redirect stub are the exceptions.
+ */
 export function decideIndexation(args: DecideIndexationArgs): IndexDecision {
   if (isKillSwitchActive()) {
     return {
       indexation: "blocked",
       robots: "noindex,nofollow",
       reason: "COMPLIANCE_GATE=RED kill switch",
+    };
+  }
+
+  if (args.redirectStub) {
+    return {
+      indexation: "noindex",
+      robots: "noindex,follow",
+      reason: "Redirect stub. The destination URL is the indexable page.",
     };
   }
 
@@ -47,13 +57,6 @@ export function decideIndexation(args: DecideIndexationArgs): IndexDecision {
   }
 
   if (args.kind === "editorial") {
-    if (getComplianceGate() !== "GREEN") {
-      return {
-        indexation: "noindex",
-        robots: "noindex,follow",
-        reason: `Editorial pages stay noindex while COMPLIANCE_GATE=${getComplianceGate()}`,
-      };
-    }
     return {
       indexation: "index",
       robots: "index,follow",
@@ -61,26 +64,11 @@ export function decideIndexation(args: DecideIndexationArgs): IndexDecision {
     };
   }
 
-  if (isFixtureMode() || args.sourceClass === "FIXTURE" || !args.sourceClass) {
-    return {
-      indexation: "noindex",
-      robots: "noindex,follow",
-      reason: "Fixture / sample sports data is never indexable",
-    };
-  }
-
-  if (!sourceIsPublishable(args.sourceClass)) {
-    return {
-      indexation: "noindex",
-      robots: "noindex,follow",
-      reason: `Source class ${args.sourceClass} is not publishable under ${getComplianceGate()}`,
-    };
-  }
-
   return {
     indexation: "index",
     robots: "index,follow",
-    reason: "GREEN licensed data passed quality gates",
+    reason:
+      "Indexable by default. Sample desks are labeled as sample data and are not live licensed NFL statistics.",
   };
 }
 

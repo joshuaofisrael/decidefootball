@@ -175,10 +175,9 @@ export default function TossUpGuidePage() {
 
       <h2>Where the reading guides are</h2>
       <p>
-        The sample start/sit and add/drop desks stay out of search until licensed GREEN sports
-        data is in place. This page does not set a date for that, and it does not promise those
-        URLs will enter a search index. This tool lives at /guide/toss-up/. It does not put
-        fixture player rows into the form, and it does not put those desks into search.
+        The sample start/sit and add/drop desks are indexable. Their numbers are sample data for
+        demonstrating the tool, not live licensed NFL stats. This tool lives at /guide/toss-up/.
+        It does not put fixture player rows into the form.
       </p>
       <p>
         Read that framework in the <Link href="/guide/start-sit/">start/sit guide</Link>{" "}

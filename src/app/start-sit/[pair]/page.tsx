@@ -48,7 +48,7 @@ export async function generateMetadata({
     path: `/start-sit/${resolved.left.slug}-vs-${resolved.right.slug}/`,
     title: `Start ${resolved.left.displayName} or ${resolved.right.displayName}?`,
     description: `Fixture start/sit with a certainty score. ${resolved.left.displayName} against ${resolved.right.displayName}, from structured estimates.`,
-    indexation: { sourceClass: "FIXTURE", thin: !resolved.isCanonical },
+    indexation: { sourceClass: "FIXTURE" },
   });
 }
 

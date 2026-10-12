@@ -5,7 +5,9 @@ import { nowIso } from "@/lib/timestamps";
 export const metadata = pageMetadata({
   path: "/health/",
   title: "Health",
-  indexation: { sourceClass: "FIXTURE", thin: true },
+  description:
+    "Static export health for Decide Football. Reports the compliance gate and whether the build is using sample data.",
+  indexation: { sourceClass: "FIXTURE" },
 });
 
 export default function HealthPage() {

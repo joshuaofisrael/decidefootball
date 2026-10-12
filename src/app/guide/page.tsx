@@ -120,12 +120,12 @@ export default function GuideHubPage() {
         ))}
       </div>
 
-      <h2>Sample desks stay out of search</h2>
+      <h2>Sample desks are labeled as sample data</h2>
       <p>
         The sports desks on this site use fixture data: players, start/sit comparisons,
-        is-playing, injuries, rankings, the waiver wire, add/drop, week pages, the slate, and the
-        watchlist. They stay out of search until licensed GREEN sports data is in place. This hub
-        does not promise those URLs will be indexed, and it does not give a date.
+        is-playing, injuries, rankings, the waiver radar, add/drop, week pages, the slate, and the
+        watchlist. Those pages are indexable. The numbers are sample data for demonstrating the
+        tool. They are not live licensed NFL stats.
       </p>
       <p>
         {SITE_NAME} is not affiliated with, endorsed by, or sponsored by the NFL or its member
@@ -146,7 +146,7 @@ export default function GuideHubPage() {
           Not a backtest. The method is methodology v0, subject to change. No accuracy rate is
           published here, and none should be inferred.
         </li>
-        <li>Not a promise that fixture sports URLs will enter a search index, and not a date.</li>
+        <li>Not live licensed NFL statistics. Sample desks demonstrate the tool.</li>
       </ul>
     </div>
   );

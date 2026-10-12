@@ -24,7 +24,7 @@ export const metadata = pageMetadata({
   path: "/",
   title: "Decide Football: start, sit, and the Sunday card",
   description:
-    "Independent fantasy desk for start/sit, availability, waivers, and rankings. Structured estimates. Not a sports news blog. Not NFL-affiliated. Not gambling.",
+    "Independent fantasy desk for start/sit, availability, waivers, and rankings. Sample data demonstrates the tool. Not live licensed NFL stats. Not NFL-affiliated. Not gambling.",
   indexation: { sourceClass: "FIXTURE" },
 });
 
@@ -87,7 +87,7 @@ export default function HomePage() {
           <h2>Waiver radar</h2>
           <p>Urgency first. Hot, rising, stash, or fade. Not a platform waiver claim.</p>
           <p>
-            <Link href="/waiver-wire/week-3/">Week 3 radar</Link>
+            <Link href="/waiver-radar/">Week 3 radar</Link>
             {" · "}
             <Link href="/guide/waiver-radar/">How to read the tags</Link>
           </p>

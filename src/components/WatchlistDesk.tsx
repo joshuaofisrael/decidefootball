@@ -46,7 +46,7 @@ export function WatchlistDesk({
       <p>
         <Link href="/slate/">Check the slate</Link>
         {" · "}
-        <Link href="/waiver-wire/week-3/">Waiver radar</Link>
+        <Link href="/waiver-radar/">Waiver radar</Link>
       </p>
     </section>
   );

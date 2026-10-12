@@ -119,7 +119,7 @@ export default function MethodologyPage() {
 
       <h2>Waiver radar</h2>
       <p>
-        The <Link href="/waiver-wire/week-3/">waiver board</Link> adds an urgency tag (hot,
+        The <Link href="/waiver-radar/">waiver board</Link> adds an urgency tag (hot,
         rising, stash, fade) from the same estimates plus snap-share change and listed status.
         It is not a claim that a name is available on any host platform. How to read those four
         tags is the <Link href="/guide/waiver-radar/">waiver radar guide</Link>.
@@ -153,12 +153,13 @@ export default function MethodologyPage() {
       <h2>What stays blocked until licensed data</h2>
       <ul>
         <li>Live injury zeros presented as official current-week availability.</li>
-        <li>Indexable production rankings.</li>
+        <li>Production rankings presented as live licensed NFL statistics.</li>
         <li>Public backtested accuracy claims.</li>
       </ul>
       <p>
         Licensed ingest waits on Joshua approving API spend. Sample sports pages, including the
-        weekly rankings boards, stay out of search indexes until then. How to read that board
+        weekly rankings boards, are indexable and labeled as sample data for demonstrating the
+        tool. They are not live licensed NFL stats. How to read that board
         is the <Link href="/guide/rankings/">rankings guide</Link>. See the{" "}
         <Link href="/about/">about page</Link> for the public product description. Terms, privacy,
         the disclaimer, and contact are linked from the footer.

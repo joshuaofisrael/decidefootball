@@ -30,7 +30,10 @@ export async function generateMetadata({
   return pageMetadata({
     path: position ? weekRankingsPath(Number(week), position) : `/rankings/${week}/${pos}/`,
     title: position ? `Week ${week} ${position} rankings` : "Rankings",
-    indexation: { sourceClass: "FIXTURE", thin: true },
+    description: position
+      ? `Sample ${position} rankings for week ${week}, for demonstrating the tool. Not live licensed NFL statistics.`
+      : "Sample rankings alias.",
+    indexation: { sourceClass: "FIXTURE" },
   });
 }
 

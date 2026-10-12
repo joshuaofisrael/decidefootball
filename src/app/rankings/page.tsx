@@ -8,6 +8,8 @@ import { POSITIONS } from "@/lib/site";
 export const metadata = pageMetadata({
   path: "/rankings/",
   title: "Weekly rankings",
+  description:
+    "Sample weekly positional rankings for demonstrating the tool. One position, ordered by a model mean. Not live licensed NFL statistics.",
   indexation: { sourceClass: "FIXTURE" },
 });
 

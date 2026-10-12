@@ -25,9 +25,9 @@ const aboutFaqs = [
       "No. Projections are Decide Football model estimates, not official NFL or club data. The method is labeled v0, is subject to change, and is described on the methodology page. There is no published backtest, and none should be inferred.",
   },
   {
-    question: "When will player pages be indexed?",
+    question: "Are the player numbers live NFL stats?",
     answer:
-      "Player, start/sit, injury, waiver, and ranking pages currently use sample/fixture data and stay out of search indexes. Those URLs will not be submitted for indexing until licensed GREEN sports data is in place.",
+      "No. Player, start/sit, injury, waiver, and ranking pages use sample data for demonstrating the tool. Those pages are indexable. The numbers are not live licensed NFL statistics.",
   },
 ] as const;
 
@@ -140,8 +140,9 @@ export default function AboutPage() {
 
       <h2>Data, and what is public in search</h2>
       <p>
-        Decision tools are on the site so the product can be used and reviewed. Until licensed
-        sports data is in place, sample sports pages stay out of search indexes. This About page,
+        Decision tools are on the site so the product can be used and reviewed. Sample sports
+        pages are indexable, and the numbers are sample data for demonstrating the tool, not live
+        licensed NFL stats. This About page,
         the <Link href="/methodology/">methodology</Link> page, the{" "}
         <Link href="/guide/">guides</Link> page, the{" "}
         <Link href="/guide/start-sit/">start/sit reading guide</Link>, the{" "}
@@ -156,8 +157,7 @@ export default function AboutPage() {
       <p>
         <Link href="/terms/">Terms</Link>, <Link href="/privacy/">privacy</Link>, the{" "}
         <Link href="/disclaimer/">disclaimer</Link>, and <Link href="/contact/">contact</Link> are
-        published by {SITE_LEGAL_NAME}. The cookie notice stays in the footer and is not offered
-        to search.
+        published by {SITE_LEGAL_NAME}. The cookie notice is in the footer.
       </p>
 
       <h2>Questions</h2>

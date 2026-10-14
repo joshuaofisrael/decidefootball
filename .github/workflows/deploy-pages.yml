@@ -25,7 +25,16 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - name: Install dependencies
+        run: |
+          for attempt in 1 2 3; do
+            npm ci && exit 0
+            echo "npm ci failed on attempt ${attempt}"
+            if [ "$attempt" -eq 3 ]; then
+              exit 1
+            fi
+            sleep $((attempt * 10))
+          done
       - run: npm test
       - run: npm run build
         env:

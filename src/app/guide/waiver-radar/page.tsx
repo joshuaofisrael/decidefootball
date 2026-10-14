@@ -330,7 +330,9 @@ export default function WaiverRadarGuidePage() {
       <p>
         The <Link href="/waiver-radar/">waiver board</Link> is on the site so the product
         can be used and reviewed. The numbers there are sample data for demonstrating the tool.
-        They are not live licensed NFL stats.
+        They are not live licensed NFL stats. The dated editorial note is{" "}
+        <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. That page
+        cites public reporting. It is not the sample board.
       </p>
       <p>
         The public description of the tag is this guide, the{" "}

@@ -16,6 +16,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/guide/add-drop/",
   "/guide/toss-up/",
   "/guide/certainty/",
+  "/waiver-radar/2026-week-6/",
   "/terms/",
   "/privacy/",
   "/disclaimer/",

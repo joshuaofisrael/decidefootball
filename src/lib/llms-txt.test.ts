@@ -18,6 +18,7 @@ describe("public/llms.txt", () => {
     assert.match(text, /^Operated by Joshua Israel Ventures LLC\.$/m);
     assert.match(text, /Decide Football is a brand of Joshua Israel Ventures LLC\./);
     assert.match(text, /^## Guides\n/m);
+    assert.match(text, /^## Weekly notes\n/m);
     assert.match(text, /^## Sample desks\n/m);
     assert.match(text, /^## About\n/m);
     assert.match(text, /^## Legal\n/m);
@@ -33,11 +34,13 @@ describe("public/llms.txt", () => {
     assert.deepEqual([...paths].sort(), [...indexableSitemapPaths()].sort());
     assert.equal(links.length, indexableSitemapPaths().length);
     const [beforeAbout, afterAbout] = text.split("## About");
-    const [guides, sample] = (beforeAbout ?? "").split("## Sample desks");
+    const [beforeSample, sample] = (beforeAbout ?? "").split("## Sample desks");
+    const [guides, weekly] = (beforeSample ?? "").split("## Weekly notes");
     const [about, legal] = (afterAbout ?? "").split("## Legal");
     assert.ok(guides?.includes("## Guides"));
     assert.equal(about?.includes("## Guides"), false);
     assert.equal(sample?.includes("## Guides"), false);
+    assert.equal(weekly?.includes("## Guides"), false);
     assert.match(legal ?? "", /https:\/\/decidefootball\.com\/terms\//);
     assert.match(legal ?? "", /https:\/\/decidefootball\.com\/cookies\//);
     for (const path of indexableSitemapPaths()) {
@@ -45,9 +48,11 @@ describe("public/llms.txt", () => {
         ? guides
         : path === "/about/" || path === "/methodology/"
           ? about
-          : EDITORIAL_SITEMAP_PATHS.includes(path as (typeof EDITORIAL_SITEMAP_PATHS)[number])
-            ? legal
-            : sample;
+          : /^\/waiver-radar\/\d{4}-week-\d+\/$/.test(path)
+            ? weekly
+            : EDITORIAL_SITEMAP_PATHS.includes(path as (typeof EDITORIAL_SITEMAP_PATHS)[number])
+              ? legal
+              : sample;
       assert.equal(
         section?.includes(`https://decidefootball.com${path === "/" ? "/" : path}`),
         true,

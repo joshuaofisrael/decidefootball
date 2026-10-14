@@ -15,6 +15,12 @@ Operated by Joshua Israel Ventures LLC.
 - [Toss-up tool — apply the 1.5-point mean-delta line](https://decidefootball.com/guide/toss-up/): Type two fantasy-point means. Decide Football applies the same 1.5-point toss-up line used on start/sit and add/drop. Floor and ceiling are for weighing only. Not a player search, not official projections, and not gambling advice.
 - [Certainty tool — grade how sure the lean is](https://decidefootball.com/guide/certainty/): Type two fantasy-point means and the desk flags. Decide Football applies the same certainty grade the start/sit card prints: thin, lean, clear, or strong. Not a win probability, not a player search, not official projections, and not gambling advice.
 
+## Weekly notes
+
+Editorial notes cite public reporting. They are not the sample waiver radar and not live licensed NFL statistics.
+
+- [Week 6 fantasy waiver pickups](https://decidefootball.com/waiver-radar/2026-week-6/): Dated editorial adds for NFL Week 6 (15-19 October 2026), grounded in cited public reporting. Not the sample waiver radar and not live licensed NFL statistics.
+
 ## Sample desks
 
 Numbers on these pages are sample data for demonstrating the tool. They are not live licensed NFL statistics.

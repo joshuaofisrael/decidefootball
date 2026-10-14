@@ -23,6 +23,7 @@ const SITEMAP_PATHS = [
   "/guide/add-drop/",
   "/guide/toss-up/",
   "/guide/certainty/",
+  "/waiver-radar/2026-week-6/",
   "/terms/",
   "/privacy/",
   "/disclaimer/",
@@ -117,7 +118,7 @@ describe("resolveContentLastmod", () => {
 });
 
 describe("sitemap lastmod", () => {
-  it("keeps the 58 urls and gives each a real content date", () => {
+  it("keeps the 59 urls and gives each a real content date", () => {
     assert.deepEqual(indexableSitemapPaths(), [...SITEMAP_PATHS]);
     assert.deepEqual(contentFilesForPath("/terms/"), ["src/app/terms/page.tsx"]);
     assert.ok(contentFilesForPath("/slate/").includes("src/components/FixtureBanner.tsx"));

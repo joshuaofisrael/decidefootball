@@ -38,6 +38,11 @@ export default function WaiverRadarPage() {
       <p className="kicker">Radar · {formatLabel(format)}</p>
       <h1>Waiver radar, week {weekNum}</h1>
       <p>
+        The dated editorial note for the current week is{" "}
+        <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. That page
+        cites public reporting. The list below is separate from it.
+      </p>
+      <p>
         Urgency from sample estimates, usage change, and listed status. The numbers demonstrate
         the tool. They are not live licensed NFL stats and not a claim that any name is available
         on a host platform. No OAuth. <Link href="/guide/waiver-radar/">How to read the tags</Link>.

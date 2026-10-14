@@ -269,8 +269,8 @@ jobs:
           import pathlib, re
           xml = pathlib.Path("out/sitemap.xml").read_text()
           blocks = re.findall(r"<url>\s*(.*?)\s*</url>", xml, flags=re.S)
-          if len(blocks) != 58:
-              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 58")
+          if len(blocks) != 59:
+              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 59")
           for block in blocks:
               loc = re.search(r"<loc>([^<]+)</loc>", block)
               mods = re.findall(r"<lastmod>([^<]+)</lastmod>", block)
@@ -324,6 +324,19 @@ jobs:
           test -f out/waiver-wire/index.html
           test -f out/waiver-wire/week-3/index.html
           test -f out/waiver-radar/index.html
+          test -f out/waiver-radar/2026-week-6/index.html
+          grep -q 'https://decidefootball.com/waiver-radar/2026-week-6/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/waiver-radar/2026-week-6/' out/llms.txt
+          grep -q 'content="index,follow"' out/waiver-radar/2026-week-6/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/waiver-radar/2026-week-6/"' out/waiver-radar/2026-week-6/index.html
+          grep -q 'Week 6 waiver wire pickups 2026' out/waiver-radar/2026-week-6/index.html
+          grep -q 'Last updated: 2026-10-14' out/waiver-radar/2026-week-6/index.html
+          grep -q 'href="/guide/waiver-radar/"' out/waiver-radar/2026-week-6/index.html
+          grep -q 'href="/guide/add-drop/"' out/waiver-radar/2026-week-6/index.html
+          grep -q 'href="/guide/start-sit/"' out/waiver-radar/2026-week-6/index.html
+          grep -q 'href="/waiver-radar/2026-week-6/"' out/guide/index.html
+          grep -q 'href="/waiver-radar/2026-week-6/"' out/waiver-radar/index.html
+          ! grep -q 'noindex' out/waiver-radar/2026-week-6/index.html
           grep -q 'content="noindex,follow"' out/waiver-wire/index.html
           grep -q 'content="noindex,follow"' out/waiver-wire/week-3/index.html
           grep -q 'http-equiv="refresh" content="0;url=/waiver-radar/"' out/waiver-wire/index.html

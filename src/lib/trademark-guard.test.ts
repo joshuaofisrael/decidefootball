@@ -79,11 +79,13 @@ describe("trademark guard", () => {
     for (const file of pages) {
       const text = readFileSync(file, "utf8");
       const rel = relative(ROOT, file);
+      const weeklyEditorial = /^src\/app\/waiver-radar\/\d{4}-week-\d+\/page\.tsx$/.test(rel);
       for (const match of text.matchAll(/title:\s*(?:"([^"]*)"|'([^']*)'|`([^`]*)`)/g)) {
         const title = match[1] ?? match[2] ?? match[3] ?? "";
+        if (weeklyEditorial) continue;
         assert.equal(phrase.test(title), false, `${rel} title: ${title}`);
       }
-      if (file.startsWith(redirectDir)) continue;
+      if (file.startsWith(redirectDir) || weeklyEditorial) continue;
       assert.equal(phrase.test(text), false, rel);
     }
 

@@ -15,7 +15,12 @@ const W3C_DATE = /^(\d{4}-\d{2}-\d{2})$/;
 const METADATA_LASTMOD =
   /(?:export const contentUpdated\s*=\s*|lastModified\s*:\s*)["'](\d{4}-\d{2}-\d{2})(?:T[^"']*)?["']/;
 
-const GUIDE_LIBS = ["start-sit-guide", "waiver-radar-guide", "listed-status-guide"] as const;
+const GUIDE_LIBS = [
+  "start-sit-guide",
+  "waiver-radar-guide",
+  "listed-status-guide",
+  "weekly-waiver",
+] as const;
 
 const STATIC_PAGE_FILES: Record<string, string> = {
   "/": "src/app/page.tsx",
@@ -29,6 +34,7 @@ const STATIC_PAGE_FILES: Record<string, string> = {
   "/guide/add-drop/": "src/app/guide/add-drop/page.tsx",
   "/guide/toss-up/": "src/app/guide/toss-up/page.tsx",
   "/guide/certainty/": "src/app/guide/certainty/page.tsx",
+  "/waiver-radar/2026-week-6/": "src/app/waiver-radar/2026-week-6/page.tsx",
   "/terms/": "src/app/terms/page.tsx",
   "/privacy/": "src/app/privacy/page.tsx",
   "/disclaimer/": "src/app/disclaimer/page.tsx",

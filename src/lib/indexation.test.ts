@@ -62,6 +62,7 @@ describe("editorialSitemapEntries", () => {
       "/guide/toss-up/",
       "/guide/certainty/",
       "/waiver-radar/2026-week-6/",
+      "/start-sit/2026-week-6/",
       "/terms/",
       "/privacy/",
       "/disclaimer/",
@@ -81,7 +82,7 @@ describe("indexableSitemapEntries", () => {
   it("lists every real page and omits redirect stubs", () => {
     const paths = indexableSitemapPaths();
     const urls = indexableSitemapEntries().map((row) => row.url);
-    assert.equal(paths.length, 59);
+    assert.equal(paths.length, 60);
     assert.equal(urls.length, paths.length);
     assert.equal(paths[0], "/");
     for (const path of EDITORIAL_SITEMAP_PATHS) {

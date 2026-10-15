@@ -115,6 +115,12 @@ export default function GuideHubPage() {
         public reporting from the previous weekend. It is not the sample radar at{" "}
         <Link href="/waiver-radar/">/waiver-radar/</Link> and not live licensed NFL statistics.
       </p>
+      <p>
+        The dated lineup note is separate as well:{" "}
+        <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>. It cites public
+        reporting. It is not the sample desk at <Link href="/start-sit/">/start-sit/</Link> and
+        not live licensed NFL statistics.
+      </p>
 
       <h2>Five reading guides and two tools</h2>
       <div className="cards four">

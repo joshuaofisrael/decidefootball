@@ -21,6 +21,9 @@ import { SITE_NAME } from "@/lib/site";
 const title = START_SIT_TITLE;
 const description = START_SIT_DESCRIPTION;
 
+/** Sitemap lastmod reads this literal. */
+const GUIDE_UPDATED = { lastModified: "2026-10-15" } as const;
+
 export const metadata = {
   ...pageMetadata({
     path: START_SIT_PATH,
@@ -192,7 +195,9 @@ export default function StartSitGuidePage() {
       <p>
         Comparison tools are at the <Link href="/start-sit/">start/sit desk</Link> so the product
         can be used and reviewed. Those URLs use sample data for demonstrating the tool. They are
-        not live licensed NFL stats.
+        not live licensed NFL stats. The dated editorial note is{" "}
+        <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>, updated{" "}
+        {GUIDE_UPDATED.lastModified}. That page cites public reporting. It is not the sample desk.
       </p>
       <p>
         Waiver urgency uses the same estimates.{" "}

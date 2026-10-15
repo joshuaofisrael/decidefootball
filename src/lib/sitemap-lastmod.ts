@@ -20,6 +20,7 @@ const GUIDE_LIBS = [
   "waiver-radar-guide",
   "listed-status-guide",
   "weekly-waiver",
+  "weekly-start-sit",
 ] as const;
 
 const STATIC_PAGE_FILES: Record<string, string> = {
@@ -35,6 +36,7 @@ const STATIC_PAGE_FILES: Record<string, string> = {
   "/guide/toss-up/": "src/app/guide/toss-up/page.tsx",
   "/guide/certainty/": "src/app/guide/certainty/page.tsx",
   "/waiver-radar/2026-week-6/": "src/app/waiver-radar/2026-week-6/page.tsx",
+  "/start-sit/2026-week-6/": "src/app/start-sit/2026-week-6/page.tsx",
   "/terms/": "src/app/terms/page.tsx",
   "/privacy/": "src/app/privacy/page.tsx",
   "/disclaimer/": "src/app/disclaimer/page.tsx",

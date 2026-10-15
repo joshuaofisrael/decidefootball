@@ -152,7 +152,8 @@ export default function Week6WaiverPage() {
         </li>
         <li>
           <Link href="/guide/start-sit/">Start/sit</Link> is a different question: who to start
-          among players already on the roster.
+          among players already on the roster. The dated note is{" "}
+          <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>.
         </li>
         <li>
           The <Link href="/waiver-radar/">waiver radar hub</Link> is the sample urgency board.

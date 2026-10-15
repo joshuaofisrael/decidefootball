@@ -7,6 +7,9 @@ import { certaintyCopy } from "@/lib/certainty";
 import { startLabel } from "@/lib/recommendations";
 import { pageMetadata } from "@/lib/seo";
 
+/** Sitemap lastmod reads this literal. */
+const HUB_UPDATED = { lastModified: "2026-10-15" } as const;
+
 export const metadata = pageMetadata({
   path: "/start-sit/",
   title: "Start or sit",
@@ -27,6 +30,12 @@ export default function StartSitIndexPage() {
       />
       <FixtureBanner />
       <h1>Start or sit</h1>
+      <p>
+        The dated editorial note for the current week is{" "}
+        <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>, updated{" "}
+        {HUB_UPDATED.lastModified}. That page cites public reporting. The cards below are separate
+        from it.
+      </p>
       <p>
         Pair order is canonical by ascending player id. Reverse URLs redirect. Each card carries a
         certainty score. AI explain stays off.

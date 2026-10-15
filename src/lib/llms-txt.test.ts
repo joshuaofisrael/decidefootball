@@ -48,7 +48,7 @@ describe("public/llms.txt", () => {
         ? guides
         : path === "/about/" || path === "/methodology/"
           ? about
-          : /^\/waiver-radar\/\d{4}-week-\d+\/$/.test(path)
+          : /^\/(?:waiver-radar|start-sit)\/\d{4}-week-\d+\/$/.test(path)
             ? weekly
             : EDITORIAL_SITEMAP_PATHS.includes(path as (typeof EDITORIAL_SITEMAP_PATHS)[number])
               ? legal

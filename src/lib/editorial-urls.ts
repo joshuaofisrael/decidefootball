@@ -16,6 +16,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/guide/add-drop/",
   "/guide/toss-up/",
   "/guide/certainty/",
+  "/guide/thanksgiving-nfl-how-to-watch/",
   "/waiver-radar/2026-week-6/",
   "/start-sit/2026-week-6/",
   "/terms/",

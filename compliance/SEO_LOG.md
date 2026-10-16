@@ -1,5 +1,9 @@
 # SEO log
 
+## 2026-10-16
+
+New indexable URL: `/guide/thanksgiving-nfl-how-to-watch/`. How to watch the five announced Thanksgiving week 2026 games. Title targets that query. Kickoffs and national windows are cited to the May 14, 2026 NFL schedule release, NFL.com Thanksgiving articles, the NFL+ season plan, and Netflix Tudum. Tudum still marks the Wednesday kickoff TBA, so the page prints the NFL's 8 p.m. ET and says Tudum has not confirmed the clock. A public operations.nfl.com 2026 schedule page was not found at the three paths checked, so none is cited. No prices, local channel numbers, player availability, or gambling lines. FAQPage, ItemList of SportsEvent, Article, WebPage, and BreadcrumbList. Hub, footer, robots Allow, sitemap, and `llms.txt` include the path. Ads stay off.
+
 ## 2026-10-12
 
 Standing rule from 11 Oct 2026: every real page is indexable by default. Sample desks are `index,follow`, with a visible sample-data label and no JSON-LD claim of live licensed NFL statistics. The sample waiver desk moved from `/waiver-wire/` to `/waiver-radar/`. `/waiver-wire/` and `/waiver-wire/week-3/` are noindex redirect stubs. `/guide/waiver-radar/` is unchanged. Sitemap and `llms.txt` list the real pages. `robots.txt` no longer disallows those pages. Ads stay off. The footer operator line is unchanged.

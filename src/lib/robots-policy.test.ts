@@ -74,6 +74,7 @@ describe("buildRobotsRules", () => {
       "/guide/add-drop/",
       "/guide/toss-up/",
       "/guide/certainty/",
+      "/guide/thanksgiving-nfl-how-to-watch/",
       "/terms/",
       "/privacy/",
       "/disclaimer/",

@@ -14,6 +14,7 @@ Operated by Joshua Israel Ventures LLC.
 - [How to read an add/drop card — mean, floor, ceiling, mean delta](https://decidefootball.com/guide/add-drop/): How to read a Decide Football add/drop card: listed status first, mean as the ranking number, floor and ceiling as a model range, and the mean delta against the same 1.5-point toss-up as start/sit. A roster-churn comparison, not a lineup call and not a free-agent claim.
 - [Toss-up tool — apply the 1.5-point mean-delta line](https://decidefootball.com/guide/toss-up/): Type two fantasy-point means. Decide Football applies the same 1.5-point toss-up line used on start/sit and add/drop. Floor and ceiling are for weighing only. Not a player search, not official projections, and not gambling advice.
 - [Certainty tool — grade how sure the lean is](https://decidefootball.com/guide/certainty/): Type two fantasy-point means and the desk flags. Decide Football applies the same certainty grade the start/sit card prints: thin, lean, clear, or strong. Not a win probability, not a player search, not official projections, and not gambling advice.
+- [NFL Thanksgiving 2026: How to Watch All 5 Games](https://decidefootball.com/guide/thanksgiving-nfl-how-to-watch/): How to watch all 5 NFL Thanksgiving week games in 2026: kickoffs in ET and PT, and the announced channel or stream for each game. Not affiliated with the NFL. Not gambling advice.
 
 ## Weekly notes
 

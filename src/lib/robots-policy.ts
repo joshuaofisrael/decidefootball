@@ -42,6 +42,7 @@ export const EDITORIAL_ROBOTS_ALLOW = [
   "/guide/add-drop/",
   "/guide/toss-up/",
   "/guide/certainty/",
+  "/guide/thanksgiving-nfl-how-to-watch/",
   "/waiver-radar/2026-week-6/",
   "/start-sit/2026-week-6/",
   "/terms/",

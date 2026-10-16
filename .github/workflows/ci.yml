@@ -274,7 +274,7 @@ jobs:
           import pathlib, re
           xml = pathlib.Path("out/sitemap.xml").read_text()
           blocks = re.findall(r"<url>\s*(.*?)\s*</url>", xml, flags=re.S)
-          if len(blocks) != 60:
+          if len(blocks) != 61:
               raise SystemExit(f"sitemap has {len(blocks)} urls, expected 61")
           for block in blocks:
               loc = re.search(r"<loc>([^<]+)</loc>", block)

@@ -192,6 +192,7 @@ function validateRobotsGroup() {
     "Allow: /guide/",
     "Allow: /guide/start-sit/",
     "Allow: /guide/certainty/",
+    "Allow: /guide/thanksgiving-nfl-how-to-watch/",
     "Allow: /terms/",
     "Allow: /privacy/",
     "Allow: /disclaimer/",
@@ -221,7 +222,7 @@ function validateRobotsGroup() {
   if (sitemap.includes("llms.txt")) fail("sitemap.xml must list HTML pages only");
   const locs = sitemap.match(/<loc>[^<]+<\/loc>/g) ?? [];
   const mods = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/g) ?? [];
-  if (locs.length !== 60) fail(`sitemap has ${locs.length} urls, expected 60`);
+  if (locs.length !== 61) fail(`sitemap has ${locs.length} urls, expected 61`);
   if (mods.length !== locs.length) fail("every sitemap url needs one lastmod");
   for (const tag of mods) {
     const value = tag.slice("<lastmod>".length, -"</lastmod>".length);
@@ -311,6 +312,7 @@ function validateJsonLd() {
     ["guide/add-drop/index.html", true, false],
     ["guide/toss-up/index.html", true, false],
     ["guide/certainty/index.html", true, false],
+    ["guide/thanksgiving-nfl-how-to-watch/index.html", true, true],
     ["waiver-radar/2026-week-6/index.html", false, false],
     ["start-sit/2026-week-6/index.html", false, false],
   ];

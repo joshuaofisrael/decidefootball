@@ -158,6 +158,49 @@ export function pageMetadata(args: PageMetadataArgs): Metadata {
 }
 
 /** ItemList of real editorial URLs. Do not invent entries that are not on the page. */
+export interface SportsEventInput {
+  name: string;
+  startDate: string;
+  description: string;
+  locationName: string;
+  addressLocality: string;
+  addressRegion: string;
+  homeTeam: string;
+  awayTeam: string;
+}
+
+/** ItemList of SportsEvent. No offers, prices, or attendance figures. */
+export function sportsEventItemListJsonLd(events: SportsEventInput[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: events.map((event, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "SportsEvent",
+        name: event.name,
+        description: event.description,
+        startDate: event.startDate,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: {
+          "@type": "StadiumOrArena",
+          name: event.locationName,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: event.addressLocality,
+            addressRegion: event.addressRegion,
+            addressCountry: "US",
+          },
+        },
+        homeTeam: { "@type": "SportsTeam", name: event.homeTeam },
+        awayTeam: { "@type": "SportsTeam", name: event.awayTeam },
+      },
+    })),
+  };
+}
+
 export function itemListJsonLd(items: ItemListEntry[]) {
   return {
     "@context": "https://schema.org",

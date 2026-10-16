@@ -12,6 +12,7 @@ const legal = [
   { href: "/guide/waiver-radar/", label: "Waiver radar guide" },
   { href: "/guide/listed-status/", label: "Injury designations" },
   { href: "/guide/rankings/", label: "Rankings guide" },
+  { href: "/guide/thanksgiving-nfl-how-to-watch/", label: "Thanksgiving viewing" },
   { href: "/privacy/", label: "Privacy" },
   { href: "/terms/", label: "Terms" },
   { href: "/disclaimer/", label: "Disclaimer" },

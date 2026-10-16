@@ -122,6 +122,14 @@ export default function GuideHubPage() {
         not live licensed NFL statistics.
       </p>
 
+      <h2>Thanksgiving week viewing</h2>
+      <p>
+        Kickoff times and national channels for the five announced Week 12 holiday games are a
+        separate page:{" "}
+        <Link href="/guide/thanksgiving-nfl-how-to-watch/">NFL Thanksgiving 2026: how to watch</Link>.
+        It cites the league schedule release. It is not a start/sit note and not a sample desk.
+      </p>
+
       <h2>Five reading guides and two tools</h2>
       <div className="cards four">
         {guides.map((guide) => (

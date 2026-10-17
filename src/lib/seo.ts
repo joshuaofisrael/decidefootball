@@ -201,6 +201,63 @@ export function sportsEventItemListJsonLd(events: SportsEventInput[]) {
   };
 }
 
+/**
+ * ItemList of SportsEvent for games whose date is confirmed and whose teams
+ * are not. Omits homeTeam, awayTeam, offers, and prices. Omits a postal
+ * address when the city is not confirmed.
+ */
+export interface ConfirmedSportsEventInput {
+  name: string;
+  startDate: string;
+  description: string;
+  locationName: string;
+  addressLocality?: string;
+  addressRegion?: string;
+}
+
+export function confirmedSportsEventItemListJsonLd(events: ConfirmedSportsEventInput[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: events.map((event, i) => {
+      const location: {
+        "@type": "StadiumOrArena" | "Place";
+        name: string;
+        address?: {
+          "@type": "PostalAddress";
+          addressLocality: string;
+          addressRegion: string;
+          addressCountry: "US";
+        };
+      } = {
+        "@type": event.addressLocality && event.addressRegion ? "StadiumOrArena" : "Place",
+        name: event.locationName,
+      };
+      if (event.addressLocality && event.addressRegion) {
+        location.address = {
+          "@type": "PostalAddress",
+          addressLocality: event.addressLocality,
+          addressRegion: event.addressRegion,
+          addressCountry: "US",
+        };
+      }
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "SportsEvent",
+          name: event.name,
+          description: event.description,
+          startDate: event.startDate,
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          location,
+        },
+      };
+    }),
+  };
+}
+
 export function itemListJsonLd(items: ItemListEntry[]) {
   return {
     "@context": "https://schema.org",

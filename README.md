@@ -118,6 +118,7 @@ Do not scrape NFL.com, ESPN, Sleeper, or any RED source. Register: [`compliance/
 | `/guide/toss-up/` | Interactive 1.5-point mean-delta toss-up tool (editorial; indexable when the gate is GREEN). Numbers are typed by the visitor. Not a fixture player desk |
 | `/guide/certainty/` | Interactive certainty-grade tool (editorial; indexable when the gate is GREEN). Same thin / lean / clear / strong helper as the start/sit card. Numbers and flags are typed by the visitor. Not a fixture player desk |
 | `/guide/thanksgiving-nfl-how-to-watch/` | How to watch the five announced Thanksgiving week 2026 games (editorial; indexable when the gate is GREEN). Kickoffs and channels are cited. Not a fixture desk and not gambling advice |
+| `/guide/college-football-playoff-2026-schedule-how-to-watch/` | 2026-27 playoff schedule and where to watch (editorial; indexable when the gate is GREEN). Dates, bowls, and networks are cited. Unannounced matchups and kickoffs stay to be announced. Not a fixture desk and not gambling advice |
 | `/methodology/` | v0 estimate methodology (editorial; indexable when the gate is GREEN) |
 | `/privacy/` `/terms/` `/disclaimer/` `/cookies/` `/contact/` | Finished legal pages. Indexable. Florida governing law. |
 | `/robots.txt` `/sitemap.xml` `/llms.txt` | Sitemap and `llms.txt` list every real page, including sample desks. Each sitemap URL has a `lastmod` of `YYYY-MM-DD` from that page's content. `robots.txt` allows `/` and the editorial paths, and disallows only `/api/`. Named crawlers stay in the same group as `*` |

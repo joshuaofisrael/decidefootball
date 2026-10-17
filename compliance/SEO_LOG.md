@@ -1,5 +1,9 @@
 # SEO log
 
+## 2026-10-17
+
+New indexable URL: `/guide/college-football-playoff-2026-schedule-how-to-watch/`. Schedule and where to watch the 2026-27 College Football Playoff. Dates, bowls, networks, and ranking times are cited to collegefootballplayoff.com, the ESPN Press Room release, and official bowl pages. Matchups, first-round campuses, and the January 1 bowl kickoffs stay to be announced. The January 1 noon window names truTV on the playoff table and does not name truTV on the ESPN Press Room table. No prices, no resale links, no sportsbook links. FAQPage and an ItemList of SportsEvent for confirmed dates only, with no home or away team. Hub, Thanksgiving guide, robots Allow, sitemap, and `llms.txt` include the path. Ads stay off.
+
 ## 2026-10-16
 
 New indexable URL: `/guide/thanksgiving-nfl-how-to-watch/`. How to watch the five announced Thanksgiving week 2026 games. Title targets that query. Kickoffs and national windows are cited to the May 14, 2026 NFL schedule release, NFL.com Thanksgiving articles, the NFL+ season plan, and Netflix Tudum. Tudum still marks the Wednesday kickoff TBA, so the page prints the NFL's 8 p.m. ET and says Tudum has not confirmed the clock. A public operations.nfl.com 2026 schedule page was not found at the three paths checked, so none is cited. No prices, local channel numbers, player availability, or gambling lines. FAQPage, ItemList of SportsEvent, Article, WebPage, and BreadcrumbList. Hub, footer, robots Allow, sitemap, and `llms.txt` include the path. Ads stay off.

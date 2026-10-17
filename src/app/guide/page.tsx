@@ -130,6 +130,16 @@ export default function GuideHubPage() {
         It cites the league schedule release. It is not a start/sit note and not a sample desk.
       </p>
 
+      <h2>College football postseason viewing</h2>
+      <p>
+        Dates, bowls, and announced TV windows for the 2026-27 College Football Playoff are a
+        separate page:{" "}
+        <Link href="/guide/college-football-playoff-2026-schedule-how-to-watch/">
+          2026-27 schedule and how to watch
+        </Link>. Matchups and some kickoffs are still to be announced. It cites the playoff, the
+        network release, and the bowl pages. It is not a lineup note and not a sample desk.
+      </p>
+
       <h2>Five reading guides and two tools</h2>
       <div className="cards four">
         {guides.map((guide) => (

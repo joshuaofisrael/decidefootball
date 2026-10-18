@@ -25,6 +25,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/privacy/",
   "/disclaimer/",
   "/contact/",
+  "/contact/thanks/",
   "/cookies/",
 ] as const;
 

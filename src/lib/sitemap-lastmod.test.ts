@@ -32,6 +32,7 @@ const SITEMAP_PATHS = [
   "/privacy/",
   "/disclaimer/",
   "/contact/",
+  "/contact/thanks/",
   "/cookies/",
   "/start-sit/",
   "/add-drop/",
@@ -122,7 +123,7 @@ describe("resolveContentLastmod", () => {
 });
 
 describe("sitemap lastmod", () => {
-  it("keeps the 63 urls and gives each a real content date", () => {
+  it("keeps the 64 urls and gives each a real content date", () => {
     assert.deepEqual(indexableSitemapPaths(), [...SITEMAP_PATHS]);
     assert.deepEqual(contentFilesForPath("/terms/"), ["src/app/terms/page.tsx"]);
     assert.ok(contentFilesForPath("/slate/").includes("src/components/FixtureBanner.tsx"));
@@ -144,9 +145,10 @@ describe("sitemap lastmod", () => {
     assert.ok(dates.size >= 2, "pages last updated on different days need different lastmod values");
 
     assert.equal(lastmodForPath("/terms/"), "2026-10-08");
-    assert.equal(lastmodForPath("/privacy/"), "2026-10-08");
+    assert.equal(lastmodForPath("/privacy/"), "2026-10-18");
     assert.equal(lastmodForPath("/disclaimer/"), "2026-10-08");
-    assert.equal(lastmodForPath("/contact/"), "2026-10-08");
+    assert.equal(lastmodForPath("/contact/"), "2026-10-18");
+    assert.equal(lastmodForPath("/contact/thanks/"), "2026-10-18");
     assert.equal(lastmodForPath("/"), "2026-10-11");
     assert.equal(lastmodForPath("/about/"), "2026-10-11");
     assert.equal(lastmodForPath("/guide/start-sit/"), "2026-10-15");

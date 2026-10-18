@@ -6,6 +6,8 @@ const title = "Privacy Policy";
 const description =
   "Joshua Israel Ventures LLC is the data controller for Decide Football. Cloudflare Web Analytics is cookieless. Ads are off, so the site sets no AdSense cookies.";
 
+const PAGE_DATE = { lastModified: "2026-10-18" } as const;
+
 export const metadata = pageMetadata({
   path: "/privacy/",
   title,
@@ -41,6 +43,13 @@ export default function PrivacyPage() {
         local storage on the device. The Site does not run an account system.
       </p>
 
+      <h2>Contact form</h2>
+      <p>
+        Contact form submissions are processed by FormSubmit (formsubmit.co) and emailed to us. The
+        form sends the name, email address, and message you enter. We use them only to read and
+        answer your message.
+      </p>
+
       <h2>Governing law</h2>
       <p>{`This Privacy Policy is ${FLORIDA_GOVERNING_LAW}.`}</p>
 
@@ -51,6 +60,7 @@ export default function PrivacyPage() {
         <br />
         Data controller: {SITE_LEGAL_NAME}.
       </p>
+      <p>{`Last updated: ${PAGE_DATE.lastModified}.`}</p>
     </div>
   );
 }

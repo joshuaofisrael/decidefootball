@@ -51,7 +51,6 @@ export const EDITORIAL_ROBOTS_ALLOW = [
   "/privacy/",
   "/disclaimer/",
   "/contact/",
-  "/contact/thanks/",
   "/cookies/",
 ] as const;
 

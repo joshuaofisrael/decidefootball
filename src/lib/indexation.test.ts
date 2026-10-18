@@ -70,7 +70,6 @@ describe("editorialSitemapEntries", () => {
       "/privacy/",
       "/disclaimer/",
       "/contact/",
-      "/contact/thanks/",
       "/cookies/",
     ]);
     assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
@@ -86,7 +85,7 @@ describe("indexableSitemapEntries", () => {
   it("lists every real page and omits redirect stubs", () => {
     const paths = indexableSitemapPaths();
     const urls = indexableSitemapEntries().map((row) => row.url);
-    assert.equal(paths.length, 64);
+    assert.equal(paths.length, 63);
     assert.equal(urls.length, paths.length);
     assert.equal(paths[0], "/");
     for (const path of EDITORIAL_SITEMAP_PATHS) {

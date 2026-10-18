@@ -279,8 +279,8 @@ jobs:
           import pathlib, re
           xml = pathlib.Path("out/sitemap.xml").read_text()
           blocks = re.findall(r"<url>\s*(.*?)\s*</url>", xml, flags=re.S)
-          if len(blocks) != 62:
-              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 62")
+          if len(blocks) != 63:
+              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 63")
           for block in blocks:
               loc = re.search(r"<loc>([^<]+)</loc>", block)
               mods = re.findall(r"<lastmod>([^<]+)</lastmod>", block)
@@ -374,6 +374,30 @@ jobs:
           grep -q 'href="/waiver-radar/2026-week-6/"' out/guide/index.html
           grep -q 'href="/waiver-radar/2026-week-6/"' out/waiver-radar/index.html
           ! grep -q 'noindex' out/waiver-radar/2026-week-6/index.html
+          test -f out/waiver-radar/2026-week-7/index.html
+          grep -q 'https://decidefootball.com/waiver-radar/2026-week-7/' out/sitemap.xml
+          grep -q '<lastmod>2026-10-18</lastmod>' out/sitemap.xml
+          grep -q 'https://decidefootball.com/waiver-radar/2026-week-7/' out/llms.txt
+          grep -q 'content="index,follow"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/waiver-radar/2026-week-7/"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'property="og:title" content="Week 7 waiver wire pickups 2026"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'Week 7 waiver wire pickups 2026' out/waiver-radar/2026-week-7/index.html
+          grep -q 'Last updated: 2026-10-18' out/waiver-radar/2026-week-7/index.html
+          grep -q 'Last checked: 2026-10-18' out/waiver-radar/2026-week-7/index.html
+          grep -q 'FAQPage' out/waiver-radar/2026-week-7/index.html
+          grep -q 'href="/guide/waiver-radar/"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'href="/guide/add-drop/"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'href="/guide/start-sit/"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'href="/start-sit/2026-week-6/"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'href="/waiver-radar/2026-week-6/"' out/waiver-radar/2026-week-7/index.html
+          grep -q 'href="/waiver-radar/2026-week-7/"' out/guide/index.html
+          grep -q 'href="/waiver-radar/2026-week-7/"' out/guide/waiver-radar/index.html
+          grep -q 'href="/waiver-radar/2026-week-7/"' out/waiver-radar/index.html
+          grep -q 'href="/waiver-radar/2026-week-7/"' out/waiver-radar/2026-week-6/index.html
+          grep -q 'href="/waiver-radar/2026-week-7/"' out/start-sit/2026-week-6/index.html
+          grep -q 'Allow: /waiver-radar/2026-week-7/' out/robots.txt
+          ! grep -q 'waiver-wire/2026-week-7' out/waiver-radar/2026-week-7/index.html
+          ! grep -q 'noindex' out/waiver-radar/2026-week-7/index.html
           test -f out/start-sit/2026-week-6/index.html
           grep -q 'https://decidefootball.com/start-sit/2026-week-6/' out/sitemap.xml
           grep -q '<lastmod>2026-10-15</lastmod>' out/sitemap.xml

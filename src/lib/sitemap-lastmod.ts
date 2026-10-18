@@ -20,6 +20,7 @@ const GUIDE_LIBS = [
   "waiver-radar-guide",
   "listed-status-guide",
   "weekly-waiver",
+  "weekly-waiver-week-7",
   "weekly-start-sit",
   "thanksgiving-watch-2026",
   "cfp-watch-2026-27",
@@ -41,6 +42,7 @@ const STATIC_PAGE_FILES: Record<string, string> = {
   "/guide/college-football-playoff-2026-schedule-how-to-watch/":
     "src/app/guide/college-football-playoff-2026-schedule-how-to-watch/page.tsx",
   "/waiver-radar/2026-week-6/": "src/app/waiver-radar/2026-week-6/page.tsx",
+  "/waiver-radar/2026-week-7/": "src/app/waiver-radar/2026-week-7/page.tsx",
   "/start-sit/2026-week-6/": "src/app/start-sit/2026-week-6/page.tsx",
   "/terms/": "src/app/terms/page.tsx",
   "/privacy/": "src/app/privacy/page.tsx",

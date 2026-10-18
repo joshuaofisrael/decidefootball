@@ -156,6 +156,10 @@ export default function Week6WaiverPage() {
           <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>.
         </li>
         <li>
+          The next dated add note is{" "}
+          <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link>.
+        </li>
+        <li>
           The <Link href="/waiver-radar/">waiver radar hub</Link> is the sample urgency board.
           Its numbers demonstrate the tool. They are not this list and not live licensed NFL
           stats.

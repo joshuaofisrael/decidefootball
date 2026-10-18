@@ -110,9 +110,10 @@ export default function GuideHubPage() {
 
       <h2>Waiver note for this week</h2>
       <p>
-        The reading guides on this hub stay put. The dated add note is a separate page:{" "}
-        <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. It cites
-        public reporting from the previous weekend. It is not the sample radar at{" "}
+        The reading guides on this hub stay put. The dated add notes are separate pages:{" "}
+        <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link> and{" "}
+        <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. They cite
+        public reporting. They are not the sample radar at{" "}
         <Link href="/waiver-radar/">/waiver-radar/</Link> and not live licensed NFL statistics.
       </p>
       <p>

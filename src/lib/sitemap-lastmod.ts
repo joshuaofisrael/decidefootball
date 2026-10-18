@@ -48,6 +48,7 @@ const STATIC_PAGE_FILES: Record<string, string> = {
   "/privacy/": "src/app/privacy/page.tsx",
   "/disclaimer/": "src/app/disclaimer/page.tsx",
   "/contact/": "src/app/contact/page.tsx",
+  "/contact/thanks/": "src/app/contact/thanks/page.tsx",
   "/cookies/": "src/app/cookies/page.tsx",
   "/start-sit/": "src/app/start-sit/page.tsx",
   "/add-drop/": "src/app/add-drop/page.tsx",

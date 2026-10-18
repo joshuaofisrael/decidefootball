@@ -949,3 +949,38 @@ th {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+.contact-form {
+  display: grid;
+  gap: 0.4rem;
+  max-width: 34rem;
+  margin: 1.25rem 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font: inherit;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: inherit;
+}
+
+.contact-form label {
+  font-weight: 600;
+  margin-top: 0.4rem;
+}
+
+.contact-form .btn {
+  justify-self: start;
+  margin-top: 0.6rem;
+}
+
+.contact-honey {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

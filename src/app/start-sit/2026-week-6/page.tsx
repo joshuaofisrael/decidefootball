@@ -163,7 +163,9 @@ export default function Week6StartSitPage() {
         </li>
         <li>
           <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link> is a
-          different question: who to add, not who to start among players already rostered.
+          different question: who to add, not who to start among players already rostered. The
+          next add note is{" "}
+          <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link>.
         </li>
         <li>
           <Link href="/guide/listed-status/">Questionable, Doubtful, and Out</Link> is the page

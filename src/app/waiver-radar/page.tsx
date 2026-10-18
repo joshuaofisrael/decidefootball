@@ -39,8 +39,9 @@ export default function WaiverRadarPage() {
       <h1>Waiver radar, week {weekNum}</h1>
       <p>
         The dated editorial note for the current week is{" "}
-        <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. That page
-        cites public reporting. The list below is separate from it.
+        <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link>. The previous
+        note is <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>.
+        Those pages cite public reporting. The list below is separate from them.
       </p>
       <p>
         Urgency from sample estimates, usage change, and listed status. The numbers demonstrate

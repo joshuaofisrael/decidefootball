@@ -22,6 +22,7 @@ const GUIDE_LIBS = [
   "weekly-waiver",
   "weekly-waiver-week-7",
   "weekly-start-sit",
+  "weekly-start-sit-week-7",
   "thanksgiving-watch-2026",
   "cfp-watch-2026-27",
 ] as const;
@@ -44,6 +45,7 @@ const STATIC_PAGE_FILES: Record<string, string> = {
   "/waiver-radar/2026-week-6/": "src/app/waiver-radar/2026-week-6/page.tsx",
   "/waiver-radar/2026-week-7/": "src/app/waiver-radar/2026-week-7/page.tsx",
   "/start-sit/2026-week-6/": "src/app/start-sit/2026-week-6/page.tsx",
+  "/start-sit/2026-week-7/": "src/app/start-sit/2026-week-7/page.tsx",
   "/terms/": "src/app/terms/page.tsx",
   "/privacy/": "src/app/privacy/page.tsx",
   "/disclaimer/": "src/app/disclaimer/page.tsx",

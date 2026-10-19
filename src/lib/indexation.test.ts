@@ -66,10 +66,12 @@ describe("editorialSitemapEntries", () => {
       "/waiver-radar/2026-week-6/",
       "/waiver-radar/2026-week-7/",
       "/start-sit/2026-week-6/",
+      "/start-sit/2026-week-7/",
       "/terms/",
       "/privacy/",
       "/disclaimer/",
       "/contact/",
+      "/contact/thanks/",
       "/cookies/",
     ]);
     assert.deepEqual([...EDITORIAL_SITEMAP_PATHS], [...EDITORIAL_ROBOTS_ALLOW]);
@@ -85,7 +87,7 @@ describe("indexableSitemapEntries", () => {
   it("lists every real page and omits redirect stubs", () => {
     const paths = indexableSitemapPaths();
     const urls = indexableSitemapEntries().map((row) => row.url);
-    assert.equal(paths.length, 63);
+    assert.equal(paths.length, 65);
     assert.equal(urls.length, paths.length);
     assert.equal(paths[0], "/");
     for (const path of EDITORIAL_SITEMAP_PATHS) {

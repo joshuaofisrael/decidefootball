@@ -195,9 +195,11 @@ export default function StartSitGuidePage() {
       <p>
         Comparison tools are at the <Link href="/start-sit/">start/sit desk</Link> so the product
         can be used and reviewed. Those URLs use sample data for demonstrating the tool. They are
-        not live licensed NFL stats. The dated editorial note is{" "}
-        <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>, updated{" "}
-        {GUIDE_UPDATED.lastModified}. That page cites public reporting. It is not the sample desk.
+        not live licensed NFL stats. The dated editorial notes are{" "}
+        <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, updated 2026-10-19,
+        and <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>, updated{" "}
+        {GUIDE_UPDATED.lastModified}. Those pages cite public reporting. They are not the sample
+        desk.
       </p>
       <p>
         Waiver urgency uses the same estimates.{" "}

@@ -47,10 +47,12 @@ export const EDITORIAL_ROBOTS_ALLOW = [
   "/waiver-radar/2026-week-6/",
   "/waiver-radar/2026-week-7/",
   "/start-sit/2026-week-6/",
+  "/start-sit/2026-week-7/",
   "/terms/",
   "/privacy/",
   "/disclaimer/",
   "/contact/",
+  "/contact/thanks/",
   "/cookies/",
 ] as const;
 

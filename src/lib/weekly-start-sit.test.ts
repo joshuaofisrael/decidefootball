@@ -31,6 +31,7 @@ describe("week 6 start/sit note", () => {
     assert.match(page, /href="\/guide\/start-sit\/"/);
     assert.match(page, /href="\/start-sit\/"/);
     assert.match(page, /href="\/waiver-radar\/2026-week-6\/"/);
+    assert.match(page, /href="\/start-sit\/2026-week-7\/"/);
     assert.equal(lastmodForPath(WEEKLY_START_SIT_PATH), "2026-10-15");
   });
 

@@ -22,6 +22,7 @@ Operated by Joshua Israel Ventures LLC.
 Editorial notes cite public reporting. They are not the sample waiver radar and not live licensed NFL statistics.
 
 - [Week 7 fantasy waiver pickups](https://decidefootball.com/waiver-radar/2026-week-7/): Dated editorial adds for NFL Week 7 (22-26 October 2026), grounded in cited public reporting. Not the sample waiver radar and not live licensed NFL statistics.
+- [Who to start Week 7 fantasy](https://decidefootball.com/start-sit/2026-week-7/): Who to start in fantasy for NFL Week 7 (22-26 October 2026), grounded in cited public reporting. Not the sample start/sit desk and not live licensed NFL statistics.
 - [Week 6 fantasy waiver pickups](https://decidefootball.com/waiver-radar/2026-week-6/): Dated editorial adds for NFL Week 6 (15-19 October 2026), grounded in cited public reporting. Not the sample waiver radar and not live licensed NFL statistics.
 - [Who to start Week 6 fantasy](https://decidefootball.com/start-sit/2026-week-6/): Who to start in fantasy for NFL Week 6 (15-19 October 2026), grounded in cited public reporting. Not the sample start/sit desk and not live licensed NFL statistics.
 
@@ -84,4 +85,5 @@ Numbers on these pages are sample data for demonstrating the tool. They are not 
 - [Privacy Policy](https://decidefootball.com/privacy/): Joshua Israel Ventures LLC is the data controller. Cloudflare Web Analytics is cookieless. Ads are off, so the site sets no AdSense cookies. Contact joshuaofisrael@gmail.com.
 - [Independent disclaimer](https://decidefootball.com/disclaimer/): Accuracy, no professional relationship, model estimates are not official data, and not gambling advice. The site currently has no paid links or ads. Any added later will be disclosed.
 - [Contact](https://decidefootball.com/contact/): Contact form (FormSubmit) or email joshuaofisrael@gmail.com. Operator Joshua Israel Ventures LLC.
+- [Thanks for your message](https://decidefootball.com/contact/thanks/): Confirmation that a contact-form message was sent to Joshua Israel Ventures LLC, the operator of Decide Football.
 - [Cookie notice](https://decidefootball.com/cookies/): Cookieless Cloudflare Web Analytics. Ads are off, so no AdSense cookies are set. Local storage holds consent, the watchlist, and Sunday mode on this device.

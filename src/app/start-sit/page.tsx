@@ -32,9 +32,11 @@ export default function StartSitIndexPage() {
       <h1>Start or sit</h1>
       <p>
         The dated editorial note for the current week is{" "}
+        <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, updated 2026-10-19.
+        The previous note is{" "}
         <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>, updated{" "}
-        {HUB_UPDATED.lastModified}. That page cites public reporting. The cards below are separate
-        from it.
+        {HUB_UPDATED.lastModified}. Those pages cite public reporting. The cards below are
+        separate from them.
       </p>
       <p>
         Pair order is canonical by ascending player id. Reverse URLs redirect. Each card carries a

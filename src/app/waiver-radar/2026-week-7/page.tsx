@@ -159,8 +159,9 @@ export default function Week7WaiverPage() {
         </li>
         <li>
           <Link href="/guide/start-sit/">Start/sit</Link> is a different question: who to start
-          among players already on the roster. The dated note for the week already underway is{" "}
-          <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>.
+          among players already on the roster. The dated note for Week 7 is{" "}
+          <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>. The previous
+          lineup note is <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>.
         </li>
         <li>
           <Link href="/guide/listed-status/">Questionable, Doubtful, and Out</Link> is the page

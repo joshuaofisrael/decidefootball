@@ -1,5 +1,9 @@
 # SEO log
 
+## 2026-10-20
+
+New indexable URL: `/guide/christmas-nfl-how-to-watch/`. How to watch the three announced NFL games on Friday, December 25, 2026. Kickoffs and national windows are cited to the May 14, 2026 NFL schedule release, the NFL.com Christmas article, the NFL.com Week 16 schedule, and Netflix Tudum. The release names the two Netflix games and does not name the Rams at Seahawks kickoff. That night game is FOX at 8:15 p.m. ET on the NFL.com schedule and Christmas article. UK times are conversions. The night game is 1:15 a.m. on Saturday, December 26 in the UK. A public operations.nfl.com 2026 schedule page was not found at the three paths checked. No prices, local channel numbers, FOX One, player projections, or gambling lines. FAQPage and an ItemList of three SportsEvent entries. Hub, Thanksgiving guide, robots Allow, sitemap, and `llms.txt` include the path. The footer is unchanged. Ads stay off.
+
 ## 2026-10-17
 
 New indexable URL: `/guide/college-football-playoff-2026-schedule-how-to-watch/`. Schedule and where to watch the 2026-27 College Football Playoff. Dates, bowls, networks, and ranking times are cited to collegefootballplayoff.com, the ESPN Press Room release, and official bowl pages. Matchups, first-round campuses, and the January 1 bowl kickoffs stay to be announced. The January 1 noon window names truTV on the playoff table and does not name truTV on the ESPN Press Room table. No prices, no resale links, no sportsbook links. FAQPage and an ItemList of SportsEvent for confirmed dates only, with no home or away team. Hub, Thanksgiving guide, robots Allow, sitemap, and `llms.txt` include the path. Ads stay off.

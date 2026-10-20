@@ -214,11 +214,16 @@ export default function ThanksgivingWatchPage() {
         <li>Not a ticket or subscription offer. No price is listed.</li>
       </ul>
       <p>
-        More reading notes live on the <Link href="/guide/">guides hub</Link>. The postseason
-        schedule is a different page:{" "}
+        More reading notes live on the <Link href="/guide/">guides hub</Link>. Christmas Day is a
+        different page:{" "}
+        <Link href="/guide/christmas-nfl-how-to-watch/">
+          NFL Christmas Day 2026: how to watch every game
+        </Link>
+        . The postseason schedule is also separate:{" "}
         <Link href="/guide/college-football-playoff-2026-schedule-how-to-watch/">
           2026-27 College Football Playoff schedule and how to watch
-        </Link>.
+        </Link>
+        .
       </p>
     </div>
   );

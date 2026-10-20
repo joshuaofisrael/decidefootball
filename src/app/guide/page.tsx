@@ -132,6 +132,15 @@ export default function GuideHubPage() {
         It cites the league schedule release. It is not a start/sit note and not a sample desk.
       </p>
 
+      <h2>Christmas Day viewing</h2>
+      <p>
+        Kickoff times and national channels for the three announced Friday, December 25, 2026
+        games are a separate page:{" "}
+        <Link href="/guide/christmas-nfl-how-to-watch/">NFL Christmas Day 2026: how to watch</Link>.
+        It cites the league schedule release, NFL.com, and Netflix. It is not a start/sit note and
+        not a sample desk.
+      </p>
+
       <h2>College football postseason viewing</h2>
       <p>
         Dates, bowls, and announced TV windows for the 2026-27 College Football Playoff are a

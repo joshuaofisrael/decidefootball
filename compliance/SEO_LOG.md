@@ -1,5 +1,9 @@
 # SEO log
 
+## 2026-10-21
+
+New indexable URL: `/guide/bowl-schedule-2026-how-to-watch/`. 2026-27 college bowl schedule and where to watch. Dates, cities, venues, and networks are cited to the June 3, 2026 ESPN Press Room slate, the ESPN Events release, The CW's August 27, 2026 release, the Poinsettia Bowl and Holiday Bowl sites, the Sun Bowl Association, the Pop-Tarts, Citrus, Alamo, and ReliaQuest posts, NCAA.com, and the College Football Playoff. Team matchups are to be announced. The Cotton, Peach, and Rose kickoffs and networks stay to be announced. The Texas Bowl prints both Reliant Stadium and NRG Stadium. The Arizona Bowl date stays off the table: the CW release does not date it, and thearizonabowl.com still leads with December 27, 2025. No prices, no resale links, no sportsbook links. FAQPage, Article, WebPage, BreadcrumbList, and an ItemList of SportsEvent with no home or away team. Hub, playoff guide, robots Allow, sitemap, and `llms.txt` include the path. The footer is unchanged. Ads stay off.
+
 ## 2026-10-20
 
 New indexable URL: `/guide/christmas-nfl-how-to-watch/`. How to watch the three announced NFL games on Friday, December 25, 2026. Kickoffs and national windows are cited to the May 14, 2026 NFL schedule release, the NFL.com Christmas article, the NFL.com Week 16 schedule, and Netflix Tudum. The release names the two Netflix games and does not name the Rams at Seahawks kickoff. That night game is FOX at 8:15 p.m. ET on the NFL.com schedule and Christmas article. UK times are conversions. The night game is 1:15 a.m. on Saturday, December 26 in the UK. A public operations.nfl.com 2026 schedule page was not found at the three paths checked. No prices, local channel numbers, FOX One, player projections, or gambling lines. FAQPage and an ItemList of three SportsEvent entries. Hub, Thanksgiving guide, robots Allow, sitemap, and `llms.txt` include the path. The footer is unchanged. Ads stay off.

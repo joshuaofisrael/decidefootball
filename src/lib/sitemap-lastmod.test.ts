@@ -25,6 +25,7 @@ const SITEMAP_PATHS = [
   "/guide/certainty/",
   "/guide/thanksgiving-nfl-how-to-watch/",
   "/guide/college-football-playoff-2026-schedule-how-to-watch/",
+  "/guide/bowl-schedule-2026-how-to-watch/",
   "/guide/christmas-nfl-how-to-watch/",
   "/waiver-radar/2026-week-6/",
   "/waiver-radar/2026-week-7/",
@@ -125,7 +126,7 @@ describe("resolveContentLastmod", () => {
 });
 
 describe("sitemap lastmod", () => {
-  it("keeps the 66 urls and gives each a real content date", () => {
+  it("keeps the 67 urls and gives each a real content date", () => {
     assert.deepEqual(indexableSitemapPaths(), [...SITEMAP_PATHS]);
     assert.deepEqual(contentFilesForPath("/terms/"), ["src/app/terms/page.tsx"]);
     assert.ok(contentFilesForPath("/slate/").includes("src/components/FixtureBanner.tsx"));
@@ -164,6 +165,12 @@ describe("sitemap lastmod", () => {
     assert.equal(
       lastmodForPath("/guide/college-football-playoff-2026-schedule-how-to-watch/"),
       "2026-10-17",
+    );
+    assert.equal(lastmodForPath("/guide/bowl-schedule-2026-how-to-watch/"), "2026-10-21");
+    assert.ok(
+      contentFilesForPath("/guide/bowl-schedule-2026-how-to-watch/").includes(
+        "src/lib/bowl-watch-2026-27.ts",
+      ),
     );
     assert.ok(
       contentFilesForPath("/guide/college-football-playoff-2026-schedule-how-to-watch/").includes(

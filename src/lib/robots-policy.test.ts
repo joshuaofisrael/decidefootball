@@ -76,6 +76,7 @@ describe("buildRobotsRules", () => {
       "/guide/certainty/",
       "/guide/thanksgiving-nfl-how-to-watch/",
       "/guide/college-football-playoff-2026-schedule-how-to-watch/",
+      "/guide/bowl-schedule-2026-how-to-watch/",
       "/guide/christmas-nfl-how-to-watch/",
       "/terms/",
       "/privacy/",

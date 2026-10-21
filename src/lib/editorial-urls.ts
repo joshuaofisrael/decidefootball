@@ -18,6 +18,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/guide/certainty/",
   "/guide/thanksgiving-nfl-how-to-watch/",
   "/guide/college-football-playoff-2026-schedule-how-to-watch/",
+  "/guide/bowl-schedule-2026-how-to-watch/",
   "/guide/christmas-nfl-how-to-watch/",
   "/waiver-radar/2026-week-6/",
   "/waiver-radar/2026-week-7/",

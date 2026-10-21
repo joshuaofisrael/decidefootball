@@ -147,8 +147,17 @@ export default function GuideHubPage() {
         separate page:{" "}
         <Link href="/guide/college-football-playoff-2026-schedule-how-to-watch/">
           2026-27 schedule and how to watch
-        </Link>. Matchups and some kickoffs are still to be announced. It cites the playoff, the
+        </Link>.         Matchups and some kickoffs are still to be announced. It cites the playoff, the
         network release, and the bowl pages. It is not a lineup note and not a sample desk.
+      </p>
+
+      <h2>Bowl season viewing</h2>
+      <p>
+        Dates, cities, and announced TV networks for the 2026-27 bowls whose dates are official
+        are a separate page:{" "}
+        <Link href="/guide/bowl-schedule-2026-how-to-watch/">2026-27 bowl schedule and how to watch</Link>
+        . Team matchups are still to be announced. It cites the network releases, the bowl pages,
+        and the playoff. It is not a lineup note and not a sample desk.
       </p>
 
       <h2>Five reading guides and two tools</h2>

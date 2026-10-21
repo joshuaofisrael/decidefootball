@@ -41,6 +41,7 @@ jobs:
           test -f out/guide/certainty/index.html
           test -f out/guide/thanksgiving-nfl-how-to-watch/index.html
           test -f out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          test -f out/guide/bowl-schedule-2026-how-to-watch/index.html
           test -f out/guide/christmas-nfl-how-to-watch/index.html
           test -f out/is-jordan-voss-playing-today/index.html
           test -f out/week-3/rb-rankings/index.html
@@ -57,6 +58,7 @@ jobs:
           grep -q 'https://decidefootball.com/guide/certainty/' out/sitemap.xml
           grep -q 'https://decidefootball.com/guide/thanksgiving-nfl-how-to-watch/' out/sitemap.xml
           grep -q 'https://decidefootball.com/guide/college-football-playoff-2026-schedule-how-to-watch/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/guide/bowl-schedule-2026-how-to-watch/' out/sitemap.xml
           grep -q 'https://decidefootball.com/guide/christmas-nfl-how-to-watch/' out/sitemap.xml
           grep -q 'https://decidefootball.com/cookies/' out/sitemap.xml
           grep -q 'https://decidefootball.com/rankings/' out/sitemap.xml
@@ -93,6 +95,7 @@ jobs:
           grep -q 'Allow: /guide/certainty/' out/robots.txt
           grep -q 'Allow: /guide/thanksgiving-nfl-how-to-watch/' out/robots.txt
           grep -q 'Allow: /guide/college-football-playoff-2026-schedule-how-to-watch/' out/robots.txt
+          grep -q 'Allow: /guide/bowl-schedule-2026-how-to-watch/' out/robots.txt
           grep -q 'Allow: /guide/christmas-nfl-how-to-watch/' out/robots.txt
           grep -q '^Allow: /$' out/robots.txt
           ! grep -q 'Disallow: /add-drop/' out/robots.txt
@@ -158,6 +161,7 @@ jobs:
           grep -q 'https://decidefootball.com/guide/certainty/' out/llms.txt
           grep -q 'https://decidefootball.com/guide/thanksgiving-nfl-how-to-watch/' out/llms.txt
           grep -q 'https://decidefootball.com/guide/college-football-playoff-2026-schedule-how-to-watch/' out/llms.txt
+          grep -q 'https://decidefootball.com/guide/bowl-schedule-2026-how-to-watch/' out/llms.txt
           grep -q 'https://decidefootball.com/guide/christmas-nfl-how-to-watch/' out/llms.txt
           grep -q 'not affiliated with the NFL' out/llms.txt
           grep -q 'sample/fixture' out/llms.txt
@@ -234,6 +238,7 @@ jobs:
           grep -q 'href="/guide/certainty/"' out/guide/index.html
           grep -q 'href="/guide/thanksgiving-nfl-how-to-watch/"' out/guide/index.html
           grep -q 'href="/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/index.html
+          grep -q 'href="/guide/bowl-schedule-2026-how-to-watch/"' out/guide/index.html
           grep -q 'href="/guide/christmas-nfl-how-to-watch/"' out/guide/index.html
           grep -q 'Five reading guides and two tools' out/guide/index.html
           grep -q 'rel="canonical" href="https://decidefootball.com/guide/"' out/guide/index.html
@@ -284,8 +289,8 @@ jobs:
           import pathlib, re
           xml = pathlib.Path("out/sitemap.xml").read_text()
           blocks = re.findall(r"<url>\s*(.*?)\s*</url>", xml, flags=re.S)
-          if len(blocks) != 66:
-              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 66")
+          if len(blocks) != 67:
+              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 67")
           for block in blocks:
               loc = re.search(r"<loc>([^<]+)</loc>", block)
               mods = re.findall(r"<lastmod>([^<]+)</lastmod>", block)
@@ -305,6 +310,7 @@ jobs:
           grep -q 'content="index,follow"' out/guide/certainty/index.html
           grep -q 'content="index,follow"' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'content="index,follow"' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          grep -q 'content="index,follow"' out/guide/bowl-schedule-2026-how-to-watch/index.html
           grep -q 'content="index,follow"' out/guide/christmas-nfl-how-to-watch/index.html
           ! grep -q 'noindex' out/about/index.html
           ! grep -q 'noindex' out/terms/index.html
@@ -322,6 +328,7 @@ jobs:
           ! grep -q 'noindex' out/guide/certainty/index.html
           ! grep -q 'noindex' out/guide/thanksgiving-nfl-how-to-watch/index.html
           ! grep -q 'noindex' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          ! grep -q 'noindex' out/guide/bowl-schedule-2026-how-to-watch/index.html
           ! grep -q 'noindex' out/guide/christmas-nfl-how-to-watch/index.html
           grep -q 'FAQPage' out/about/index.html
           grep -q 'FAQPage' out/guide/start-sit/index.html
@@ -333,6 +340,7 @@ jobs:
           grep -q 'FAQPage' out/guide/certainty/index.html
           grep -q 'FAQPage' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'FAQPage' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          grep -q 'FAQPage' out/guide/bowl-schedule-2026-how-to-watch/index.html
           grep -q 'FAQPage' out/guide/christmas-nfl-how-to-watch/index.html
           grep -q 'SportsEvent' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'SportsEvent' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
@@ -350,6 +358,7 @@ jobs:
           grep -q 'WebPage' out/guide/certainty/index.html
           grep -q 'WebPage' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'WebPage' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          grep -q 'WebPage' out/guide/bowl-schedule-2026-how-to-watch/index.html
           grep -q 'WebPage' out/guide/christmas-nfl-how-to-watch/index.html
           grep -q 'rel="canonical" href="https://decidefootball.com/guide/thanksgiving-nfl-how-to-watch/"' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'rel="canonical" href="https://decidefootball.com/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
@@ -361,6 +370,30 @@ jobs:
           grep -q 'href="/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'to be announced' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           ! grep -i -q 'draftkings\|fanduel\|betmgm\|ticketmaster.com\|stubhub' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          grep -q 'href="/guide/bowl-schedule-2026-how-to-watch/"' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          grep -q 'content="index,follow"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          ! grep -q 'noindex' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'FAQPage' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'SportsEvent' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'Article' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'BreadcrumbList' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          ! grep -q 'homeTeam' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/guide/bowl-schedule-2026-how-to-watch/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'property="og:url" content="https://decidefootball.com/guide/bowl-schedule-2026-how-to-watch/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q '2026-27 college football bowl schedule and how to watch' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'Last updated: 2026-10-21' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'https://espnpressroom.com/press-release/espn-unveils-32-game-college-football-bowl-season-slate-for-2026-27-season/' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'https://collegefootballplayoff.com/news/2026/6/1/26-27-broadcast-sked' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'href="/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'href="/guide/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'href="/guide/start-sit/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'href="/guide/waiver-radar/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'href="/start-sit/2026-week-7/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'href="/waiver-radar/2026-week-7/"' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'to be announced' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          grep -q 'will be refreshed' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          ! grep -q 'waiver-wire' out/guide/bowl-schedule-2026-how-to-watch/index.html
+          ! grep -i -q 'draftkings\|fanduel\|betmgm\|ticketmaster.com\|stubhub' out/guide/bowl-schedule-2026-how-to-watch/index.html
           grep -q 'NFL Thanksgiving 2026: How to Watch All 5 Games' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'Last updated: 2026-10-16' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'https://www.nfl.com/news/thanksgiving-2026-nfl-schedule-release' out/guide/thanksgiving-nfl-how-to-watch/index.html

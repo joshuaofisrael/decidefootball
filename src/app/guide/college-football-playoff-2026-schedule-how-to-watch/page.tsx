@@ -115,6 +115,8 @@ export default function CfpWatchPage() {
         <Link href="/guide/start-sit/">start/sit guide</Link> and not the sample desk. NFL holiday
         windows are on the{" "}
         <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link>.
+        The rest of the announced 2026-27 bowls are on the{" "}
+        <Link href="/guide/bowl-schedule-2026-how-to-watch/">2026-27 bowl schedule</Link>.
       </p>
       <p>{`Last checked: ${NOTE_DATE.lastModified}.`}</p>
 
@@ -247,8 +249,9 @@ export default function CfpWatchPage() {
       </ul>
       <p>
         More reading notes live on the <Link href="/guide/">guides hub</Link>. The other viewing
-        list is the{" "}
-        <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link>.
+        lists are the{" "}
+        <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link> and
+        the <Link href="/guide/bowl-schedule-2026-how-to-watch/">2026-27 bowl schedule</Link>.
       </p>
     </div>
   );

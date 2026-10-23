@@ -193,7 +193,7 @@ jobs:
           grep -q 'as is' out/terms/index.html
           grep -q 'Joshua Israel Ventures LLC is the data controller' out/privacy/index.html
           grep -q 'cookieless' out/privacy/index.html
-          grep -q 'does not set AdSense cookies' out/privacy/index.html
+          grep -q 'Google and its partners may use cookies to serve ads.' out/privacy/index.html
           grep -q 'joshuaofisrael@gmail.com' out/privacy/index.html
           grep -q 'joshuaofisrael@gmail.com' out/contact/index.html
           grep -q 'Operator:' out/contact/index.html
@@ -611,10 +611,23 @@ jobs:
           grep -R -q -- '--font-display:' out
           grep -R -q -- '--font-sans:' out
           grep -R -q -- '--font-mono:' out
-          ! grep -q '^google.com,' out/ads.txt
+          grep -qx 'google.com, pub-5681559774142917, DIRECT, f08c47fec0942fa0' out/ads.txt
           ! grep -q 'aria-label="Advertisement"' out/index.html
-          ! grep -q 'adsbygoogle.js' out/index.html
-          ! grep -q 'adsbygoogle.js' out/about/index.html
+          python3 - <<'PY'
+          import pathlib
+          html = pathlib.Path("out/index.html").read_text()
+          head = html.split("</head>", 1)[0]
+          script = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917"
+          meta = 'name="google-adsense-account" content="ca-pub-5681559774142917"'
+          if script not in head:
+              raise SystemExit("homepage head is missing the adsbygoogle script")
+          if meta not in head:
+              raise SystemExit("homepage head is missing the google-adsense-account meta")
+          PY
+          if grep -R --include='*.html' -q '<ins class="adsbygoogle"' out; then
+            echo "rendered AdSense ad unit" >&2
+            exit 1
+          fi
           ! grep -q 'googletagmanager.com' out/index.html
           ! grep -q 'googletagmanager.com' out/about/index.html
           ! grep -q 'google-analytics.com' out/index.html
@@ -630,8 +643,10 @@ jobs:
                   raise SystemExit(f"{rel} beacon is not the single layout snippet")
               if html.find(snippet) > html.rfind("</body>"):
                   raise SystemExit(f"{rel} beacon is after </body>")
-              if "googletagmanager.com" in html or "adsbygoogle" in html or "google-analytics.com" in html:
-                  raise SystemExit(f"{rel} contains another analytics or ad script")
+              if "googletagmanager.com" in html or "google-analytics.com" in html:
+                  raise SystemExit(f"{rel} contains another analytics script")
+              if '<ins class="adsbygoogle"' in html:
+                  raise SystemExit(f"{rel} renders an AdSense ad unit")
           for rel in ("out/privacy/index.html", "out/cookies/index.html", "out/index.html"):
               html = pathlib.Path(rel).read_text()
               if "Analytics are off until you choose" in html or "Analytics only if a product is enabled" in html:

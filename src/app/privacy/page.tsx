@@ -4,9 +4,9 @@ import { FLORIDA_GOVERNING_LAW, SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, 
 
 const title = "Privacy Policy";
 const description =
-  "Joshua Israel Ventures LLC is the data controller for Decide Football. Cloudflare Web Analytics is cookieless. Ads are off, so the site sets no AdSense cookies.";
+  "Joshua Israel Ventures LLC is the data controller for Decide Football. Cloudflare Web Analytics is cookieless. Google AdSense is set up on the site. Google and its partners may use cookies to serve ads.";
 
-const PAGE_DATE = { lastModified: "2026-10-18" } as const;
+const PAGE_DATE = { lastModified: "2026-10-23" } as const;
 
 export const metadata = pageMetadata({
   path: "/privacy/",
@@ -35,12 +35,29 @@ export default function PrivacyPage() {
         records aggregate page views. It is not an advertising pixel.
       </p>
       <p>
-        Display ads are off. The Site does not load AdSense and does not set AdSense cookies.
-      </p>
-      <p>
         The browser may keep a consent choice (<code>df_consent</code>), a watchlist (
         <code>df_watchlist</code>), and a Sunday-mode preference (<code>df_sunday_mode</code>) in
         local storage on the device. The Site does not run an account system.
+      </p>
+
+      <h2>Advertising</h2>
+      <p>
+        The Site loads the Google AdSense script. Google and its partners use cookies and similar
+        technologies to serve and measure ads, including ads based on your earlier visits to this
+        or other websites. No ad units are shown yet. Learn how Google uses data in advertising at{" "}
+        <a href="https://policies.google.com/technologies/ads">policies.google.com/technologies/ads</a>.
+        You can opt out of personalized ads in{" "}
+        <a href="https://adssettings.google.com">Google Ads Settings</a>.
+      </p>
+      <p>
+        Visitors in the European Economic Area, the United Kingdom, and Switzerland see a consent
+        choice from Google before ad cookies are used.
+      </p>
+      <p>
+        California residents can opt out of the sale or sharing of personal information for
+        advertising through Google Ads Settings at{" "}
+        <a href="https://adssettings.google.com">adssettings.google.com</a>. We do not sell
+        personal information ourselves.
       </p>
 
       <h2>Contact form</h2>

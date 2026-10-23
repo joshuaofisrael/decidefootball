@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { AdSlot } from "@/components/AdSlot";
-import { AdsenseLoader } from "@/components/AdsenseLoader";
 import { BottomNav } from "@/components/BottomNav";
 import { CloudflareBeacon } from "@/components/CloudflareBeacon";
 import { ConsentStub } from "@/components/ConsentStub";
@@ -8,7 +7,7 @@ import { ConsentProvider } from "@/components/useConsent";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
-import { adsConfigured } from "@/lib/ads";
+import { ADSENSE_HEAD_SRC, ADSENSE_PUBLISHER_CLIENT, adsConfigured } from "@/lib/ads";
 import { getComplianceGate, INDEPENDENT_MICROCOPY } from "@/lib/compliance";
 import { decideIndexation } from "@/lib/indexation";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -29,6 +28,7 @@ export const metadata: Metadata = {
     "Start or sit. Is he playing. Waivers and rankings from structured estimates. Independent desk. Not NFL-affiliated. Not gambling.",
   applicationName: SITE_NAME,
   robots: defaultIndex.robots,
+  other: { "google-adsense-account": ADSENSE_PUBLISHER_CLIENT },
   verification: { google: "sZ1l2pwWVsYn45xUk4e6ehpvyDBpikVSNKNdhUKisKw" },
   openGraph: {
     siteName: SITE_NAME,
@@ -42,6 +42,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+      <head>
+        <script async src={ADSENSE_HEAD_SRC} crossOrigin="anonymous" />
+      </head>
       <body>
         <ConsentProvider>
           <a className="skip-link" href="#content">
@@ -68,7 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ) : null}
           <Footer />
           <BottomNav />
-          <AdsenseLoader />
           <ConsentStub />
           <JsonLd data={organizationJsonLd()} />
           <JsonLd data={websiteJsonLd()} />

@@ -3,28 +3,14 @@ import { join } from "node:path";
 
 const out = "out";
 
-function publisherIdFromClient(clientId) {
-  const match = String(clientId ?? "").trim().match(/pub-\d+/);
-  return match ? match[0] : null;
-}
+const ADSENSE_PUBLISHER_ID = "pub-5681559774142917";
 
-function adsTxtBody(clientId, enabled) {
-  const pub = clientId ? publisherIdFromClient(clientId) : null;
-  if (enabled && pub) {
-    return `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`;
-  }
-  return `# Decide Football ads.txt template
-# Display ads are off unless NEXT_PUBLIC_ADS_ENABLED=true and
-# NEXT_PUBLIC_ADSENSE_CLIENT_ID is set at export time.
-# Do not invent a publisher ID. When configured, this file becomes:
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-`;
+function adsTxtBody() {
+  return `google.com, ${ADSENSE_PUBLISHER_ID}, DIRECT, f08c47fec0942fa0\n`;
 }
 
 function writeAdsTxt() {
-  const enabled = process.env.NEXT_PUBLIC_ADS_ENABLED === "true";
-  const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID ?? "";
-  writeFileSync(join(out, "ads.txt"), adsTxtBody(client, enabled));
+  writeFileSync(join(out, "ads.txt"), adsTxtBody());
 }
 
 if (!existsSync(join(out, "index.html"))) {
@@ -389,6 +375,13 @@ function validateJsonLd() {
   for (const file of walkHtml(out)) {
     let html = readFileSync(file, "utf8");
     const rel = file.slice(out.length + 1);
+    if (
+      rel !== "404.html" &&
+      (!html.includes("adsbygoogle.js?client=ca-pub-5681559774142917") ||
+        !html.includes('name="google-adsense-account" content="ca-pub-5681559774142917"'))
+    ) {
+      fail(`${rel} is missing the AdSense head script or google-adsense-account meta`);
+    }
     if (rel === "404/index.html" || rel === "404.html") {
       // Next injects noindex on the not-found document. That file is not a
       // real page. Replace it so the only noindex left is the waiver redirect.

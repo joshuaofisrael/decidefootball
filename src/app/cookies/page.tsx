@@ -5,7 +5,7 @@ import { SITE_CONTACT_EMAIL, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
 export const metadata = pageMetadata({
   path: "/cookies/",
   title: "Cookie notice",
-  description: `How ${SITE_NAME} uses cookieless Cloudflare Web Analytics. Ads are off, so no AdSense cookies are set.`,
+  description: `How ${SITE_NAME} uses cookieless Cloudflare Web Analytics. Google AdSense is set up and may set ad cookies.`,
   indexation: { kind: "editorial" },
 });
 
@@ -30,7 +30,9 @@ export default function CookiesPage() {
       </p>
       <h2>Advertising</h2>
       <p>
-        Display ads are off. The Site does not load AdSense and does not set AdSense cookies.
+        The Site loads the Google AdSense script. Google and its partners may set cookies to serve
+        and measure ads. No ad units are shown yet. EU, UK, and Swiss visitors see a consent choice
+        from Google. See the <a href="/privacy/">Privacy Policy</a> for opt-out links.
       </p>
       <h2>Local storage</h2>
       <p>The browser on this device may store these first-party values:</p>

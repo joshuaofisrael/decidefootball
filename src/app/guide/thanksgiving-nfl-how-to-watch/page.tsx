@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -109,6 +110,7 @@ export default function ThanksgivingWatchPage() {
       />
       <p className="kicker">How to watch · Week 12 · 2026</p>
       <h1>{THANKSGIVING_WATCH_H1}</h1>
+      <PhotoFigure photo="hero" />
       <p>{THANKSGIVING_ANSWER}</p>
       <p>
         Matchups, Eastern kickoffs, and the national channel or stream are from the May 14, 2026

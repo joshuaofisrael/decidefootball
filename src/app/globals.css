@@ -984,3 +984,25 @@ th {
   height: 1px;
   overflow: hidden;
 }
+
+/* Photographic section images */
+.photo-figure {
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+}
+.photo-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  background: #10231a;
+}
+.photo-figure.photo-hero {
+  margin-top: 1rem;
+}
+.photo-figure.photo-hero img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  max-height: 460px;
+}

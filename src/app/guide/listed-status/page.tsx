@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -59,6 +60,7 @@ export default function ListedStatusGuidePage() {
       <JsonLd data={faqPageJsonLd([...LISTED_STATUS_FAQS])} />
       <p className="kicker">NFL injury report</p>
       <h1>{LISTED_STATUS_H1}</h1>
+      <PhotoFigure photo="helmets" />
       <p>
         On the NFL game status report, <strong>Questionable</strong> means it is uncertain
         whether the player will play, <strong>Doubtful</strong> means it is unlikely the player

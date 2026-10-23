@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
@@ -70,6 +71,7 @@ export default function AddDropGuidePage() {
       <JsonLd data={faqPageJsonLd([...guideFaqs])} />
       <p className="kicker">Reading the pair</p>
       <h1>How to read an add/drop card</h1>
+      <PhotoFigure photo="yardline" />
       <p>
         A {SITE_NAME} add/drop card is a roster-churn comparison. It asks which name to keep by
         adding one over the name you would drop. It is not a start/sit lineup call, and it is

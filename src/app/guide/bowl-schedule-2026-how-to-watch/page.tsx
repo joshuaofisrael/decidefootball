@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -111,6 +112,7 @@ export default function BowlWatchPage() {
       />
       <p className="kicker">How to watch · 2026-27</p>
       <h1>{BOWL_WATCH_H1}</h1>
+      <PhotoFigure photo="bowl" />
       <p>{BOWL_ANSWER}</p>
       <p>
         Dates, cities, and networks below are copied from the releases linked in the notes. Where a

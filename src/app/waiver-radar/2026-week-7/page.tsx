@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
@@ -78,6 +79,7 @@ export default function Week7WaiverPage() {
         Waiver radar · Week {note.week} · {note.season}
       </p>
       <h1>{note.h1}</h1>
+      <PhotoFigure photo="yardline" />
       <p>{note.answer}</p>
       <p>
         People search for this note as a waiver wire list. The address stays under{" "}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -106,6 +107,7 @@ export default function Week6StartSitPage() {
         Start/sit · Week {note.week} · {note.season}
       </p>
       <h1>{note.h1}</h1>
+      <PhotoFigure photo="turf" />
       <p>{note.answer}</p>
       <p>
         People search for who to start in Week 6. The address stays under{" "}

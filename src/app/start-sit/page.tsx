@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { PlayerAvatar } from "@/components/PlayerAvatar";
@@ -30,6 +31,7 @@ export default function StartSitIndexPage() {
       />
       <FixtureBanner />
       <h1>Start or sit</h1>
+      <PhotoFigure photo="turf" />
       <p>
         The dated editorial note for the current week is{" "}
         <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, updated 2026-10-19.

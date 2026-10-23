@@ -30,15 +30,13 @@ export function publisherIdFromClient(clientId: string): string | null {
   return match ? match[0] : null;
 }
 
-export function adsTxtBody(clientId: string | null, enabled: boolean): string {
-  const pub = clientId ? publisherIdFromClient(clientId) : null;
-  if (enabled && pub) {
-    return `google.com, ${pub}, DIRECT, f08c47fec0942fa0\n`;
-  }
-  return `# Decide Football ads.txt template
-# Display ads are off unless NEXT_PUBLIC_ADS_ENABLED=true and
-# NEXT_PUBLIC_ADSENSE_CLIENT_ID is set at export time.
-# Do not invent a publisher ID. When configured, this file becomes:
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-`;
+/** Publisher account used for the AdSense site-verification script and meta tag. */
+export const ADSENSE_PUBLISHER_CLIENT = "ca-pub-5681559774142917";
+export const ADSENSE_PUBLISHER_ID = "pub-5681559774142917";
+
+export const ADSENSE_HEAD_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_CLIENT}`;
+
+/** ads.txt always declares the publisher. Ad units still render only behind the ads gate. */
+export function adsTxtBody(): string {
+  return `google.com, ${ADSENSE_PUBLISHER_ID}, DIRECT, f08c47fec0942fa0\n`;
 }

@@ -84,8 +84,8 @@ Numbers on these pages are sample data for demonstrating the tool. They are not 
 ## Legal
 
 - [Terms of Use](https://decidefootball.com/terms/): Joshua Israel Ventures LLC is the contracting party. Content is general information only, not financial, gambling, legal, or professional advice. Governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida. Decide Football is a brand owned by Joshua Israel Ventures LLC.
-- [Privacy Policy](https://decidefootball.com/privacy/): Joshua Israel Ventures LLC is the data controller. Cloudflare Web Analytics is cookieless. Ads are off, so the site sets no AdSense cookies. Contact joshuaofisrael@gmail.com.
+- [Privacy Policy](https://decidefootball.com/privacy/): Joshua Israel Ventures LLC is the data controller. Cloudflare Web Analytics is cookieless. Google AdSense is set up; Google and partners may use ad cookies, with a consent choice for EU, UK and Swiss visitors. Contact joshuaofisrael@gmail.com.
 - [Independent disclaimer](https://decidefootball.com/disclaimer/): Accuracy, no professional relationship, model estimates are not official data, and not gambling advice. The site currently has no paid links or ads. Any added later will be disclosed.
 - [Contact](https://decidefootball.com/contact/): Contact form (FormSubmit) or email joshuaofisrael@gmail.com. Operator Joshua Israel Ventures LLC.
 - [Thanks for your message](https://decidefootball.com/contact/thanks/): Confirmation that a contact-form message was sent to Joshua Israel Ventures LLC, the operator of Decide Football.
-- [Cookie notice](https://decidefootball.com/cookies/): Cookieless Cloudflare Web Analytics. Ads are off, so no AdSense cookies are set. Local storage holds consent, the watchlist, and Sunday mode on this device.
+- [Cookie notice](https://decidefootball.com/cookies/): Cookieless Cloudflare Web Analytics. Google AdSense may set ad cookies. Local storage holds consent, the watchlist, and Sunday mode on this device.

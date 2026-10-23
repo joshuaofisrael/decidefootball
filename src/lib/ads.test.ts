@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import {
+  ADSENSE_HEAD_SRC,
+  ADSENSE_PUBLISHER_CLIENT,
+  ADSENSE_PUBLISHER_ID,
   adsConfigured,
   adsEnabledAtBuild,
   adsTxtBody,
@@ -90,20 +93,22 @@ describe("publisherIdFromClient", () => {
 });
 
 describe("adsTxtBody", () => {
-  it("writes a comment template when ads are off", () => {
-    const body = adsTxtBody("ca-pub-1234567890123456", false);
-    assert.match(body, /^#/);
-    assert.doesNotMatch(body, /^google\.com,/);
+  it("always declares the Joshua Israel Ventures AdSense publisher", () => {
+    assert.equal(adsTxtBody(), "google.com, pub-5681559774142917, DIRECT, f08c47fec0942fa0\n");
+    assert.equal(publisherIdFromClient(ADSENSE_PUBLISHER_CLIENT), ADSENSE_PUBLISHER_ID);
   });
 
-  it("writes the AdSense line only when enabled and a pub id exists", () => {
-    const body = adsTxtBody("ca-pub-1234567890123456", true);
-    assert.equal(body, "google.com, pub-1234567890123456, DIRECT, f08c47fec0942fa0\n");
+  it("builds the head script url from the publisher client id", () => {
+    assert.equal(
+      ADSENSE_HEAD_SRC,
+      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917",
+    );
   });
 
-  it("does not invent a google.com line when the client id is not a pub id", () => {
-    const body = adsTxtBody("not-a-publisher", true);
-    assert.match(body, /^#/);
-    assert.doesNotMatch(body, /^google\.com,/);
+  it("keeps ad units behind the gate even though the head script is always on", () => {
+    withEnv(
+      { NEXT_PUBLIC_ADS_ENABLED: undefined, NEXT_PUBLIC_ADSENSE_CLIENT_ID: undefined },
+      () => assert.equal(adsConfigured(), false),
+    );
   });
 });

@@ -44,11 +44,6 @@ export const metadata = {
     description,
     indexation: { kind: "editorial" },
   }),
-  twitter: {
-    card: "summary" as const,
-    title,
-    description,
-  },
 };
 
 function Cited({ source }: { source: string }) {

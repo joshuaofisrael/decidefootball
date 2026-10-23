@@ -26,11 +26,6 @@ export const metadata = {
     description,
     indexation: { kind: "editorial" },
   }),
-  twitter: {
-    card: "summary" as const,
-    title,
-    description,
-  },
 };
 
 const POSITIONS: StartSitPosition[] = ["QB", "RB", "WR", "TE"];
@@ -117,6 +112,12 @@ export default function Week6StartSitPage() {
         cited facts.
       </p>
       <p>{`Last updated: ${NOTE_DATE.lastModified}.`}</p>
+      <p>
+        How this desk reads floor, mean, and ceiling is the{" "}
+        <Link href="/guide/start-sit/">start/sit guide</Link>. How the sample estimates are built
+        is the <Link href="/methodology/">methodology</Link>, version v0. This note does not print
+        those estimates.
+      </p>
 
       <h2>Week 6 window</h2>
       <p>

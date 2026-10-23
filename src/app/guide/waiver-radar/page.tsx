@@ -26,6 +26,9 @@ import { SITE_NAME } from "@/lib/site";
 const title = WAIVER_RADAR_TITLE;
 const description = WAIVER_RADAR_DESCRIPTION;
 
+/** Sitemap lastmod reads this literal. Same date the sitemap already published. */
+const PAGE_UPDATED = { lastModified: "2026-10-22" } as const;
+
 export const metadata = {
   ...pageMetadata({
     path: WAIVER_RADAR_PATH,
@@ -33,11 +36,6 @@ export const metadata = {
     description,
     indexation: { kind: "editorial" },
   }),
-  twitter: {
-    card: "summary" as const,
-    title,
-    description,
-  },
 };
 
 export default function WaiverRadarGuidePage() {
@@ -65,6 +63,7 @@ export default function WaiverRadarGuidePage() {
       <p className="kicker">Fantasy waivers</p>
       <h1>{WAIVER_RADAR_H1}</h1>
       <PhotoFigure photo="yardline" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>{WAIVER_RADAR_DIRECT_ANSWER}</p>
 
       <div className="table-wrap">

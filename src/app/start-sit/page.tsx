@@ -8,7 +8,13 @@ import { certaintyCopy } from "@/lib/certainty";
 import { startLabel } from "@/lib/recommendations";
 import { pageMetadata } from "@/lib/seo";
 
-/** Sitemap lastmod reads this literal. */
+/**
+ * Sitemap lastmod reads the first date literal. Prose last changed when the
+ * Week 7 note was linked, which is later than the Week 6 date below.
+ */
+const PAGE_UPDATED = { lastModified: "2026-10-18" } as const;
+
+/** Week 6 note date. Also a lastModified literal, so it must stay below PAGE_UPDATED. */
 const HUB_UPDATED = { lastModified: "2026-10-15" } as const;
 
 export const metadata = pageMetadata({
@@ -32,6 +38,7 @@ export default function StartSitIndexPage() {
       <FixtureBanner />
       <h1>Start or sit</h1>
       <PhotoFigure photo="turf" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         The dated editorial note for the current week is{" "}
         <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, updated 2026-10-19.

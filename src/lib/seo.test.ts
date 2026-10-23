@@ -209,6 +209,19 @@ describe("pageMetadata canonicals", () => {
     assert.equal(ogOf(about).siteName, "Decide Football");
     assert.equal(ogOf(about).locale, "en_US");
     assert.equal(ogOf(about).type, "website");
+    const og = about.openGraph;
+    assert.ok(og && !Array.isArray(og));
+    const images = og && !Array.isArray(og) ? og.images : undefined;
+    const image = Array.isArray(images) ? images[0] : images;
+    assert.equal(
+      typeof image === "object" && image && "url" in image ? image.url : image,
+      "/images/hero-stadium-dusk.webp",
+    );
+    const twitter = about.twitter;
+    assert.ok(twitter && !Array.isArray(twitter));
+    if (twitter && !Array.isArray(twitter)) {
+      assert.equal(twitter.card, "summary_large_image");
+    }
 
     const hub = pageMetadata({
       path: "/guide/",

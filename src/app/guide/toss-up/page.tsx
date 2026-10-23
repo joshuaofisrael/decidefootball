@@ -6,6 +6,9 @@ import { TossUpTool } from "@/components/TossUpTool";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
+/** Sitemap lastmod reads this literal. Same date the sitemap already published. */
+const PAGE_UPDATED = { lastModified: "2026-10-22" } as const;
+
 const title = "Toss-up tool — apply the 1.5-point mean-delta line";
 const description =
   "Type two fantasy-point means. Decide Football applies the same 1.5-point toss-up line used on start/sit and add/drop. Floor and ceiling are for weighing only. Not a player search, not official projections, and not gambling advice.";
@@ -68,6 +71,7 @@ export default function TossUpGuidePage() {
       <p className="kicker">Mean delta</p>
       <h1>Apply the 1.5-point toss-up line</h1>
       <PhotoFigure photo="turf" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         This page is a calculator for one rule on the {SITE_NAME} desk. You type two means. The
         desk subtracts them, rounds to one decimal, and leans only when the absolute gap is 1.5

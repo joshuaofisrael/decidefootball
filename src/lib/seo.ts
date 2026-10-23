@@ -135,8 +135,20 @@ export interface PageMetadataArgs {
 }
 
 /**
+ * Share image already used on the homepage. Empty stadium, no marks or logos.
+ * 1280×720 is the file's real pixel size.
+ */
+const SOCIAL_IMAGE = {
+  url: "/images/hero-stadium-dusk.webp",
+  width: 1280,
+  height: 720,
+  alt: "Empty football stadium at dusk with floodlights glowing over the turf and yard lines",
+} as const;
+
+/**
  * Per-page metadata. Repeats layout openGraph siteName, locale, and type
- * because a page openGraph object replaces the layout object.
+ * because a page openGraph object replaces the layout object. Twitter is set
+ * here so a page does not have to repeat the card.
  */
 export function pageMetadata(args: PageMetadataArgs): Metadata {
   const path = canonicalPath(args.path);
@@ -153,6 +165,13 @@ export function pageMetadata(args: PageMetadataArgs): Metadata {
       url: path,
       title: args.title,
       ...(description !== undefined ? { description } : {}),
+      images: [SOCIAL_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: args.title,
+      ...(description !== undefined ? { description } : {}),
+      images: [SOCIAL_IMAGE.url],
     },
   };
 }

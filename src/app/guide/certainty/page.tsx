@@ -6,6 +6,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
+/** Sitemap lastmod reads this literal. Same date the sitemap already published. */
+const PAGE_UPDATED = { lastModified: "2026-10-22" } as const;
+
 const title = "Certainty tool — grade how sure the lean is";
 const description =
   "Type two fantasy-point means and the desk flags. Decide Football applies the same certainty grade the start/sit card prints: thin, lean, clear, or strong. Not a win probability, not a player search, not official projections, and not gambling advice.";
@@ -68,6 +71,7 @@ export default function CertaintyGuidePage() {
       <p className="kicker">Desk grade</p>
       <h1>Grade how sure the lean is</h1>
       <PhotoFigure photo="helmets" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         This page is a calculator for the certainty grade on the {SITE_NAME} desk. You type two
         means, and you can mark the flags the card already uses. The desk grades the pair thin,

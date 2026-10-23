@@ -22,6 +22,9 @@ import { SITE_NAME } from "@/lib/site";
 const title = LISTED_STATUS_TITLE;
 const description = LISTED_STATUS_DESCRIPTION;
 
+/** Sitemap lastmod reads this literal. Same date the sitemap already published. */
+const PAGE_UPDATED = { lastModified: "2026-10-22" } as const;
+
 export const metadata = {
   ...pageMetadata({
     path: LISTED_STATUS_PATH,
@@ -29,11 +32,6 @@ export const metadata = {
     description,
     indexation: { kind: "editorial" },
   }),
-  twitter: {
-    card: "summary" as const,
-    title,
-    description,
-  },
 };
 
 export default function ListedStatusGuidePage() {
@@ -61,6 +59,7 @@ export default function ListedStatusGuidePage() {
       <p className="kicker">NFL injury report</p>
       <h1>{LISTED_STATUS_H1}</h1>
       <PhotoFigure photo="helmets" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         On the NFL game status report, <strong>Questionable</strong> means it is uncertain
         whether the player will play, <strong>Doubtful</strong> means it is unlikely the player

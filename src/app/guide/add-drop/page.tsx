@@ -5,6 +5,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
+/** Sitemap lastmod reads this literal. Same date the sitemap already published. */
+const PAGE_UPDATED = { lastModified: "2026-10-22" } as const;
+
 const title = "How to read an add/drop card — mean, floor, ceiling, mean delta";
 const description =
   "How to read a Decide Football add/drop card: listed status first, mean as the ranking number, floor and ceiling as a model range, and the mean delta against the same 1.5-point toss-up as start/sit. A roster-churn comparison, not a lineup call and not a free-agent claim.";
@@ -72,6 +75,7 @@ export default function AddDropGuidePage() {
       <p className="kicker">Reading the pair</p>
       <h1>How to read an add/drop card</h1>
       <PhotoFigure photo="yardline" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         A {SITE_NAME} add/drop card is a roster-churn comparison. It asks which name to keep by
         adding one over the name you would drop. It is not a start/sit lineup call, and it is

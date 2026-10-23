@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
@@ -65,6 +66,7 @@ export default function RankingsGuidePage() {
       <JsonLd data={faqPageJsonLd([...guideFaqs])} />
       <p className="kicker">Reading the order</p>
       <h1>How to read a weekly rankings board</h1>
+      <PhotoFigure photo="helmets" />
       <p>
         A {SITE_NAME} weekly rankings board is one position, stacked. The rows sort on the mean.
         Listed status, floor, and ceiling sit on the same row. The rank is that order. It is not

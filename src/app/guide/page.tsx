@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, itemListJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
@@ -96,6 +97,7 @@ export default function GuideHubPage() {
       />
       <p className="kicker">Reading the desk</p>
       <h1>How to read the decision cards</h1>
+      <PhotoFigure photo="helmets" />
       <p>
         This page is the hub for how to read a {SITE_NAME} decision card. It is not a news blog,
         not a game recap, and not a running wire.

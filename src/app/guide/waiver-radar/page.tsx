@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -63,6 +64,7 @@ export default function WaiverRadarGuidePage() {
       <JsonLd data={faqPageJsonLd([...WAIVER_RADAR_FAQS])} />
       <p className="kicker">Fantasy waivers</p>
       <h1>{WAIVER_RADAR_H1}</h1>
+      <PhotoFigure photo="yardline" />
       <p>{WAIVER_RADAR_DIRECT_ANSWER}</p>
 
       <div className="table-wrap">

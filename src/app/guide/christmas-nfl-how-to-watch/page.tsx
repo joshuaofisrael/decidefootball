@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -110,6 +111,7 @@ export default function ChristmasWatchPage() {
       />
       <p className="kicker">How to watch · Week 16 · 2026</p>
       <h1>{CHRISTMAS_WATCH_H1}</h1>
+      <PhotoFigure photo="winter" />
       <p>{CHRISTMAS_ANSWER}</p>
       <p>
         Matchups, Eastern kickoffs, and the national channel or stream are from the May 14, 2026

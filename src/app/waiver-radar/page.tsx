@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FixtureBanner } from "@/components/FixtureBanner";
 import { KillSwitchNotice } from "@/components/KillSwitchNotice";
@@ -37,6 +38,7 @@ export default function WaiverRadarPage() {
       <FixtureBanner />
       <p className="kicker">Radar · {formatLabel(format)}</p>
       <h1>Waiver radar, week {weekNum}</h1>
+      <PhotoFigure photo="yardline" />
       <p>
         The dated editorial note for the current week is{" "}
         <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link>. The previous

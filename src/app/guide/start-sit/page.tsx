@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -60,6 +61,7 @@ export default function StartSitGuidePage() {
       <JsonLd data={faqPageJsonLd([...START_SIT_FAQS])} />
       <p className="kicker">Fantasy lineups</p>
       <h1>{START_SIT_H1}</h1>
+      <PhotoFigure photo="turf" />
       <p>{START_SIT_DIRECT_ANSWER}</p>
 
       <div className="table-wrap">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { TossUpTool } from "@/components/TossUpTool";
@@ -66,6 +67,7 @@ export default function TossUpGuidePage() {
       <JsonLd data={faqPageJsonLd([...guideFaqs])} />
       <p className="kicker">Mean delta</p>
       <h1>Apply the 1.5-point toss-up line</h1>
+      <PhotoFigure photo="turf" />
       <p>
         This page is a calculator for one rule on the {SITE_NAME} desk. You type two means. The
         desk subtracts them, rounds to one decimal, and leans only when the absolute gap is 1.5

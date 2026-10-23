@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CertaintyMeter } from "@/components/CertaintyMeter";
 import { FixtureBanner } from "@/components/FixtureBanner";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { Timestamps } from "@/components/Timestamps";
 import { WatchlistHome } from "@/components/WatchlistHome";
@@ -48,6 +49,7 @@ export default function HomePage() {
           Decide Football is a roster desk. Start or sit. Is he up. Who is worth a claim. The
           numbers are computed. The status is listed. We do not invent a return date.
         </p>
+        <PhotoFigure photo="hero" priority />
       </section>
       <Timestamps lastVerifiedAt={FIXTURE_VERIFIED_AT} renderedAt={renderedAt} />
 

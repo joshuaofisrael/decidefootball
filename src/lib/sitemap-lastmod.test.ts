@@ -151,7 +151,7 @@ describe("sitemap lastmod", () => {
     assert.equal(lastmodForPath("/privacy/"), "2026-10-18");
     assert.equal(lastmodForPath("/disclaimer/"), "2026-10-08");
     assert.equal(lastmodForPath("/contact/"), "2026-10-18");
-    assert.equal(lastmodForPath("/"), "2026-10-11");
+    assert.equal(lastmodForPath("/"), "2026-10-23");
     assert.equal(lastmodForPath("/about/"), "2026-10-11");
     assert.equal(lastmodForPath("/guide/start-sit/"), "2026-10-15");
     assert.equal(lastmodForPath("/waiver-radar/2026-week-7/"), "2026-10-18");

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhotoFigure } from "@/components/PhotoFigure";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CertaintyTool } from "@/components/CertaintyTool";
 import { JsonLd } from "@/components/JsonLd";
@@ -66,6 +67,7 @@ export default function CertaintyGuidePage() {
       <JsonLd data={faqPageJsonLd([...guideFaqs])} />
       <p className="kicker">Desk grade</p>
       <h1>Grade how sure the lean is</h1>
+      <PhotoFigure photo="helmets" />
       <p>
         This page is a calculator for the certainty grade on the {SITE_NAME} desk. You type two
         means, and you can mark the flags the card already uses. The desk grades the pair thin,

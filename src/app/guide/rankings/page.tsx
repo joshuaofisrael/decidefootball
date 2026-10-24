@@ -5,6 +5,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, faqPageJsonLd, organizationJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
+/** Sitemap lastmod reads this literal. */
+const PAGE_UPDATED = { lastModified: "2026-10-23" } as const;
+
 const title = "How to read weekly positional rankings — mean, floor, ceiling, status";
 const description =
   "How to read a Decide Football weekly positional rankings board: one position ordered by mean, with listed status, floor, and ceiling on the row. A rank is not a start/sit verdict, not official, and not a free-agent claim.";
@@ -67,6 +70,7 @@ export default function RankingsGuidePage() {
       <p className="kicker">Reading the order</p>
       <h1>How to read a weekly rankings board</h1>
       <PhotoFigure photo="helmets" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         A {SITE_NAME} weekly rankings board is one position, stacked. The rows sort on the mean.
         Listed status, floor, and ceiling sit on the same row. The rank is that order. It is not
@@ -171,12 +175,10 @@ export default function RankingsGuidePage() {
 
       <h2>Where the sample boards are</h2>
       <p>
-        The <Link href="/rankings/">rankings desk</Link> is on the site so the product can be used
-        and reviewed. Each position also has a week board. Those URLs use sample data. They stay
-        out of search until licensed GREEN sports data is in place. This page does not set a date
-        for that, and it does not promise those URLs will enter a search index. The fixture
-        boards live on the rankings path and on week paths. This guide lives under /guide/, and
-        it does not put those boards into search.
+        The <Link href="/rankings/">rankings desk</Link> and each position&apos;s week board are
+        on the site so the product can be used and reviewed. Those URLs use sample data for
+        demonstrating the tool. They are indexable and labeled as sample data. They are not live
+        licensed NFL stats. This guide lives under /guide/ and is separate from those boards.
       </p>
       <p>
         The public description of the board is this guide, the{" "}

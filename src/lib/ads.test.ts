@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 import {
   ADSENSE_HEAD_SRC,
@@ -110,5 +111,16 @@ describe("adsTxtBody", () => {
       { NEXT_PUBLIC_ADS_ENABLED: undefined, NEXT_PUBLIC_ADSENSE_CLIENT_ID: undefined },
       () => assert.equal(adsConfigured(), false),
     );
+  });
+});
+
+describe("advertising disclosure", () => {
+  it("keeps the rankings guide aligned with indexable sample boards", () => {
+    const privacy = readFileSync("src/app/privacy/page.tsx", "utf8");
+    const rankings = readFileSync("src/app/guide/rankings/page.tsx", "utf8");
+    assert.match(privacy, /The Site loads the Google AdSense script/);
+    assert.match(privacy, /No ad units are shown yet/);
+    assert.equal(rankings.includes("out of search"), false);
+    assert.match(rankings, /They are indexable and labeled as sample data/);
   });
 });

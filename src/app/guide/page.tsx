@@ -7,7 +7,10 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Reading guides — how to read Decide Football decision cards";
 const description =
-  "Hub for how to read a Decide Football decision card: who to start using floor, mean, and ceiling, NFL injury designations before any number, how waivers work, the weekly positional rankings board, and the add/drop comparison, plus a toss-up tool for the 1.5-point mean delta and a certainty tool for the desk grade. Not a news blog, not NFL-affiliated, and not gambling advice.";
+  "How to read Decide Football cards: floor, mean, ceiling, injury labels, waivers, rankings, and add/drop. Not NFL-affiliated. Not gambling advice.";
+
+/** Sitemap lastmod reads this literal. */
+const PAGE_UPDATED = { lastModified: "2026-10-23" } as const;
 
 const guides = [
   {
@@ -98,6 +101,7 @@ export default function GuideHubPage() {
       <p className="kicker">Reading the desk</p>
       <h1>How to read the decision cards</h1>
       <PhotoFigure photo="helmets" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         This page is the hub for how to read a {SITE_NAME} decision card. It is not a news blog,
         not a game recap, and not a running wire.

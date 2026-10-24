@@ -26,6 +26,9 @@ import { nowIso } from "@/lib/timestamps";
 
 export const dynamicParams = false;
 
+/** Sitemap lastmod reads this literal. Same date the sitemap already published for these cards. */
+const PAIR_UPDATED = { lastModified: "2026-10-11" } as const;
+
 export function generateStaticParams() {
   return startSitStaticParams();
 }
@@ -90,6 +93,7 @@ export default async function StartSitPage({
         {resolved.left.displayName} or {resolved.right.displayName}
       </h1>
       <Timestamps lastVerifiedAt={stamp.lastVerifiedAt} renderedAt={renderedAt} />
+      <p className="stamp">{`Last updated: ${PAIR_UPDATED.lastModified}. Sample names have no official league report.`}</p>
 
       <KillSwitchNotice>
         <article className="card rec-hero">

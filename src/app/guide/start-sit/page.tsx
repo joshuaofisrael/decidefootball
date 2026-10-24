@@ -22,7 +22,13 @@ import { SITE_NAME } from "@/lib/site";
 const title = START_SIT_TITLE;
 const description = START_SIT_DESCRIPTION;
 
-/** Sitemap lastmod reads this literal. */
+/**
+ * Sitemap lastmod reads the first date literal. Prose last changed when the
+ * Week 7 note was linked, which is later than the Week 6 date below.
+ */
+const PAGE_UPDATED = { lastModified: "2026-10-18" } as const;
+
+/** Week 6 note date. Also a lastModified literal, so it must stay below PAGE_UPDATED. */
 const GUIDE_UPDATED = { lastModified: "2026-10-15" } as const;
 
 export const metadata = {
@@ -32,11 +38,6 @@ export const metadata = {
     description,
     indexation: { kind: "editorial" },
   }),
-  twitter: {
-    card: "summary" as const,
-    title,
-    description,
-  },
 };
 
 export default function StartSitGuidePage() {
@@ -62,6 +63,7 @@ export default function StartSitGuidePage() {
       <p className="kicker">Fantasy lineups</p>
       <h1>{START_SIT_H1}</h1>
       <PhotoFigure photo="turf" />
+      <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>{START_SIT_DIRECT_ANSWER}</p>
 
       <div className="table-wrap">

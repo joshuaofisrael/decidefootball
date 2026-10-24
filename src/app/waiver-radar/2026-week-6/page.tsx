@@ -24,11 +24,6 @@ export const metadata = {
     description,
     indexation: { kind: "editorial" },
   }),
-  twitter: {
-    card: "summary" as const,
-    title,
-    description,
-  },
 };
 
 const POSITIONS: WaiverPosition[] = ["QB", "RB", "WR", "TE"];

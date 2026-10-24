@@ -44,11 +44,6 @@ export const metadata = {
     description,
     indexation: { kind: "editorial" },
   }),
-  twitter: {
-    card: "summary" as const,
-    title,
-    description,
-  },
 };
 
 function Cited({ source }: { source: string }) {
@@ -120,7 +115,7 @@ export default function CfpWatchPage() {
         The rest of the announced 2026-27 bowls are on the{" "}
         <Link href="/guide/bowl-schedule-2026-how-to-watch/">2026-27 bowl schedule</Link>.
       </p>
-      <p>{`Last checked: ${NOTE_DATE.lastModified}.`}</p>
+      <p>{`Last updated: ${NOTE_DATE.lastModified}. Last checked: ${NOTE_DATE.lastModified}.`}</p>
 
       <h2>Dates before the games</h2>
       <p>

@@ -1,10 +1,12 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { LegalNotice } from "@/components/LegalNotice";
+import { FLORIDA_GOVERNING_LAW, SITE_LEGAL_NAME } from "@/lib/legal";
 import { pageMetadata } from "@/lib/seo";
-import { FLORIDA_GOVERNING_LAW, SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_NAME } from "@/lib/site";
 
 const title = "Independent disclaimer";
 const description =
-  "Decide Football is a brand of Joshua Israel Ventures LLC. Model estimates are not official data and not gambling advice. The site currently has no paid links or ads.";
+  "Decide Football is a trade name of Joshua Israel Ventures LLC. Model estimates are not official data and not gambling advice. The site loads the Google AdSense script. No ad units are shown yet.";
 
 export const metadata = pageMetadata({
   path: "/disclaimer/",
@@ -23,6 +25,7 @@ export default function DisclaimerPage() {
         ]}
       />
       <h1>Independent disclaimer</h1>
+      <LegalNotice />
       <p>
         {SITE_NAME} ({SITE_HOST}) is a brand owned and operated by {SITE_LEGAL_NAME}. It is not
         affiliated with, endorsed by, or sponsored by the National Football League (NFL), its
@@ -58,8 +61,8 @@ export default function DisclaimerPage() {
 
       <h2>Advertising and affiliate disclosure</h2>
       <p>
-        The Site currently has no paid links or ads. Any paid links or ads added later will be
-        disclosed.
+        The Site loads the Google AdSense script. No ad units are shown yet. Any paid links or ads
+        added later will be disclosed.
       </p>
 
       <h2>Trademarks</h2>

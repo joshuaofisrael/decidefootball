@@ -1,6 +1,8 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { LegalNotice } from "@/components/LegalNotice";
+import { FLORIDA_GOVERNING_LAW, SITE_LEGAL_NAME } from "@/lib/legal";
 import { pageMetadata } from "@/lib/seo";
-import { FLORIDA_GOVERNING_LAW, SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_NAME } from "@/lib/site";
 
 const title = "Privacy Policy";
 const description =
@@ -25,6 +27,7 @@ export default function PrivacyPage() {
         ]}
       />
       <h1>Privacy Policy</h1>
+      <LegalNotice />
       <p>
         {`${SITE_LEGAL_NAME} is the data controller for the ${SITE_NAME} website at ${SITE_HOST}. ${SITE_NAME} is a brand of ${SITE_LEGAL_NAME}.`}
       </p>

@@ -4,7 +4,8 @@ import { join, relative } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 import { INDEPENDENT_MICROCOPY } from "./compliance";
-import { BRAND_SENTENCE, COPYRIGHT_LINE, FLORIDA_GOVERNING_LAW, OPERATOR_VISIBLE_LINE, SITE_CONTACT_EMAIL } from "./site";
+import { FLORIDA_GOVERNING_LAW, LEGAL_COPYRIGHT_LINE } from "./legal";
+import { SITE_CONTACT_EMAIL } from "./site";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const SELF = fileURLToPath(import.meta.url);
@@ -29,19 +30,49 @@ describe("trademark guard", () => {
     }
     assert.match(INDEPENDENT_MICROCOPY, /not affiliated with, endorsed by, or sponsored by/);
     assert.match(INDEPENDENT_MICROCOPY, /trademarks belong to their respective owners/);
-    assert.equal(OPERATOR_VISIBLE_LINE, "Operated by Joshua Israel Ventures LLC");
-    assert.equal(
-      COPYRIGHT_LINE,
-      "© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is owned and operated by Joshua Israel Ventures LLC.",
-    );
-    assert.equal(BRAND_SENTENCE, "Decide Football is a brand of Joshua Israel Ventures LLC.");
     assert.equal(SITE_CONTACT_EMAIL, "joshuaofisrael@gmail.com");
-    assert.equal(BRAND_SENTENCE.toLowerCase().includes("dba"), false);
+    assert.equal(
+      LEGAL_COPYRIGHT_LINE,
+      "© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is a trade name of Joshua Israel Ventures LLC, a Florida limited liability company.",
+    );
+    assert.equal(LEGAL_COPYRIGHT_LINE.toLowerCase().includes("dba"), false);
     assert.equal(
       FLORIDA_GOVERNING_LAW,
       "governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida",
     );
     assert.equal(/county|michigan/i.test(FLORIDA_GOVERNING_LAW), false);
+  });
+
+  it("keeps the legal name and copyright line off non-legal pages and the sitewide footer", () => {
+    const footer = readFileSync(join(ROOT, "src/components/Footer.tsx"), "utf8");
+    assert.equal(footer.includes("Joshua Israel"), false);
+    assert.equal(footer.includes("All rights reserved"), false);
+    assert.equal(footer.includes("Florida"), false);
+
+    const legalPages = new Set([
+      "src/app/terms/page.tsx",
+      "src/app/privacy/page.tsx",
+      "src/app/disclaimer/page.tsx",
+      "src/app/cookies/page.tsx",
+    ]);
+    const pages = walk(join(ROOT, "src/app")).filter((file) => file.endsWith("page.tsx") || file.endsWith("layout.tsx"));
+    for (const file of pages) {
+      const rel = relative(ROOT, file);
+      const text = readFileSync(file, "utf8");
+      if (legalPages.has(rel)) {
+        assert.equal(text.includes("LegalNotice"), true, rel);
+        continue;
+      }
+      assert.equal(text.includes("Joshua Israel"), false, rel);
+      assert.equal(text.includes("All rights reserved"), false, rel);
+      assert.equal(text.includes("FLORIDA_GOVERNING_LAW"), false, rel);
+    }
+
+    const site = readFileSync(join(ROOT, "src/lib/site.ts"), "utf8");
+    const seo = readFileSync(join(ROOT, "src/lib/seo.ts"), "utf8");
+    assert.equal(site.includes("Joshua Israel"), false);
+    assert.equal(seo.includes("Joshua Israel"), false);
+    assert.equal(seo.includes("legalName"), false);
   });
 
   it("does not use NFL event marks such as Super Bowl or Pro Bowl", () => {

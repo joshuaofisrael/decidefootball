@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { decideIndexation, robotsMeta, type DecideIndexationArgs } from "./indexation";
-import { absoluteUrl, getSiteUrl, SITE_LEGAL_NAME, SITE_NAME } from "./site";
+import { absoluteUrl, getSiteUrl, SITE_NAME } from "./site";
 
 const ORGANIZATION_ID = `${absoluteUrl("/")}#organization`;
 
-/** Publisher is the LLC. Decide Football is its brand, not a separate business. */
+/**
+ * Public publisher name is Decide Football.
+ * The legal entity is named on legal pages only, because this object is on every page.
+ */
 export function publisherJsonLd() {
   return {
     "@type": "Organization" as const,
     "@id": ORGANIZATION_ID,
-    name: SITE_LEGAL_NAME,
-    legalName: SITE_LEGAL_NAME,
+    name: SITE_NAME,
     url: absoluteUrl("/"),
     brand: {
       "@type": "Brand" as const,

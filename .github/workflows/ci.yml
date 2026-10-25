@@ -150,7 +150,8 @@ jobs:
           grep -q '^# Decide Football$' out/llms.txt
           grep -q '^## Guides$' out/llms.txt
           grep -q '^## About$' out/llms.txt
-          grep -q '^Operated by Joshua Israel Ventures LLC.$' out/llms.txt
+          ! grep -q 'Joshua Israel' out/llms.txt
+          ! grep -q 'All rights reserved' out/llms.txt
           grep -q 'Live player data is not licensed yet' out/llms.txt
           grep -q 'https://decidefootball.com/about/' out/llms.txt
           grep -q 'https://decidefootball.com/methodology/' out/llms.txt
@@ -169,7 +170,8 @@ jobs:
           grep -q 'https://decidefootball.com/guide/nfl-playoffs-2027-schedule-how-to-watch/' out/llms.txt
           grep -q 'not affiliated with the NFL' out/llms.txt
           grep -q 'sample/fixture' out/llms.txt
-          grep -q 'Decide Football is a brand of Joshua Israel Ventures LLC.' out/llms.txt
+          grep -q 'The site loads the Google AdSense script. No ad units are shown yet.' out/llms.txt
+          ! grep -q 'currently has no paid links or ads' out/llms.txt
           grep -q 'https://decidefootball.com/terms/' out/llms.txt
           grep -q 'https://decidefootball.com/privacy/' out/llms.txt
           grep -q 'https://decidefootball.com/disclaimer/' out/llms.txt
@@ -181,15 +183,19 @@ jobs:
           grep -q 'https://decidefootball.com/rankings/' out/llms.txt
           grep -q 'sample data for demonstrating the tool' out/llms.txt
           ! grep -q 'waiver-wire' out/llms.txt
-          grep -q '© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is owned and operated by Joshua Israel Ventures LLC.' out/about/index.html
-          grep -q 'Operated by Joshua Israel Ventures LLC' out/about/index.html
-          grep -q 'Decide Football is a brand of Joshua Israel Ventures LLC.' out/about/index.html
+          ! grep -q 'Joshua Israel' out/about/index.html
+          ! grep -q 'All rights reserved' out/about/index.html
+          ! grep -q 'Decide Football is a brand of Joshua Israel Ventures LLC.' out/about/index.html
           grep -q 'not affiliated with, endorsed by, or sponsored by the NFL, its member clubs, the NFL Players Association, ESPN, Yahoo, or Sleeper' out/about/index.html
           grep -q 'href="/terms/"' out/about/index.html
           grep -q 'href="/privacy/"' out/about/index.html
           grep -q 'href="/disclaimer/"' out/about/index.html
           grep -q 'href="/contact/"' out/about/index.html
           grep -q 'Joshua Israel Ventures LLC is the contracting party' out/terms/index.html
+          grep -q '© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is a trade name of Joshua Israel Ventures LLC, a Florida limited liability company.' out/terms/index.html
+          grep -q '© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is a trade name of Joshua Israel Ventures LLC, a Florida limited liability company.' out/privacy/index.html
+          grep -q '© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is a trade name of Joshua Israel Ventures LLC, a Florida limited liability company.' out/disclaimer/index.html
+          grep -q '© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is a trade name of Joshua Israel Ventures LLC, a Florida limited liability company.' out/cookies/index.html
           grep -q 'These Terms are governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida.' out/terms/index.html
           grep -q 'This Privacy Policy is governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida.' out/privacy/index.html
           grep -q 'This disclaimer is governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida.' out/disclaimer/index.html
@@ -200,11 +206,15 @@ jobs:
           grep -q 'Google and its partners may use cookies to serve ads.' out/privacy/index.html
           grep -q 'joshuaofisrael@gmail.com' out/privacy/index.html
           grep -q 'joshuaofisrael@gmail.com' out/contact/index.html
-          grep -q 'Operator:' out/contact/index.html
-          grep -q 'The Site currently has no paid links or ads.' out/disclaimer/index.html
+          grep -q 'Questions about Decide Football' out/contact/index.html
+          ! grep -q 'Joshua Israel' out/contact/index.html
+          grep -q 'The Site loads the Google AdSense script. No ad units are shown yet.' out/disclaimer/index.html
+          ! grep -q 'The Site currently has no paid links or ads.' out/disclaimer/index.html
           grep -q 'Any paid links or ads added later will be disclosed.' out/disclaimer/index.html
           grep -q '"@type":"Brand","name":"Decide Football"' out/about/index.html
-          grep -q '"name":"Joshua Israel Ventures LLC"' out/about/index.html
+          grep -q '"name":"Decide Football"' out/about/index.html
+          ! grep -q '"legalName"' out/about/index.html
+          ! grep -q 'Joshua Israel' out/index.html
           ! grep -q 'attorney' out/terms/index.html
           ! grep -q 'attorney' out/privacy/index.html
           ! grep -q 'attorney' out/disclaimer/index.html
@@ -277,7 +287,8 @@ jobs:
           grep -q 'https://support.sleeper.com/en/articles/1876040-how-does-faab-bidding-work' out/guide/waiver-radar/index.html
           grep -q 'How do fantasy football waivers work?' out/guide/waiver-radar/index.html
           grep -q 'Remaining budget divided by remaining weeks is arithmetic, not a bid.' out/guide/waiver-radar/index.html
-          grep -q 'Operated by Joshua Israel Ventures LLC' out/guide/waiver-radar/index.html
+          ! grep -q 'Joshua Israel' out/guide/waiver-radar/index.html
+          ! grep -q 'All rights reserved' out/guide/waiver-radar/index.html
           grep -q 'static.cloudflareinsights.com/beacon.min.js' out/guide/waiver-radar/index.html
           grep -q 'How fantasy football waivers work' out/guide/listed-status/index.html
           grep -q 'How waivers work' out/guide/index.html
@@ -551,7 +562,8 @@ jobs:
           grep -q 'https://decidefootball.com/contact/thanks/' out/llms.txt
           grep -q 'content="index,follow"' out/contact/thanks/index.html
           grep -q 'rel="canonical" href="https://decidefootball.com/contact/thanks/"' out/contact/thanks/index.html
-          grep -q 'Operated by Joshua Israel Ventures LLC' out/contact/thanks/index.html
+          grep -q 'Your message to Decide Football was sent.' out/contact/thanks/index.html
+          ! grep -q 'Joshua Israel' out/contact/thanks/index.html
           ! grep -q 'noindex' out/contact/thanks/index.html
           grep -q 'content="noindex,follow"' out/waiver-wire/index.html
           grep -q 'content="noindex,follow"' out/waiver-wire/week-3/index.html

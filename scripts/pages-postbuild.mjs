@@ -268,10 +268,11 @@ function validateJsonLd() {
   if (homeTypes.includes("Article")) fail("homepage must not be an Article");
   const org = homeBlocks.find((block) => block["@type"] === "Organization");
   const site = homeBlocks.find((block) => block["@type"] === "WebSite");
-  if (org.name !== "Joshua Israel Ventures LLC" || org.url !== "https://decidefootball.com/") {
+  if (org.name !== "Decide Football" || org.url !== "https://decidefootball.com/") {
     fail(`homepage Organization name/url: ${org.name} ${org.url}`);
   }
-  if (org.legalName !== "Joshua Israel Ventures LLC") fail("homepage Organization legalName");
+  if ("legalName" in org) fail("homepage Organization must not publish legalName");
+  if (JSON.stringify(org).includes("Joshua Israel")) fail("homepage Organization names the legal entity");
   if (org.brand?.["@type"] !== "Brand" || org.brand?.name !== "Decide Football") {
     fail("homepage Organization brand");
   }
@@ -281,11 +282,12 @@ function validateJsonLd() {
   }
   if (
     site.publisher?.["@type"] !== "Organization" ||
-    site.publisher?.name !== "Joshua Israel Ventures LLC" ||
+    site.publisher?.name !== "Decide Football" ||
     site.publisher?.["@id"] !== org["@id"]
   ) {
-    fail("homepage WebSite publisher does not point at Joshua Israel Ventures LLC");
+    fail("homepage WebSite publisher is not Decide Football");
   }
+  if (site.publisher && "legalName" in site.publisher) fail("homepage WebSite publisher legalName");
   if (site.publisher?.brand?.["@type"] !== "Brand" || site.publisher?.brand?.name !== "Decide Football") {
     fail("homepage WebSite publisher brand");
   }
@@ -331,10 +333,10 @@ function validateJsonLd() {
     if (!description || article.description !== description) {
       fail(`${rel} Article description does not match meta description`);
     }
-    if (article.publisher?.["@type"] !== "Organization" || article.publisher.name !== "Joshua Israel Ventures LLC") {
-      fail(`${rel} Article publisher is not Joshua Israel Ventures LLC`);
+    if (article.publisher?.["@type"] !== "Organization" || article.publisher.name !== "Decide Football") {
+      fail(`${rel} Article publisher is not Decide Football`);
     }
-    if (article.publisher.legalName !== "Joshua Israel Ventures LLC") {
+    if ("legalName" in article.publisher) {
       fail(`${rel} Article publisher legalName`);
     }
     if (article.publisher.brand?.["@type"] !== "Brand" || article.publisher.brand?.name !== "Decide Football") {
@@ -415,9 +417,44 @@ function assertSampleJsonLd(file, blocks) {
   }
 }
 
+const LEGAL_HTML = new Set([
+  "terms/index.html",
+  "privacy/index.html",
+  "disclaimer/index.html",
+  "cookies/index.html",
+]);
+const LEGAL_COPYRIGHT_LINE =
+  "© 2026 Joshua Israel Ventures LLC. All rights reserved. Decide Football is a trade name of Joshua Israel Ventures LLC, a Florida limited liability company.";
+
+function validateLegalNamePlacement() {
+  for (const file of walkHtml(out)) {
+    const html = readFileSync(file, "utf8");
+    const rel = file.slice(out.length + 1);
+    if (LEGAL_HTML.has(rel)) {
+      if (!html.includes(LEGAL_COPYRIGHT_LINE)) fail(`${rel} is missing the legal copyright line`);
+      continue;
+    }
+    if (html.includes("Joshua Israel")) fail(`${rel} non-legal page contains Joshua Israel`);
+    if (html.includes("All rights reserved")) fail(`${rel} non-legal page contains a copyright line`);
+  }
+  const terms = readFileSync(join(out, "terms/index.html"), "utf8");
+  if (
+    !terms.includes(
+      "These Terms are governed by the laws of the State of Florida, without regard to conflict-of-law rules, with exclusive venue in the state or federal courts located in Florida.",
+    )
+  ) {
+    fail("terms dropped the Florida governing-law line");
+  }
+  const llms = readFileSync(join(out, "llms.txt"), "utf8");
+  if (llms.includes("Joshua Israel") || llms.includes("All rights reserved")) {
+    fail("llms.txt still carries the sitewide legal name or copyright line");
+  }
+}
+
 validateRobotsGroup();
 validateJsonLd();
 validateNoAiOptOut();
+validateLegalNamePlacement();
 
 console.log("pages-postbuild: wrote out/.nojekyll, out/CNAME, out/health.json, ads.txt, pretty is-playing URLs");
 console.log("pages-postbuild: validated robots.txt group and JSON-LD in the static export");

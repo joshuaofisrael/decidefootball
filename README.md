@@ -5,7 +5,7 @@ Independent fantasy football **decision** pages for [decidefootball.com](https:/
 Not a sports news blog. Not NFL-affiliated. Not gambling.
 
 **Consumer brand:** Decide Football  
-**Operator (footer only):** Joshua Israel Ventures LLC  
+**Legal name (legal pages only):** Joshua Israel Ventures LLC  
 **Host:** Free **GitHub Pages** + GitHub Actions only. No paid Vercel. No Porkbun.  
 **Phase:** Phase-1 GREEN-path scaffold. Fixture / sample data only.
 

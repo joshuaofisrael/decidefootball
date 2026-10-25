@@ -1,6 +1,8 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { LegalNotice } from "@/components/LegalNotice";
+import { SITE_LEGAL_NAME } from "@/lib/legal";
 import { pageMetadata } from "@/lib/seo";
-import { SITE_CONTACT_EMAIL, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { SITE_CONTACT_EMAIL, SITE_NAME } from "@/lib/site";
 
 export const metadata = pageMetadata({
   path: "/cookies/",
@@ -19,6 +21,7 @@ export default function CookiesPage() {
         ]}
       />
       <h1>Cookie notice</h1>
+      <LegalNotice />
       <p>
         This notice describes cookies and similar storage on {SITE_NAME}, a brand of{" "}
         {SITE_LEGAL_NAME}.

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { INDEPENDENT_MICROCOPY } from "@/lib/compliance";
-import { COPYRIGHT_LINE, OPERATOR_VISIBLE_LINE } from "@/lib/site";
 
 const legal = [
   { href: "/about/", label: "About" },
@@ -33,8 +32,6 @@ export function Footer() {
           ))}
         </nav>
         <p>{INDEPENDENT_MICROCOPY}</p>
-        <p className="owner-line">{`${OPERATOR_VISIBLE_LINE}.`}</p>
-        <p className="owner-line">{COPYRIGHT_LINE}</p>
       </div>
     </footer>
   );

@@ -1,6 +1,8 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { LegalNotice } from "@/components/LegalNotice";
+import { FLORIDA_GOVERNING_LAW, SITE_LEGAL_NAME } from "@/lib/legal";
 import { pageMetadata } from "@/lib/seo";
-import { FLORIDA_GOVERNING_LAW, SITE_CONTACT_EMAIL, SITE_HOST, SITE_LEGAL_NAME, SITE_NAME } from "@/lib/site";
+import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_NAME } from "@/lib/site";
 
 const title = "Terms of Use";
 const description =
@@ -23,6 +25,7 @@ export default function TermsPage() {
         ]}
       />
       <h1>Terms of Use</h1>
+      <LegalNotice />
       <p>
         {`These Terms are a contract between you and ${SITE_LEGAL_NAME}. ${SITE_LEGAL_NAME} is the contracting party for the ${SITE_NAME} website at ${SITE_HOST} (the “Site”). ${SITE_NAME} is a brand owned by ${SITE_LEGAL_NAME}.`}
       </p>

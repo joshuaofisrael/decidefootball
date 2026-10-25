@@ -27,7 +27,7 @@ export default function ContactPage() {
         ]}
       />
       <h1>Contact</h1>
-      <p>Questions about {SITE_NAME} can be sent with the form below. All fields are required.</p>
+      <p>{`Questions about ${SITE_NAME} can be sent with the form below. All fields are required.`}</p>
 
       <form className="contact-form" action={CONTACT_FORM_ACTION} method="POST">
         <input type="hidden" name="_subject" value="Decide Football contact" />

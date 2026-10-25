@@ -76,10 +76,19 @@ describe("trademark guard", () => {
   });
 
   it("does not use NFL event marks such as Super Bowl or Pro Bowl", () => {
+    // The January 2027 playoff guide may name Super Bowl LXI in body copy.
+    // Titles, the meta description, and every other file still omit it.
+    const nominativeCopy = new Set([
+      "src/lib/nfl-playoffs-2027.ts",
+      "src/lib/nfl-playoffs-2027.test.ts",
+    ]);
     for (const file of files) {
       if (file === SELF || !TEXT_EXT.test(file)) continue;
       const text = readFileSync(file, "utf8");
-      assert.equal(/super\s*bowl|pro\s*bowl/i.test(text), false, relative(ROOT, file));
+      const rel = relative(ROOT, file);
+      assert.equal(/pro\s*bowl/i.test(text), false, rel);
+      if (nominativeCopy.has(rel)) continue;
+      assert.equal(/super\s*bowl/i.test(text), false, rel);
     }
   });
 

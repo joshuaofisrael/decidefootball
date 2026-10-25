@@ -230,6 +230,8 @@ export function sportsEventItemListJsonLd(events: SportsEventInput[]) {
 export interface ConfirmedSportsEventInput {
   name: string;
   startDate: string;
+  /** Inclusive end, date only, when the round spans more than one day and no kickoff is set. */
+  endDate?: string;
   description: string;
   locationName: string;
   addressLocality?: string;
@@ -270,6 +272,7 @@ export function confirmedSportsEventItemListJsonLd(events: ConfirmedSportsEventI
           name: event.name,
           description: event.description,
           startDate: event.startDate,
+          ...(event.endDate ? { endDate: event.endDate } : {}),
           eventStatus: "https://schema.org/EventScheduled",
           eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
           location,

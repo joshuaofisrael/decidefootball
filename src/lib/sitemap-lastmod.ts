@@ -27,6 +27,7 @@ const GUIDE_LIBS = [
   "cfp-watch-2026-27",
   "bowl-watch-2026-27",
   "christmas-watch-2026",
+  "nfl-playoffs-2027",
 ] as const;
 
 const STATIC_PAGE_FILES: Record<string, string> = {
@@ -46,6 +47,8 @@ const STATIC_PAGE_FILES: Record<string, string> = {
     "src/app/guide/college-football-playoff-2026-schedule-how-to-watch/page.tsx",
   "/guide/bowl-schedule-2026-how-to-watch/": "src/app/guide/bowl-schedule-2026-how-to-watch/page.tsx",
   "/guide/christmas-nfl-how-to-watch/": "src/app/guide/christmas-nfl-how-to-watch/page.tsx",
+  "/guide/nfl-playoffs-2027-schedule-how-to-watch/":
+    "src/app/guide/nfl-playoffs-2027-schedule-how-to-watch/page.tsx",
   "/waiver-radar/2026-week-6/": "src/app/waiver-radar/2026-week-6/page.tsx",
   "/waiver-radar/2026-week-7/": "src/app/waiver-radar/2026-week-7/page.tsx",
   "/start-sit/2026-week-6/": "src/app/start-sit/2026-week-6/page.tsx",

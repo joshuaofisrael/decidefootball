@@ -220,6 +220,10 @@ export default function ThanksgivingWatchPage() {
         <Link href="/guide/college-football-playoff-2026-schedule-how-to-watch/">
           2026-27 College Football Playoff schedule and how to watch
         </Link>
+        . The January 2027 NFL playoff windows are the{" "}
+        <Link href="/guide/nfl-playoffs-2027-schedule-how-to-watch/">
+          2026 NFL playoffs schedule and how to watch
+        </Link>
         .
       </p>
     </div>

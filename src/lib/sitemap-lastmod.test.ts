@@ -27,6 +27,7 @@ const SITEMAP_PATHS = [
   "/guide/college-football-playoff-2026-schedule-how-to-watch/",
   "/guide/bowl-schedule-2026-how-to-watch/",
   "/guide/christmas-nfl-how-to-watch/",
+  "/guide/nfl-playoffs-2027-schedule-how-to-watch/",
   "/waiver-radar/2026-week-6/",
   "/waiver-radar/2026-week-7/",
   "/start-sit/2026-week-6/",
@@ -126,7 +127,7 @@ describe("resolveContentLastmod", () => {
 });
 
 describe("sitemap lastmod", () => {
-  it("keeps the 67 urls and gives each a real content date", () => {
+  it("keeps the 68 urls and gives each a real content date", () => {
     assert.deepEqual(indexableSitemapPaths(), [...SITEMAP_PATHS]);
     assert.deepEqual(contentFilesForPath("/terms/"), ["src/app/terms/page.tsx"]);
     assert.ok(contentFilesForPath("/slate/").includes("src/components/FixtureBanner.tsx"));
@@ -183,6 +184,12 @@ describe("sitemap lastmod", () => {
       ),
     );
     assert.equal(lastmodForPath("/guide/christmas-nfl-how-to-watch/"), "2026-10-20");
+    assert.equal(lastmodForPath("/guide/nfl-playoffs-2027-schedule-how-to-watch/"), "2026-10-25");
+    assert.ok(
+      contentFilesForPath("/guide/nfl-playoffs-2027-schedule-how-to-watch/").includes(
+        "src/lib/nfl-playoffs-2027.ts",
+      ),
+    );
     assert.ok(
       contentFilesForPath("/guide/christmas-nfl-how-to-watch/").includes(
         "src/lib/christmas-watch-2026.ts",

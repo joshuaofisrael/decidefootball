@@ -10,7 +10,7 @@ const description =
   "How to read Decide Football cards: floor, mean, ceiling, injury labels, waivers, rankings, and add/drop. Not NFL-affiliated. Not gambling advice.";
 
 /** Sitemap lastmod reads this literal. */
-const PAGE_UPDATED = { lastModified: "2026-10-23" } as const;
+const PAGE_UPDATED = { lastModified: "2026-10-25" } as const;
 
 const guides = [
   {
@@ -164,6 +164,17 @@ export default function GuideHubPage() {
         <Link href="/guide/bowl-schedule-2026-how-to-watch/">2026-27 bowl schedule and how to watch</Link>
         . Team matchups are still to be announced. It cites the network releases, the bowl pages,
         and the playoff. It is not a lineup note and not a sample desk.
+      </p>
+
+      <h2>NFL playoff viewing</h2>
+      <p>
+        Dates for the Wild Card, Divisional, and Championship rounds of the 2026 season, played
+        in January 2027, are a separate page:{" "}
+        <Link href="/guide/nfl-playoffs-2027-schedule-how-to-watch/">
+          2026 NFL playoffs schedule and how to watch
+        </Link>
+        . Kickoffs and most networks are TBA. It cites the league calendar, NFL communications,
+        and network releases. It is not a lineup note and not a sample desk.
       </p>
 
       <h2>Five reading guides and two tools</h2>

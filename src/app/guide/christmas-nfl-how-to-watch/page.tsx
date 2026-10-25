@@ -230,7 +230,11 @@ export default function ChristmasWatchPage() {
         More reading notes live on the <Link href="/guide/">guides hub</Link>. Thanksgiving week
         is the{" "}
         <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link>.
-        The latest dated lineup note is{" "}
+        The January 2027 NFL playoff windows are the{" "}
+        <Link href="/guide/nfl-playoffs-2027-schedule-how-to-watch/">
+          2026 NFL playoffs schedule and how to watch
+        </Link>
+        . The latest dated lineup note is{" "}
         <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link>, and the latest dated waiver
         note is <Link href="/waiver-radar/2026-week-7/">Week 7 waiver radar</Link>. How waivers
         work is the <Link href="/guide/waiver-radar/">waiver-radar guide</Link>.

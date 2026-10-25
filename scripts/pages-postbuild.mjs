@@ -182,6 +182,7 @@ function validateRobotsGroup() {
     "Allow: /guide/college-football-playoff-2026-schedule-how-to-watch/",
     "Allow: /guide/bowl-schedule-2026-how-to-watch/",
     "Allow: /guide/christmas-nfl-how-to-watch/",
+    "Allow: /guide/nfl-playoffs-2027-schedule-how-to-watch/",
     "Allow: /terms/",
     "Allow: /privacy/",
     "Allow: /disclaimer/",
@@ -211,7 +212,7 @@ function validateRobotsGroup() {
   if (sitemap.includes("llms.txt")) fail("sitemap.xml must list HTML pages only");
   const locs = sitemap.match(/<loc>[^<]+<\/loc>/g) ?? [];
   const mods = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/g) ?? [];
-  if (locs.length !== 67) fail(`sitemap has ${locs.length} urls, expected 67`);
+  if (locs.length !== 68) fail(`sitemap has ${locs.length} urls, expected 68`);
   if (mods.length !== locs.length) fail("every sitemap url needs one lastmod");
   for (const tag of mods) {
     const value = tag.slice("<lastmod>".length, -"</lastmod>".length);
@@ -307,6 +308,7 @@ function validateJsonLd() {
     ["guide/college-football-playoff-2026-schedule-how-to-watch/index.html", true, true],
     ["guide/bowl-schedule-2026-how-to-watch/index.html", true, true],
     ["guide/christmas-nfl-how-to-watch/index.html", true, true],
+    ["guide/nfl-playoffs-2027-schedule-how-to-watch/index.html", true, true],
     ["waiver-radar/2026-week-6/index.html", false, false],
     ["waiver-radar/2026-week-7/index.html", true, false],
     ["start-sit/2026-week-6/index.html", false, false],

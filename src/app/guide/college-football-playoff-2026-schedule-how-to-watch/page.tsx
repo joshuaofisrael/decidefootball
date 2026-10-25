@@ -247,8 +247,13 @@ export default function CfpWatchPage() {
       <p>
         More reading notes live on the <Link href="/guide/">guides hub</Link>. The other viewing
         lists are the{" "}
-        <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link> and
-        the <Link href="/guide/bowl-schedule-2026-how-to-watch/">2026-27 bowl schedule</Link>.
+        <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link>,
+        the <Link href="/guide/bowl-schedule-2026-how-to-watch/">2026-27 bowl schedule</Link>, and
+        the{" "}
+        <Link href="/guide/nfl-playoffs-2027-schedule-how-to-watch/">
+          2026 NFL playoffs schedule and how to watch
+        </Link>
+        .
       </p>
     </div>
   );

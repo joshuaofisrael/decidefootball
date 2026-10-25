@@ -1,10 +1,9 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { pageMetadata } from "@/lib/seo";
-import { BRAND_SENTENCE, SITE_CONTACT_EMAIL, SITE_LEGAL_NAME, SITE_NAME, absoluteUrl } from "@/lib/site";
+import { SITE_CONTACT_EMAIL, SITE_NAME, absoluteUrl } from "@/lib/site";
 
 const title = "Contact";
-const description =
-  "Contact Joshua Israel Ventures LLC, the operator of Decide Football, with the contact form or at joshuaofisrael@gmail.com.";
+const description = `Contact ${SITE_NAME} with the contact form or at ${SITE_CONTACT_EMAIL}.`;
 
 const PAGE_DATE = { lastModified: "2026-10-18" } as const;
 
@@ -28,10 +27,6 @@ export default function ContactPage() {
         ]}
       />
       <h1>Contact</h1>
-      <p>{BRAND_SENTENCE}</p>
-      <p>
-        Operator: <strong>{SITE_LEGAL_NAME}</strong>
-      </p>
       <p>Questions about {SITE_NAME} can be sent with the form below. All fields are required.</p>
 
       <form className="contact-form" action={CONTACT_FORM_ACTION} method="POST">

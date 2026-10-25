@@ -94,7 +94,7 @@ describe("publisherIdFromClient", () => {
 });
 
 describe("adsTxtBody", () => {
-  it("always declares the Joshua Israel Ventures AdSense publisher", () => {
+  it("always declares the AdSense publisher id", () => {
     assert.equal(adsTxtBody(), "google.com, pub-5681559774142917, DIRECT, f08c47fec0942fa0\n");
     assert.equal(publisherIdFromClient(ADSENSE_PUBLISHER_CLIENT), ADSENSE_PUBLISHER_ID);
   });

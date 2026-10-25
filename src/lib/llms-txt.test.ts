@@ -7,7 +7,7 @@ import { indexableSitemapPaths } from "./indexable-urls";
 describe("public/llms.txt", () => {
   const text = readFileSync(new URL("../../public/llms.txt", import.meta.url), "utf8");
 
-  it("uses the llmstxt.org outline and names the operator", () => {
+  it("uses the llmstxt.org outline without a sitewide legal-name line", () => {
     assert.match(text, /^# Decide Football\n/);
     assert.match(text, /^> Decide Football publishes fantasy football guides/m);
     assert.match(text, /Live player data is not licensed yet/);
@@ -15,8 +15,10 @@ describe("public/llms.txt", () => {
     assert.match(text, /sample data for demonstrating the tool/);
     assert.match(text, /not live licensed NFL statistics/);
     assert.match(text, /not affiliated with the NFL/);
-    assert.match(text, /^Operated by Joshua Israel Ventures LLC\.$/m);
-    assert.match(text, /Decide Football is a brand of Joshua Israel Ventures LLC\./);
+    assert.equal(text.includes("Joshua Israel"), false);
+    assert.equal(text.includes("Operated by"), false);
+    assert.equal(text.includes("All rights reserved"), false);
+    assert.match(text, /The site loads the Google AdSense script\. No ad units are shown yet\./);
     assert.match(text, /^## Guides\n/m);
     assert.match(text, /^## Weekly notes\n/m);
     assert.match(text, /^## Sample desks\n/m);

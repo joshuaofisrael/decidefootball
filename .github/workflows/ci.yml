@@ -43,6 +43,7 @@ jobs:
           test -f out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           test -f out/guide/bowl-schedule-2026-how-to-watch/index.html
           test -f out/guide/christmas-nfl-how-to-watch/index.html
+          test -f out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
           test -f out/is-jordan-voss-playing-today/index.html
           test -f out/week-3/rb-rankings/index.html
           test -f out/start-sit/noah-crowe-vs-jordan-voss/index.html
@@ -60,6 +61,7 @@ jobs:
           grep -q 'https://decidefootball.com/guide/college-football-playoff-2026-schedule-how-to-watch/' out/sitemap.xml
           grep -q 'https://decidefootball.com/guide/bowl-schedule-2026-how-to-watch/' out/sitemap.xml
           grep -q 'https://decidefootball.com/guide/christmas-nfl-how-to-watch/' out/sitemap.xml
+          grep -q 'https://decidefootball.com/guide/nfl-playoffs-2027-schedule-how-to-watch/' out/sitemap.xml
           grep -q 'https://decidefootball.com/cookies/' out/sitemap.xml
           grep -q 'https://decidefootball.com/rankings/' out/sitemap.xml
           grep -q 'https://decidefootball.com/add-drop/' out/sitemap.xml
@@ -97,6 +99,7 @@ jobs:
           grep -q 'Allow: /guide/college-football-playoff-2026-schedule-how-to-watch/' out/robots.txt
           grep -q 'Allow: /guide/bowl-schedule-2026-how-to-watch/' out/robots.txt
           grep -q 'Allow: /guide/christmas-nfl-how-to-watch/' out/robots.txt
+          grep -q 'Allow: /guide/nfl-playoffs-2027-schedule-how-to-watch/' out/robots.txt
           grep -q '^Allow: /$' out/robots.txt
           ! grep -q 'Disallow: /add-drop/' out/robots.txt
           ! grep -q 'Disallow: /rankings/' out/robots.txt
@@ -163,6 +166,7 @@ jobs:
           grep -q 'https://decidefootball.com/guide/college-football-playoff-2026-schedule-how-to-watch/' out/llms.txt
           grep -q 'https://decidefootball.com/guide/bowl-schedule-2026-how-to-watch/' out/llms.txt
           grep -q 'https://decidefootball.com/guide/christmas-nfl-how-to-watch/' out/llms.txt
+          grep -q 'https://decidefootball.com/guide/nfl-playoffs-2027-schedule-how-to-watch/' out/llms.txt
           grep -q 'not affiliated with the NFL' out/llms.txt
           grep -q 'sample/fixture' out/llms.txt
           grep -q 'Decide Football is a brand of Joshua Israel Ventures LLC.' out/llms.txt
@@ -240,6 +244,7 @@ jobs:
           grep -q 'href="/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/index.html
           grep -q 'href="/guide/bowl-schedule-2026-how-to-watch/"' out/guide/index.html
           grep -q 'href="/guide/christmas-nfl-how-to-watch/"' out/guide/index.html
+          grep -q 'href="/guide/nfl-playoffs-2027-schedule-how-to-watch/"' out/guide/index.html
           grep -q 'Five reading guides and two tools' out/guide/index.html
           grep -q 'rel="canonical" href="https://decidefootball.com/guide/"' out/guide/index.html
           grep -q 'property="og:url" content="https://decidefootball.com/guide/"' out/guide/index.html
@@ -289,8 +294,8 @@ jobs:
           import pathlib, re
           xml = pathlib.Path("out/sitemap.xml").read_text()
           blocks = re.findall(r"<url>\s*(.*?)\s*</url>", xml, flags=re.S)
-          if len(blocks) != 67:
-              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 67")
+          if len(blocks) != 68:
+              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 68")
           for block in blocks:
               loc = re.search(r"<loc>([^<]+)</loc>", block)
               mods = re.findall(r"<lastmod>([^<]+)</lastmod>", block)
@@ -312,6 +317,7 @@ jobs:
           grep -q 'content="index,follow"' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           grep -q 'content="index,follow"' out/guide/bowl-schedule-2026-how-to-watch/index.html
           grep -q 'content="index,follow"' out/guide/christmas-nfl-how-to-watch/index.html
+          grep -q 'content="index,follow"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
           ! grep -q 'noindex' out/about/index.html
           ! grep -q 'noindex' out/terms/index.html
           ! grep -q 'noindex' out/privacy/index.html
@@ -330,6 +336,7 @@ jobs:
           ! grep -q 'noindex' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           ! grep -q 'noindex' out/guide/bowl-schedule-2026-how-to-watch/index.html
           ! grep -q 'noindex' out/guide/christmas-nfl-how-to-watch/index.html
+          ! grep -q 'noindex' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
           grep -q 'FAQPage' out/about/index.html
           grep -q 'FAQPage' out/guide/start-sit/index.html
           grep -q 'FAQPage' out/guide/waiver-radar/index.html
@@ -342,8 +349,12 @@ jobs:
           grep -q 'FAQPage' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           grep -q 'FAQPage' out/guide/bowl-schedule-2026-how-to-watch/index.html
           grep -q 'FAQPage' out/guide/christmas-nfl-how-to-watch/index.html
+          grep -q 'FAQPage' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
           grep -q 'SportsEvent' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'SportsEvent' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          grep -q 'SportsEvent' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'BreadcrumbList' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          ! grep -q 'homeTeam' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
           ! grep -q 'homeTeam' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           grep -q 'WebPage' out/about/index.html
           grep -q 'WebPage' out/methodology/index.html
@@ -360,6 +371,7 @@ jobs:
           grep -q 'WebPage' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           grep -q 'WebPage' out/guide/bowl-schedule-2026-how-to-watch/index.html
           grep -q 'WebPage' out/guide/christmas-nfl-how-to-watch/index.html
+          grep -q 'WebPage' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
           grep -q 'rel="canonical" href="https://decidefootball.com/guide/thanksgiving-nfl-how-to-watch/"' out/guide/thanksgiving-nfl-how-to-watch/index.html
           grep -q 'rel="canonical" href="https://decidefootball.com/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
           grep -q 'property="og:url" content="https://decidefootball.com/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
@@ -420,6 +432,33 @@ jobs:
           grep -q 'href="/waiver-radar/2026-week-7/"' out/guide/christmas-nfl-how-to-watch/index.html
           ! grep -q 'waiver-wire' out/guide/christmas-nfl-how-to-watch/index.html
           ! grep -i -q 'draftkings\|fanduel\|betmgm\|ticketmaster.com\|stubhub' out/guide/christmas-nfl-how-to-watch/index.html
+          grep -q 'href="/guide/nfl-playoffs-2027-schedule-how-to-watch/"' out/guide/thanksgiving-nfl-how-to-watch/index.html
+          grep -q 'href="/guide/nfl-playoffs-2027-schedule-how-to-watch/"' out/guide/christmas-nfl-how-to-watch/index.html
+          grep -q 'href="/guide/nfl-playoffs-2027-schedule-how-to-watch/"' out/guide/college-football-playoff-2026-schedule-how-to-watch/index.html
+          grep -q 'content="index,follow"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          ! grep -q 'noindex' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'FAQPage' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'SportsEvent' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'BreadcrumbList' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/guide/nfl-playoffs-2027-schedule-how-to-watch/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'property="og:url" content="https://decidefootball.com/guide/nfl-playoffs-2027-schedule-how-to-watch/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'property="og:image" content="https://decidefootball.com/images/hero-stadium-dusk.webp"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q '2026 NFL playoffs schedule and how to watch (January 2027)' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'Last updated: 2026-10-25' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'https://www.nfl.com/news/2026-27-national-football-league-important-dates' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'https://operations.nfl.com/calendar-events/nfl-important-dates' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'https://espnpressroom.com/press-release/disney-to-stream-super-bowl-lxi-joining-espn-and-abc-to-give-fans-more-ways-to-watch/' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'href="/guide/thanksgiving-nfl-how-to-watch/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'href="/guide/christmas-nfl-how-to-watch/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'href="/guide/college-football-playoff-2026-schedule-how-to-watch/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'href="/guide/start-sit/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'href="/guide/waiver-radar/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'href="/start-sit/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q 'href="/waiver-radar/"' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          grep -q '>TBA<' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          ! grep -q 'waiver-wire' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
+          ! grep -i -q 'draftkings\|fanduel\|betmgm\|ticketmaster.com\|stubhub' out/guide/nfl-playoffs-2027-schedule-how-to-watch/index.html
           test -f out/waiver-wire/index.html
           test -f out/waiver-wire/week-3/index.html
           test -f out/waiver-radar/index.html

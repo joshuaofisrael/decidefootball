@@ -152,7 +152,7 @@ describe("sitemap lastmod", () => {
     assert.equal(lastmodForPath("/privacy/"), "2026-10-23");
     assert.equal(lastmodForPath("/disclaimer/"), "2026-10-24");
     assert.equal(lastmodForPath("/contact/"), "2026-10-18");
-    assert.equal(lastmodForPath("/"), "2026-10-22");
+    assert.equal(lastmodForPath("/"), "2026-10-26");
     assert.equal(lastmodForPath("/about/"), "2026-10-24");
     assert.equal(lastmodForPath("/guide/start-sit/"), "2026-10-18");
     assert.equal(lastmodForPath("/waiver-radar/2026-week-7/"), "2026-10-18");
@@ -198,7 +198,7 @@ describe("sitemap lastmod", () => {
     assert.equal(lastmodForPath("/slate/"), "2026-10-11");
     assert.equal(lastmodForPath("/start-sit/"), "2026-10-18");
     assert.equal(lastmodForPath("/players/jordan-voss/"), "2026-10-11");
-    assert.ok(lastmodForPath("/") < lastmodForPath("/terms/"));
+    assert.ok(lastmodForPath("/") > lastmodForPath("/terms/"));
   });
 
   it("falls back to the build date when the path has no page and no history", () => {

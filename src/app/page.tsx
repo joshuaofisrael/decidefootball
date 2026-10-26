@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CertaintyMeter } from "@/components/CertaintyMeter";
 import { FixtureBanner } from "@/components/FixtureBanner";
+import { JsonLd } from "@/components/JsonLd";
 import { PhotoFigure } from "@/components/PhotoFigure";
 import { PlayerAvatar } from "@/components/PlayerAvatar";
 import { Timestamps } from "@/components/Timestamps";
@@ -17,9 +18,13 @@ import {
   getTeam,
 } from "@/lib/data";
 import { FIXTURE_VERIFIED_AT, kickWindowLabel } from "@/lib/fixtures";
+import { HOME_FAQS, linkFaqAnswer } from "@/lib/home-faq";
 import { startLabel } from "@/lib/recommendations";
-import { pageMetadata } from "@/lib/seo";
+import { faqPageJsonLd, pageMetadata } from "@/lib/seo";
 import { nowIso } from "@/lib/timestamps";
+
+/** Sitemap lastmod reads this literal. Homepage FAQ landed on this date. */
+const HOME_UPDATED = { lastModified: "2026-10-26" } as const;
 
 export const metadata = pageMetadata({
   path: "/",
@@ -164,6 +169,30 @@ export default function HomePage() {
           {" · "}
           <Link href="/about/">About the desk</Link>
         </p>
+      </section>
+
+      <section className="card home-faq" aria-labelledby="home-faq-heading">
+        <JsonLd data={faqPageJsonLd([...HOME_FAQS])} />
+        <h2 id="home-faq-heading">Questions</h2>
+        <p className="stamp">{`Last updated: ${HOME_UPDATED.lastModified}.`}</p>
+        {HOME_FAQS.map((item) => (
+          <details key={item.question} open>
+            <summary>
+              <h3>{item.question}</h3>
+            </summary>
+            <p>
+              {linkFaqAnswer(item.answer).map((part, index) =>
+                part.type === "link" ? (
+                  <Link key={`${part.value}-${index}`} href={part.value}>
+                    {part.value}
+                  </Link>
+                ) : (
+                  <span key={`text-${index}`}>{part.value}</span>
+                ),
+              )}
+            </p>
+          </details>
+        ))}
       </section>
     </div>
   );

@@ -265,6 +265,7 @@ function validateJsonLd() {
   if (!homeTypes.includes("Organization") || !homeTypes.includes("WebSite")) {
     fail(`homepage JSON-LD types: ${homeTypes.join(", ")}`);
   }
+  if (!homeTypes.includes("FAQPage")) fail("homepage missing FAQPage");
   if (homeTypes.includes("Article")) fail("homepage must not be an Article");
   const org = homeBlocks.find((block) => block["@type"] === "Organization");
   const site = homeBlocks.find((block) => block["@type"] === "WebSite");
@@ -277,6 +278,28 @@ function validateJsonLd() {
     fail("homepage Organization brand");
   }
   if (org.email || org.address) fail("homepage Organization invents contact");
+  if ("sameAs" in org) fail("homepage Organization must not add sameAs");
+  const faq = homeBlocks.find((block) => block["@type"] === "FAQPage");
+  const faqEntities = Array.isArray(faq?.mainEntity) ? faq.mainEntity : [];
+  if (faqEntities.length < 5 || faqEntities.length > 7) {
+    fail(`homepage FAQ count ${faqEntities.length}`);
+  }
+  const visible = home
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<[^>]+>/g, "")
+    .replaceAll("&amp;", "&")
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&quot;", '"');
+  for (const entity of faqEntities) {
+    if (entity["@type"] !== "Question" || entity.acceptedAnswer?.["@type"] !== "Answer") {
+      fail("homepage FAQ entity is not a Question with an Answer");
+    }
+    const question = String(entity.name ?? "");
+    const answer = String(entity.acceptedAnswer?.text ?? "");
+    if (!question || !visible.includes(question)) fail(`homepage FAQ question not visible: ${question}`);
+    if (!answer || !visible.includes(answer)) fail(`homepage FAQ answer not visible: ${answer}`);
+    if (/waiver[\s-]*wire/i.test(`${question} ${answer}`)) fail("homepage FAQ names waiver-wire");
+  }
   if (site.name !== "Decide Football" || site.url !== "https://decidefootball.com/") {
     fail(`homepage WebSite name/url: ${site.name} ${site.url}`);
   }

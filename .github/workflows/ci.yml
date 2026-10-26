@@ -228,6 +228,17 @@ jobs:
           test -f out/slate/index.html
           test -f out/watchlist/index.html
           grep -q 'content="index,follow"' out/index.html
+          grep -q 'FAQPage' out/index.html
+          grep -q 'What is Decide Football, and how do I use it?' out/index.html
+          grep -q 'What is Waiver Radar?' out/index.html
+          grep -q 'How does the Certainty Score work?' out/index.html
+          grep -q 'href="/waiver-radar/"' out/index.html
+          grep -q 'href="/contact/"' out/index.html
+          grep -q 'sample data for demonstrating the tool' out/index.html
+          ! grep -q 'sameAs' out/index.html
+          ! grep -q 'waiver-wire' out/index.html
+          grep -q '<loc>https://decidefootball.com/</loc>' out/sitemap.xml
+          grep -q '<lastmod>2026-10-26</lastmod>' out/sitemap.xml
           grep -q 'content="index,follow"' out/slate/index.html
           grep -q 'content="index,follow"' out/watchlist/index.html
           ! grep -q 'noindex' out/index.html

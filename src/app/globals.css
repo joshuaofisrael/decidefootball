@@ -252,6 +252,50 @@ main {
   margin: 0 0 0.4rem;
 }
 
+.home-faq details {
+  border-top: 1px solid var(--line);
+  padding: 0.85rem 0 0.15rem;
+}
+
+/* Closed answers must not paint. Chrome's details-content box can
+   report height 0 while the paragraph still overflows. */
+.home-faq details:not([open]) > :not(summary) {
+  display: none;
+}
+
+.home-faq details::details-content {
+  overflow: hidden;
+}
+
+.home-faq details:first-of-type {
+  border-top: 0;
+  padding-top: 0.15rem;
+}
+
+.home-faq summary {
+  cursor: pointer;
+}
+
+.home-faq summary::-webkit-details-marker {
+  color: var(--field);
+}
+
+.home-faq summary h3 {
+  display: inline;
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.home-faq summary:focus-visible {
+  outline: 2px solid var(--field);
+  outline-offset: 3px;
+}
+
+.home-faq details p {
+  margin: 0.55rem 0 0.85rem;
+}
+
 .kicker {
   font-size: 0.75rem;
   letter-spacing: 0.08em;

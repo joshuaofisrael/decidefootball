@@ -332,7 +332,8 @@ export default function WaiverRadarGuidePage() {
         The <Link href="/waiver-radar/">waiver board</Link> is on the site so the product
         can be used and reviewed. The numbers there are sample data for demonstrating the tool.
         They are not live licensed NFL stats. The dated editorial notes are{" "}
-        <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link> and{" "}
+        <Link href="/waiver-radar/2026-week-8/">Week 8 fantasy waiver pickups</Link>,{" "}
+        <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link>, and{" "}
         <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. Those pages
         cite public reporting. They are not the sample board.
       </p>

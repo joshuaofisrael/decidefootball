@@ -22,7 +22,7 @@ export const HOME_FAQS: readonly HomeFaq[] = [
   {
     question: "What is Waiver Radar?",
     answer:
-      "Waiver Radar is the board at /waiver-radar/. The sample list marks each row hot, rising, stash, or fade, using sample estimates, usage change, and listed status. It is not a waiver claim on a fantasy host, and it does not sign in to a platform. Dated editorial add notes, separate from that sample list, are at /waiver-radar/2026-week-6/ and /waiver-radar/2026-week-7/. How to read the tags is the guide at /guide/waiver-radar/.",
+      "Waiver Radar is the board at /waiver-radar/. The sample list marks each row hot, rising, stash, or fade, using sample estimates, usage change, and listed status. It is not a waiver claim on a fantasy host, and it does not sign in to a platform. Dated editorial add notes, separate from that sample list, are at /waiver-radar/2026-week-6/, /waiver-radar/2026-week-7/, and /waiver-radar/2026-week-8/. How to read the tags is the guide at /guide/waiver-radar/.",
   },
   {
     question: "How does the Certainty Score work?",
@@ -52,6 +52,7 @@ const FAQ_LINKS = [
   "/start-sit/2026-week-7/",
   "/waiver-radar/2026-week-6/",
   "/waiver-radar/2026-week-7/",
+  "/waiver-radar/2026-week-8/",
   "/guide/waiver-radar/",
   "/guide/certainty/",
   "/waiver-radar/",

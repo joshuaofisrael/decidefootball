@@ -212,7 +212,7 @@ function validateRobotsGroup() {
   if (sitemap.includes("llms.txt")) fail("sitemap.xml must list HTML pages only");
   const locs = sitemap.match(/<loc>[^<]+<\/loc>/g) ?? [];
   const mods = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/g) ?? [];
-  if (locs.length !== 68) fail(`sitemap has ${locs.length} urls, expected 68`);
+  if (locs.length !== 69) fail(`sitemap has ${locs.length} urls, expected 69`);
   if (mods.length !== locs.length) fail("every sitemap url needs one lastmod");
   for (const tag of mods) {
     const value = tag.slice("<lastmod>".length, -"</lastmod>".length);
@@ -334,6 +334,7 @@ function validateJsonLd() {
     ["guide/nfl-playoffs-2027-schedule-how-to-watch/index.html", true, true],
     ["waiver-radar/2026-week-6/index.html", false, false],
     ["waiver-radar/2026-week-7/index.html", true, false],
+    ["waiver-radar/2026-week-8/index.html", true, false],
     ["start-sit/2026-week-6/index.html", false, false],
     ["start-sit/2026-week-7/index.html", true, false],
   ];

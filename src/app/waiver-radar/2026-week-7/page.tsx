@@ -166,7 +166,9 @@ export default function Week7WaiverPage() {
         </li>
         <li>
           The previous dated add note is{" "}
-          <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>.
+          <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. The next
+          week note is{" "}
+          <Link href="/waiver-radar/2026-week-8/">Week 8 fantasy waiver pickups</Link>.
         </li>
         <li>
           The <Link href="/waiver-radar/">waiver radar hub</Link> is the sample urgency board.

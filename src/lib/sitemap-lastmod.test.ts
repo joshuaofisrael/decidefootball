@@ -150,7 +150,8 @@ describe("sitemap lastmod", () => {
     assert.ok(dates.size >= 2, "pages last updated on different days need different lastmod values");
 
     assert.equal(lastmodForPath("/terms/"), "2026-10-24");
-    assert.equal(lastmodForPath("/privacy/"), "2026-10-23");
+    assert.equal(lastmodForPath("/privacy/"), "2026-10-27");
+    assert.equal(lastmodForPath("/cookies/"), "2026-10-27");
     assert.equal(lastmodForPath("/disclaimer/"), "2026-10-24");
     assert.equal(lastmodForPath("/contact/"), "2026-10-18");
     assert.equal(lastmodForPath("/"), "2026-10-26");

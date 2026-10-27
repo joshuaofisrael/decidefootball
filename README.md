@@ -62,7 +62,7 @@ npm run db:seed
 | `DATABASE_URL` | Postgres for migrate/seed only | unset |
 | `REDIS_URL` | Reserved; cache is in-memory / Redis stub | unset |
 | `AI_EXPLAIN_ENABLED` | Must stay `false` unless a later review turns it on | `false` |
-| `NEXT_PUBLIC_GA4_ID` | GA4 placeholder; script loads only after consent stub accept. Required for the daily traffic routine before ads. | unset |
+| GA4 measurement ID | Baked in as `G-TNS68J7G3M`. `gtag.js` loads async only after the visitor accepts. Consent Mode v2 defaults analytics and ad storage to denied. | `G-TNS68J7G3M` |
 | `NEXT_PUBLIC_ADS_ENABLED` | Display ads. Must be the string `true` at export. Off otherwise. | unset / false |
 | `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | AdSense `ca-pub-…` client. Required with the ads flag. | unset |
 | `NEXT_PUBLIC_ADSENSE_SLOT_LAYOUT` | Optional leaderboard slot under the header | unset |
@@ -74,7 +74,7 @@ npm run db:seed
 
 Copy `.env.example`. Never commit secrets. GitHub Actions sets `COMPLIANCE_GATE` and `NEXT_PUBLIC_SITE_URL` on build.
 
-Cloudflare Web Analytics is not an env var. The beacon token is baked into the root layout and ships once on every page. Leave `NEXT_PUBLIC_GA4_ID` and `NEXT_PUBLIC_ADS_ENABLED` unset. The beacon does not enable ads.
+Cloudflare Web Analytics is not an env var. The beacon token is baked into the root layout and ships once on every page. Google Analytics 4 (`G-TNS68J7G3M`) is baked in the same way. Its script stays unloaded until the visitor accepts, and the choice can be changed on the privacy policy or the cookie notice. Leave `NEXT_PUBLIC_ADS_ENABLED` unset. The beacon does not enable ads.
 
 ## Compliance gate
 
@@ -175,7 +175,7 @@ Do **not** flip the flag until one of these is true:
 - GA4 shows **≥ 1,000 pageviews in the last 7 days**, or
 - the AdSense account is approved / ready to serve
 
-`NEXT_PUBLIC_GA4_ID` is required for the daily traffic routine that checks that 7-day count. Do not enable ads without a measurement ID you actually read.
+`G-TNS68J7G3M` is the measurement ID for that 7-day count. Do not enable ads without reading that property.
 
 ### How to flip the flag and redeploy GitHub Pages
 
@@ -184,11 +184,10 @@ Do **not** flip the flag until one of these is true:
    - `NEXT_PUBLIC_ADS_ENABLED` = `true`
    - `NEXT_PUBLIC_ADSENSE_CLIENT_ID` = `ca-pub-…`
    - optional `NEXT_PUBLIC_ADSENSE_SLOT_LAYOUT` / `_SIDEBAR` / `_FOOTER`
-   - `NEXT_PUBLIC_GA4_ID` = the measurement ID used for the daily check
-3. Re-run **Deploy GitHub Pages** (`workflow_dispatch`) or push to `main`. The values are baked into the static export.
+3. Re-run **Deploy GitHub Pages** (`workflow_dispatch`) or push to `main`. The values are baked into the static export. Google Analytics 4 does not use a deploy variable.
 4. To turn ads off, set `NEXT_PUBLIC_ADS_ENABLED` to `false` (or delete it) and redeploy.
 
-Ad scripts still wait for the consent stub (accept). Reject keeps the labeled reservation; it does not load AdSense.
+Ad units still wait for an accepted consent choice. Decline keeps the labeled reservation and does not fill an ad unit. The AdSense head script stays on the page.
 
 ## Product rules
 

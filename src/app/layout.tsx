@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { ADSENSE_HEAD_SRC, ADSENSE_PUBLISHER_CLIENT, adsConfigured } from "@/lib/ads";
+import { consentDefaultInlineScript } from "@/lib/ga4";
 import { getComplianceGate, INDEPENDENT_MICROCOPY } from "@/lib/compliance";
 import { decideIndexation } from "@/lib/indexation";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <head>
+        <script id="df-consent-default" dangerouslySetInnerHTML={{ __html: consentDefaultInlineScript(showAds) }} />
         <script async src={ADSENSE_HEAD_SRC} crossOrigin="anonymous" />
       </head>
       <body>

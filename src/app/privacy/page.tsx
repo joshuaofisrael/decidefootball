@@ -1,14 +1,16 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ConsentChoices } from "@/components/ConsentChoices";
 import { LegalNotice } from "@/components/LegalNotice";
+import { GA4_MEASUREMENT_ID, GA_OPTOUT_URL } from "@/lib/ga4";
 import { FLORIDA_GOVERNING_LAW, SITE_LEGAL_NAME } from "@/lib/legal";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_CONTACT_EMAIL, SITE_HOST, SITE_NAME } from "@/lib/site";
 
 const title = "Privacy Policy";
 const description =
-  "Joshua Israel Ventures LLC is the data controller for Decide Football. Cloudflare Web Analytics is cookieless. Google AdSense is set up on the site. Google and its partners may use cookies to serve ads.";
+  "Joshua Israel Ventures LLC is the data controller for Decide Football. Cloudflare Web Analytics is cookieless. Google Analytics 4 loads only with consent and uses cookies. Google AdSense is set up on the site. Google and its partners may use cookies to serve ads.";
 
-const PAGE_DATE = { lastModified: "2026-10-23" } as const;
+const PAGE_DATE = { lastModified: "2026-10-27" } as const;
 
 export const metadata = pageMetadata({
   path: "/privacy/",
@@ -37,10 +39,25 @@ export default function PrivacyPage() {
         The Site loads Cloudflare Web Analytics on each page. That measurement is cookieless. It
         records aggregate page views. It is not an advertising pixel.
       </p>
+      <h2>Google Analytics 4</h2>
+      <p>
+        The Site uses Google Analytics 4 ({GA4_MEASUREMENT_ID}). It collects pages viewed, the time
+        of the visit, a general location, the browser and device, and the referring site. It uses
+        cookies. The Google Analytics script loads only after you accept. Until then, analytics
+        storage stays denied and the script is not requested.
+      </p>
+      <p>
+        You can accept or decline in <a href="#analytics-choice">your analytics choice</a> on this
+        page, and the same control is on the <a href="/cookies/#analytics-choice">cookie notice</a>.
+        You can change that choice later. You can also opt out with the{" "}
+        <a href={GA_OPTOUT_URL}>Google Analytics Opt-out Browser Add-on</a>.
+      </p>
+      <ConsentChoices />
       <p>
         The browser may keep a consent choice (<code>df_consent</code>), a watchlist (
         <code>df_watchlist</code>), and a Sunday-mode preference (<code>df_sunday_mode</code>) in
-        local storage on the device. The Site does not run an account system.
+        local storage on the device. <code>df_consent</code> is the accept or decline choice for
+        Google Analytics 4. The Site does not run an account system.
       </p>
 
       <h2>Advertising</h2>

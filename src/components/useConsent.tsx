@@ -5,6 +5,8 @@ import { CONSENT_STORAGE_KEY, parseConsentChoice, type ConsentChoice } from "@/l
 
 type ConsentContextValue = {
   choice: ConsentChoice;
+  /** False until localStorage has been read. Avoids showing the banner before the saved choice is known. */
+  ready: boolean;
   save: (next: Exclude<ConsentChoice, "unset">) => void;
 };
 
@@ -12,9 +14,11 @@ const ConsentContext = createContext<ConsentContextValue | null>(null);
 
 export function ConsentProvider({ children }: { children: ReactNode }) {
   const [choice, setChoice] = useState<ConsentChoice>("unset");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     setChoice(parseConsentChoice(window.localStorage.getItem(CONSENT_STORAGE_KEY)));
+    setReady(true);
   }, []);
 
   function save(next: Exclude<ConsentChoice, "unset">) {
@@ -22,7 +26,9 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
     setChoice(next);
   }
 
-  return <ConsentContext.Provider value={{ choice, save }}>{children}</ConsentContext.Provider>;
+  return (
+    <ConsentContext.Provider value={{ choice, ready, save }}>{children}</ConsentContext.Provider>
+  );
 }
 
 export function useConsent() {

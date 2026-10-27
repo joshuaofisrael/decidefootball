@@ -204,6 +204,18 @@ jobs:
           grep -q 'Joshua Israel Ventures LLC is the data controller' out/privacy/index.html
           grep -q 'cookieless' out/privacy/index.html
           grep -q 'Google and its partners may use cookies to serve ads.' out/privacy/index.html
+          grep -q 'Google Analytics 4' out/privacy/index.html
+          grep -q 'Google Analytics 4' out/cookies/index.html
+          grep -q 'It uses cookies.' out/privacy/index.html
+          grep -q 'It uses cookies.' out/cookies/index.html
+          grep -q 'The Google Analytics script loads only after you accept.' out/privacy/index.html
+          grep -q 'The Google Analytics script loads only after you accept.' out/cookies/index.html
+          grep -q 'https://tools.google.com/dlpage/gaoptout' out/privacy/index.html
+          grep -q 'https://tools.google.com/dlpage/gaoptout' out/cookies/index.html
+          grep -q 'id="analytics-choice"' out/privacy/index.html
+          grep -q 'id="analytics-choice"' out/cookies/index.html
+          grep -q 'href="/cookies/#analytics-choice"' out/privacy/index.html
+          grep -q 'href="/privacy/#analytics-choice"' out/cookies/index.html
           grep -q 'joshuaofisrael@gmail.com' out/privacy/index.html
           grep -q 'joshuaofisrael@gmail.com' out/contact/index.html
           grep -q 'Questions about Decide Football' out/contact/index.html
@@ -722,9 +734,9 @@ jobs:
             echo "rendered AdSense ad unit" >&2
             exit 1
           fi
-          ! grep -q 'googletagmanager.com' out/index.html
-          ! grep -q 'googletagmanager.com' out/about/index.html
           ! grep -q 'google-analytics.com' out/index.html
+          ! grep -q '<script async src="https://www.googletagmanager.com/gtag/js' out/index.html
+          ! grep -q '<script async src="https://www.googletagmanager.com/gtag/js' out/about/index.html
           ! grep -q 'Advertisement' out/start-sit/noah-crowe-vs-jordan-voss/index.html
           python3 - <<'PY'
           import pathlib, re
@@ -737,8 +749,30 @@ jobs:
                   raise SystemExit(f"{rel} beacon is not the single layout snippet")
               if html.find(snippet) > html.rfind("</body>"):
                   raise SystemExit(f"{rel} beacon is after </body>")
-              if "googletagmanager.com" in html or "google-analytics.com" in html:
-                  raise SystemExit(f"{rel} contains another analytics script")
+              if "google-analytics.com" in html:
+                  raise SystemExit(f"{rel} contains a Universal Analytics host")
+              if re.search(r"<script\b[^>]*\bsrc=['\"]https://www\.googletagmanager\.com/gtag/js", html):
+                  raise SystemExit(f"{rel} loads gtag.js from a static script tag")
+              consent = re.search(r'<script id="df-consent-default">(.*?)</script>', html, re.S)
+              if not consent:
+                  raise SystemExit(f"{rel} is missing the consent default script")
+              body = consent.group(1)
+              for signal in ("analytics_storage", "ad_storage", "ad_user_data", "ad_personalization"):
+                  if f"{signal}:'denied'" not in body:
+                      raise SystemExit(f"{rel} does not default {signal} to denied")
+              accept_at = body.find("stored==='accept'")
+              src_at = body.find("https://www.googletagmanager.com/gtag/js?id=G-TNS68J7G3M")
+              if body.find("gtag('consent','default'") == -1 or accept_at == -1 or src_at == -1:
+                  raise SystemExit(f"{rel} consent script is incomplete")
+              if not (body.find("gtag('consent','default'") < accept_at < src_at):
+                  raise SystemExit(f"{rel} loads gtag.js before consent or outside the accept branch")
+              if "s.async=true" not in body:
+                  raise SystemExit(f"{rel} gtag.js loader is not async")
+              if "ad_storage:'granted'" in body:
+                  raise SystemExit(f"{rel} grants ad storage while ad units are off")
+              head = html.split("</head>", 1)[0]
+              if head.find('id="df-consent-default"') > head.find("adsbygoogle.js"):
+                  raise SystemExit(f"{rel} consent default is after the AdSense script")
               if '<ins class="adsbygoogle"' in html:
                   raise SystemExit(f"{rel} renders an AdSense ad unit")
           for rel in ("out/privacy/index.html", "out/cookies/index.html", "out/index.html"):

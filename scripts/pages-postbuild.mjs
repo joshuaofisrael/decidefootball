@@ -119,6 +119,53 @@ function ensureCloudflareBeacon() {
 
 ensureCloudflareBeacon();
 
+/**
+ * Next emits the inline consent script after the async AdSense tag.
+ * A cached AdSense script can run before a later inline script, so the
+ * denied-by-default command has to sit immediately before that tag.
+ * The AdSense tag itself is not rewritten.
+ */
+function placeConsentBeforeAdsense() {
+  const adsenseNeedle = "adsbygoogle.js?client=ca-pub-5681559774142917";
+  const consentRe = /<script id="df-consent-default">[\s\S]*?<\/script>/;
+  let moved = 0;
+  let already = 0;
+  for (const file of walkHtml(out)) {
+    const html = readFileSync(file, "utf8");
+    const rel = file.slice(out.length + 1);
+    const consentMatch = html.match(consentRe);
+    if (!consentMatch || html.match(/<script id="df-consent-default">/g)?.length !== 1) {
+      console.error(`pages-postbuild: ${rel} needs exactly one consent default script`);
+      process.exit(1);
+    }
+    const adsenseAt = html.indexOf(adsenseNeedle);
+    if (adsenseAt === -1) {
+      console.error(`pages-postbuild: ${rel} is missing the AdSense script`);
+      process.exit(1);
+    }
+    const consent = consentMatch[0];
+    const consentAt = html.indexOf(consent);
+    if (consentAt < adsenseAt) {
+      already += 1;
+      continue;
+    }
+    const without = html.replace(consent, "");
+    const needleAt = without.indexOf(adsenseNeedle);
+    const tagStart = without.lastIndexOf("<script", needleAt);
+    if (tagStart === -1) {
+      console.error(`pages-postbuild: ${rel} AdSense script tag was not found`);
+      process.exit(1);
+    }
+    writeFileSync(file, `${without.slice(0, tagStart)}${consent}${without.slice(tagStart)}`);
+    moved += 1;
+  }
+  console.log(
+    `pages-postbuild: consent default already before AdSense on ${already} HTML files, moved on ${moved}`,
+  );
+}
+
+placeConsentBeforeAdsense();
+
 const AI_SEARCH_USER_AGENTS = [
   "OAI-SearchBot",
   "ChatGPT-User",

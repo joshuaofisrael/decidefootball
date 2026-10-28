@@ -17,7 +17,7 @@ export const HOME_FAQS: readonly HomeFaq[] = [
   {
     question: "What are the start/sit notes, and when are they published?",
     answer:
-      "Start/sit notes are dated editorial pages under /start-sit/. They cite public reporting. Sit, start, and recheck are editorial opinion. A note does not print the sample estimates, and it does not know your roster, your scoring, or your bench. The notes on the site are Week 6 at /start-sit/2026-week-6/, last updated 2026-10-15, for 15-19 October 2026, and Week 7 at /start-sit/2026-week-7/, last updated 2026-10-19, for 22-26 October 2026. Each page prints its own last-updated date. The site does not print a standing weekday for the next note. These notes are separate from the sample start/sit desk at /start-sit/.",
+      "Start/sit notes are dated editorial pages under /start-sit/. They cite public reporting. Sit, start, and recheck are editorial opinion. A note does not print the sample estimates, and it does not know your roster, your scoring, or your bench. The notes on the site are Week 6 at /start-sit/2026-week-6/, last updated 2026-10-15, for 15-19 October 2026, Week 7 at /start-sit/2026-week-7/, last updated 2026-10-19, for 22-26 October 2026, and Week 8 at /start-sit/2026-week-8/, last updated 2026-10-28, for 29 October-2 November 2026. Each page prints its own last-updated date. The site does not print a standing weekday for the next note. These notes are separate from the sample start/sit desk at /start-sit/.",
   },
   {
     question: "What is Waiver Radar?",
@@ -48,6 +48,7 @@ export const HOME_FAQS: readonly HomeFaq[] = [
 
 /** Longer paths first so /start-sit/ does not swallow /start-sit/2026-week-6/. */
 const FAQ_LINKS = [
+  "/start-sit/2026-week-8/",
   "/start-sit/2026-week-6/",
   "/start-sit/2026-week-7/",
   "/waiver-radar/2026-week-6/",

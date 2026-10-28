@@ -33,6 +33,7 @@ const SITEMAP_PATHS = [
   "/waiver-radar/2026-week-8/",
   "/start-sit/2026-week-6/",
   "/start-sit/2026-week-7/",
+  "/start-sit/2026-week-8/",
   "/terms/",
   "/privacy/",
   "/disclaimer/",
@@ -128,7 +129,7 @@ describe("resolveContentLastmod", () => {
 });
 
 describe("sitemap lastmod", () => {
-  it("keeps the 69 urls and gives each a real content date", () => {
+  it("keeps the 70 urls and gives each a real content date", () => {
     assert.deepEqual(indexableSitemapPaths(), [...SITEMAP_PATHS]);
     assert.deepEqual(contentFilesForPath("/terms/"), ["src/app/terms/page.tsx"]);
     assert.ok(contentFilesForPath("/slate/").includes("src/components/FixtureBanner.tsx"));
@@ -156,14 +157,18 @@ describe("sitemap lastmod", () => {
     assert.equal(lastmodForPath("/contact/"), "2026-10-18");
     assert.equal(lastmodForPath("/"), "2026-10-26");
     assert.equal(lastmodForPath("/about/"), "2026-10-24");
-    assert.equal(lastmodForPath("/guide/start-sit/"), "2026-10-18");
+    assert.equal(lastmodForPath("/guide/start-sit/"), "2026-10-28");
     assert.equal(lastmodForPath("/waiver-radar/2026-week-7/"), "2026-10-18");
     assert.equal(lastmodForPath("/waiver-radar/2026-week-8/"), "2026-10-27");
     assert.equal(lastmodForPath("/start-sit/2026-week-6/"), "2026-10-15");
     assert.equal(lastmodForPath("/start-sit/2026-week-7/"), "2026-10-19");
+    assert.equal(lastmodForPath("/start-sit/2026-week-8/"), "2026-10-28");
     assert.equal(lastmodForPath("/contact/thanks/"), "2026-10-18");
     assert.ok(
       contentFilesForPath("/start-sit/2026-week-7/").includes("src/lib/weekly-start-sit-week-7.ts"),
+    );
+    assert.ok(
+      contentFilesForPath("/start-sit/2026-week-8/").includes("src/lib/weekly-start-sit-week-8.ts"),
     );
     assert.equal(lastmodForPath("/guide/thanksgiving-nfl-how-to-watch/"), "2026-10-16");
     assert.equal(
@@ -199,7 +204,7 @@ describe("sitemap lastmod", () => {
       ),
     );
     assert.equal(lastmodForPath("/slate/"), "2026-10-11");
-    assert.equal(lastmodForPath("/start-sit/"), "2026-10-18");
+    assert.equal(lastmodForPath("/start-sit/"), "2026-10-28");
     assert.equal(lastmodForPath("/players/jordan-voss/"), "2026-10-11");
     assert.ok(lastmodForPath("/") > lastmodForPath("/terms/"));
   });

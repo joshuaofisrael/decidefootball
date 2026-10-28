@@ -26,6 +26,7 @@ export const EDITORIAL_SITEMAP_PATHS = [
   "/waiver-radar/2026-week-8/",
   "/start-sit/2026-week-6/",
   "/start-sit/2026-week-7/",
+  "/start-sit/2026-week-8/",
   "/terms/",
   "/privacy/",
   "/disclaimer/",

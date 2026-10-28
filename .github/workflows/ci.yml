@@ -328,8 +328,8 @@ jobs:
           import pathlib, re
           xml = pathlib.Path("out/sitemap.xml").read_text()
           blocks = re.findall(r"<url>\s*(.*?)\s*</url>", xml, flags=re.S)
-          if len(blocks) != 69:
-              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 69")
+          if len(blocks) != 70:
+              raise SystemExit(f"sitemap has {len(blocks)} urls, expected 70")
           for block in blocks:
               loc = re.search(r"<loc>([^<]+)</loc>", block)
               mods = re.findall(r"<lastmod>([^<]+)</lastmod>", block)
@@ -612,6 +612,41 @@ jobs:
           ! grep -q 'waiver-wire/2026' out/start-sit/2026-week-7/index.html
           ! grep -i -q 'draftkings\|fanduel\|betmgm\|moneyline' out/start-sit/2026-week-7/index.html
           ! grep -q 'noindex' out/start-sit/2026-week-7/index.html
+          test -f out/start-sit/2026-week-8/index.html
+          grep -q 'https://decidefootball.com/start-sit/2026-week-8/' out/sitemap.xml
+          grep -q '<lastmod>2026-10-28</lastmod>' out/sitemap.xml
+          grep -q 'https://decidefootball.com/start-sit/2026-week-8/' out/llms.txt
+          grep -q 'content="index,follow"' out/start-sit/2026-week-8/index.html
+          grep -q 'rel="canonical" href="https://decidefootball.com/start-sit/2026-week-8/"' out/start-sit/2026-week-8/index.html
+          grep -q 'property="og:title" content="Week 8 start sit 2026"' out/start-sit/2026-week-8/index.html
+          grep -q 'Week 8 start sit 2026' out/start-sit/2026-week-8/index.html
+          grep -q 'Who to start Week 8 fantasy' out/start-sit/2026-week-8/index.html
+          grep -q 'Last updated: 2026-10-28' out/start-sit/2026-week-8/index.html
+          grep -q 'FAQPage' out/start-sit/2026-week-8/index.html
+          grep -q 'Article' out/start-sit/2026-week-8/index.html
+          grep -q 'BreadcrumbList' out/start-sit/2026-week-8/index.html
+          grep -q '"name":"Decide Football"' out/start-sit/2026-week-8/index.html
+          ! grep -q 'Joshua Israel' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/guide/start-sit/"' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/guide/listed-status/"' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/start-sit/"' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/start-sit/2026-week-7/"' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/start-sit/2026-week-6/"' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/waiver-radar/2026-week-8/"' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/waiver-radar/2026-week-7/"' out/start-sit/2026-week-8/index.html
+          grep -q 'href="/start-sit/2026-week-8/"' out/start-sit/index.html
+          grep -q 'href="/start-sit/2026-week-8/"' out/guide/start-sit/index.html
+          grep -q 'href="/start-sit/2026-week-8/"' out/guide/index.html
+          grep -q 'href="/start-sit/2026-week-8/"' out/waiver-radar/2026-week-8/index.html
+          grep -q 'href="/start-sit/2026-week-8/"' out/start-sit/2026-week-7/index.html
+          grep -q 'Allow: /start-sit/2026-week-8/' out/robots.txt
+          grep -q 'https://www.nfl.com/schedules/2026/by-week/week-8' out/start-sit/2026-week-8/index.html
+          grep -q 'https://www.nfl.com/news/2026-nfl-schedule-release-every-team-bye-week' out/start-sit/2026-week-8/index.html
+          grep -q "Friday's final injury report" out/start-sit/2026-week-8/index.html
+          ! grep -q 'waiver-wire/2026' out/start-sit/2026-week-8/index.html
+          ! grep -i -q 'draftkings\|fanduel\|betmgm\|moneyline' out/start-sit/2026-week-8/index.html
+          ! grep -q 'aria-label="Advertisement"' out/start-sit/2026-week-8/index.html
+          ! grep -q 'noindex' out/start-sit/2026-week-8/index.html
           test -f out/contact/thanks/index.html
           grep -q 'https://decidefootball.com/contact/thanks/' out/sitemap.xml
           grep -q 'https://decidefootball.com/contact/thanks/' out/llms.txt

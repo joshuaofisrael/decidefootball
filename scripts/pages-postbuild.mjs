@@ -259,7 +259,7 @@ function validateRobotsGroup() {
   if (sitemap.includes("llms.txt")) fail("sitemap.xml must list HTML pages only");
   const locs = sitemap.match(/<loc>[^<]+<\/loc>/g) ?? [];
   const mods = sitemap.match(/<lastmod>([^<]+)<\/lastmod>/g) ?? [];
-  if (locs.length !== 69) fail(`sitemap has ${locs.length} urls, expected 69`);
+  if (locs.length !== 70) fail(`sitemap has ${locs.length} urls, expected 70`);
   if (mods.length !== locs.length) fail("every sitemap url needs one lastmod");
   for (const tag of mods) {
     const value = tag.slice("<lastmod>".length, -"</lastmod>".length);
@@ -384,6 +384,7 @@ function validateJsonLd() {
     ["waiver-radar/2026-week-8/index.html", true, false],
     ["start-sit/2026-week-6/index.html", false, false],
     ["start-sit/2026-week-7/index.html", true, false],
+    ["start-sit/2026-week-8/index.html", true, false],
   ];
   for (const [rel, faq, itemList] of editorial) {
     const html = readFileSync(join(out, rel), "utf8");

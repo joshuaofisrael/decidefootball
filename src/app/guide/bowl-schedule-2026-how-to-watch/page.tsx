@@ -241,8 +241,10 @@ export default function BowlWatchPage() {
         . How to read a decision card is the <Link href="/guide/start-sit/">start/sit guide</Link>,
         the <Link href="/guide/waiver-radar/">waivers guide</Link>, the{" "}
         <Link href="/guide/listed-status/">injury designations guide</Link>, and the{" "}
-        <Link href="/guide/rankings/">rankings guide</Link>. Dated NFL notes are{" "}
-        <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link> and{" "}
+        <Link href="/guide/rankings/">rankings guide</Link>. The latest dated NFL notes are{" "}
+        <Link href="/start-sit/2026-week-8/">Week 8 start/sit</Link> and{" "}
+        <Link href="/waiver-radar/2026-week-8/">Week 8 waiver pickups</Link>. Earlier notes
+        include <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link> and{" "}
         <Link href="/waiver-radar/2026-week-7/">Week 7 waiver pickups</Link>.
       </p>
     </div>

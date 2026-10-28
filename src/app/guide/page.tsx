@@ -10,7 +10,7 @@ const description =
   "How to read Decide Football cards: floor, mean, ceiling, injury labels, waivers, rankings, and add/drop. Not NFL-affiliated. Not gambling advice.";
 
 /** Sitemap lastmod reads this literal. */
-const PAGE_UPDATED = { lastModified: "2026-10-25" } as const;
+const PAGE_UPDATED = { lastModified: "2026-10-28" } as const;
 
 const guides = [
   {
@@ -125,7 +125,8 @@ export default function GuideHubPage() {
       </p>
       <p>
         The dated lineup notes are separate as well:{" "}
-        <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link> and{" "}
+        <Link href="/start-sit/2026-week-8/">Week 8 fantasy start/sit</Link>,{" "}
+        <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, and{" "}
         <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>. They cite public
         reporting. They are not the sample desk at <Link href="/start-sit/">/start-sit/</Link> and
         not live licensed NFL statistics.

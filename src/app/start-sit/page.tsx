@@ -10,9 +10,9 @@ import { pageMetadata } from "@/lib/seo";
 
 /**
  * Sitemap lastmod reads the first date literal. Prose last changed when the
- * Week 7 note was linked, which is later than the Week 6 date below.
+ * Week 8 note was linked, which is later than the Week 6 date below.
  */
-const PAGE_UPDATED = { lastModified: "2026-10-18" } as const;
+const PAGE_UPDATED = { lastModified: "2026-10-28" } as const;
 
 /** Week 6 note date. Also a lastModified literal, so it must stay below PAGE_UPDATED. */
 const HUB_UPDATED = { lastModified: "2026-10-15" } as const;
@@ -41,8 +41,10 @@ export default function StartSitIndexPage() {
       <p>{`Last updated: ${PAGE_UPDATED.lastModified}.`}</p>
       <p>
         The dated editorial note for the current week is{" "}
-        <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, updated 2026-10-19.
+        <Link href="/start-sit/2026-week-8/">Week 8 fantasy start/sit</Link>, updated 2026-10-28.
         The previous note is{" "}
+        <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, updated 2026-10-19.
+        The note before that is{" "}
         <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>, updated{" "}
         {HUB_UPDATED.lastModified}. Those pages cite public reporting. The cards below are
         separate from them.

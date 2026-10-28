@@ -118,6 +118,8 @@ export default function NflPlayoffs2027Page() {
         <Link href="/guide/waiver-radar/">waiver-radar guide</Link>, and not the sample desk. The
         desks are <Link href="/start-sit/">/start-sit/</Link> and{" "}
         <Link href="/waiver-radar/">/waiver-radar/</Link>. The latest dated notes are{" "}
+        <Link href="/start-sit/2026-week-8/">Week 8 start/sit</Link> and{" "}
+        <Link href="/waiver-radar/2026-week-8/">Week 8 waiver radar</Link>. Earlier notes include{" "}
         <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link> and{" "}
         <Link href="/waiver-radar/2026-week-7/">Week 7 waiver radar</Link>. Holiday windows are
         the <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link>{" "}
@@ -287,8 +289,10 @@ export default function NflPlayoffs2027Page() {
         <Link href="/guide/college-football-playoff-2026-schedule-how-to-watch/">
           2026-27 College Football Playoff schedule
         </Link>
-        . The latest dated lineup note is <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link>
+        . The latest dated lineup note is <Link href="/start-sit/2026-week-8/">Week 8 start/sit</Link>
         , and the latest dated waiver note is{" "}
+        <Link href="/waiver-radar/2026-week-8/">Week 8 waiver radar</Link>. Earlier notes include{" "}
+        <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link> and{" "}
         <Link href="/waiver-radar/2026-week-7/">Week 7 waiver radar</Link>.
       </p>
     </div>

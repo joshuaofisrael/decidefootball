@@ -1,0 +1,10 @@
+{
+  "assets": [
+    {
+      "path": "public/images/knee-note.png",
+      "source": "1x1 test image created for the legal-gate pass fixture. Not a photograph of a person or an event.",
+      "licence": "Created for this repository's legal-gate test. No third-party licence.",
+      "permission": "Test fixture only. Not part of the published site."
+    }
+  ]
+}

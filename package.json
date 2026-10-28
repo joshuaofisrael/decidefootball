@@ -8,10 +8,11 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/pages-postbuild.mjs",
+    "legal-gate": "tsx scripts/legal-gate.ts",
+    "build": "tsx scripts/legal-gate.ts && next build && node scripts/pages-postbuild.mjs",
     "start": "npx --yes serve out",
     "lint": "next lint",
-    "test": "tsx --test src/lib/**/*.test.ts",
+    "test": "tsx --test src/lib/**/*.test.ts scripts/legal-gate.test.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",

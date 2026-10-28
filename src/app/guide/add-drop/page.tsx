@@ -201,6 +201,16 @@ export default function AddDropGuidePage() {
           <p>{item.answer}</p>
         </div>
       ))}
+
+      <h2>Source</h2>
+      <p>
+        Questionable, Doubtful, Out, injured reserve, and inactive are league injury-report
+        labels. How this page weighs them is Decide Football method, not a league instruction.{" "}
+        <a href="https://www.nfl.com/news/competition-committee-approves-revisions-to-injury-report-0ap3000000688693">
+          Competition Committee revisions to the injury report (NFL.com, August 21, 2016)
+        </a>
+        .
+      </p>
     </div>
   );
 }

@@ -18,6 +18,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      # Required before the export. Not inside a retry loop.
+      # The build script runs this gate again, so a retried build cannot skip it.
+      - name: Pre-publish legal hold gate
+        run: npm run legal-gate
       - run: npm run build
         env:
           COMPLIANCE_GATE: GREEN

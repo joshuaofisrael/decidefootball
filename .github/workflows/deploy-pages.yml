@@ -36,6 +36,11 @@ jobs:
             sleep $((attempt * 10))
           done
       - run: npm test
+      # Required before the export. Keep this outside the npm ci retry above.
+      # The build script runs this gate again, so a retried build cannot skip it.
+      # workflow_dispatch uses this same job. There is no skip input.
+      - name: Pre-publish legal hold gate
+        run: npm run legal-gate
       - run: npm run build
         env:
           COMPLIANCE_GATE: GREEN

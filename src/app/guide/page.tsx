@@ -219,6 +219,39 @@ export default function GuideHubPage() {
         </li>
         <li>Not live licensed NFL statistics. Sample desks demonstrate the tool.</li>
       </ul>
+
+      <h2>Sources for the dated notes</h2>
+      <p>
+        Dates, kickoffs, and announced channels on the viewing notes linked above come from
+        those pages&apos; cited releases. The primary pages:
+      </p>
+      <ul>
+        <li>
+          <a href="https://www.nfl.com/news/thanksgiving-2026-nfl-schedule-release">
+            Thanksgiving 2026 NFL schedule release (NFL.com)
+          </a>
+        </li>
+        <li>
+          <a href="https://www.nfl.com/news/christmas-netflix-2026-nfl-schedule-release">
+            Christmas and Netflix 2026 NFL schedule release (NFL.com)
+          </a>
+        </li>
+        <li>
+          <a href="https://collegefootballplayoff.com/news/2026/6/1/26-27-broadcast-sked">
+            2026-27 CFP broadcast schedule (College Football Playoff)
+          </a>
+        </li>
+        <li>
+          <a href="https://espnpressroom.com/press-release/espn-unveils-32-game-college-football-bowl-season-slate-for-2026-27-season/">
+            ESPN 32-game college football bowl slate for 2026-27 (ESPN Press Room)
+          </a>
+        </li>
+        <li>
+          <a href="https://www.nfl.com/news/2026-27-national-football-league-important-dates">
+            2026-27 NFL important dates (NFL.com)
+          </a>
+        </li>
+      </ul>
     </div>
   );
 }

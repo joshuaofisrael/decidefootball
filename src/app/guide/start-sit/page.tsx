@@ -24,9 +24,9 @@ const description = START_SIT_DESCRIPTION;
 
 /**
  * Sitemap lastmod reads the first date literal. Prose last changed when the
- * Week 7 note was linked, which is later than the Week 6 date below.
+ * Week 8 note was linked, which is later than the Week 6 date below.
  */
-const PAGE_UPDATED = { lastModified: "2026-10-18" } as const;
+const PAGE_UPDATED = { lastModified: "2026-10-28" } as const;
 
 /** Week 6 note date. Also a lastModified literal, so it must stay below PAGE_UPDATED. */
 const GUIDE_UPDATED = { lastModified: "2026-10-15" } as const;
@@ -200,6 +200,7 @@ export default function StartSitGuidePage() {
         Comparison tools are at the <Link href="/start-sit/">start/sit desk</Link> so the product
         can be used and reviewed. Those URLs use sample data for demonstrating the tool. They are
         not live licensed NFL stats. The dated editorial notes are{" "}
+        <Link href="/start-sit/2026-week-8/">Week 8 fantasy start/sit</Link>, updated 2026-10-28,{" "}
         <Link href="/start-sit/2026-week-7/">Week 7 fantasy start/sit</Link>, updated 2026-10-19,
         and <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>, updated{" "}
         {GUIDE_UPDATED.lastModified}. Those pages cite public reporting. They are not the sample

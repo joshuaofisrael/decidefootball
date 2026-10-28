@@ -114,7 +114,9 @@ export default function ChristmasWatchPage() {
         page says so. This is a viewing list. It is not the{" "}
         <Link href="/guide/start-sit/">start/sit guide</Link>, not the{" "}
         <Link href="/guide/waiver-radar/">waiver-radar guide</Link>, and not the sample desk. The
-        latest dated notes are <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link> and{" "}
+        latest dated notes are <Link href="/start-sit/2026-week-8/">Week 8 start/sit</Link> and{" "}
+        <Link href="/waiver-radar/2026-week-8/">Week 8 waiver radar</Link>. Earlier notes include{" "}
+        <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link> and{" "}
         <Link href="/waiver-radar/2026-week-7/">Week 7 waiver radar</Link>. Thanksgiving week is
         the{" "}
         <Link href="/guide/thanksgiving-nfl-how-to-watch/">Thanksgiving how-to-watch guide</Link>.
@@ -235,8 +237,10 @@ export default function ChristmasWatchPage() {
           2026 NFL playoffs schedule and how to watch
         </Link>
         . The latest dated lineup note is{" "}
-        <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link>, and the latest dated waiver
-        note is <Link href="/waiver-radar/2026-week-7/">Week 7 waiver radar</Link>. How waivers
+        <Link href="/start-sit/2026-week-8/">Week 8 start/sit</Link>, and the latest dated waiver
+        note is <Link href="/waiver-radar/2026-week-8/">Week 8 waiver radar</Link>. Earlier notes
+        include <Link href="/start-sit/2026-week-7/">Week 7 start/sit</Link> and{" "}
+        <Link href="/waiver-radar/2026-week-7/">Week 7 waiver radar</Link>. How waivers
         work is the <Link href="/guide/waiver-radar/">waiver-radar guide</Link>.
       </p>
     </div>

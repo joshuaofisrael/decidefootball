@@ -33,6 +33,7 @@ describe("week 8 waiver note", () => {
     assert.match(page, /href="\/waiver-radar\/2026-week-7\/"/);
     assert.match(page, /href="\/waiver-radar\/2026-week-6\/"/);
     assert.match(page, /href="\/start-sit\/2026-week-6\/"/);
+    assert.match(page, /href="\/start-sit\/2026-week-8\/"/);
     assert.match(page, /href="\/start-sit\/2026-week-7\/"/);
     assert.match(page, /href="\/guide\/waiver-radar\/"/);
     assert.match(page, /href="\/guide\/add-drop\/"/);

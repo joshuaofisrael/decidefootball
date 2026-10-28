@@ -166,13 +166,15 @@ export default function Week7StartSitPage() {
         </li>
         <li>
           The previous lineup note is{" "}
-          <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>.
+          <Link href="/start-sit/2026-week-6/">Week 6 fantasy start/sit</Link>. The next lineup
+          note is <Link href="/start-sit/2026-week-8/">Week 8 fantasy start/sit</Link>.
         </li>
         <li>
           <Link href="/waiver-radar/2026-week-7/">Week 7 fantasy waiver pickups</Link> is a
           different question: who to add, not who to start among players already rostered. The
           previous add note is{" "}
-          <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>.
+          <Link href="/waiver-radar/2026-week-6/">Week 6 fantasy waiver pickups</Link>. The next
+          add note is <Link href="/waiver-radar/2026-week-8/">Week 8 fantasy waiver pickups</Link>.
         </li>
         <li>
           <Link href="/guide/listed-status/">Questionable, Doubtful, and Out</Link> is the page

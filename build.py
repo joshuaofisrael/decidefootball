@@ -22,10 +22,12 @@ def page(title,desc,path,body,extra=""):
 <a class="skip" href="#main">Skip to content</a><header><div class="wrap"><a class="brand" href="/">Decide Football</a><p class="tagline">{TAG}</p><nav aria-label="Categories"><a href="/">Latest</a>{nav}</nav></div></header>
 <main id="main" class="wrap">{body}</main>
 <footer><div class="wrap"><p><a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/image-policy/">Image policy</a> · <a href="/feed.xml">RSS</a></p><p>© 2026 Joshua Israel Ventures LLC</p></div></footer></body></html>'''
-def thumb(alt): return f'<figure><div class="thumb" role="img" aria-label="{html.escape(alt)}">Image coming soon</div><a class="src" href="/image-policy/">Source</a></figure>'
+def thumb(alt,img=None):
+    inner=f'<img src="{img[0]}" alt="{html.escape(img[1])}" width="1280" height="720" loading="lazy" style="width:100%;height:auto;display:block">' if img else f'<div class="thumb" role="img" aria-label="{html.escape(alt)}">Image coming soon</div>'
+    return f'<figure>{inner}<a class="src" href="/image-policy/">Source</a></figure>'
 A=json.load(open("articles.json"))
 A.sort(key=lambda a:a["date"],reverse=True)
-def card(a): return f'<article class="card">{thumb(a["title"])}<span class="tag">{CATS[a["cat"]]}</span><h2><a href="/news/{a["slug"]}/">{html.escape(a["title"])}</a></h2><p>{html.escape(a["desc"])}</p></article>'
+def card(a): return f'<article class="card">{thumb(a["title"],a.get("image"))}<span class="tag">{CATS[a["cat"]]}</span><h2><a href="/news/{a["slug"]}/">{html.escape(a["title"])}</a></h2><p>{html.escape(a["desc"])}</p></article>'
 def w(p,s): os.makedirs(os.path.dirname(p) or ".",exist_ok=True);open(p,"w").write(s)
 w("index.html",page("Decide Football – the decisions behind British football",TAG,"/",'<h1>Latest decisions</h1><div class="grid">'+"".join(map(card,A))+"</div>"))
 for k,v in CATS.items():
@@ -34,7 +36,7 @@ for k,v in CATS.items():
 for a in A:
     ld={"@context":"https://schema.org","@type":"NewsArticle","headline":a["title"],"description":a["desc"],"datePublished":a["date"],"dateModified":a["date"],"author":{"@type":"Organization","name":"Decide Football"},"publisher":{"@type":"Organization","name":"Joshua Israel Ventures LLC"},"mainEntityOfPage":f'{D}/news/{a["slug"]}/',"articleSection":CATS[a["cat"]]}
     src="".join(f'<li><a href="{u}" rel="noopener">{html.escape(n)}</a></li>' for n,u in a["sources"])
-    body=f'<article class="post"><span class="tag">{CATS[a["cat"]]}</span><h1>{html.escape(a["title"])}</h1><p class="meta">By Decide Football · <time datetime="{a["date"]}">{a["date"][:10]}</time></p>{thumb(a["title"])}{a["body"]}<div class="sources"><h2>Sources</h2><ul>{src}</ul></div></article>'
+    body=f'<article class="post"><span class="tag">{CATS[a["cat"]]}</span><h1>{html.escape(a["title"])}</h1><p class="meta">By Decide Football · <time datetime="{a["date"]}">{a["date"][:10]}</time></p>{thumb(a["title"],a.get("image"))}{a["body"]}<div class="sources"><h2>Sources</h2><ul>{src}</ul></div></article>'
     w(f'news/{a["slug"]}/index.html',page(a["title"]+" – Decide Football",a["desc"],f'/news/{a["slug"]}/',body,'<script type="application/ld+json">'+json.dumps(ld)+'</script>'))
 S={"about":("About","<p>Decide Football is a news site about one thing: the decisions made by managers and head coaches in British football. We cover team selection, tactical and formation changes, substitutions, rotation, dropping and recalling players, captaincy, penalty-taker choices, and the squad and transfer calls managers make and explain – plus the decisions behind sackings and the managers under pressure.</p><p>Every story centres on a specific manager's decision, the reasoning given for it and what followed. We quote managers, clubs and journalists exactly, link to the original post or report, and never invent quotes, scores or facts.</p><p>Decide Football is published by Joshua Israel Ventures LLC.</p>"),
 "contact":("Contact","<p>For corrections, tips or other enquiries, email <a href=\"mailto:hello@decidefootball.com\">hello@decidefootball.com</a>. If you spot an error in a story, tell us which article and what is wrong and we will correct it promptly.</p>"),

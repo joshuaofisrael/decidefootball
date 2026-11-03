@@ -1,0 +1,114 @@
+
+body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fa;
+    color: #1b1f24;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.skip:focus{top:0}
+.skip {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: #0b1f3a;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+header {
+    background-color: #0b1f3a;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.thumb {
+    aspect-ratio: 16 / 9;
+    background-color: #dfe6ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: grey;
+    font-size: 0.8rem;
+}
+
+.src {
+    font-size: 0.8rem;
+    color: #666;
+    display: block;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    background-color: #1a7f37;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+
+.post {
+    max-width: 70ch;
+    margin: 1rem auto;
+}
+
+blockquote {
+    border-left: 4px solid #1a7f37;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+footer {
+    background-color: #0b1f3a;
+    color: #d0d7de;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+:focus {
+    outline: 2px solid #1a7f37;
+}
+
+.card{background:#fff}.card a{color:#0b1f3a;text-decoration:none}.card h2,.card h3{font-size:1.1rem;margin:.5rem 1rem}.card p{margin:.3rem 1rem 1rem;font-size:.9rem;color:#444}
+.card .tag{display:inline-block;margin:.75rem 1rem 0;font-size:.75rem}.brand{color:#fff;font-weight:700;font-size:1.5rem;text-decoration:none}
+.tagline{color:#c9d6e3;margin:.25rem 0 .75rem;font-size:.95rem}nav{flex-wrap:wrap;gap:.25rem}main{flex:1}
+.post a,.page a{color:#0b5cad}.meta{color:#555;font-size:.85rem}.sources{font-size:.9rem;border-top:1px solid #ccc;padding-top:.5rem}footer a{color:#d0d7de}
+.src{color:#555}figure{margin:1rem 0}

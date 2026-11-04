@@ -22,7 +22,7 @@ def page(title,desc,path,body,extra=""):
 <link rel="stylesheet" href="/assets/style.css"><link rel="alternate" type="application/rss+xml" title="Decide Football" href="/feed.xml">{extra}</head><body>
 <a class="skip" href="#main">Skip to content</a><header><div class="wrap"><a class="brand" href="/">Decide Football</a><p class="tagline">{TAG}</p><nav aria-label="Categories"><a href="/">Latest</a>{nav}</nav></div></header>
 <main id="main" class="wrap">{body}</main>
-<footer><div class="wrap"><p><a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/image-policy/">Image policy</a> · <a href="/feed.xml">RSS</a></p><p>© 2026 Joshua Israel Ventures LLC</p></div></footer></body></html>'''
+<footer><div class="wrap"><p><a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/image-policy/">Image policy</a> · <a href="/feed.xml">RSS</a></p><p>© 2026 Joshua Israel Ventures LLC</p></div></footer><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "9c4f710ff2a04acb99c29039ac218aea"}}'></script></body></html>'''
 def thumb(alt,img=None):
     inner=f'<img src="{img[0]}" alt="{html.escape(img[1])}" width="1280" height="720" loading="lazy" style="width:100%;height:auto;display:block">' if img else f'<div class="thumb" role="img" aria-label="{html.escape(alt)}">Image coming soon</div>'
     return f'<figure>{inner}<a class="src" href="/image-policy/">Source</a></figure>'

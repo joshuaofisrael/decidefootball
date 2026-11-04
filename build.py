@@ -1,6 +1,7 @@
 import os,re,json,html
 D="https://decidefootball.com"
-css=open("drafts/style.css").read()
+HAVE_DRAFT=os.path.exists("drafts/style.css")  # drafts/ is local-only; otherwise keep committed assets/style.css
+css=open("drafts/style.css").read() if HAVE_DRAFT else ""
 css=re.sub(r"```\w*","",css)
 css=css.replace("background-color: #0b1f3a;\n    color: white;\n    min-height","background-color: #f6f8fa;\n    color: #1b1f24;\n    min-height").replace("'system-ui'","system-ui").replace(".skip {",".skip:focus{top:0}\n.skip {").replace("color: #666;\n    text-align: center;\n    padding","color: #d0d7de;\n    text-align: center;\n    padding")
 css+="""
@@ -10,7 +11,7 @@ css+="""
 .post a,.page a{color:#0b5cad}.meta{color:#555;font-size:.85rem}.sources{font-size:.9rem;border-top:1px solid #ccc;padding-top:.5rem}footer a{color:#d0d7de}
 .src{color:#555}figure{margin:1rem 0}
 """
-os.makedirs("assets",exist_ok=True);open("assets/style.css","w").write(css)
+if HAVE_DRAFT: os.makedirs("assets",exist_ok=True);open("assets/style.css","w").write(css)
 CATS={"team-selection":"Team Selection","tactics":"Tactics","substitutions":"Substitutions","squad-and-transfers":"Squad and Transfers","under-pressure":"Under Pressure"}
 TAG="The decisions behind British football: team selection, tactics, substitutions and the managers under pressure."
 def page(title,desc,path,body,extra=""):

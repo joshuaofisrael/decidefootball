@@ -14,3 +14,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://decidefootball.com/sitemap.xml
+Sitemap: https://decidefootball.com/news-sitemap.xml

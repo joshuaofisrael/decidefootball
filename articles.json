@@ -27,7 +27,8 @@
     "The Guardian: 'I wasn't performing'",
     "https://www.theguardian.com/football/2026/nov/03/bruno-fernandes-manchester-united-michael-carrick-roma-champions-league"
    ]
-  ]
+  ],
+  "league": "champions-league"
  },
  {
   "slug": "carrick-names-united-team-roma",
@@ -53,7 +54,8 @@
     "Radio Times: Man Utd v Roma kick-off time",
     "https://www.radiotimes.com/tv/sport/football/man-utd-roma-champions-league-2026-27-preview/"
    ]
-  ]
+  ],
+  "league": "champions-league"
  },
  {
   "slug": "iraola-press-conference-fenerbahce-nyoni",
@@ -75,7 +77,8 @@
     "Sky Sports: Liverpool 0-1 Arsenal",
     "https://www.skysports.com/football/news/13606658/liverpool-0-1-arsenal-kai-havertz-seals-gunners-first-victory-at-anfield-for-14-years-to-move-top-of-premier-league"
    ]
-  ]
+  ],
+  "league": "champions-league"
  },
  {
   "slug": "arteta-anfield-game-plan-havertz",
@@ -97,7 +100,8 @@
     "AP News: Arsenal beats Liverpool 1-0",
     "https://apnews.com/article/liverpool-arsenal-premier-league-51d1c891dbeab214a814b754f7d8a119"
    ]
-  ]
+  ],
+  "league": "premier-league"
  },
  {
   "slug": "carrick-under-pressure-roma",
@@ -119,7 +123,8 @@
     "Sports Illustrated: Man Utd vs Roma preview",
     "https://www.si.com/soccer/man-utd-vs-roma-preview-predictions-lineups-11-3-26"
    ]
-  ]
+  ],
+  "league": "champions-league"
  },
  {
   "slug": "aaron-danks-neuer-olise-bayern-atletico-champions-league",
@@ -141,7 +146,8 @@
   "image": [
    "/assets/img/aaron-danks-neuer-olise-bayern-atletico-champions-league.webp",
    "Goalkeeper gloves and a match ball on wet grass under stadium lights"
-  ]
+  ],
+  "league": "champions-league"
  },
  {
   "slug": "scott-parker-west-ham-head-coach",
@@ -171,7 +177,8 @@
   "image": [
    "/assets/img/scott-parker-west-ham-head-coach.webp",
    "An empty dugout bench with a tactics clipboard beside a floodlit football pitch at dusk, with claret and blue seats in the stands"
-  ]
+  ],
+  "league": "championship"
  },
  {
   "slug": "carrick-shea-lacey-substitution-roma",
@@ -201,7 +208,8 @@
   "image": [
    "/assets/img/carrick-shea-lacey-substitution-roma.webp",
    "A pair of muddy football boots and a water bottle on a wet substitutes bench beside a floodlit pitch, with empty red seats behind"
-  ]
+  ],
+  "league": "champions-league"
  },
  {
   "slug": "allegri-rules-out-ritiro-porto-napoli",
@@ -227,6 +235,7 @@
   "image": [
    "/assets/img/allegri-rules-out-ritiro-porto-napoli.webp",
    "An empty away dressing room with light blue football shirts on pegs, a blank whiteboard and a football on the tiled floor"
-  ]
+  ],
+  "league": "champions-league"
  }
 ]

@@ -26,7 +26,7 @@ def signup():
      '<input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true"><p><label><input type="checkbox" name="consent" value="yes" required> Email me the Decide Football briefing. See our <a href="/privacy/">privacy policy</a>.</label></p></form></section>')
 FOOT='<footer><div class="wrap"><p><a href="/about/">About</a> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/newsletter/">Newsletter</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/image-policy/">Image policy</a> · <a href="/feed.xml">RSS</a></p><p>© 2026 Joshua Israel Ventures LLC</p></div></footer><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "9c4f710ff2a04acb99c29039ac218aea"}\'></script></body></html>'
 def page(title,desc,path,body,extra="",og_img=None,art=False):
-    nav="".join(f'<a href="/category/{k}/">{v}</a>' for k,v in CATS.items())
+    nav="".join(f'<a href="/category/{k}/">{v}</a>' for k,v in CATS.items() if CN.get(k,0))
     img=f'<meta property="og:image" content="{D}{og_img}">' if og_img else ""
     t,d=html.escape(title),html.escape(desc)
     return (f'<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n'
@@ -43,21 +43,24 @@ def thumb(alt,img=None):
     return f'<figure>{inner}{credit(img) if img else ""}</figure>'
 A=json.load(open("articles.json"))
 A.sort(key=lambda a:a["date"],reverse=True)
+from collections import Counter
+CN=Counter(a["cat"] for a in A);LN=Counter(a["league"] for a in A)
+NI='<meta name="robots" content="noindex,follow">'
 def lg(a): return f'<a class="lg" href="/league/{a["league"]}/">{LEAGUES[a["league"]]}</a>'
 def card(a): return f'<article class="card">{thumb(a["title"],a.get("image"))}<span class="tag">{CATS[a["cat"]]}</span>{lg(a)}<h2><a href="/news/{a["slug"]}/">{html.escape(a["title"])}</a></h2><p>{html.escape(a["desc"])}</p></article>'
 def w(p,s): os.makedirs(os.path.dirname(p) or ".",exist_ok=True);open(p,"w").write(s)
 def grid(L,empty): return '<div class="grid">'+"".join(map(card,L))+"</div>" if L else (f"<p>{empty}</p>" if empty else "")
-leaguebar='<ul class="leagues">'+"".join(f'<li><a href="/league/{k}/">{v}</a></li>' for k,v in LEAGUES.items())+'</ul>'
+leaguebar='<ul class="leagues">'+"".join(f'<li><a href="/league/{k}/">{v}</a></li>' for k,v in LEAGUES.items() if LN[k])+'</ul>'
 def coll(name,desc,path): return '<script type="application/ld+json">'+json.dumps({"@context":"https://schema.org","@type":"CollectionPage","name":name,"description":desc,"url":D+path,"isPartOf":{"@type":"WebSite","name":"Decide Football","url":D+"/"}})+'</script>'
 site_ld='<script type="application/ld+json">'+json.dumps([{"@context":"https://schema.org","@type":"WebSite","name":"Decide Football","url":D+"/","inLanguage":"en-GB"},{"@context":"https://schema.org",**PUB}])+'</script>'
 w("index.html",page("Decide Football – the decisions behind world football",TAG,"/",'<h1>Latest decisions</h1>'+leaguebar+grid(A[:6],"")+signup()+grid(A[6:],""),site_ld))
 for k,v in CATS.items():
     L=[a for a in A if a["cat"]==k];d=f"{v}: the latest managers' and head coaches' decisions across world football."
-    w(f"category/{k}/index.html",page(f"{v} – Decide Football",d,f"/category/{k}/",f'<h1>{v}</h1><p>{html.escape(d)}</p>'+grid(L,"No stories in this section yet. Check back soon.")+signup(),coll(v,d,f"/category/{k}/")))
+    w(f"category/{k}/index.html",page(f"{v} – Decide Football",d,f"/category/{k}/",f'<h1>{v}</h1><p>{html.escape(d)}</p>'+grid(L,"No stories in this section at the moment.")+signup(),coll(v,d,f"/category/{k}/")+(NI if CN[k]<2 else "")))
 for k,v in LEAGUES.items():
     L=[a for a in A if a["league"]==k];d=f"{v}: the latest decisions by managers and head coaches – team selection, tactics, substitutions, squad calls and the managers under pressure."
-    w(f"league/{k}/index.html",page(f"{v} managers' decisions – Decide Football",d,f"/league/{k}/",f'<h1>{v}</h1><p>{html.escape(d)}</p>'+grid(L,"No stories from this competition yet. Check back soon.")+leaguebar,coll(v,d,f"/league/{k}/")))
-w("leagues/index.html",page("Leagues and competitions – Decide Football","Browse managers' decisions by league and competition.","/leagues/",'<h1>Leagues and competitions</h1><ul>'+"".join(f'<li><a href="/league/{k}/">{v}</a> ({sum(a["league"]==k for a in A)})</li>' for k,v in LEAGUES.items())+'</ul>'))
+    w(f"league/{k}/index.html",page(f"{v} managers' decisions – Decide Football",d,f"/league/{k}/",f'<h1>{v}</h1><p>{html.escape(d)}</p>'+grid(L,"No stories from this competition at the moment.")+leaguebar,coll(v,d,f"/league/{k}/")+(NI if LN[k]<2 else "")))
+w("leagues/index.html",page("Leagues and competitions – Decide Football","Browse managers' decisions by league and competition.","/leagues/",'<h1>Leagues and competitions</h1><ul>'+"".join(f'<li><a href="/league/{k}/">{v}</a> ({LN[k]})</li>' for k,v in LEAGUES.items() if LN[k])+'</ul>'))
 for a in A:
     im=a.get("image")
     ld={"@context":"https://schema.org","@type":"NewsArticle","headline":a["title"][:110],"description":a["desc"],"datePublished":a["date"],"dateModified":a.get("modified",a["date"]),"inLanguage":"en-GB","author":{"@type":"Organization","name":"Decide Football","url":D+"/about/"},"publisher":PUB,"mainEntityOfPage":{"@type":"WebPage","@id":f'{D}/news/{a["slug"]}/'},"articleSection":CATS[a["cat"]],"keywords":[LEAGUES[a["league"]],CATS[a["cat"]]],"isAccessibleForFree":True}
@@ -83,7 +86,7 @@ for k,(t,b) in S.items():
     w(f"{k}/index.html",page(f"{t} – Decide Football",t+" – Decide Football",f"/{k}/",f'<div class="page post"><h1>{t}</h1>{b}</div>',ex))
 from datetime import datetime,timezone,timedelta
 last=lambda L:max([a["date"][:10] for a in L] or ["2026-11-03"])
-urls=[("/",last(A))]+[(f"/category/{k}/",last([a for a in A if a["cat"]==k])) for k in CATS]+[(f"/league/{k}/",last([a for a in A if a["league"]==k])) for k in LEAGUES]+[("/leagues/",last(A))]+[(f'/news/{a["slug"]}/',a.get("modified",a["date"])[:10]) for a in A]+[(f"/{k}/","2026-11-05") for k in S if k!="newsletter/thanks"]
+urls=[("/",last(A))]+[(f"/category/{k}/",last([a for a in A if a["cat"]==k])) for k in CATS if CN[k]>=2]+[(f"/league/{k}/",last([a for a in A if a["league"]==k])) for k in LEAGUES if LN[k]>=2]+[("/leagues/",last(A))]+[(f'/news/{a["slug"]}/',a.get("modified",a["date"])[:10]) for a in A]+[(f"/{k}/","2026-11-05") for k in S if k!="newsletter/thanks"]
 w("sitemap.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{D}{u}</loc><lastmod>{m}</lastmod></url>" for u,m in urls)+"</urlset>\n")
 cut=datetime.now(timezone.utc)-timedelta(days=2)
 NA=[a for a in A if datetime.fromisoformat(a["date"])>=cut] or A[:1]

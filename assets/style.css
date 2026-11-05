@@ -116,3 +116,12 @@ footer {
 .leagues{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 1rem;padding:0;list-style:none}.leagues a{display:inline-block;padding:.25rem .6rem;border:1px solid #c9d6e3;border-radius:999px;color:#0b1f3a;text-decoration:none;font-size:.85rem;background:#fff}
 .signup{background:#0b1f3a;color:#fff;border-radius:8px;padding:1rem 1.25rem;margin:1.5rem 0}.signup h2{margin:.2rem 0 .4rem;font-size:1.15rem}.signup input[type=email]{padding:.5rem;border-radius:6px;border:0;min-width:240px;max-width:100%}.signup button{padding:.5rem 1rem;border:0;border-radius:6px;background:#1a7f37;color:#fff;font-weight:700;cursor:pointer}.signup label{font-size:.85rem}.signup .hp{position:absolute;left:-9999px}.signup a{color:#c9d6e3}
 .lg{font-size:.75rem;margin-left:.4rem;color:#0b5cad}
+
+/* style-pass 2026-11-05: focus, readable measure, footer wrap, image ratios, mobile */
+:focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+a:focus-visible,button:focus-visible,.nav a:focus-visible,.site-header a:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+article,.post,.prose,.entry,.guide-body{max-width:42rem}
+article p,.post p,.prose p,main p{line-height:1.7;max-width:68ch}
+footer,.site-footer{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.card img,article img,.post img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+@media (max-width:640px){main,.content{padding-left:12px;padding-right:12px}}

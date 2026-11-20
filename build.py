@@ -17,6 +17,7 @@ css+="""
 if HAVE_DRAFT: os.makedirs("assets",exist_ok=True);open("assets/style.css","w").write(css)
 CATS={"team-selection":"Team Selection","tactics":"Tactics","substitutions":"Substitutions","squad-and-transfers":"Squad and Transfers","under-pressure":"Under Pressure"}
 LEAGUES={"premier-league":"Premier League","championship":"EFL Championship","league-one":"EFL League One","league-two":"EFL League Two","scottish-premiership":"Scottish Premiership","scottish-league-two":"Scottish League Two","la-liga":"La Liga","serie-a":"Serie A","bundesliga":"Bundesliga","ligue-1":"Ligue 1","eredivisie":"Eredivisie","primeira-liga":"Primeira Liga","mls":"MLS","champions-league":"Champions League","europa-league":"Europa League","conference-league":"Conference League","internationals":"Internationals"}
+LEAGUES.update({"ghana-premier-league":"Ghana Premier League","south-african-premiership":"South African Premiership","npfl":"Nigeria Premier Football League"})
 TAG="The decisions behind world football: team selection, tactics, substitutions, squad calls and the managers under pressure."
 SIGNUP_URL="https://decidefootball-signups.joshofisrael.workers.dev/subscribe"
 PUB={"@type":"NewsMediaOrganization","name":"Decide Football","url":D+"/","logo":{"@type":"ImageObject","url":D+"/assets/logo.png","width":600,"height":60},"publishingPrinciples":D+"/editorial-policy/","correctionsPolicy":D+"/editorial-policy/#corrections"}

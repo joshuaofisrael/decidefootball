@@ -125,3 +125,12 @@ article p,.post p,.prose p,main p{line-height:1.7;max-width:68ch}
 footer,.site-footer{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
 .card img,article img,.post img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 @media (max-width:640px){main,.content{padding-left:12px;padding-right:12px}}
+.next-reads{margin:1.4rem 0}.next-reads h2{font-size:1.05rem;margin:0 0 .6rem}
+.next-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:.75rem}
+.ncard{background:#fff;border:1px solid #d0d7de;border-radius:8px;overflow:hidden}
+.ncard a{color:#0b1f3a;text-decoration:none;display:block}
+.ncard strong{display:block;margin:.45rem .65rem .65rem;font-size:.92rem;line-height:1.35;font-weight:650}
+.ncard .src{margin:.15rem .65rem .5rem;text-align:left;font-size:.75rem}
+.follow,.compare{margin:1.25rem 0;padding:.9rem 1rem;background:#fff;border:1px solid #d0d7de;border-radius:8px}
+.follow h2,.compare h2{font-size:1.05rem;margin:.15rem 0 .45rem}.follow ul{margin:.3rem 0 .2rem;padding-left:1.15rem}
+@media (max-width:640px){.next-grid{grid-template-columns:1fr}}

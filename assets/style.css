@@ -134,3 +134,12 @@ footer,.site-footer{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
 .follow,.compare{margin:1.25rem 0;padding:.9rem 1rem;background:#fff;border:1px solid #d0d7de;border-radius:8px}
 .follow h2,.compare h2{font-size:1.05rem;margin:.15rem 0 .45rem}.follow ul{margin:.3rem 0 .2rem;padding-left:1.15rem}
 @media (max-width:640px){.next-grid{grid-template-columns:1fr}}
+.crumbs{font-size:.85rem;margin:0 0 .75rem;color:#555}.crumbs a{color:#0b5cad}
+.cite{margin:1.25rem 0;padding:.9rem 1rem;background:#fff;border:1px solid #d0d7de;border-radius:8px}
+.cite h2{font-size:1.05rem;margin:.15rem 0 .45rem}
+.terms-wrap{overflow-x:auto;margin:1rem 0}
+table.terms{width:100%;border-collapse:collapse;font-size:.92rem;background:#fff}
+table.terms th,table.terms td{border-bottom:1px solid #d0d7de;text-align:left;padding:.45rem .4rem;vertical-align:top}
+table.terms caption{text-align:left;font-size:.85rem;color:#555;margin-bottom:.4rem}
+.post svg.pitch,article svg.pitch{width:100%;max-width:280px;height:auto;display:block;background:#e7f2e4;border:1px solid #c5d4c0;border-radius:8px}
+h2[id],h3[id]{scroll-margin-top:.75rem}

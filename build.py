@@ -43,7 +43,7 @@ def page(title,desc,path,body,extra="",og_img=None,art=False):
      f'<title>{t}</title><meta name="description" content="{d}"><link rel="canonical" href="{D}{path}"><meta name="robots" content="max-image-preview:large">\n'
      f'<meta property="og:type" content="{"article" if art else "website"}"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{D}{path}"><meta property="og:site_name" content="Decide Football"><meta property="og:locale" content="en_GB">{img}<meta name="twitter:card" content="summary_large_image">\n'
      f'<meta name="google-adsense-account" content="ca-pub-5681559774142917"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681559774142917" crossorigin="anonymous"></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-TNS68J7G3M"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag(\'js\',new Date());gtag(\'config\',\'G-TNS68J7G3M\');</script><link rel="icon" href="/assets/icon.png"><link rel="stylesheet" href="/assets/style.css"><link rel="alternate" type="application/rss+xml" title="Decide Football" href="/feed.xml">{extra}</head><body>\n'
-     f'<a class="skip" href="#main">Skip to content</a><header><div class="wrap"><a class="brand" href="/">Decide Football</a><p class="tagline">{TAG}</p><nav aria-label="Sections"><a href="/">Latest</a>{nav}<a href="/leagues/">Leagues</a></nav></div></header>\n'
+     f'<a class="skip" href="#main">Skip to content</a><header><div class="wrap"><a class="brand" href="/">Decide Football</a><p class="tagline">{TAG}</p><nav aria-label="Sections"><a href="/">Latest</a>{nav}<a href="/tactics-glossary/">Glossary</a><a href="/leagues/">Leagues</a></nav></div></header>\n'
      f'<main id="main" class="wrap">{body}</main>\n'+FOOT)
 def credit(img):
     if img and len(img)>2 and img[2]: return f'<figcaption class="src">{img[2]}</figcaption>'
@@ -66,11 +66,13 @@ site_ld='<script type="application/ld+json">'+json.dumps([{"@context":"https://s
 w("index.html",page("Decide Football – the decisions behind world football",TAG,"/",'<h1>Latest decisions</h1>'+leaguebar+grid(A[:6],"")+signup()+grid(A[6:],""),site_ld))
 for k,v in CATS.items():
     L=[a for a in A if a["cat"]==k];d=f"{v}: the latest managers' and head coaches' decisions across world football."
-    w(f"category/{k}/index.html",page(f"{v} – Decide Football",d,f"/category/{k}/",f'<h1>{v}</h1><p>{html.escape(d)}</p>'+grid(L,"No stories in this section at the moment.")+signup(),coll(v,d,f"/category/{k}/")+(NI if CN[k]<2 else "")))
+    hub=""
+    if k=="tactics": hub='<p>The labels in these pieces are defined, with pitch diagrams and a CSV, in the <a href="/tactics-glossary/">football tactics glossary</a>.</p>'
+    w(f"category/{k}/index.html",page(f"{v} – Decide Football",d,f"/category/{k}/",f'<h1>{v}</h1><p>{html.escape(d)}</p>'+hub+grid(L,"No stories in this section at the moment.")+signup(),coll(v,d,f"/category/{k}/")+(NI if CN[k]<2 else "")))
 for k,v in LEAGUES.items():
     L=[a for a in A if a["league"]==k];d=f"{v}: the latest decisions by managers and head coaches – team selection, tactics, substitutions, squad calls and the managers under pressure."
     w(f"league/{k}/index.html",page(f"{v} managers' decisions – Decide Football",d,f"/league/{k}/",f'<h1>{v}</h1><p>{html.escape(d)}</p>'+grid(L,"No stories from this competition at the moment.")+leaguebar,coll(v,d,f"/league/{k}/")+(NI if LN[k]<2 else "")))
-w("leagues/index.html",page("Leagues and competitions – Decide Football","Browse managers' decisions by league and competition.","/leagues/",'<h1>Leagues and competitions</h1><ul>'+"".join(f'<li><a href="/league/{k}/">{v}</a> ({LN[k]})</li>' for k,v in LEAGUES.items() if LN[k])+'</ul>'))
+w("leagues/index.html",page("Leagues and competitions – Decide Football","Browse managers' decisions by league and competition.","/leagues/",'<h1>Leagues and competitions</h1><p>Tactical terms that turn up across these competitions are defined in the <a href="/tactics-glossary/">football tactics glossary</a>.</p><ul>'+"".join(f'<li><a href="/league/{k}/">{v}</a> ({LN[k]})</li>' for k,v in LEAGUES.items() if LN[k])+'</ul>'))
 GENERIC=set("under over after before with from into onto about against during within without across around between game games plan plans call calls decision decisions report news head coach manager managers football premier league match matches squad team teams side sides club clubs player players goal goals win wins won loss lose lost defeat victory first last next more most much many new old big top two three four five six seven eight nine ten one year years day days time since until very will your our his her its not but and for the what who why when where which this that those these them they their than then out off back half start starts faster future doubt pressure question winless run runs named names naming confirm confirms confirmed leaves left sack sacks sacked appoint appoints appointed replace replacement deal deals contract commitment beyond rules rule take takes tells told picks pick over nations group final decider attack attacks physical response changes restores restore keeps kept pain triple change rotation selection selects recalls recall hands hand youngest ever season end board returns touchline staff birthday happy tweet owner charge ended hours wide left semi beat beats beating demand demands chaotic leaders explained choice behind double midfield pivot false nine centre forward withdraw agreement framework departure bench backed comeback shortlist month workload include included included".split())
 def slug_toks(slug):
     return [t for t in slug.split("-") if t not in GENERIC and len(t)>3]
@@ -101,8 +103,10 @@ NM={a["slug"]:names(a) for a in A}
 DF=Counter(t for s in NM.values() for t in s)
 EVERGREEN=("what-is-a-false-nine","double-pivot-explained")
 COMPARE={
-"double-pivot-explained":'<aside class="compare"><h2>Compare with</h2><p>A <a href="/news/what-is-a-false-nine/">false nine</a> is a centre-forward who leaves the last line. A double pivot is the pair in front of the defence. One creates a decision for the centre-backs. The other splits screening and passing between two midfielders.</p><p>Check another: <a href="/league/premier-league/">Premier League decisions</a> · <a href="/category/tactics/">all tactics</a>.</p></aside>',
-"what-is-a-false-nine":'<aside class="compare"><h2>Compare with</h2><p>A <a href="/news/double-pivot-explained/">double pivot</a> is two deeper midfielders sharing the space in front of the back line. A false nine is the forward who drops away from the centre-backs. One is a build-up structure. The other is a movement on the last line.</p><p>Check another: <a href="/league/premier-league/">Premier League decisions</a> · <a href="/category/tactics/">all tactics</a>.</p></aside>',
+"double-pivot-explained":'<aside class="compare"><h2>Compare with</h2><p>A <a href="/news/what-is-a-false-nine/">false nine</a> is a centre-forward who leaves the last line. A double pivot is the pair in front of the defence. One creates a decision for the centre-backs. The other splits screening and passing between two midfielders.</p><p>Check another: <a href="/tactics-glossary/">the tactics glossary</a> · <a href="/league/premier-league/">Premier League decisions</a> · <a href="/category/tactics/">all tactics</a>.</p></aside>',
+"what-is-a-false-nine":'<aside class="compare"><h2>Compare with</h2><p>A <a href="/news/double-pivot-explained/">double pivot</a> is two deeper midfielders sharing the space in front of the back line. A false nine is the forward who drops away from the centre-backs. One is a build-up structure. The other is a movement on the last line.</p><p>Check another: <a href="/tactics-glossary/">the tactics glossary</a> · <a href="/league/premier-league/">Premier League decisions</a> · <a href="/category/tactics/">all tactics</a>.</p></aside>',
+"arteta-anfield-game-plan-havertz":'<aside class="compare"><h2>Compare with</h2><p>The compact spell after Havertz’s goal is the defensive height described as a <a href="/tactics-glossary/#low-block">low block</a>. It is a different decision from a <a href="/news/what-is-a-false-nine/">false nine</a>, which is a forward dropping off the last line.</p><p>Check another: <a href="/news/arteta-demands-more-chaotic-arsenal-attacks/">Arteta on attacking low blocks</a> · <a href="/league/premier-league/">Premier League decisions</a>.</p></aside>',
+"carrick-under-pressure-roma":'<aside class="compare"><h2>Compare with</h2><p>This page is the 3 November picture. The later calls are the <a href="/news/manchester-united-confirm-carrick-departure/">club confirming Carrick had left</a> and <a href="/news/manchester-united-confirm-pochettino-head-coach/">Pochettino’s appointment</a>.</p><p>Check another: <a href="/league/premier-league/">Premier League decisions</a> · <a href="/category/under-pressure/">managers under pressure</a>.</p></aside>',
 }
 def rel_score(a,b):
     s=0
@@ -155,6 +159,7 @@ def follow_html(a):
     if a["cat"]=="tactics":
         guides=[f'<a href="/news/{s}/">{html.escape(next(x["title"] for x in A if x["slug"]==s))}</a>' for s in EVERGREEN if s!=a["slug"]]
         if guides: extra=" Tactical background: "+" and ".join(guides)+"."
+        extra+=' Labels used in this section are defined in the <a href="/tactics-glossary/">tactics glossary</a>.'
     early=earlier_story(a)
     early_html=f' Earlier: <a href="/news/{early["slug"]}/">{html.escape(early["title"])}</a>.' if early else ""
     bits.append(f'<h2>Background</h2><p>More from {hubs}.{extra}{early_html}</p>')
@@ -194,15 +199,45 @@ S={"about":("About Decide Football",f"<p>Decide Football is a news site about on
 for k,(t,b) in S.items():
     ex='<meta name="robots" content="noindex">' if k=="newsletter/thanks" else ""
     w(f"{k}/index.html",page(f"{t} – Decide Football",t+" – Decide Football",f"/{k}/",f'<div class="page post"><h1>{t}</h1>{b}</div>',ex))
+def write_glossary():
+    body=open("glossary_body.html",encoding="utf-8").read()
+    def art(slug):
+        return next(x for x in A if x["slug"]==slug)
+    mid=next_block([art(s) for s in ("arteta-demands-more-chaotic-arsenal-attacks","tuchel-tells-england-attack-spain-nations-league","rose-pushes-bournemouth-to-start-faster","reedijk-boyle-wide-left-hibs-hearts")], "Read next", "next-mid")
+    end=next_block([art(s) for s in ("what-is-a-false-nine","double-pivot-explained","le-bris-starts-talbi-against-chelsea")], "More on these decisions", "next-end")
+    hero=thumb("Tactics glossary", ["/assets/img/what-is-a-false-nine.webp","Hand arranging blank magnets on a football tactics board"])
+    body=body.replace('<p class="meta">', hero+'<p class="meta">', 1).replace("<!--MID-->", mid).replace("</article>", end+signup()+"</article>")
+    title="What a low block, a false nine and a double pivot actually mean"
+    desc="A citable glossary of the low block, false nine, double pivot and related roles, from Premier League pages checked on 21 November 2026."
+    assert len(desc)<=155, len(desc)
+    faqs=[]
+    chunk=body.split('id="short-answers"',1)[1].split("<aside",1)[0]
+    for q,a in re.findall(r"<h3>(.*?)</h3>\s*<p>(.*?)</p>", chunk, flags=re.S):
+        faqs.append({"@type":"Question","name":re.sub("<[^>]+>","",q),"acceptedAnswer":{"@type":"Answer","text":re.sub("<[^>]+>","",a)}})
+    assert len(faqs)==3, len(faqs)
+    crumbs={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":D+"/"},
+        {"@type":"ListItem","position":2,"name":"Tactics","item":D+"/category/tactics/"},
+        {"@type":"ListItem","position":3,"name":"Tactics glossary","item":D+"/tactics-glossary/"}]}
+    article={"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"datePublished":"2026-11-21","dateModified":"2026-11-21","inLanguage":"en-GB","author":{"@type":"Organization","name":"Decide Football","url":D+"/about/"},"publisher":PUB,"mainEntityOfPage":{"@type":"WebPage","@id":D+"/tactics-glossary/"},"image":[{"@type":"ImageObject","url":D+"/assets/img/what-is-a-false-nine.webp","width":1280,"height":720}]}
+    dataset={"@context":"https://schema.org","@type":"Dataset","name":title,"description":desc,"url":D+"/tactics-glossary/","creator":{"@type":"Organization","name":"Decide Football","url":D+"/"},"datePublished":"2026-11-21","dateModified":"2026-11-21","license":D+"/terms/","distribution":{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":D+"/tactics-glossary/football-tactics.csv"},"isBasedOn":[
+        "https://www.premierleague.com/en/news/4255951","https://www.premierleague.com/en/news/4243785","https://www.premierleague.com/en/news/4244158","https://www.premierleague.com/en/news/4244194","https://www.premierleague.com/en/news/4244274","https://www.premierleague.com/en/news/2152504"]}
+    faq={"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqs}
+    extra='<script type="application/ld+json">'+json.dumps([article,dataset,crumbs,faq])+'</script>'
+    w("tactics-glossary/index.html", page(title+" – Decide Football", desc, "/tactics-glossary/", body, extra, "/assets/img/what-is-a-false-nine.webp", True))
+    rows=open("glossary.csv",encoding="utf-8").read()
+    w("tactics-glossary/football-tactics.csv", rows if rows.endswith("\n") else rows+"\n")
+write_glossary()
 from datetime import datetime,timezone,timedelta
 last=lambda L:max([a["date"][:10] for a in L] or ["2026-11-03"])
 static_lastmod={"image-policy":"2026-11-20"}
-urls=[("/",last(A))]+[(f"/category/{k}/",last([a for a in A if a["cat"]==k])) for k in CATS if CN[k]>=2]+[(f"/league/{k}/",last([a for a in A if a["league"]==k])) for k in LEAGUES if LN[k]>=2]+[("/leagues/",last(A))]+[(f'/news/{a["slug"]}/',a.get("modified",a["date"])[:10]) for a in A]+[(f"/{k}/",static_lastmod.get(k,"2026-11-05")) for k in S if k!="newsletter/thanks"]
+urls=[("/",last(A))]+[(f"/category/{k}/","2026-11-21" if k=="tactics" else last([a for a in A if a["cat"]==k])) for k in CATS if CN[k]>=2]+[(f"/league/{k}/",last([a for a in A if a["league"]==k])) for k in LEAGUES if LN[k]>=2]+[("/leagues/",last(A))]+[(f'/news/{a["slug"]}/',a.get("modified",a["date"])[:10]) for a in A]+[(f"/{k}/",static_lastmod.get(k,"2026-11-05")) for k in S if k!="newsletter/thanks"]+[("/tactics-glossary/","2026-11-21")]
 w("sitemap.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f"<url><loc>{D}{u}</loc><lastmod>{m}</lastmod></url>" for u,m in urls)+"</urlset>\n")
 cut=datetime.now(timezone.utc)-timedelta(days=2)
 NA=[a for a in A if datetime.fromisoformat(a["date"])>=cut] or A[:1]
 w("news-sitemap.xml",'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">'+"".join(f'<url><loc>{D}/news/{a["slug"]}/</loc><news:news><news:publication><news:name>Decide Football</news:name><news:language>en</news:language></news:publication><news:publication_date>{a["date"]}</news:publication_date><news:title>{html.escape(a["title"])}</news:title></news:news></url>' for a in NA)+"</urlset>\n")
-w("robots.txt","User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: https://decidefootball.com/sitemap.xml\nSitemap: https://decidefootball.com/news-sitemap.xml\n")
+w("robots.txt","User-agent: *\nAllow: /\nDisallow: /glossary_body.html\nDisallow: /glossary.csv\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: ClaudeBot\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: https://decidefootball.com/sitemap.xml\nSitemap: https://decidefootball.com/news-sitemap.xml\n")
+w("llms.txt","# Decide Football\n\n> Managers' and head coaches' decisions in association football. Football means the world game, not American football.\n\n## Reference\n\n- [Tactics glossary](https://decidefootball.com/tactics-glossary/): citable definitions of the low block, mid block, high press, counter-press, double pivot, single pivot, box midfield, inverted full-back and false nine. CSV at https://decidefootball.com/tactics-glossary/football-tactics.csv\n- [What is a false nine?](https://decidefootball.com/news/what-is-a-false-nine/)\n- [What is a double pivot?](https://decidefootball.com/news/double-pivot-explained/)\n\n## Hubs\n\n- https://decidefootball.com/\n- https://decidefootball.com/category/tactics/\n- https://decidefootball.com/leagues/\n- https://decidefootball.com/editorial-policy/\n")
 from email.utils import format_datetime
 def enc(a):
     if not a.get("image"): return ""

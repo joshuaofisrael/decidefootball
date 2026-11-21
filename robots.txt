@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /glossary_body.html
+Disallow: /glossary.csv
 
 User-agent: GPTBot
 Allow: /

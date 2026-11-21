@@ -1,0 +1,16 @@
+# Decide Football
+
+> Managers' and head coaches' decisions in association football. Football means the world game, not American football.
+
+## Reference
+
+- [Tactics glossary](https://decidefootball.com/tactics-glossary/): citable definitions of the low block, mid block, high press, counter-press, double pivot, single pivot, box midfield, inverted full-back and false nine. CSV at https://decidefootball.com/tactics-glossary/football-tactics.csv
+- [What is a false nine?](https://decidefootball.com/news/what-is-a-false-nine/)
+- [What is a double pivot?](https://decidefootball.com/news/double-pivot-explained/)
+
+## Hubs
+
+- https://decidefootball.com/
+- https://decidefootball.com/category/tactics/
+- https://decidefootball.com/leagues/
+- https://decidefootball.com/editorial-policy/
